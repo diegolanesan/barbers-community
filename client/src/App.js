@@ -2,14 +2,13 @@ import React from 'react'
 import { Route } from "react-router-dom";
 import Home from './components/container/Home/Home';
 import './App.css';
-import NavBar from './components/content/navBar/NavBar'
+import NavBar from './components/content/navBar/NavBar';
 
 function App() {
   return (
     <div className="App">
       <Route exact path="/" component={Home}/>
-      <NavBar />
-      <h1>Barber Shop</h1> 
+      <Route path="/" component={NavBar}/>
     </div>   
   );
 }

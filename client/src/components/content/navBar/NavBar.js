@@ -3,7 +3,7 @@ import SearchBar from '../searchBar/SearchBar'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 // import Login from './Login/Login'
-//import styles from './NavBar.module.css'
+import styles from './NavBar.module.css'
 
 function NavBar() {
     return (
