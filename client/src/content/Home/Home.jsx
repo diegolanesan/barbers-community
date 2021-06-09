@@ -1,10 +1,12 @@
+
 // importar navbar
 
 function Home() {
     <div class={styles.home}>
-        <Navbar />
+        {/* <Navbar /> */}
         <div class={styles.hero}>
-            
+
         </div>
+        {/* <Footer /> */}
     </div>
 }
