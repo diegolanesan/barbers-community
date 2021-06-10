@@ -1,4 +1,6 @@
 const { Router } = require("express");
+const barber = require('./barbers');
+
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -34,6 +36,8 @@ const { Router } = require("express");
 
 const router = Router();
 
+
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
@@ -46,8 +50,7 @@ const router = Router();
 // router.use(comentariosRutas);
 
 
-
-// router.use('/barbers', barbersRoutes);
+router.use('/barbers', barber);
 // router.use('/categories', categoriesRoutes);
 // router.use('/clients', clientRoutes);
 // router.use('/facetypes', faceTypesRoutes);
