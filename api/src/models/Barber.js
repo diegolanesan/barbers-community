@@ -51,7 +51,7 @@ module.exports = (sequelize) => {
         allowNull: false
     },
     rating: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.NUMBER, 
         allowNull: false
     }
   });
