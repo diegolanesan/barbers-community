@@ -3,23 +3,26 @@ const { DataTypes, STRING } = require("sequelize");
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
 	// defino el modelo
-	sequelize.define("serviceBarber", {
-		name: {
-			type: DataTypes.STRING,
+	sequelize.define("appointment", {
+		idBarber: {
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		price: {
-			type: DataTypes.STRING,
+		idClient: {
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		description: {
-			type: DataTypes.STRING,
+		date: {
+			type: DataTypes.DATE,
 			allowNull: false,
 		},
-		image: {
-			type: DataTypes.ARRAY(STRING), // Se puede ingresar un array de varias url
+		status: {
+			type: DataTypes.ENUM("Pending", "Approb", "Cancel", "Delete"),
 			allowNull: false,
-			defaultValue: ["https://imagenurl"],
+		},
+		total: {
+			type: DataTypes.FLOAT,
+			allowNull: false,
 		},
 	});
 };
