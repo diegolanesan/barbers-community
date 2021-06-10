@@ -39,27 +39,68 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 
 // const { Comentarios, Publicaciones, Usuario,  Seguidor} = sequelize.models;
-const { Appointment, DetailAppointment } = sequelize.models;
+const { Barber, ServiceBarber, Category, FaceType, HairType, Style, Client,Appointment } = sequelize.models;
 
-Appointment.belongsTo(DetailAppointment);
-DetailAppointment.hasOne(Appointment);
+// Se va agregar a la tabla ServiceBarber el id del barbero
+Barber.hasMany(ServiceBarber);
+ServiceBarber.belongsTo(Barber);
 
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+// Se va a crear una tabla intermedia con los id de las tablas
 
-// Relacion entre usuario y publicacion
+ServiceBarber.belongsToMany(Category, {through:"categoryBarber"});
+Category.belongsToMany(ServiceBarber, {through:"categoryBarber"});
 
-// Usuario.hasMany(Publicaciones);
-// Publicaciones.belongsTo(Usuario);
+// Se va a crear una tabla intermedia con los id de las tablas
 
-// Usuario.hasMany(Comentarios);
-// Comentarios.belongsTo(Usuario);
+Barber.belongsToMany(FaceType, {through:"faceTypeBarber"});
+FaceType.belongsToMany(Barber, {through:"faceTypeBarber"});
 
-// Comentarios.belongsToMany(Publicaciones, {through:"PublicComentarios"});
-// Publicaciones.belongsToMany(Comentarios, {through:"PublicComentarios"});
+// Se va a crear una tabla intermedia con los id de las tablas
 
-// Usuario.belongsToMany(Seguidor,{through:"Social"})
-// Seguidor.belongsToMany(Usuario,{through:"Social"})
+Barber.belongsToMany(HairType, {through:"hairTypeBarber"});
+HairType.belongsToMany(Barber, {through:"hairTypeBarber"});
+
+// Se va a crear una tabla intermedia con los id de las tablas
+
+Barber.belongsToMany(Style, {through:"styleBarber"});
+Style.belongsToMany(Barber, {through:"styleBarber"});
+
+// Se va a crear una tabla intermedia con los id de las tablas
+ServiceBarber.belongsToMany(Client, {through:"appointment"});
+Client.belongsToMany(ServiceBarber, {through:"appointment"});
+
+
+
+
+
+
+
+
+
+
+
+//+++++++++++++++++++++ Explicaciones sobre las relacines en la base de datos  ++++++++++++++++++
+// // -----------------relacion de uno a uno (hasOne, belongsTo)----------------------------------
+// // Se le agrega el idBarber a client
+// ---Barber.hasOne(Client);
+// // Se le agrega el idBarber a client
+// ---Client.belongsTo(Barber);
+
+
+// //---------------------relacion de uno a muchos (hasMany, belongsTo)----------------------------
+// // Se le agrega el idBarber a client
+// ---Barber.hasMany(Client);
+// // Se le agrega el idBarber a client
+// ---Client.belongsTo(Barber);
+
+// //------------------------------------relacion de muchos a muchos  (belongsToMany, belongsToMany)-----------------------
+
+// // se agrega el idBarber y idClient a una tabla intermedia que especificamos con through
+
+// ---Barber.belongsToMany(Client, {through:"cita"})
+// ---Client.belongsToMany(Barber, {through:"cita"})
+
+
 
 module.exports = {
 	...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
