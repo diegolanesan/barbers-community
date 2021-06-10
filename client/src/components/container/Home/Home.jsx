@@ -1,14 +1,11 @@
 import styles from './Home.module.css';
-import NavBar from '../../content/navBar/NavBar';
+import Image from 'react-bootstrap/Image'
 // importar Footer
-// importar Navbar
 
 function Home() {
     
     return (
-        <div className={styles.home}>
-            <h1>"Welcome to the Barber Community"</h1>
-        </div>
+        <Image src="https://buenosairesbarbershop.com/assets/img/bg/barberia_byn.jpg" fluid />
     )
 }
 
