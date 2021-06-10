@@ -61,6 +61,8 @@ DetailAppointment.hasOne(Appointment);
 // Usuario.belongsToMany(Seguidor,{through:"Social"})
 // Seguidor.belongsToMany(Usuario,{through:"Social"})
 
+// Nuevo comentario de prueba
+
 module.exports = {
 	...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
 	conn: sequelize, // para importart la conexión { conn } = require('./db.js');
