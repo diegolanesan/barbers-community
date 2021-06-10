@@ -5,7 +5,9 @@ function Home() {
 
     return (
         <div className={styles.divhome}>
+            <div>
 
+            </div>
         </div>
     )
 }
