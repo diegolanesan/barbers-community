@@ -25,4 +25,4 @@ const reducerBarberDetail = (state=initialState, action)=>{
     }
 }
 
-export default reducerPublication;
+export default reducerBarberDetail;
