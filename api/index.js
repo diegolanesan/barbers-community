@@ -19,6 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
+const { PORT } = require("./src/utils/config/index");
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
@@ -27,3 +28,5 @@ conn.sync({ force: false }).then(() => {
 	});
 });
 // Quokka.js
+
+// const { PORT } = require("./src/utils/config/index");
