@@ -1,6 +1,4 @@
 const { Router } = require("express");
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
 
 
 // const appointmentsRoutes = require("./appointments");
@@ -11,6 +9,11 @@ const { Router } = require("express");
 
 
 // const barbersRoutes = require("./barbers.js");
+const clients = require('./clients');
+// const appointmentsRoutes = require("./appointments");
+// const publicacionesRutas = require('./publicacionesRutas');
+// const usuarioRutas = require('./usuarioRuta');
+// const comentariosRutas = require('./comentariosRutas');
 // const categoriesRoutes = require("./categories.js");
 // const clientRoutes = require("./clients.js");
 // const faceTypesRoutes = require("./faceTypes.js");
@@ -18,19 +21,6 @@ const { Router } = require("express");
 // const BarberServicesRoutes = require("./barberServices.js");
 // const stylesRoutes = require("./styles.js");
 // const subscriptionsRoutes = require("./subscriptions.js");
-
-// const barbersRoutes = require('./barbers.js')
-// const categoriesRoutes = require('./categories.js')
-// const clientRoutes = require('./clients.js')
-// const faceTypesRoutes = require('./faceTypes.js')
-// const hairTypesRoutes = require('./hairTypes.js')
-// const BarberServicesRoutes = require('./barberServices.js')
-// const stylesRoutes = require('./styles.js')
-// const subscriptionsRoutes = require('./subscriptions.js')
-
-
-
-
 
 const router = Router();
 
@@ -56,6 +46,7 @@ const router = Router();
 // router.use('/styles', stylesRoutes);
 // router.use('/subscriptions', subscriptionsRoutes);
 
+router.use('/clients', clients);
 
 
 module.exports = router;

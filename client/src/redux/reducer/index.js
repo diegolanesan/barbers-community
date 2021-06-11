@@ -1,10 +1,12 @@
 import reducerPublication from "./publication";
+import reducerBarberDetail from "./barberDetail";
 
 function combineReducer(state = {}, action) {
     return {
       publication: reducerPublication(state.publication,action),
       followers:{},
-      follow:{}
+      follow:{},
+      barberDetail: reducerBarberDetail(state.barberDetail,action)
     };
   }
   
