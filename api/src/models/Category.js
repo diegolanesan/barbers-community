@@ -22,5 +22,5 @@ module.exports = (sequelize) => {
         defaultValue:["https://imagenurl"]
     },
   
-  });
+  },{ timestamps: false });
 };
