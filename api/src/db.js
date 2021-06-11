@@ -66,8 +66,8 @@ Barber.belongsToMany(Style, {through:"styleBarber"});
 Style.belongsToMany(Barber, {through:"styleBarber"});
 
 // Se va a crear una tabla intermedia con los id de las tablas
-ServiceBarber.belongsToMany(Client, {through:"appointment"});
-Client.belongsToMany(ServiceBarber, {through:"appointment"});
+Barber.belongsToMany(Client, {through:"appointment"});
+Client.belongsToMany(Barber, {through:"appointment"});
 
 // Se va agregar a la tabla Client el id del FaceType
 FaceType.hasMany(Client); 
