@@ -60,6 +60,8 @@ Samples: Datos para ingresar en clients:
 
 */
 
+
+
  
 Table "public.appointments"
      Column      |           Type           | Collation | Nullable | Default 
