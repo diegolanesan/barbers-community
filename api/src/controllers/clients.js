@@ -99,7 +99,7 @@ const addClient = async(req, res, next) => {
             faceTypeId, 
             hairTypeId
         });
-        
+
         return res.send();
         
     } catch (error) {
@@ -108,14 +108,27 @@ const addClient = async(req, res, next) => {
 
 }
 
+
+const updateClient = (req, res, next ) => {
+    const id =req.params.id;
+    const body =req.body;
+    return Client.update(body, {
+        where:{
+            id,
+        }
+    }).then ((updatedElement)=>{
+        res.send(updatedElement)
+    }).catch((error)=>next(error)); 
+}
+
 // const updateClient = (req, res, next) => {
-//     const {usuarioid} = req.body;
-//     const {usuarioBody} = req.body; 
-//     Usuario.findByPk(usuarioid)
+//     const id = req.params.id;
+//     const client = req.body;
+//     Client.findByPk(id)
 //     .then(
 //         (resp)=>{
 //             resp === null && res.status(400).send("El usuario no existe");
-//             resp !== null && resp.update(usuarioBody) && res.send("Modificación Exitosa")
+//             resp !== null && resp.update({name : "asdfg"}) && res.send("Modificación Exitosa")
 //         },
 //         ()=>{res.send("Modificación Fallida")}
 //     )
@@ -141,5 +154,5 @@ module.exports = {
     getClientById,
     addClient,
     deleteClient,
-    // updateClient
+    updateClient
 }
