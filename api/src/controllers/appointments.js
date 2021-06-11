@@ -94,3 +94,4 @@ module.exports = {
     deleteAppointment,
     updateAppointment
 }
+
