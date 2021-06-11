@@ -8,9 +8,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     }, 
-<<<<<<< HEAD
-  },{ timestamps: false });
-=======
   }, { timestamps: false });
->>>>>>> 5cc05aa23e2e1e1cc1c0f73f72b7001d4c113cdf
+
 };
