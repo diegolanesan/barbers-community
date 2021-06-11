@@ -1,46 +1,29 @@
-const { Client, FaceType, HairType, Style } = require('../db');
+const { Client, Barber, DetailAppointment } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 
 
 const getAppointments = (req, res, next) => {
-
-/* ----------------------- El usuario (administrador) busca todos los clientes ---------------------------------*/
-    if(!req.query.name){
-        try {
-            Appointment.findAll({
-                include: [ { model: FaceType }, {model: HairType}, { model: Style } ]  // CAMBIAR DATOS
-            })
-            .then((result) => {
-                res.status(200).send(result);
-            })
-        } catch(e){
-            console.log("No se pudo realizar la petición HTTP correctamente " + e);
-        }
-/*---------------------- El usuario (administrador) busca por nombre /client?name=pablo ---------------------*/
-    } else {
-        let queryName = req.query.name;         //REVISAR ESTA LÓGICA
-        try {
-            Client.findAll({ 
-                where: {name: {[Op.iLike]: `%${queryName}%`}},
-                include: [ { model: FaceType }, {model: HairType}, { model: Style } ]  // REVISAR SINTAXIS
-            })
-            .then((result) => {
-                res.status(200).send(result);
-            })
-        } catch {
-            res.status(404).send("Client not found!");
-        }
+    /* ---- El usuario ( administrador/cliente/barbero ) busca todas los appointments ----*/
+    try {
+        Appointment.findAll({
+            include: [ { model: Barber }, {model: Client}, { model: DetailAppointment } ]  // ¿Esta bien incluir estos datos?
+        })
+        .then((result) => {
+            res.status(200).send(result);
+        })
+    } catch(e){
+        console.log("No se pudo realizar la petición HTTP correctamente " + e);
     }
 }
 
 
-const getClientById = (req, res, next) => {
+const getAppointmentById = (req, res, next) => {
     try {
         let queryId = req.params.id.toUpperCase();
-        Client.findOne({
+        Appointment.findOne({
             where: {id: queryId},
-            //include: {model: Activity}
+            include: [ { model: Barber }, {model: Client}, { model: DetailAppointment } ]
         })
         .then((result) => {
             res.status(200).send(result);
@@ -50,61 +33,48 @@ const getClientById = (req, res, next) => {
     }
 }
 
-
-const addClient = (req, res, next) => {
-    
+const addAppointment = (req, res, next) => {
     const { 
-        name, 
-        lastname,
-        email,
-        image,
-        mobile, 
-        location, 
-        password, 
-        status, 
-        styleId, 
-        faceTypeId, 
-        hairTypeId } = req.body;
-    
+        idBarber,   // Revisar cómo vienen estos datos de Sequelize!
+        idClient,
+        date,
+        status,
+        total,
+         } = req.body;
     try {
-        const createdClient = Client.create({ 
-            name, 
-            lastname, 
-            email, 
-            image, 
-            mobile, 
-            location, 
-            password, 
-            status, 
-            styleId, 
-            faceTypeId, 
-            hairTypeId
+        const createdAppointment = Appointment.create({
+            idBarber,
+            idClient,
+            date,
+            status,
+            total
         });
 
-        return res.send(createdClient);
-        
+        return res.send(createdAppointment);// ¿Le respondo con la cita creada, o con todas las citas?
+
     } catch (error) {
         next(error);
     }
 
 }
 
-const updateClient = async (req, res, next ) => {
+const updateAppointment = async (req, res, next ) => {
+
     const id = req.params.id;
     const body = req.body;
-    const [numberOfAffectedRows, affectedRows] = await Client.update(body, {
+    const [numberOfAffectedRows, affectedRows] = await Appointment.update(body, {
         where: {id},
         returning: true, // needed for affectedRows to be populated
         plain: true // makes sure that the returned instances are just plain objects
 
     })
-        return res.send(numberOfAffectedRows);
+        return res.send(affectedRows); // https://sequelizedocs.fullstackacademy.com/inserting-updating-destroying/
 }
 
 
-const deleteClient = (req, res, next) => {
+const deleteAppointment = (req, res, next) => {
     const id = req.params.id;
-    Client.destroy({
+    Appointment.destroy({
         where: {
             id,
         }
@@ -116,10 +86,11 @@ const deleteClient = (req, res, next) => {
 
 }
 
+
 module.exports = {
-    getClients,
-    getClientById,
-    addClient,
-    deleteClient,
-    // updateClient
+    getAppointments,
+    getAppointmentById,
+    addAppointment,
+    deleteAppointment,
+    updateAppointment
 }
