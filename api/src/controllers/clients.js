@@ -70,7 +70,7 @@ const getClientById = (req, res, next) => {
 }
 
 
-const addClient = (req, res, next) => {
+const addClient = async(req, res, next) => {
     
     const { 
         name, 
@@ -86,7 +86,7 @@ const addClient = (req, res, next) => {
         hairTypeId } = req.body;
     
     try {
-        const createdClient = Client.create({ 
+        const createdClient = await Client.create({ 
             name, 
             lastname, 
             email, 
@@ -99,8 +99,8 @@ const addClient = (req, res, next) => {
             faceTypeId, 
             hairTypeId
         });
-
-        return res.send(createdClient);
+        
+        return res.send();
         
     } catch (error) {
         next(error);
