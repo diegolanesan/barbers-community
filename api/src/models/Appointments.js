@@ -4,14 +4,6 @@ const { DataTypes, STRING } = require("sequelize");
 module.exports = (sequelize) => {
 	// defino el modelo
 	sequelize.define("appointment", {
-		idBarber: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-		},
-		idClient: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-		},
 		date: {
 			type: DataTypes.DATE,
 			allowNull: false,
