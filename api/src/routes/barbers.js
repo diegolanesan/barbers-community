@@ -1,6 +1,6 @@
 const express = require('express');
 const server = express();
-const { getAllBarbers, getByIdBarbers, getByNameBarbers,postBarbers} = require('../controllers/barbers');
+const { getAllBarbers, getByIdBarbers, getByNameBarbers,postBarbers, putBarbers,deleteBarbers } = require('../controllers/barbers');
 
 // Ruta que devuelve a todos los barberos
 server.get('/all', getAllBarbers);
@@ -15,10 +15,10 @@ server.get('/name/:name', getByNameBarbers);
 server.post('/', postBarbers);
 
 // Ruta para modificar un barbero
-server.put('/:id', getAllBarbers);
+server.put('/:id', putBarbers);
 
 //Ruta para eliminar un Barbero
-server.delete('/', getAllBarbers);
+server.delete('/:id', deleteBarbers);
 
 
 

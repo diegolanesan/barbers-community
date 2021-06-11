@@ -58,15 +58,35 @@ const postBarbers = async (req,res)=>{
 };
 
 // Ruta para modificar a los barberos
-const putBarers = async (req, res)=>{
+const putBarbers = async (req, res)=>{
     const idBarber = req.params.id;
-    const barber = await Barber.findByPk(idBarber) 
-
+    const {barberModify} = req.body
+    let barber = await Barber.findByPk(idBarber)
+    if(barber){
+        barber = barber.update(barberModify);
+        res.send(barber)
+    }else{
+        res.send("No se ha podido modificar al barbero")
+    }
 }
+
+const deleteBarbers  = async (req,res)=>{
+    const idBarber = req.params.id;
+    let barber = await Barber.findByPk(idBarber)
+    if(barber){
+        barber = barber.destroy();
+        res.send(barber)
+    }else{
+        res.send("No se ha podido eliminar al barbero")
+    }
+}
+
 
 module.exports = {
     getAllBarbers,
     postBarbers,
     getByIdBarbers,
-    getByNameBarbers
+    getByNameBarbers,
+    putBarbers,
+    deleteBarbers 
 }
