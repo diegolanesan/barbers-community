@@ -3,8 +3,8 @@ require('dotenv').config();
 const { Op } = require('sequelize');
 
 // Ruta que devuelve todos los barberos
-const getAllBarbers = (req, res)=>{
-    const barber = Barber.findAll({incude:{model:ServiceBarber}});
+const getAllBarbers = async(req, res)=>{
+    const barber = await Barber.findAll();
     if(barber){
         res.send(barber)
     }else{
@@ -30,7 +30,9 @@ const getByNameBarbers = async(req, res)=>{
     const name = req.params.name;
     const resul= await Barber.findAll({
         where:{
-            name
+            name: {
+                [Op.iLike]: `%${name}%`,
+              }
         }
     });
 
@@ -46,7 +48,7 @@ const getByNameBarbers = async(req, res)=>{
 // Ruta para crear barberos
 const postBarbers = async (req,res)=>{
     const {barber} = req.body;
-    const resul = await Barber.findOrCreate(barber);
+    const resul = await Barber.create(barber);
     
     if(resul){
         const barbersAll = await Barber.findAll()
@@ -70,14 +72,15 @@ const putBarbers = async (req, res)=>{
     }
 }
 
+// Ruta para eliminar a los barberos 
 const deleteBarbers  = async (req,res)=>{
     const idBarber = req.params.id;
     let barber = await Barber.findByPk(idBarber)
     if(barber){
         barber = barber.destroy();
-        res.send(barber)
+        res.send("Eliminación exitosa")
     }else{
-        res.send("No se ha podido eliminar al barbero")
+        res.status(400).exportssend("No se ha podido eliminar al barbero")
     }
 }
 
