@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 //import { Link } from 'react-router-dom';
 // import barbers from '../../../data';
 import { getBarbers } from '../../../redux/action/barbers';
-import style from './barber.module.css'
 
 export default function Barber() {
     const dispatch = useDispatch()
@@ -16,7 +15,7 @@ export default function Barber() {
     const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
 
     return (
-      <div className={style.container} >
+      <div class="">
           {/* {barbersLoaded && barbersLoaded.map(barber => (
               <div>
                   <div>{barber.img}</div>

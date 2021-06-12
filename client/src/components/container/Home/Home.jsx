@@ -7,7 +7,6 @@ function Home() {
     
     return (
         <div>
-            {/* className={styles.hero} */}
            <div class="bg-hero h-screen bg-center bg-no-repeat bg-cover flex flex-col justify-center h-vh">
                 <h1 class="pl-24 pb-4 text-3xl text-white"> Barber's Community </h1>
                 <button class="w-1/5 ml-20 bg-blue-400 text-white font-bold hover:bg-blue-600 py-2 px-4 rounded"> 
