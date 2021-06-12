@@ -23,23 +23,19 @@ INSERT INTO "styles" (id, description) VALUES (4, 'Juvenil');
 INSERT INTO "styles" (id, description) VALUES (5, 'Modern');
 INSERT INTO "styles" (id, description) VALUES (6, 'Versátil');
 ​
-SELECT * FROM "hairTypes";
-SELECT * FROM "faceTypes";
-SELECT * FROM "styles";
+select * from "hairTypes";
+select * from "faceTypes";
+select * from "style";
 
-INSERT INTO "categories" (name , description , image  ) VALUES ('HAIRCUT','CORTE DE CABELLO', '{IMAGE1,image2}');
-INSERT INTO "categories" (name , description , image  ) VALUES ('BEARDCUT','ARREGLO DE BARBA', '{IMAGE1,image2}');
-INSERT INTO "categories" (name , description , image  ) VALUES ('KIDHAIRCUT','CORTE DE NIÑOS', '{IMAGE1,image2}');
-INSERT INTO "categories" (name , description , image  ) VALUES ('HAIRCOLOR','COLORACION DE CABELLO', '{IMAGE1,image2}');
-INSERT INTO "categories" (name , description , image  ) VALUES ('DESIGN','CORTE ARTISTICO', '{IMAGE1,image2}');
-INSERT INTO "categories" (name , description , image  ) VALUES ('OZON','Male Grooming', '{IMAGE1,image2}');
-INSERT INTO "categories" (name , description , image  ) VALUES ('MASK','MASCARILLA', '{IMAGE1,image2}');
-
+INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (1, 'HAIRCUT','CORTE DE CABELLO', '{IMAGE1,image2}', '2021-06-10', '2021-06-10');
+INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (2, 'BEARDCUT','ARREGLO DE BARBA', '{IMAGE1,image2}', '2021-06-10  00:00:00-05', '2021-06-10 00:00:00-05');
+INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (3, 'KIDHAIRCUT','ARREGLO DE BARBA', '{IMAGE1,image2}', '2021-06-10  00:00:00-05', '2021-06-10 00:00:00-05');
+INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (1, 'DESIGN','ARREGLO DE BARBA', '{IMAGE1,image2}', '2021-06-10  00:00:00-05', '2021-06-10 00:00:00-05');
+INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (1, 'OZON','ARREGLO DE BARBA', '{IMAGE1,image2}', '2021-06-10  00:00:00-05', '2021-06-10 00:00:00-05');
+INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (1, 'MASK','ARREGLO DE BARBA', '{IMAGE1,image2}', '2021-06-10  00:00:00-05', '2021-06-10  00:00:00-05');
 SELECT * FROM CATEGORIES;
 
-INSERT INTO "services" (name , description , image  ) VALUES ('HAIRCUT','CORTE DE CABELLO', '{IMAGE1,image2}');
-
-
+/*​
 
 
 Samples: Datos para ingresar en clients:
