@@ -1,32 +1,38 @@
 const { Router } = require("express");
 
-// Rutas del crud del cliente (ATR PERRO CUMBIA CAGETEALA PIOLA GATOOO !!!)
-const clients = require('./clients');
-
-// Rutas del crud de barberos
-const barbers = require('./barbers');
 
 // Rutas para crear los servicios de un barbero
+
+// Rutas del crud de servicio
 const service = require('./service');
 
-// const barbersRoutes = require("./barbers.js");
-// const clients = require('./clients');
+
+// Rutas del crud de barberos
+const barbers = require("./barbers.js");
+
+// ruta del crud del cliente
+const clients = require('./clients');
+
+// ruta del crud de la cita
 
 const appointments = require("./appointments");
+
+// ruta del crud del detalle de cita 
 const detailAppointments = require('./detailAppointments');
-const categories = require('./categories')
+
+// ruta del crud de categories
+const categories = require("./categories.js");
+
 
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-
-
 router.use('/clients', clients);
 router.use('/appointments', appointments);
 router.use('/detailAppointments', detailAppointments);
 router.use('/barbers', barbers);
 router.use('/admin/service', service);
-router.use('/admin/catgories', categories);
+router.use('/admin/categories', categories);
 
 module.exports = router;

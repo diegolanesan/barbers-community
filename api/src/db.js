@@ -39,13 +39,13 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 
 // const { Comentarios, Publicaciones, Usuario,  Seguidor} = sequelize.models;
-const { Barber, ServiceBarber, Category, FaceType, HairType, Style, Client, Appointment, Service } = sequelize.models;
+const { Barber, ServiceBarber, Category, FaceType, HairType, Style, Client, Appointment, Service, DetailAppointment } = sequelize.models;
 
 // Se va a crear una tabla intermedia con los id de las tablas
 Barber.belongsToMany(Service, {through:"serviceBarber"});
 Service.belongsToMany(Barber, {through:"serviceBarber"});
 
-// Se va a crear una tabla intermedia con los id de las tablas
+// Se va a crear una tabla intermedia con los id de las tablas 
 Service.belongsToMany(Category, {through:"categoryService"})
 Category.belongsToMany(Service, {through:"categoryService"})
 
@@ -64,28 +64,16 @@ HairType.belongsToMany(Barber, {through:"hairTypeBarber"});
 Barber.belongsToMany(Style, {through:"styleBarber"});
 Style.belongsToMany(Barber, {through:"styleBarber"});
 
+
+// Se va a crear una tabla intermedia con los id de las tablas
+// Appointment.belongsToMany(ServiceBarber, {through:"detailAppointment"})
+// ServiceBarber.belongsToMany(Appointment, {through:"detailAppointment"})
+
+
 // Se va a crear una tabla intermedia con los id de las tablas
 Barber.belongsToMany(Client, {through:"appointment"});
 Client.belongsToMany(Barber, {through:"appointment"});
 
-
-// Se va a crear una tabla intermedia con los id de las tablas
-Appointment.belongsToMany(ServiceBarber, {through:"detailAppointment"})
-ServiceBarber.belongsToMany(Appointment, {through:"detailAppointment"})
-
-
-
-// Se va agregar a la tabla Client el id del FaceType
-FaceType.hasMany(Client); 
-Client.belongsTo(FaceType);
-
-// Se va agregar a la tabla Client el id del HairType
-HairType.hasMany(Client); 
-Client.belongsTo(HairType);
-
-// Se va agregar a la tabla Client el id del Style
-Style.hasMany(Client); 
-Client.belongsTo(Style);
 
 
 

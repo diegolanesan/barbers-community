@@ -1,7 +1,7 @@
 import { GET_BARBERS } from "../action/barbers"
 
 // solo pruebas
-import barbers from "../../data.js"
+// import barbers from "../../data.js"
 // solo pruebas
 
 const initialState = {
@@ -13,7 +13,7 @@ const barbersReducer = (state = initialState, action) => {
         case GET_BARBERS:
             return {
                 ...state,
-                barbersLoaded: barbers
+                barbersLoaded: action.payload
             }
     
         default:
