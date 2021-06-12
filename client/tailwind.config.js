@@ -6,7 +6,10 @@ module.exports = {
       backgroundImage: theme => ({
         'barber-types': "url('./resources/barberTypes.jpg')",
         'hero': "url('./resources/hero.jpg')",
-       })
+       }),
+       height: {
+        'vh': 'calc(100vh - 44px)',
+      }
     },
   },
   variants: {
