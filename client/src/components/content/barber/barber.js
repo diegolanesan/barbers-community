@@ -26,7 +26,7 @@ export default function Barber() {
           {
               barbersLoaded && barbersLoaded.map(n => (
                 <div key={n.name} className="text-center m-8 border rounded-xl pb-1 shadow-md">
-                  <img className="rounded-lg" src="https://kingsbs.com/wp-content/uploads/2013/12/barber-gallery-7.jpg" alt="" width='250px' />
+                  <img className="rounded-lg" src="https://kingsbs.com/wp-content/uploads/2013/12/barber-gallery-7.jpg" alt="" width='100%' />
                   <h4 className="font-bold">{`${n.name} ${n.lastName} (${n.alias})`}</h4>
                   {/* <h6>{n.status}</h6> */}
                   <div className="flex justify-center pt-2">
