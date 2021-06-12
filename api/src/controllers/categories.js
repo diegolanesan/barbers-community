@@ -71,7 +71,7 @@ const putCategory = async (req, res)=>{
 
 // Ruta para eliminar categoria
 const deleteCategory = async (req, res)=>{
-    const {idCategory} = re.body;
+    const idCategory = req.params.id;
     const category = await Category.findByPk(idCategory);
     if(category){
         const resul = category.destroy();

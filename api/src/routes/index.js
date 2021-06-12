@@ -1,8 +1,5 @@
 const { Router } = require("express");
 
-// Rutas del crud del cliente (ATR PERRO CUMBIA CAGETEALA PIOLA GATOOO !!!)
-const clients = require('./clients');
-
 // Rutas del crud de barberos
 const barbers = require('./barbers');
 
@@ -50,5 +47,8 @@ router.use('/barbers', barbersRoutes);
 router.use('/clients', clients);
 router.use('/appointments', appointments);
 router.use('/detailAppointments', detailAppointments);
+router.use('/barbers', barbers);
+router.use('/admin/service', service);
+router.use('/admin/categories', categories);
 
 module.exports = router;
