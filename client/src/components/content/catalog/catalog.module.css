@@ -23,8 +23,8 @@
     border: 3px solid red;
 }
 
-.order >h5 {
-  margin-right: 2%;  
+.order >select {
+  margin-right: 2%;
 }
 
 .cards {
