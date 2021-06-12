@@ -8,4 +8,5 @@ router.put('/:id', updateAppointment);
 router.post('/add', addAppointment);
 router.delete('/:id', deleteAppointment);
 
+// module.exports = router;
 module.exports = router;

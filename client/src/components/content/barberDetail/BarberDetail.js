@@ -36,7 +36,7 @@ function BarberDetail (props) {
                         <li class="flex items-center py-3">
                         <button
                         class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 h-1">
-                        Reservar Turno</button>
+                        Get an apointment</button>
                         </li>
                      </ul>
                   </div>
@@ -90,8 +90,8 @@ function BarberDetail (props) {
                                  </div>
                               </div>
                               <div class="grid grid-cols-2">
-                                 <div class="px-4 py-2 font-semibold">Birthday</div>
-                                 <div class="px-4 py-2">{resp.birthday}</div>
+                                 <div class="px-4 py-2 font-semibold">Rating</div>
+                                 <div class="px-4 py-2">{resp.rating}</div>
                               </div>
                         </div>
                      </div>
@@ -106,18 +106,11 @@ function BarberDetail (props) {
                                  <span class="tracking-wide">Face Types</span>
                               </div>
                               <ul class="list-inside space-y-2">
-                                 <li>
-                                    <div class="text-teal-600">1</div>
-                                 </li>
-                                 <li>
-                                    <div class="text-teal-600">2</div>
-                                 </li>
-                                 <li>
-                                    <div class="text-teal-600">3</div>
-                                 </li>
-                                 <li>
-                                    <div class="text-teal-600">4</div>
-                                 </li>
+                                 {resp.faceTypes ? resp.faceTypes.map(n => (
+                                    <li>
+                                       <div class="text-teal-600">{n}</div>
+                                    </li>
+                                 )) : "waiting"}
                               </ul>
                         </div>
                         <div>
@@ -125,18 +118,11 @@ function BarberDetail (props) {
                                  <span class="tracking-wide">Styles</span>
                               </div>
                               <ul class="list-inside space-y-2">
-                                 <li>
-                                    <div class="text-teal-600">1</div>
-                                 </li>
-                                 <li>
-                                    <div class="text-teal-600">2</div>
-                                 </li>
-                                 <li>
-                                    <div class="text-teal-600">3</div>
-                                 </li>
-                                 <li>
-                                    <div class="text-teal-600">4</div>
-                                 </li>
+                                 {resp.styles ? resp.styles.map(n => (
+                                    <li>
+                                       <div class="text-teal-600">{n}</div>
+                                    </li>
+                                 )) : "waiting"}
                               </ul>
                         </div>
                         <div>
@@ -144,12 +130,11 @@ function BarberDetail (props) {
                                  <span class="tracking-wide">Hair Types</span>
                               </div>
                               <ul class="list-inside space-y-2">
-                                 <li>
-                                    <div class="text-teal-600">1</div>
-                                 </li>
-                                 <li>
-                                    <div class="text-teal-600">2</div>
-                                 </li>
+                                 {resp.hairTypes ? resp.hairTypes.map(n => (
+                                    <li>
+                                       <div class="text-teal-600">{n}</div>
+                                    </li>
+                                 )) : "waiting"}
                               </ul>
                         </div>
                      </div>
@@ -165,18 +150,11 @@ function BarberDetail (props) {
                                  <span class="tracking-wide">Services</span>
                               </div>
                               <ul class="list-inside space-y-2">
-                                 <li>
-                                    <div class="text-teal-600">1</div>
-                                 </li>
-                                 <li>
-                                    <div class="text-teal-600">2</div>
-                                 </li>
-                                 <li>
-                                    <div class="text-teal-600">3</div>
-                                 </li>
-                                 <li>
-                                    <div class="text-teal-600">4</div>
-                                 </li>
+                                 {resp.services ? resp.hairTypes.map(n => (
+                                    <li>
+                                       <div class="text-teal-600">{n}</div>
+                                    </li>
+                                 )) : "waiting"}
                               </ul>
                         </div>
                      </div>
