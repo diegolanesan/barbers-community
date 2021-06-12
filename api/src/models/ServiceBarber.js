@@ -21,5 +21,5 @@ module.exports = (sequelize) => {
 			allowNull: false,
 			defaultValue: ["https://imagenurl"],
 		},
-	});
+	},{ timestamps: false });
 };

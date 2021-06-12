@@ -12,15 +12,6 @@ const getClients = (req, res, next) => {
                 include: [ { model: FaceType }, {model: HairType}, { model: Style } ]  // REVISAR SINTAXIS
             })
             .then((result) => {
-                // let clients = [];   
-                // for(let i = 0; i < result.length; i++){
-                //     let client = {
-                //         name : result[i].name,     // REVISAR CÓMO VIENEN LOS DATOS DESDE LA DB
-                //         lastname : result[i].lastname,
-                //         status : result[i].status
-                //     }
-                //     clients.push(client);
-                // }
                 res.status(200).send(result);
             })
      
@@ -36,15 +27,6 @@ const getClients = (req, res, next) => {
                 include: [ { model: FaceType }, {model: HairType}, { model: Style } ]  // REVISAR SINTAXIS
             })
             .then((result) => {
-                // let clients = [];   
-                // for(let i = 0; i < result.length; i++){
-                //     let client = {
-                //         name : result[i].name,     // REVISAR CÓMO VIENEN LOS DATOS DESDE LA DB
-                //         lastname : result[i].lastname,
-                //         status : result[i].status
-                //     }
-                //     clients.push(client);
-                // }
                 res.status(200).send(result);
             })
         } catch {
@@ -59,7 +41,7 @@ const getClientById = (req, res, next) => {
         let queryId = req.params.id.toUpperCase();
         Client.findOne({
             where: {id: queryId},
-            //include: {model: Activity}
+            include: [ { model: FaceType }, {model: HairType}, { model: Style } ]
         })
         .then((result) => {
             res.status(200).send(result);
@@ -70,8 +52,7 @@ const getClientById = (req, res, next) => {
 }
 
 
-const addClient = (req, res, next) => {
-    
+const addClient = async(req, res, next) => {
     const { 
         name, 
         lastname,
@@ -86,7 +67,7 @@ const addClient = (req, res, next) => {
         hairTypeId } = req.body;
     
     try {
-        const createdClient = Client.create({ 
+        const createdClient = await Client.create({ 
             name, 
             lastname, 
             email, 
@@ -99,27 +80,25 @@ const addClient = (req, res, next) => {
             faceTypeId, 
             hairTypeId
         });
-
-        return res.send(createdClient);
-        
+        return res.send(createdClient); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
     } catch (error) {
         next(error);
     }
 
 }
 
-// const updateClient = (req, res, next) => {
-//     const {usuarioid} = req.body;
-//     const {usuarioBody} = req.body; 
-//     Usuario.findByPk(usuarioid)
-//     .then(
-//         (resp)=>{
-//             resp === null && res.status(400).send("El usuario no existe");
-//             resp !== null && resp.update(usuarioBody) && res.send("Modificación Exitosa")
-//         },
-//         ()=>{res.send("Modificación Fallida")}
-//     )
-// }
+const updateClient = async (req, res, next ) => {
+    const id = req.params.id;
+    const body = req.body;
+    const [numberOfAffectedRows, affectedRows] = await Client.update(body, {
+        where: {id},
+        returning: true, // needed for affectedRows to be populated
+        plain: true // makes sure that the returned instances are just plain objects
+
+    })
+        return res.send(numberOfAffectedRows);
+}
+
 
 
 const deleteClient = (req, res, next) => {
@@ -141,5 +120,5 @@ module.exports = {
     getClientById,
     addClient,
     deleteClient,
-    // updateClient
+    updateClient
 }

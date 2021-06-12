@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
 			defaultValue: ["https://imagenurl"],
 		},
 		mobile: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING,
 			allowNull: false,
 		},
 		location: {
@@ -56,6 +56,7 @@ module.exports = (sequelize) => {
 			allowNull: false,
 		},
 
-	})};
+	},{ timestamps: false })
+};
 
   

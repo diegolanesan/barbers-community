@@ -2,13 +2,6 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     return sequelize.define('subscription', {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            unique: true
-        },
-
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -24,5 +17,5 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         }
-    })
+    },{ timestamps: false })
 }

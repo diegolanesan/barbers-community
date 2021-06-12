@@ -3,7 +3,7 @@ require('dotenv').config();
 const { Op } = require('sequelize');
 
 
-const getAppointments = (req, res, next) => {
+const getDetailAppointments = (req, res, next) => {
     /* ---- El usuario ( administrador/cliente/barbero ) busca todas los appointments ----*/
     try {
         Appointment.findAll({
@@ -18,7 +18,7 @@ const getAppointments = (req, res, next) => {
 }
 
 
-const getAppointmentById = (req, res, next) => {
+const getDetailAppointmentById = (req, res, next) => {
     try {
         let queryId = req.params.id.toUpperCase();
         Appointment.findOne({
@@ -33,7 +33,7 @@ const getAppointmentById = (req, res, next) => {
     }
 }
 
-const addAppointment = (req, res, next) => {
+const addDetailAppointment = (req, res, next) => {
     const { 
         idBarber,   // Revisar cómo vienen estos datos de Sequelize!
         idClient,
@@ -58,7 +58,7 @@ const addAppointment = (req, res, next) => {
 
 }
 
-const updateAppointment = async (req, res, next ) => {
+const updateDetailAppointment = async (req, res, next ) => {
 
     const id = req.params.id;
     const body = req.body;
@@ -72,7 +72,7 @@ const updateAppointment = async (req, res, next ) => {
 }
 
 
-const deleteAppointment = (req, res, next) => {
+const deleteDetailAppointment = (req, res, next) => {
     const id = req.params.id;
     Appointment.destroy({
         where: {
@@ -88,10 +88,10 @@ const deleteAppointment = (req, res, next) => {
 
 
 module.exports = {
-    getAppointments,
-    getAppointmentById,
-    addAppointment,
-    deleteAppointment,
-    updateAppointment
+    getDetailAppointments,
+    getDetailAppointmentById,
+    addDetailAppointment,
+    deleteDetailAppointment,
+    updateDetailAppointment
 }
 
