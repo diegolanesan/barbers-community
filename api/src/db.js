@@ -65,9 +65,9 @@ Barber.belongsToMany(Style, {through:"styleBarber"});
 Style.belongsToMany(Barber, {through:"styleBarber"});
 
 
-// // Se va a crear una tabla intermedia con los id de las tablas
-// Appointment.belongsToMany(ServiceBarber, {through:"pepe"})
-// ServiceBarber.belongsToMany(Appointment, {through:"pepe"})
+// Se va a crear una tabla intermedia con los id de las tablas
+// Appointment.belongsToMany(ServiceBarber, {through:"detailAppointment"})
+// ServiceBarber.belongsToMany(Appointment, {through:"detailAppointment"})
 
 
 // Se va a crear una tabla intermedia con los id de las tablas
