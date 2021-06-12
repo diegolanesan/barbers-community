@@ -35,16 +35,16 @@ const getAppointmentById = (req, res, next) => {
 
 const addAppointment = (req, res, next) => {
     const { 
-        idBarber,   // Revisar cómo vienen estos datos de Sequelize!
-        idClient,
+        barberId,   // Revisar cómo vienen estos datos de Sequelize!
+        clientId,
         date,
         status,
         total,
          } = req.body;
     try {
         const createdAppointment = Appointment.create({
-            idBarber,
-            idClient,
+            barberId,
+            clientId,
             date,
             status,
             total

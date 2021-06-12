@@ -79,10 +79,6 @@ Client.belongsToMany(Barber, {through:"appointment"});
 
 
 
-
-
-
-
 //+++++++++++++++++++++ Explicaciones sobre las relacines en la base de datos  ++++++++++++++++++
 // // -----------------relacion de uno a uno (hasOne, belongsTo)----------------------------------
 // // Se le agrega el idBarber a client
