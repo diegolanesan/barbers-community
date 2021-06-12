@@ -303,5 +303,11 @@ Table "public.users"
 Indexes:
     "users_pkey" PRIMARY KEY, btree (id)
 
-
-
+--instrucciones git
+--1) git stash  (guarda los datos locales para que no interfieran al hacer pull)
+--2) git pull origin dev
+--3) git stash pop (trae los datos que guardaste y los copara con los datos entrantes) (verificar si no hay conflictos en visual studio code)
+--4) git add .
+--5) git commit -m "el comnetario"
+--6) git push
+--7) Hacer pull request en github a la rama dev
