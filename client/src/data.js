@@ -16,16 +16,21 @@ const barbers = [
     {name: "Lautaro", lastName: "González", email: "lautaro@gmail.com", image: "url", mobile: 555, location: "Mar del Plata, Argentina", 
     password: "123456", status: "suspendido", alias: "laug", resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     , bio: "Biografía del barbero", rating: 2.5},
-    {name: "ulises", lastName: "vequer", email: "ulises@gmail.com", image: "url", mobile: "123", location: "Carlos Paz, Cordoba", password: "12345", 
-    status: "activo", alias: "ulive", resume: "", bio: "Biografia del barbero", rating: "4.5"},
-	{name: "Carlos", lastName: "Marias", email: "carlos@gmail.com", image: "url", mobile: "124", location: "Vidal, Buenos Aires", password: "12346", 
-    status: "activo", alias: "Carma", resume: "", bio: "Biografia del barbero", rating: "4.3"},
-    {name: "Luis", lastName: "Cuberas", email: "luis@gmail.com", image: "url", mobile: "126", location: "Mar del Plata", password: "12348", 
-    status: "activo", alias: "Culuis", resume: "", bio: "Biografia del barbero", rating: "4.8"},
-    {name: "Walter", lastName: "Ruiz", email: "walter@gmail.com", image: "url", mobile: "125", location: "Tandil, Buenos Aires", password: "12347", 
-    status: "activo", alias: "walruiz", resume: "", bio: "Biografia del barbero", rating: "4.9"},
-    {name: "Nelson", lastName: "Medel", email: "nelson@gmail.com", image: "url", mobile: "127", location: "Balcarce, Buenos Aires", password: "12349", 
-    status: "activo", alias: "MEnelson", resume: "", bio: "Biografia del barbero", rating: "4.1"}
+    {name: "ulises", lastName: "vequer", email: "ulises@gmail.com", image: "url", mobile: "123", location: "Carlos Paz, Cordoba",
+    password: "12345", status: "activo", alias: "ulive", resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
+    bio: "Biografia del barbero", rating: 4.5},
+	{name: "Carlos", lastName: "Marias", email: "carlos@gmail.com", image: "url", mobile: "124", location: "Vidal, Buenos Aires",
+    password: "12346", status: "activo", alias: "Carma", resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
+    bio: "Biografia del barbero", rating: 4.3},
+    {name: "Luis", lastName: "Cuberas", email: "luis@gmail.com", image: "url", mobile: "126", location: "Mar del Plata", 
+    password: "12348", status: "activo", alias: "Culuis", resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
+    bio: "Biografia del barbero", rating: 4.8},
+    {name: "Walter", lastName: "Ruiz", email: "walter@gmail.com", image: "url", mobile: "125", location: "Tandil, Buenos Aires",
+    password: "12347", status: "activo", alias: "walruiz", resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
+    bio: "Biografia del barbero", rating: 4.9},
+    {name: "Nelson", lastName: "Medel", email: "nelson@gmail.com", image: "url", mobile: "127", location: "Balcarce, Buenos Aires", 
+    password: "12349", status: "activo", alias: "MEnelson", resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
+    bio: "Biografia del barbero", rating: 4.1}
 ]
 
 module.exports = barbers

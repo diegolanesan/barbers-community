@@ -15,7 +15,6 @@ function NavBar() {
         <Navbar.Brand href="#home">Barber's Community</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="#services">Services</Nav.Link>
-          <Nav.Link href="#blog">Blog</Nav.Link>
           <Nav.Link href="#pricing">Pricing</Nav.Link>
           <Link to='/catalog' >Catalog</Link> {/*hecho para pruebas*/}
         </Nav>
