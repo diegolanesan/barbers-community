@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 //import {useDispatch} from 'react-redux'
 // import {getBarberByName} from '../../redux/action/'
-//import styles from './SearchBar.module.css'
 
 function SearchBar() {
     const [input, setinput] = useState("")
@@ -19,8 +18,10 @@ function SearchBar() {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <input type="text" placeholder="Tu barbero" onChange={onChange}/>
+        <form onSubmit={onSubmit} class="">
+            <input type="text" placeholder="Tu barbero" onChange={onChange} 
+            class="py-1 px-3 border border-current px-2 mr-2 ml-4 text-black"/>
+            <input type="submit" value="Search" class="bg-blue-800 text-white py-1 px-3 rounded"/>
         </form>
     )
 }

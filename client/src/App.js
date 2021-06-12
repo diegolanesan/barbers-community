@@ -8,8 +8,8 @@ import Catalog from './components/content/catalog/catalog';
 function App() {
   return (
     <div className="App">
-      <Route exact path="/" component={Home}/>
       <Route path="/" component={NavBar}/>
+      <Route exact path="/" component={Home}/>
       <Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
     </div>   
   );
