@@ -1,18 +1,22 @@
 import {React, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {barberDetail} from "../../../redux/action/barberDetail"
+import {getBarbers} from "../../../redux/action/barbers"
 import './BarberDetail.modules.css';
 
 function BarberDetail (props) {
    const dispatch = useDispatch()
-   const {resp, loading} = useSelector(state => state.barberDetail)
+   const {resp} = useSelector(state => state.barberDetail)
+   const id = props.match.params.id;
+   console.log(props)
    useEffect(() => {
-      const id = props.match.params.id;
+      console.log(id + "")
       dispatch(barberDetail(id))
+      dispatch(getBarbers())
    }, [])
 
    return <div class="bg-gray-100 max-w-6xl  mx-auto my-20">
-      {loading ? <div class="loader"></div> :
+      {!resp ? <div class="loader"></div> :
       <div class="container mx-auto my-5 p-5">
          <div class="md:flex no-wrap md:-mx-2 ">
               {/* <!-- Left Side --> */}
@@ -65,11 +69,11 @@ function BarberDetail (props) {
                               </div>
                               <div class="grid grid-cols-2">
                                  <div class="px-4 py-2 font-semibold">Last Name</div>
-                                 <div class="px-4 py-2">{resp.lastName}</div>
+                                 <div class="px-4 py-2">{resp.lastname}</div>
                               </div>
                               <div class="grid grid-cols-2">
-                                 <div class="px-4 py-2 font-semibold">Gender</div>
-                                 <div class="px-4 py-2">Male</div>
+                                 <div class="px-4 py-2 font-semibold">Type</div>
+                                 <div class="px-4 py-2">{resp.type}</div>
                               </div>
                               <div class="grid grid-cols-2">
                                  <div class="px-4 py-2 font-semibold">Contact No.</div>
