@@ -7,10 +7,11 @@ const clients = require('./clients');
 const barbers = require('./barbers');
 
 // Rutas para crear los servicios de un barbero
-const serviceBarbers = require('./serviceBabers');
+const service = require('./service');
 
 // const barbersRoutes = require("./barbers.js");
 const clients = require('./clients');
+
 const appointments = require("./appointments");
 const detailAppointments = require('./detailAppointments');
 const categories = require('./categories')
@@ -25,7 +26,7 @@ router.use('/clients', clients);
 router.use('/appointments', appointments);
 router.use('/detailAppointments', detailAppointments);
 router.use('/barbers', barbers);
-router.use('/serviceBarbers', serviceBarbers);
-router.use('/catgories', categories);
+router.use('/admin/service', service);
+router.use('/admin/catgories', categories);
 
 module.exports = router;

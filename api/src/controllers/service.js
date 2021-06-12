@@ -1,4 +1,4 @@
-const { Barber, ServiceBarber, categoryBarber } = require('../db');
+const { Barber, Service } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 
