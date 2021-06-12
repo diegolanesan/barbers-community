@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ReactPaginate from 'react-paginate';
 import style from './catalog.module.css'
 import Barber from '../barber/barber.js'
 
@@ -86,7 +87,20 @@ export default function Catalog() {
                     <div className={style.card} >
                         <Barber />
                     </div>
-                    <div className={style.paginate} >paginado</div>
+                    <div className={style.paginate} >
+                        <ReactPaginate
+                            previousLabel={'previous'}
+                            nextLabel={'next'}
+                            breakLabel={'...'}
+                            breakClassName={'break-me'}
+                            pageCount={10}
+                            marginPagesDisplayed={2}
+                            pageRangeDisplayed={5}
+                            onPageChange={() => console.log('hola')}
+                            containerClassName={'pagination'}
+                            activeClassName={'active'}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
