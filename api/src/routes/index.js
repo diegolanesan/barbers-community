@@ -2,7 +2,7 @@ const { Router } = require("express");
 
 const clients = require('./clients');
 const appointments = require("./appointments");
-// const publicacionesRutas = require('./publicacionesRutas');
+const detailAppointments = require('./detailAppointments');
 // const usuarioRutas = require('./usuarioRuta');
 // const comentariosRutas = require('./comentariosRutas');
 // const categoriesRoutes = require("./categories.js");
@@ -17,5 +17,6 @@ const router = Router();
 
 router.use('/clients', clients);
 router.use('/appointments', appointments);
+router.use('/detailAppointments', detailAppointments);
 
 module.exports = router;
