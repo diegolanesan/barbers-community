@@ -16,7 +16,7 @@ function Home() {
                 </button>
             </div>
 
-            <div class="text-center mt-8">
+            <div class="text-center mt-8 mb-16">
                 <h2> Explore Barber's Community </h2>
                 <p> Our expert barbers are classified into three large groups: legendary barbers, 
                     masters and urban barbers. Find out which one is the best fit for you. 
