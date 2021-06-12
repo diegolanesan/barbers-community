@@ -41,7 +41,7 @@ const getClientById = (req, res, next) => {
         let queryId = req.params.id.toUpperCase();
         Client.findOne({
             where: {id: queryId},
-            //include: {model: Activity}
+            include: [ { model: FaceType }, {model: HairType}, { model: Style } ]
         })
         .then((result) => {
             res.status(200).send(result);

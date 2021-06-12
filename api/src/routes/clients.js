@@ -5,7 +5,7 @@ const { getClients, addClient, deleteClient, getClientById, updateClient} = requ
 router.get('/:id', getClientById);
 router.get('/', getClients);
 router.put('/:id', updateClient);
-router.post('/addClients', addClient);
+router.post('/add', addClient);
 router.delete('/:id', deleteClient);
 
 module.exports = router;

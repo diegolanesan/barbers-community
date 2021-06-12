@@ -1,6 +1,11 @@
+-- 1. Detener la ejecucion de la API
+-- 2. Eliminar database 
 DROP DATABASE barberscommunity;
+-- 3. Crear la base de datos
 CREATE DATABASE barberscommunity;
 
+--4.Ejecutar ...api/ npm start
+--5. Ejecutar sentencias SQL
 INSERT INTO "faceTypes" (id, description) VALUES (1, 'Cuadrado');
 INSERT INTO "faceTypes" (id, description) VALUES (2, 'Diamante');
 INSERT INTO "faceTypes" (id, description) VALUES (3, 'Ovalado');
@@ -11,7 +16,6 @@ INSERT INTO "hairTypes" (id, description) VALUES (2, 'Crespo');
 INSERT INTO "hairTypes" (id, description) VALUES (3, 'Liso');
 INSERT INTO "hairTypes" (id, description) VALUES (4, 'Ondulado');
 ​
-​
 INSERT INTO "styles" (id, description) VALUES (1, 'American');
 INSERT INTO "styles" (id, description) VALUES (2, 'Clasic');
 INSERT INTO "styles" (id, description) VALUES (3, 'Fresco');
@@ -19,24 +23,24 @@ INSERT INTO "styles" (id, description) VALUES (4, 'Juvenil');
 INSERT INTO "styles" (id, description) VALUES (5, 'Modern');
 INSERT INTO "styles" (id, description) VALUES (6, 'Versátil');
 ​
-​
-select * from "hairTypes";
-select * from "faceTypes";
-select * from "style";
+SELECT * FROM "hairTypes";
+SELECT * FROM "faceTypes";
+SELECT * FROM "styles";
 
-INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (1, 'HAIRCUT','CORTE DE CABELLO', '{IMAGE1,image2}', '2021-06-10', '2021-06-10');
-
-INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (2, 'BEARDCUT','ARREGLO DE BARBA', '{IMAGE1,image2}', '2021-06-10  00:00:00-05', '2021-06-10 00:00:00-05');
-
-INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (3, 'KIDHAIRCUT','ARREGLO DE BARBA', '{IMAGE1,image2}', '2021-06-10  00:00:00-05', '2021-06-10 00:00:00-05');
-
-INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (1, 'DESIGN','ARREGLO DE BARBA', '{IMAGE1,image2}', '2021-06-10  00:00:00-05', '2021-06-10 00:00:00-05');
-
-INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (1, 'OZON','ARREGLO DE BARBA', '{IMAGE1,image2}', '2021-06-10  00:00:00-05', '2021-06-10 00:00:00-05');
-
-INSERT INTO "categories" (id , name , description , image , "createdAt" ,"updatedAt" ) VALUES (1, 'MASK','ARREGLO DE BARBA', '{IMAGE1,image2}', '2021-06-10  00:00:00-05', '2021-06-10  00:00:00-05');
+INSERT INTO "categories" (name , description , image  ) VALUES ('HAIRCUT','CORTE DE CABELLO', '{IMAGE1,image2}');
+INSERT INTO "categories" (name , description , image  ) VALUES ('BEARDCUT','ARREGLO DE BARBA', '{IMAGE1,image2}');
+INSERT INTO "categories" (name , description , image  ) VALUES ('KIDHAIRCUT','CORTE DE NIÑOS', '{IMAGE1,image2}');
+INSERT INTO "categories" (name , description , image  ) VALUES ('HAIRCOLOR','COLORACION DE CABELLO', '{IMAGE1,image2}');
+INSERT INTO "categories" (name , description , image  ) VALUES ('DESIGN','CORTE ARTISTICO', '{IMAGE1,image2}');
+INSERT INTO "categories" (name , description , image  ) VALUES ('OZON','Male Grooming', '{IMAGE1,image2}');
+INSERT INTO "categories" (name , description , image  ) VALUES ('MASK','MASCARILLA', '{IMAGE1,image2}');
 
 SELECT * FROM CATEGORIES;
+
+INSERT INTO "services" (name , description , image  ) VALUES ('HAIRCUT','CORTE DE CABELLO', '{IMAGE1,image2}');
+
+
+
 
 Samples: Datos para ingresar en clients:
 /*​
@@ -48,16 +52,15 @@ Samples: Datos para ingresar en clients:
     "sdfgfd",
     "sdfsdfg"
 ],
-"mobile": 154434565,
-"location": "Cali",
-"password": "sdf454",
+"mobile": 1234567,
+"location": "Colombia",
+"password": "demo",
 "status": true,
 "createdAt": "2021-06-11T02:15:53.926Z",
 "updatedAt": "2021-06-11T02:15:53.926Z",
 "faceTypeId": 2,
 "hairTypeId": 3,
 "styleId": 1
-
 */
 
 
