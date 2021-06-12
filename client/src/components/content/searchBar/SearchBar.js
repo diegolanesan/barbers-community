@@ -18,10 +18,10 @@ function SearchBar() {
     }
 
     return (
-        <form onSubmit={onSubmit} class="">
+        <form onSubmit={onSubmit} className="">
             <input type="text" placeholder="Tu barbero" onChange={onChange} 
-            class="py-1 px-3 border border-current px-2 mr-2 ml-4 text-black"/>
-            <input type="submit" value="Search" class="bg-blue-800 text-white py-1 px-3 rounded"/>
+            className="py-1 px-3 border border-current px-2 mr-2 ml-4 text-black"/>
+            <input type="submit" value="Search" className="bg-blue-800 text-white py-1 px-3 rounded"/>
         </form>
     )
 }
