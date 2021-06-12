@@ -55,6 +55,10 @@ module.exports = (sequelize) => {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
+		type:{
+			type: DataTypes.ENUM("urbano", "academico","tecnicocapilar","seminarios"),
+			allowNull: false,
+		}
 
 	},{ timestamps: false })
 };

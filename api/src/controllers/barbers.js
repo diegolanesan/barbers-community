@@ -12,6 +12,20 @@ const getAllBarbers = async(req, res)=>{
     }
 };
 
+// Ruta que devuelve todos los barberos según su type
+const getTypeBarbers = async(req, res)=>{
+    const {type} = req.params;
+    const barber = await Barber.findAll({
+        where:{
+            type
+        }
+    });
+    if(barber){
+        res.send(barber)
+    }else{
+        res.status(400).send("No hay barberos en la base de datos")
+    }
+};
 //Ruta que devuelve los barbero según su id
 
 const getByIdBarbers = async(req, res)=>{
@@ -84,6 +98,18 @@ const deleteBarbers  = async (req,res)=>{
     }
 }
 
+// Crea una relación entre  barbero y un servicio
+const relationServiceBarber = async(req, res)=>{
+    const {barberId, serviceId} = req.body;
+    const resul = await  ServiceBarber.create({barberId, serviceId});
+    if(resul){
+        res.send("se ha agregado el servicio al barbero")
+    }else{
+        res.send("No se ha agregado el servicio al barbero")
+    }
+}
+
+
 
 module.exports = {
     getAllBarbers,
@@ -91,5 +117,7 @@ module.exports = {
     getByIdBarbers,
     getByNameBarbers,
     putBarbers,
-    deleteBarbers 
+    deleteBarbers,
+    getTypeBarbers,
+    relationServiceBarber
 }
