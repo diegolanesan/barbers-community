@@ -5,9 +5,7 @@ import axios from "axios";
 
 export const barberDetail = (id)=>(dispatch)=>{
     dispatch({type:BARBER_DETAIL});
-    axios.get(HOST_BACK + "/barberDetail" + id)
-    .then(
-        (resp) => dispatch({type:BARBER_DETAIL_SUCCESS, payload:resp}),
-        (err) => dispatch({type:BARBER_DETAIL_FAIL, payload: err})
-    )
+    axios.get(HOST_BACK + "/barbers/id/" + id)
+    .then((resp) => dispatch({type:BARBER_DETAIL_SUCCESS, payload:resp.data}),)
+    .catch((err) => dispatch({type:BARBER_DETAIL_FAIL, payload: err}))
 }

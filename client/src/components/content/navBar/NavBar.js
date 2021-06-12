@@ -1,27 +1,20 @@
 import React from 'react'
 import SearchBar from '../searchBar/SearchBar'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 // import Login from './Login/Login'
-import styles from './NavBar.module.css'
 
 function NavBar() {
     return (
-        <Navbar fixed="top" bg="primary" variant="dark">
-        <Navbar.Brand href="#home">Barber's Community</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="#services">Services</Nav.Link>
-          <Nav.Link href="#blog">Blog</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-light">Search</Button>
-        </Form>
-      </Navbar>
+        <nav class="flex flex-row items-center w-full bg-blue-400 text-white">
+          <div>
+            <h1 class="text-xl py-2 px-4">Barber's Community </h1>
+          </div>
+          <div class="px-4">
+            <Link class="pr-4" to="/"> Services </Link>
+            <Link class="pr-4" to="/"> Pricing </Link>
+          </div>
+          <SearchBar/>
+        </nav>
     )
 }
 

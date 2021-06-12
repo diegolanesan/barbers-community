@@ -2,6 +2,8 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     return sequelize.define('subscription', {
+<<<<<<< Updated upstream
+=======
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -9,6 +11,7 @@ module.exports = (sequelize) => {
             unique: true
         },
 
+>>>>>>> Stashed changes
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -24,5 +27,5 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         }
-    })
+    },{ timestamps: false })
 }

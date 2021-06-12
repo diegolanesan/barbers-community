@@ -1,17 +1,18 @@
 const { Router } = require("express");
 
-
-// const appointmentsRoutes = require("./appointments");
-
-// const publicacionesRutas = require('./publicacionesRutas');
-// const usuarioRutas = require('./usuarioRuta');
-// const comentariosRutas = require('./comentariosRutas');
-
-
-// const barbersRoutes = require("./barbers.js");
+// Rutas del crud del cliente (ATR PERRO CUMBIA CAGETEALA PIOLA GATOOO !!!)
 const clients = require('./clients');
-// const appointmentsRoutes = require("./appointments");
-// const publicacionesRutas = require('./publicacionesRutas');
+
+// Rutas del crud de barberos
+const barbers = require('./barbers');
+
+// Rutas para crear los servicios de un barbero
+const service = require('./service');
+
+const barbersRoutes = require("./barbers.js");
+const clients = require('./clients');
+const appointments = require("./appointments");
+const detailAppointments = require('./detailAppointments');
 // const usuarioRutas = require('./usuarioRuta');
 // const comentariosRutas = require('./comentariosRutas');
 // const categoriesRoutes = require("./categories.js");
@@ -37,7 +38,6 @@ const router = Router();
 
 
 
-// router.use('/barbers', barbersRoutes);
 // router.use('/categories', categoriesRoutes);
 // router.use('/clients', clientRoutes);
 // router.use('/facetypes', faceTypesRoutes);
@@ -46,7 +46,9 @@ const router = Router();
 // router.use('/styles', stylesRoutes);
 // router.use('/subscriptions', subscriptionsRoutes);
 
+router.use('/barbers', barbersRoutes);
 router.use('/clients', clients);
-
+router.use('/appointments', appointments);
+router.use('/detailAppointments', detailAppointments);
 
 module.exports = router;
