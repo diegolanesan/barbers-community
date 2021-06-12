@@ -10,7 +10,7 @@ const barbers = require('./barbers');
 const service = require('./service');
 
 // const barbersRoutes = require("./barbers.js");
-const clients = require('./clients');
+// const clients = require('./clients');
 
 const appointments = require("./appointments");
 const detailAppointments = require('./detailAppointments');

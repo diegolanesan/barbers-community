@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from 'react-paginate';
+import { getBarbers } from '../../../redux/action/barbers.js';
 import Barber from '../barber/barber.js'
 
 export default function Catalog() {
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(getBarbers())
+      // eslint-disable-next-line
+    }, [])
 
     const [filters, setFilters] = useState({
         Proficiency: '',
@@ -22,7 +30,25 @@ export default function Catalog() {
         setFilters({...filters, [e.target.name]: e.target.value})
     }
 
-    console.log(filters)
+    // -------------------------------------------------- Paginate --------------------------------------------------
+    // Constants
+    const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
+    const [barbersToShow] = useState(4)
+    const [barbersPerPage, setBarbersPerPage] = useState([])
+
+    // Update
+    useEffect(() => {
+        barbersLoaded && setBarbersPerPage(barbersLoaded.slice(0, barbersToShow))
+        // eslint-disable-next-line
+    }, [barbersLoaded])
+
+    // Handler
+    const handlePaginate = (e) => {
+        let selectedPage = e.selected + 1
+        console.log(selectedPage)
+        setBarbersPerPage(barbersLoaded.slice(((selectedPage - 1) * barbersToShow), (selectedPage * barbersToShow)))
+    }
+    // ---------------------------------------------- End of Paginate -----------------------------------------------
 
     return (
         <div className="flex">
@@ -85,7 +111,7 @@ export default function Catalog() {
                 </div>
                 <div className="flex flex-col justify-center" >
                     <div className="h-5/6" >
-                        <Barber />
+                        <Barber barbersPerPage = {barbersPerPage} />
                     </div>
                     <div className='' >
                         <ReactPaginate
@@ -93,10 +119,10 @@ export default function Catalog() {
                             nextLabel={'next'}
                             breakLabel={'...'}
                             breakClassName={'break-me'}
-                            pageCount={10}
-                            marginPagesDisplayed={2}
-                            pageRangeDisplayed={5}
-                            onPageChange={() => console.log('hola')}
+                            pageCount={barbersLoaded.length / barbersToShow}
+                            marginPagesDisplayed={1}
+                            pageRangeDisplayed={2}
+                            onPageChange={handlePaginate}
                             containerClassName={`pagination flex justify-center`}
                             activeClassName={'active'}
                         />

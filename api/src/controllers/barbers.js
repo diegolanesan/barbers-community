@@ -1,15 +1,17 @@
 const { Barber, ServiceBarber } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
+const barbers = require('../../data'); // solo pruebas <-------
 
 // Ruta que devuelve todos los barberos
 const getAllBarbers = async(req, res)=>{
-    const barber = await Barber.findAll();
-    if(barber){
-        res.send(barber)
-    }else{
-        res.status(400).send("No hay barberos en la base de datos")
-    }
+    // const barber = await Barber.findAll();
+    // if(barber){
+    //     res.send(barber)
+    // }else{
+    //     res.status(400).send("No hay barberos en la base de datos")
+    // }
+    res.json(barbers)
 };
 
 //Ruta que devuelve los barbero según su id
