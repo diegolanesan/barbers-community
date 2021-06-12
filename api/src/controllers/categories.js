@@ -1,10 +1,10 @@
 require('dotenv').config();
 const { Op } = require('sequelize');
-const { Category } = require('../db');
+const { Category, Service } = require('../db');
 
 
 const getAllCategory = async(req, res)=>{
-    const category = await Category.findAll();
+    const category = await Category.findAll({include:{model:Service}});
     if(category){
         res.send(category)
     }else{
@@ -16,7 +16,7 @@ const getAllCategory = async(req, res)=>{
 
 const getByIdCategory = async(req, res)=>{
     const idCategory = req.params.id;
-    const resul = await Category.findByPk(idCategory);
+    const resul = await Category.findByPk(idCategory,{include:{model:Service}});
     if(resul){
         res.send(resul)
     }else{
@@ -33,7 +33,8 @@ const getByNameCategory = async(req, res)=>{
             name: {
                 [Op.iLike]: `%${name}%`,
               }
-        }
+        },
+        include:{model:Service}
     });
 
     if(resul){
@@ -63,7 +64,7 @@ const putCategory = async (req, res)=>{
     let category = await Category.findByPk(idCategory)
     if(category){
         category = category.update(categoryModify);
-        res.send(category)
+        res.send("se modifico correctamente la categoria")
     }else{
         res.send("No se ha podido modificar la categoria")
     }
