@@ -6,6 +6,7 @@ export const DELETE_BARBER = 'DELETE_BARBER'
 export const PUT_BARBER = 'PUT_BARBER'
 export const FILTER_BARBERS = 'FILTER_BARBERS'
 
+<<<<<<< Updated upstream
 export const postBarber = (body) => (dispatch) => {
     console.log("aaaaaa", body)
         return axios.post("http://localhost:3001/barbers/", body)
@@ -54,3 +55,8 @@ export const getBarbersByType = (type) => (dispath) => {
     axios.get(HOST_BACK + "/barbers/type/" + type)
         .then(res => dispath({type: GET_BARBERS_BY_TYPE, payload: res.data})
         )}
+=======
+export const getBarbers = () => (dispath) => {
+    axios.get(HOST_BACK + "/barbers/all/")
+    .then(resp => dispath({type: GET_BARBERS, payload: resp.data}))}
+>>>>>>> Stashed changes
