@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+// import barbers from '../../../data';
+import { getBarbers } from '../../../redux/action/barbers';
 
-export default function Barber({barbersPerPage}) {
+export default function Barber() {
+    const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(getBarbers())
+      // getBarbers()
+      // eslint-disable-next-line
+    }, [])
+    
+    const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
+
+/* export default function Barber({barbersPerPage}) { */
     return (
       <div className="grid sm:grid-cols-1 sm:grid-cols-4">
           {/* {barbersLoaded && barbersLoaded.map(barber => (
@@ -12,7 +25,7 @@ export default function Barber({barbersPerPage}) {
               </div>
           ))} */}
           {
-              barbersPerPage && barbersPerPage.map(n => (
+              barbersLoaded && barbersLoaded.map(n => (
                 <div key={n.name} class="text-center m-8 border rounded-xl pb-1 shadow-md">
                   <Link to={`Detail/${n.id}`}>
                     <img class="rounded-lg h-48 w-full" src={n.image} alt="" width='200px' height='200px' />
