@@ -1,6 +1,7 @@
 import {
     DELETE_BARBER, GET_BARBERS, POST_BARBER,
-    PUT_BARBER, GET_BARBERS_BY_NAME, GET_BARBERS_BY_TYPE
+    PUT_BARBER, GET_BARBERS_BY_NAME, GET_BARBERS_BY_TYPE,
+    FILTER_BARBERS
 } from "../action/barbers"
 
 // solo pruebas
@@ -43,6 +44,34 @@ const barbersReducer = (state = initialState, action) => {
                     return barber;
                 })
             }
+        
+        case FILTER_BARBERS:
+            let aux = state.barbersLoaded
+            switch (action.payload.order) {
+                case "A-Z": aux = aux.sort(function (a, b) {
+                    if (a.name > b.name) return 1;
+                    if (a.name < b.name) return -1;
+                    return 0;
+                })
+                    break;
+                case "Z-A": aux = aux.sort(function (a, b) {
+                    if (a.name < b.name) return 1;
+                    if (a.name > b.name) return -1;
+                    return 0;
+                })
+                    break;
+                default:
+                    break;
+            }
+            return {
+                ...state,
+                barbersLoaded: aux
+            }
+            // return {
+            //     ...state
+            // }
+    
+
         case GET_BARBERS_BY_NAME:
             return {
                 ...state,
