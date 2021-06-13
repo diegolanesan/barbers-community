@@ -35,11 +35,11 @@ function BarberDetail (props) {
                         <li class="flex items-center py-3">
                               <span>Status</span>
                               <span class="ml-auto"><span
-                                    class={resp.status === "activo" ? "bg-green-500 py-1 px-2 rounded text-white text-sm" : "bg-red-500 py-1 px-2 rounded text-white text-sm"}>{resp.status}</span></span>
+                                    class={resp.status === true ? "bg-green-500 py-1 px-10 rounded text-white text-sm" : "bg-red-500 py-1 px-2 rounded text-white text-sm"}>{resp.status ? "active" : "suspended"}</span></span>
                         </li>
                         <li class="flex items-center py-3">
                         <button
-                        class="block w-full text-blue-800 bg-green-500 py-1 px-2 rounded text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 h-1">
+                        class="block w-full text-white-800 bg-blue-500 py-5 px-2 rounded text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 h-1">
                         Get an apointment</button>
                         </li>
                      </ul>
