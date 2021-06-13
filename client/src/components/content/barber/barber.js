@@ -1,20 +1,7 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react'
 import { Link } from 'react-router-dom';
-// import barbers from '../../../data';
-import { getBarbers } from '../../../redux/action/barbers';
 
-export function Barber() {
-    const dispatch = useDispatch()
-    useEffect(() => {
-      dispatch(getBarbers())
-      // getBarbers()
-      // eslint-disable-next-line
-    }, [])
-    
-    const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
-  // }
-// export default function Barber({barbersPerPage}) {
+export default function Barber({barbersPerPage}) {
     return (
       <div className="grid sm:grid-cols-1 sm:grid-cols-4">
           {/* {barbersLoaded && barbersLoaded.map(barber => (
