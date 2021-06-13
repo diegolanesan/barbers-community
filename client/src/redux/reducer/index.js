@@ -5,7 +5,7 @@ import reducerServices from './services'
 
 function combineReducer(state = {}, action) {
     return {
-      barbers: barbersReducer(state.barbersLoaded, action),
+      barbers: barbersReducer(state.barbers, action),
       publication: reducerPublication(state.publication,action),
       followers:{},
       follow:{},

@@ -24,9 +24,7 @@ function BarberDetail (props) {
                   {/* <!-- Profile Card --> */}
                   <div class="bg-white p-3 border-t-4 border-blue-400 ">
                      <div class="image overflow-hidden">
-                        <img class="h-auto w-full mx-auto"
-                              src="https://image.freepik.com/vector-gratis/hombre-barbero-mascota-corte-barberia_165162-68.jpg"
-                              alt=""/>
+                        <img class="h-auto w-full mx-auto" src={resp.image} alt=""/>
                      </div>
                      <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{resp.name}{resp.lastName}</h1>
                      <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{resp.resume}</p>
@@ -35,12 +33,12 @@ function BarberDetail (props) {
                         <li class="flex items-center py-3">
                               <span>Status</span>
                               <span class="ml-auto"><span
-                                    class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+                                    class={resp.status === true ? "bg-green-500 py-1 px-10 rounded text-white text-sm" : "bg-red-500 py-1 px-2 rounded text-white text-sm"}>{resp.status ? "active" : "suspended"}</span></span>
                         </li>
                         <li class="flex items-center py-3">
-                        <button
-                        class="block w-full text-blue-800 bg-green-500 py-1 px-2 rounded text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 h-1">
-                        Get an apointment</button>
+                        {resp.status === true ? <button
+                        class="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg">
+                        Get an apointment</button> : ""}
                         </li>
                      </ul>
                   </div>

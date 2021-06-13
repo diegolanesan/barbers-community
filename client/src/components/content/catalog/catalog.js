@@ -1,54 +1,60 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from 'react-paginate';
-import { getBarbers } from '../../../redux/action/barbers.js';
+import { filterBarbers, getBarbers } from '../../../redux/action/barbers.js';
 import Barber from '../barber/barber.js'
 
 export default function Catalog() {
-
+    
     const dispatch = useDispatch()
     useEffect(() => {
-      dispatch(getBarbers())
+        dispatch(getBarbers())
       // eslint-disable-next-line
-    }, [])
 
+    }, [])
+    
     const [filters, setFilters] = useState({
         Proficiency: '',
         Hair: '',
         Face: '',
         Service: '',
         Style: '',
-        order: 'A-Z'
+        order: ''
     })
-
+    
     const handleClick = (e) => {
         if (filters[e.target.name] === e.target.value) setFilters({...filters, [e.target.name]: ''})
         else setFilters({...filters, [e.target.name]: e.target.value})
     }
-
+    
     const handleOrder = (e) => {
         setFilters({...filters, [e.target.name]: e.target.value})
     }
 
+    useEffect(() => {
+        dispatch(filterBarbers(filters))
+        // eslint-disable-next-line
+    }, [filters])
+    
     // -------------------------------------------------- Paginate --------------------------------------------------
     // Constants
     const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
-    const [barbersToShow] = useState(4)
+    const [barbersToShow] = useState(8)
     const [barbersPerPage, setBarbersPerPage] = useState([])
-
+    
     // Update
     useEffect(() => {
-        barbersLoaded && setBarbersPerPage(barbersLoaded.slice(0, barbersToShow))
+        if (barbersLoaded.slice(0, barbersToShow) !== barbersPerPage) setBarbersPerPage(barbersLoaded.slice(0, barbersToShow))
         // eslint-disable-next-line
-    }, [barbersLoaded])
+    }, [barbersLoaded, filters])
 
     // Handler
     const handlePaginate = (e) => {
         let selectedPage = e.selected + 1
-        console.log(selectedPage)
         setBarbersPerPage(barbersLoaded.slice(((selectedPage - 1) * barbersToShow), (selectedPage * barbersToShow)))
     }
     // ---------------------------------------------- End of Paginate -----------------------------------------------
+
 
     return (
         <div className="flex">
@@ -114,18 +120,20 @@ export default function Catalog() {
                         <Barber barbersPerPage = {barbersPerPage} />
                     </div>
                     <div className='' >
-                        <ReactPaginate
-                            previousLabel={'previous'}
-                            nextLabel={'next'}
-                            breakLabel={'...'}
-                            breakClassName={'break-me'}
-                            pageCount={barbersLoaded.length / barbersToShow}
-                            marginPagesDisplayed={1}
-                            pageRangeDisplayed={2}
-                            onPageChange={handlePaginate}
-                            containerClassName={`pagination flex justify-center`}
-                            activeClassName={'active'}
-                        />
+                        {
+                            barbersLoaded && <ReactPaginate
+                                previousLabel={'previous'}
+                                nextLabel={'next'}
+                                breakLabel={'...'}
+                                breakClassName={'break-me'}
+                                pageCount={barbersLoaded.length / barbersToShow}
+                                marginPagesDisplayed={1}
+                                pageRangeDisplayed={2}
+                                onPageChange={handlePaginate}
+                                containerClassName={`pagination flex justify-center`}
+                                activeClassName={'active'}
+                            />
+                        }
                     </div>
                 </div>
             </div>
