@@ -15,6 +15,16 @@ const barbersReducer = (state = initialState, action) => {
                 ...state,
                 barbersLoaded: action.payload
             }
+        case GET_BARBERS_BY_NAME:
+            return {
+                ...state,
+                barbersLoaded: action.payload
+            }
+        case GET_BARBERS_BY_TYPE:
+            return {
+                ...state,
+                barbersLoaded: action.payload
+            }
         default:
             return state
     }

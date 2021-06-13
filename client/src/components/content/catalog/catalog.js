@@ -8,7 +8,7 @@ export default function Catalog() {
 
     const dispatch = useDispatch()
     useEffect(() => {
-      dispatch(getBarbers())
+        dispatch(getBarbers())
       // eslint-disable-next-line
     }, [])
 
