@@ -10,6 +10,7 @@ function BarberDetail (props) {
    const id = props.match.params.id;
    console.log(props)
    useEffect(() => {
+      console.log(id + "")
       dispatch(barberDetail(id))
       dispatch(getBarbers())
    }, [])
