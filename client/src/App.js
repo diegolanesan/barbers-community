@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Route path="/" component={NavBar}/>
-      <Route path="/Detail" component={showBarberDetail}/>
+      <Route path="/Detail/:id" component={showBarberDetail}/>
       <Route exact path="/" component={Home}/>
       <Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
       <Route exact path="/admin/barbers" component={BarberTable} />

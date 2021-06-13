@@ -63,6 +63,30 @@ INSERT INTO "services" (name , description , image  ) VALUES ('HAIRCUT','CORTE D
  INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 'PabloSS' ,'Lescano', 'lo@leano.at', '{https://imagenurl}', '02645410738', 'Buenos Aires, San Isidro',
              'sebaEsElMasPiola', 't','PabliX', 'dsadasdas', 'sjdsjadnasjndjasnjdn', 4, 'urbano');
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+        VALUES ( 'PabloS111' ,'Lescano', 'lo@leano11.at', '{https://imagenurl}', '02645410738', 'Buenos Aires, San Isidro',
+             'sebaEsElMasPiola', 't','PabliX', 'dsadasdas', 'sjdsjadnasjndjasnjdn', 4, 'urbano');
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+        VALUES ( 'PabloSS' ,'Lescano', 'lo@leano.at', '{https://imagenurl}', '02645410738', 'Buenos Aires, San Isidro',
+             'sebaEsElMasPiola', 't','PabliX', 'dsadasdas', 'sjdsjadnasjndjasnjdn', 4, 'urbano');
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+        VALUES ( 'PabloSS' ,'Lescano', 'lo@leano.at', '{https://imagenurl}', '02645410738', 'Buenos Aires, San Isidro',
+             'sebaEsElMasPiola', 't','PabliX', 'dsadasdas', 'sjdsjadnasjndjasnjdn', 4, 'urbano');
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+        VALUES ( 'PabloSS' ,'Lescano', 'lo@leano.at', '{https://imagenurl}', '02645410738', 'Buenos Aires, San Isidro',
+             'sebaEsElMasPiola', 't','PabliX', 'dsadasdas', 'sjdsjadnasjndjasnjdn', 4, 'urbano');
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+        VALUES ( 'PabloSS' ,'Lescano', 'lo@leano.at', '{https://imagenurl}', '02645410738', 'Buenos Aires, San Isidro',
+             'sebaEsElMasPiola', 't','PabliX', 'dsadasdas', 'sjdsjadnasjndjasnjdn', 4, 'urbano');
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+        VALUES ( 'PabloSS' ,'Lescano', 'lo@leano.at', '{https://imagenurl}', '02645410738', 'Buenos Aires, San Isidro',
+             'sebaEsElMasPiola', 't','PabliX', 'dsadasdas', 'sjdsjadnasjndjasnjdn', 4, 'urbano');
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+        VALUES ( 'PabloSS' ,'Lescano', 'lo@leano.at', '{https://imagenurl}', '02645410738', 'Buenos Aires, San Isidro',
+             'sebaEsElMasPiola', 't','PabliX', 'dsadasdas', 'sjdsjadnasjndjasnjdn', 4, 'urbano');
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+        VALUES ( 'PabloSS' ,'Lescano', 'lo@leano.at', '{https://imagenurl}', '02645410738', 'Buenos Aires, San Isidro',
+             'sebaEsElMasPiola', 't','PabliX', 'dsadasdas', 'sjdsjadnasjndjasnjdn', 4, 'urbano');
   
  
  id |  name  | lastname |       email        |        image        |   mobile    |         location         |     password     | status |  alias   |  resume   |         bio          | rating |  type  

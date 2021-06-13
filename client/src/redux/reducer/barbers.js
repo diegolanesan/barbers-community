@@ -1,4 +1,7 @@
-import { DELETE_BARBER, GET_BARBERS, POST_BARBER, PUT_BARBER } from "../action/barbers"
+import {
+    DELETE_BARBER, GET_BARBERS, POST_BARBER,
+    PUT_BARBER, GET_BARBERS_BY_NAME, GET_BARBERS_BY_TYPE
+} from "../action/barbers"
 
 // solo pruebas
 // import barbers from "../../data.js"

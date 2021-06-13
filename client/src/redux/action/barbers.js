@@ -1,18 +1,9 @@
-import axios from 'axios'
-
+import {HOST_BACK} from "../back_constants/index";
+import axios from "axios"
 export const GET_BARBERS = 'GET_BARBERS'
 export const POST_BARBER = 'POST_BARBER'
 export const DELETE_BARBER = 'DELETE_BARBER'
 export const PUT_BARBER = 'PUT_BARBER'
-
-
-export const getBarbers = () => (dispatch) => {
-    return axios.get('http://localhost:3001/barbers/all')
-        .then(res => {
-            dispatch({ type: GET_BARBERS, payload: res.data })
-        })
-    //return dispath({ type: GET_BARBERS, payload: 'Entró en el reducer' })
-}
 
 export const postBarber = (body) => (dispatch) => {
     console.log("aaaaaa", body)
@@ -41,13 +32,6 @@ export const putBarber = (id, body) => (dispatch) => {
             })
 };
 
-
-// export const pepe = (payload) => (dispatch) => {
-//     console.log("aaaaaa", payload)
-//         return axios.post("http://localhost:3001/barbers/", payload)
-//             .then(response => {
-//                 console.log(response.data)
-//                 dispatch({ type: "POST_BARBER", payload: response.data })
-//             })
-// };
-    
+export const getBarbers = () => (dispath) => {
+    axios.get(HOST_BACK + "/barbers/all/")
+    .then(resp => dispath({type: GET_BARBERS, payload: resp.data}))}
