@@ -1,6 +1,6 @@
 import {
     DELETE_BARBER, GET_BARBERS, POST_BARBER,
-    PUT_BARBER
+    PUT_BARBER, GET_BARBERS_BY_NAME, GET_BARBERS_BY_TYPE
 } from "../action/barbers"
 
 // solo pruebas

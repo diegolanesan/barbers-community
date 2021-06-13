@@ -7,7 +7,7 @@ function NavBar() {
     return (
         <nav className="flex flex-row items-center w-full bg-blue-400 text-white">
           <div>
-            <h1 className="text-xl py-2 px-4">Barber's Community </h1>
+            <Link to="/"><h1 className="text-xl py-2 px-4">Barber's Community </h1></Link>
           </div>
           <div className="px-4">
             <Link className="pr-4" to="/catalog"> Services </Link>

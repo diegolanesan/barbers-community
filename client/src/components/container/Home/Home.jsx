@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getServices } from '../../../redux/action/services'
-//import {getBarbersByType} from '../../../redux/action/barbers'
+import { getBarbersByType } from '../../../redux/action/barbers'
 
 function Home() {
     const dispatch = useDispatch()
