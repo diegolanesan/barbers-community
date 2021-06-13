@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {useHistory} from 'react-router-dom'
-//import {getBarbersByName} from '../../../redux/action/barbers'
+import {getBarbersByName} from '../../../redux/action/barbers'
 
 function SearchBar() {
     const [input, setinput] = useState("")
