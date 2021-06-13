@@ -7,6 +7,7 @@ import showBarberDetail from './components/content/barberDetail/BarberDetail';
 import Catalog from './components/content/catalog/catalog';
 import BarberTable from './components/content/barberTable/BarberTable';
 import Register from './components/content/register/Register';
+import BarberEdit from './components/content/barberEdit/BarberEdit';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
       <Route exact path="/admin/barbers" component={BarberTable} />
       <Route exact path="/register" component={Register} />
+      <Route exact path="/admin/barbers/edit/:id" component={BarberEdit} />
 
     </div>   
   );
