@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
-//import {useDispatch} from 'react-redux'
-// import {getBarberByName} from '../../redux/action/'
+import {useDispatch} from 'react-redux'
+import {useHistory} from 'react-router-dom'
+import {getBarbersByName} from '../../../redux/action/barbers'
 
 function SearchBar() {
     const [input, setinput] = useState("")
-    //const dispatch = useDispatch()
+    const dispatch = useDispatch()
+    const history = useHistory()
 
     function onChange(e) {
         setinput(e.target.value)
@@ -12,9 +14,8 @@ function SearchBar() {
 
     function onSubmit(e) {
         e.preventDefault()
-        // Dispatch de action asíncrónica para buscar por nombre
-        // dispatch.getBarberByName()
-        // Redirigir a la ruta del catálogo 
+        dispatch(getBarbersByName(input))
+        history.push('/catalog')
     }
 
     return (

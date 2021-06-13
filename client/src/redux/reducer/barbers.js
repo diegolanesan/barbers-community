@@ -1,4 +1,4 @@
-import { GET_BARBERS } from "../action/barbers"
+import { GET_BARBERS, GET_BARBERS_BY_NAME, GET_BARBERS_BY_TYPE } from "../action/barbers"
 
 // solo pruebas
 // import barbers from "../../data.js"
@@ -15,7 +15,18 @@ const barbersReducer = (state = initialState, action) => {
                 ...state,
                 barbersLoaded: action.payload
             }
-    
+        
+        case  GET_BARBERS_BY_NAME:
+            return {
+                ...state,
+                barbersLoaded: action.payload
+            }
+
+        case GET_BARBERS_BY_TYPE:
+            return {
+                ...state,
+                barbersLoaded: action.payload
+            }
         default:
             return state
     }
