@@ -31,17 +31,17 @@ function Home() {
                     masters and urban barbers. Find out which one is the best fit for you.
                 </p>
                 <div className="grid-cols-3 gap-8 flex justify-center h-48 my-8">
-                    <div onClick={() => findByType("tecnicocapilar")} className="flex justify-center items-center bg-barber-types bg-center bg-no-repeat bg-cover w-1/5 rounded-md
-                        transition duration-500 ease-in-out hover:shadow-xl transform hover:-translate-y-1 hover:scale-110">
-                        <Link to='/catalog'> <h3 className="text-white text-3xl cursor-pointer"> Legendary Barbers </h3> </Link>
+                    <div onClick={() => findByType("tecnicocapilar")} className="flex justify-center items-center bg-tecnico-capilar bg-center bg-no-repeat bg-cover w-1/5 rounded-md
+                        opacity-100 transition duration-500 ease-in-out hover:shadow-xl transform hover:-translate-y-1 hover:scale-110">
+                        <Link to='/catalog'> <h3 className="text-white font-bold text-3xl cursor-pointer"> Hair Technician </h3> </Link>
                     </div>
-                    <div onClick={() => findByType("academico")} className="flex justify-center items-center bg-barber-types bg-center bg-no-repeat bg-cover w-1/5 rounded-md
-                     transition duration-500 ease-in-out hover:shadow-xl transform hover:-translate-y-1 hover:scale-110">
-                        <Link to='/catalog'> <h3 className="text-white text-3xl cursor-pointer"> Masters Barbers</h3> </Link>
+                    <div onClick={() => findByType("academico")} className="flex justify-center items-center bg-academico bg-center bg-no-repeat bg-cover w-1/5 rounded-md
+                        opacity-100 transition duration-500 ease-in-out hover:shadow-xl transform hover:-translate-y-1 hover:scale-110">
+                        <Link to='/catalog'> <h3 className="text-white font-bold text-3xl cursor-pointer"> Academic Barbers</h3> </Link>
                     </div>
-                    <div onClick={() => findByType("urbano")} className="flex justify-center items-center bg-barber-types bg-center bg-no-repeat bg-cover w-1/5 rounded-md
-                      transition duration-500 ease-in-out hover:shadow-xl transform hover:-translate-y-1 hover:scale-110">
-                        <Link to='/catalog'> <h3 className="text-white text-3xl cursor-pointer"> Urban Barbers </h3>  </Link>
+                    <div onClick={() => findByType("urbano")} className="flex justify-center items-center bg-urbano bg-center bg-no-repeat bg-cover w-1/5 rounded-md
+                        opacity-100 transition duration-500 ease-in-out hover:shadow-xl transform hover:-translate-y-1 hover:scale-110">
+                        <Link to='/catalog'> <h3 className="text-white font-bold text-3xl cursor-pointer"> Urban Barbers </h3>  </Link>
                     </div>
                 </div>
             </div>
