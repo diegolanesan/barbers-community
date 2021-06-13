@@ -12,7 +12,7 @@ const getAllBarbers = async(req, res)=>{
         res.status(400).send("No hay barberos en la base de datos")
     }
     // res.json(barbers)
-    // console.log(json(barbers))
+    // // console.log(json(barbers))
     // console.log(barbers)
 };
 
