@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-import { GET_BARBERS, GET_BARBERS_BY_NAME, GET_BARBERS_BY_TYPE } from "../action/barbers"
-=======
 import { FILTER_BARBERS, GET_BARBERS } from "../action/barbers"
->>>>>>> Stashed changes
 
 // solo pruebas
 // import barbers from "../../data.js"
