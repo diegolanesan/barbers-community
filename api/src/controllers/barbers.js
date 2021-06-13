@@ -1,6 +1,7 @@
 const { Barber, ServiceBarber } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
+const barbers = require('../../data'); // solo pruebas <-------
 
 // Ruta que devuelve todos los barberos
 const getAllBarbers = async(req, res)=>{
@@ -10,6 +11,9 @@ const getAllBarbers = async(req, res)=>{
     }else{
         res.status(400).send("No hay barberos en la base de datos")
     }
+    // res.json(barbers)
+    // console.log(json(barbers))
+    // console.log(barbers)
 };
 
 // Ruta que devuelve todos los barberos según su type

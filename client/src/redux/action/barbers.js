@@ -1,5 +1,4 @@
-import axios from "axios";
-
+import axios from 'axios'
 export const GET_BARBERS = 'GET_BARBERS'
 export const POST_BARBER = 'POST_BARBER'
 
@@ -23,3 +22,5 @@ export const postBarber = (body) => (dispatch) => {
 //                 dispatch({ type: "POST_BARBER", payload: response.data })
 //             })
 // };
+    axios.get('http://localhost:3001/barbers/all')
+            .then(res => dispath({type: GET_BARBERS, payload: res.data}))
