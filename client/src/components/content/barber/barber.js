@@ -4,17 +4,15 @@ import { Link } from 'react-router-dom';
 // import barbers from '../../../data';
 import { getBarbers } from '../../../redux/action/barbers';
 
-export default function Barber() {
-    const dispatch = useDispatch()
-    useEffect(() => {
-      dispatch(getBarbers())
-      // getBarbers()
-      // eslint-disable-next-line
-    }, [])
-    
-    const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
-  }
 export default function Barber({barbersPerPage}) {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getBarbers())
+    // getBarbers()
+    // eslint-disable-next-line
+  }, [])
+  
+  const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
     return (
       <div className="grid grid-cols-4">
           {/* {barbersLoaded && barbersLoaded.map(barber => (
