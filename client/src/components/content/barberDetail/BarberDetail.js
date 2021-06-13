@@ -35,7 +35,7 @@ function BarberDetail (props) {
                         <li class="flex items-center py-3">
                               <span>Status</span>
                               <span class="ml-auto"><span
-                                    class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+                                    class={resp.status === "activo" ? "bg-green-500 py-1 px-2 rounded text-white text-sm" : "bg-red-500 py-1 px-2 rounded text-white text-sm"}>{resp.status}</span></span>
                         </li>
                         <li class="flex items-center py-3">
                         <button
