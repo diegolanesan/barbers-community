@@ -4,6 +4,7 @@ export const GET_BARBERS = 'GET_BARBERS'
 export const POST_BARBER = 'POST_BARBER'
 export const DELETE_BARBER = 'DELETE_BARBER'
 export const PUT_BARBER = 'PUT_BARBER'
+export const FILTER_BARBERS = 'FILTER_BARBERS'
 
 export const postBarber = (body) => (dispatch) => {
     console.log("aaaaaa", body)
