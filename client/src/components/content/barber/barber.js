@@ -16,8 +16,8 @@ export default function Barber({barbersPerPage}) {
                     </svg>
                     <h6 className="ml-4">{n.rating}</h6>
                   </div>
+                  </Link>
               </div>
-              </Link>
               ))
           }
       </div>
