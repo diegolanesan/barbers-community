@@ -57,9 +57,13 @@ const BarberTable = () => {
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                 {c.location}
                             </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                                {c.status}
-                            </td>
+                            {c.status === true ?
+                                <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                    Active
+                                </td> : <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                    Suspended
+                                </td>
+                            }
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
 
                                 <div className="flex gap-5 justify-center" >

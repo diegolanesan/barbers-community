@@ -4,6 +4,9 @@ import { postBarber } from '../../../redux/action/barbers';
 
 const Register = () => {
 
+
+    const [barberImg, setBarberImg] = useState([])
+
     const newBarber = {
         name: "",
         lastname: "",
@@ -15,14 +18,12 @@ const Register = () => {
         alias: "",
         location: "",
         mobile: "",
-        img: "",
+        img: barberImg,
         type: "",
 
     };
 
     const [barber, setBarber] = useState(newBarber);
-    const [selectedName, setSelectedName] = useState({ categoryName: [] });
-
 
     const handleInputChange = (e) => {
         setBarber({
@@ -31,20 +32,34 @@ const Register = () => {
         });
     };
 
+
+    const [image, setImage] = useState("");
+    const [url, setUrl] = useState("");
+    const uploadImage = (e) => {
+        e.preventDefault()
+        const data = new FormData()
+        data.append("file", image)
+        data.append("upload_preset", "rvmvdcdy")
+        data.append("cloud_name", "dpvccwnjv")
+        fetch("https://api.cloudinary.com/v1_1/dpvccwnjv/image/upload", {
+            method: "post",
+            body: data
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                setUrl(data.url)
+                setBarberImg([...barberImg, data.url])
+            })
+            .catch(err => console.log(err))
+    }
+    console.log(barberImg)
+
+
+
+    console.log(barber)
     const dispatch = useDispatch()
     const handleSubmit = () => {
         const barberSend = {
-            // name: barber.name,
-            // lastname: barber.lastname,
-            // bio: barber.bio,
-            // resume: barber.resume,
-            // email: barber.email,
-            // password: barber.confirmedPassword,
-            // alias: barber.alias,
-            // location: barber.location,
-            // mobile: barber.mobile,
-            // //img: "aaaa",
-            // type: barber.type,
             barber: {
                 status: true,
                 rating: 0,
@@ -57,7 +72,7 @@ const Register = () => {
                 alias: barber.alias,
                 location: barber.location,
                 mobile: barber.mobile,
-                //img: "",
+                image: barberImg,
                 type: barber.type,
             }
         };
@@ -229,9 +244,10 @@ const Register = () => {
                                             id="image"
                                             type="file"
                                             name="image"
-                                            value={barber.img}
-                                            onChange={handleInputChange}
+                                            //value={barber.img}
+                                            onChange={(e) => setImage(e.target.files[0])}
                                         />
+                                        <button onClick={(e) => uploadImage(e)}>Upload</button>
                                     </div>
                                 </div>
                                 <div class="mb-4">
