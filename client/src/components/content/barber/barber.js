@@ -25,11 +25,11 @@ export function Barber() {
               </div>
           ))} */}
           {
-              barbersLoaded && barbersLoaded.map(n => (
+              barbersPerPage && barbersPerPage.map(n => (
                 <Link to={`Detail/${n.id}`}>
-                <div key={n.name} class="text-center m-8 border rounded-xl pb-1 shadow-md">
-                  <img class="rounded-lg" src="https://kingsbs.com/wp-content/uploads/2013/12/barber-gallery-7.jpg" alt="" width='200px' />
-                  <h4 class="font-bold">{`${n.name} ${n.lastName} (${n.alias})`}</h4>
+                <div key={n.name} className="text-center m-8 border rounded-xl pb-1 shadow-md">
+                  <img className="rounded-lg" src="https://kingsbs.com/wp-content/uploads/2013/12/barber-gallery-7.jpg" alt="" width='200px' />
+                  <h4 className="font-bold">{`${n.name} ${n.lastName} (${n.alias})`}</h4>
                   {/* <h6>{n.status}</h6> */}
                   <div className="flex justify-center pt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 m-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
