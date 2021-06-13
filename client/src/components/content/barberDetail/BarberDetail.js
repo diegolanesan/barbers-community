@@ -39,7 +39,7 @@ function BarberDetail (props) {
                         </li>
                         <li class="flex items-center py-3">
                         <button
-                        class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 h-1">
+                        class="block w-full text-blue-800 bg-green-500 py-1 px-2 rounded text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4 h-1">
                         Get an apointment</button>
                         </li>
                      </ul>
@@ -112,7 +112,7 @@ function BarberDetail (props) {
                               <ul class="list-inside space-y-2">
                                  {resp.faceTypes ? resp.faceTypes.map(n => (
                                     <li>
-                                       <div class="text-teal-600">{n}</div>
+                                       <div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
                                     </li>
                                  )) : "waiting"}
                               </ul>
@@ -124,7 +124,7 @@ function BarberDetail (props) {
                               <ul class="list-inside space-y-2">
                                  {resp.styles ? resp.styles.map(n => (
                                     <li>
-                                       <div class="text-teal-600">{n}</div>
+                                       <div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
                                     </li>
                                  )) : "waiting"}
                               </ul>
@@ -136,7 +136,7 @@ function BarberDetail (props) {
                               <ul class="list-inside space-y-2">
                                  {resp.hairTypes ? resp.hairTypes.map(n => (
                                     <li>
-                                       <div class="text-teal-600">{n}</div>
+                                       <div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
                                     </li>
                                  )) : "waiting"}
                               </ul>
@@ -156,7 +156,7 @@ function BarberDetail (props) {
                               <ul class="list-inside space-y-2">
                                  {resp.services ? resp.hairTypes.map(n => (
                                     <li>
-                                       <div class="text-teal-600">{n}</div>
+                                       <div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
                                     </li>
                                  )) : "waiting"}
                               </ul>
