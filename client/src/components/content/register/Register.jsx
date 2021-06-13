@@ -1,16 +1,95 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from "react-redux";
+import { postBarber } from '../../../redux/action/barbers';
 
 const Register = () => {
 
+    const newBarber = {
+        name: "",
+        lastname: "",
+        bio: "",
+        resume: "",
+        email: "",
+        password: "",
+        confirmedPassword: "",
+        alias: "",
+        location: "",
+        mobile: "",
+        img: "",
+        type: "",
+
+    };
+
+    const [barber, setBarber] = useState(newBarber);
+    const [selectedName, setSelectedName] = useState({ categoryName: [] });
+
+
+    const handleInputChange = (e) => {
+        setBarber({
+            ...barber,
+            [e.target.name]: e.target.value,
+        });
+    };
+
     const dispatch = useDispatch()
-    useEffect(() => {
-        //dispatch(())
-    }, [])
+    const handleSubmit = () => {
+        const barberSend = {
+            // name: barber.name,
+            // lastname: barber.lastname,
+            // bio: barber.bio,
+            // resume: barber.resume,
+            // email: barber.email,
+            // password: barber.confirmedPassword,
+            // alias: barber.alias,
+            // location: barber.location,
+            // mobile: barber.mobile,
+            // //img: "aaaa",
+            // type: barber.type,
+            barber: {
+                status: true,
+                rating: 0,
+                name: barber.name,
+                lastname: barber.lastname,
+                bio: barber.bio,
+                resume: barber.resume,
+                email: barber.email,
+                password: barber.confirmedPassword,
+                alias: barber.alias,
+                location: barber.location,
+                mobile: barber.mobile,
+                //img: "",
+                type: barber.type,
+            }
+        };
+        console.log(barberSend)
+        dispatch(postBarber(barberSend))
+    };
+    // const handleSelect = () => {
+    //     let select = document.getElementById("");
+
+    //     if (select) {
+    //         let selectValue = select.options[select.selectedIndex].value;
+    //         let selectedCategoryNames = select.options[select.selectedIndex].innerText;
+
+    //         setSelectedName({
+    //             ...selectedName,
+    //             categoryName: selectedName.categoryName.concat(selectedCategoryNames)
+    //         });
+
+    //         let selectCategory = product.category.concat(selectValue);
+    //         setProduct({ ...product, category: selectCategory });
+
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     dispatch(postBarber(newBarber))
+    // }, [])
+
 
 
     return (
-        <body class=" bg-gray-400">
+        <body class=" bg-gray-200">
             {/* <!-- Container --> */}
             <div class="container mx-auto">
                 <div class="flex justify-center py-10 px-6 ">
@@ -35,6 +114,9 @@ const Register = () => {
                                             id="firstName"
                                             type="text"
                                             placeholder="First Name"
+                                            name="name"
+                                            value={barber.name}
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                     <div class="md:ml-2">
@@ -46,6 +128,9 @@ const Register = () => {
                                             id="lastName"
                                             type="text"
                                             placeholder="Last Name"
+                                            name="lastname"
+                                            value={barber.lastname}
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                 </div>
@@ -59,6 +144,9 @@ const Register = () => {
                                             id="userName"
                                             type="text"
                                             placeholder="Username"
+                                            name="alias"
+                                            value={barber.alias}
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                     <div class="md:ml-2">
@@ -70,6 +158,9 @@ const Register = () => {
                                             id="location"
                                             type="text"
                                             placeholder="location"
+                                            name="location"
+                                            value={barber.location}
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                 </div>
@@ -83,40 +174,68 @@ const Register = () => {
                                             id="phone"
                                             type="number"
                                             placeholder="phone"
+                                            name="mobile"
+                                            value={barber.mobile}
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                     <div class="md:ml-2">
                                         <label class="block mb-2 text-sm font-bold text-gray-700" for="lastName">
-                                            Resume
+                                            Biography
                                         </label>
                                         <input
                                             class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                            id="resume"
+                                            id="biography"
                                             type="text"
-                                            placeholder="resume"
+                                            placeholder="Short Biography"
+                                            name="bio"
+                                            value={barber.bio}
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
-                                        Biography
+                                        Resume
                                     </label>
                                     <textarea
                                         class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                        id="bio"
+                                        id="resume"
                                         type="text"
                                         placeholder="About You"
+                                        name="resume"
+                                        value={barber.resume}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
-                                <div class="mb-4">
-                                    <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
-                                        Profile Image
-                                    </label>
-                                    <input
-                                        class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                        id="image"
-                                        type="file"
-                                    />
+                                <div class="mb-4 md:flex md:justify-between">
+                                    <div class="mb-4 md:mr-2 md:mb-0">
+                                        <label class="block mb-2 text-sm font-bold text-gray-700" for="firstName">
+                                            Type
+                                        </label>
+                                        <input
+                                            class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            id="firstName"
+                                            type="text"
+                                            placeholder="First Name"
+                                            name="type"
+                                            value={barber.type}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                    <div class="md:ml-2">
+                                        <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
+                                            Profile Image
+                                        </label>
+                                        <input
+                                            class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            id="image"
+                                            type="file"
+                                            name="image"
+                                            value={barber.img}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
                                 </div>
                                 <div class="mb-4">
                                     <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
@@ -127,6 +246,9 @@ const Register = () => {
                                         id="email"
                                         type="email"
                                         placeholder="Email"
+                                        name="email"
+                                        value={barber.email}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
                                 <div class="mb-4 md:flex md:justify-between">
@@ -139,6 +261,9 @@ const Register = () => {
                                             id="password"
                                             type="password"
                                             placeholder="******************"
+                                            name="password"
+                                            value={barber.password}
+                                            onChange={handleInputChange}
                                         />
                                         <p class="text-xs italic text-red-500">Please choose a password.</p>
                                     </div>
@@ -151,11 +276,14 @@ const Register = () => {
                                             id="c_password"
                                             type="password"
                                             placeholder="******************"
+                                            name="confirmedPassword"
+                                            value={barber.confirmedPassword}
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                 </div>
                                 <div class=" text-center">
-                                    <button
+                                    <button onClick={() => handleSubmit()}
                                         class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                                         type="button"
                                     >

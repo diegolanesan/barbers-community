@@ -1,4 +1,4 @@
-import { GET_BARBERS } from "../action/barbers"
+import { GET_BARBERS, POST_BARBER } from "../action/barbers"
 
 // solo pruebas
 import barbers from "../../data.js"
@@ -15,7 +15,12 @@ const barbersReducer = (state = initialState, action) => {
                 ...state,
                 barbersLoaded: barbers
             }
-    
+        case POST_BARBER:
+            {console.log("Aaaaaaaaaaaaaa")}
+            return {
+                ...state,
+                barbersLoaded: action.payload
+            };
         default:
             return state
     }
