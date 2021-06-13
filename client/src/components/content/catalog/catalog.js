@@ -10,7 +10,6 @@ export default function Catalog() {
     useEffect(() => {
         dispatch(getBarbers())
       // eslint-disable-next-line
-
     }, [])
     
     const [filters, setFilters] = useState({
