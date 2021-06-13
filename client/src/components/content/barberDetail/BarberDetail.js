@@ -24,9 +24,11 @@ function BarberDetail (props) {
                   {/* <!-- Profile Card --> */}
                   <div class="bg-white p-3 border-t-4 border-blue-400 ">
                      <div class="image overflow-hidden">
-                        <img class="h-auto w-full mx-auto" src={resp.image} alt=""/>
+                        <img class="h-auto w-full rounded mx-auto"
+                              src={resp.image}
+                              alt=""/>
                      </div>
-                     <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{resp.name}{resp.lastName}</h1>
+                     <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{resp.name} {resp.lastname}</h1>
                      <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{resp.resume}</p>
                      <ul
                         class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
@@ -37,7 +39,7 @@ function BarberDetail (props) {
                         </li>
                         <li class="flex items-center py-3">
                         {resp.status === true ? <button
-                        class="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg">
+                        class="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-10 mb-0 rounded-lg">
                         Get an apointment</button> : ""}
                         </li>
                      </ul>
@@ -60,7 +62,7 @@ function BarberDetail (props) {
                         <span class="tracking-wide">About</span>
                      </div>
                      <div class="text-gray-700">
-                        <div class="grid md:grid-cols-2 text-sm">
+                        <div class="grid md:grid-cols-1 text-sm">
                               <div class="grid grid-cols-2">
                                  <div class="px-4 py-2 font-semibold">First Name</div>
                                  <div class="px-4 py-2">{resp.name}</div>
@@ -101,7 +103,7 @@ function BarberDetail (props) {
                   {/* <!-- End of about section --> */}
                   <div class="my-4"></div>
                   {/* <!-- Types --> */}
-                  <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
+{/*                   <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
                      <div class="grid grid-cols-3">
                         <div>
                               <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
@@ -139,13 +141,13 @@ function BarberDetail (props) {
                                  )) : "waiting"}
                               </ul>
                         </div>
-                     </div>
+                     </div> */}
+                 {/*  </div> */}
                       {/* <!-- End of Types --> */}
-                  </div>
                   {/* <!-- End of profile tab --> */}
                   <div class="my-4"></div>
                   {/* <!-- Services --> */}
-                  <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
+{/*                   <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
                      <div class="grid grid-cols-3">
                         <div>
                               <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
@@ -160,8 +162,8 @@ function BarberDetail (props) {
                               </ul>
                         </div>
                      </div>
+                  </div> */}
                       {/* <!-- End of Services --> */}
-                  </div>
             </div>
          </div>
       </div> 
