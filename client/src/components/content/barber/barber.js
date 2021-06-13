@@ -12,7 +12,7 @@ export default function Barber({barbersPerPage}) {
               </div>
           ))} */}
           {
-              barbersLoaded && barbersLoaded.map(n => (
+              barbersPerPage && barbersPerPage.map(n => (
                 <div key={n.name} class="text-center m-8 border rounded-xl pb-1 shadow-md">
                   <Link to={`Detail/${n.id}`}>
                     <img class="rounded-lg h-48 w-full" src={n.image} alt="" width='200px' height='200px' />
@@ -32,4 +32,4 @@ export default function Barber({barbersPerPage}) {
     )
   }
 
-export default Barber
+//export default Barber
