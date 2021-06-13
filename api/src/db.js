@@ -65,15 +65,9 @@ Barber.belongsToMany(Style, {through:"styleBarber"});
 Style.belongsToMany(Barber, {through:"styleBarber"});
 
 
-<<<<<<< Updated upstream
 // Se va a crear una tabla intermedia con los id de las tablas
 // Appointment.belongsToMany(ServiceBarber, {through:"detailAppointment"})
 // ServiceBarber.belongsToMany(Appointment, {through:"detailAppointment"})
-=======
-// // // Se va a crear una tabla intermedia con los id de las tablas
-// Appointment.belongsToMany(ServiceBarber, {through:"pepe"})
-// ServiceBarber.belongsToMany(Appointment, {through:"pepe"})
->>>>>>> Stashed changes
 
 
 // Se va a crear una tabla intermedia con los id de las tablas
