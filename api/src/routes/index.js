@@ -6,6 +6,7 @@ const { Router } = require("express");
 // Rutas del crud de servicio
 const service = require('./service');
 
+
 // Rutas del crud de barberos
 const barbers = require("./barbers.js");
 
@@ -13,6 +14,7 @@ const barbers = require("./barbers.js");
 const clients = require('./clients');
 
 // ruta del crud de la cita
+
 const appointments = require("./appointments");
 
 // ruta del crud del detalle de cita 

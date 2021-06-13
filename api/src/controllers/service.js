@@ -1,10 +1,10 @@
-const { Barber, Service } = require('../db');
+const { Barber, Service, Category } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 
 // ruta para buscar todos los servicios
 const getAllService = async (req, res)=>{
-    const allService = await Service.findAll();
+    const allService = await Service.findAll({include:{model:Category}});
     if(allService){
         res.send(allService)
     }else{

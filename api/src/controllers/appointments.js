@@ -50,7 +50,9 @@ const addAppointment = (req, res, next) => {
             total
         });
 
-        return res.send(createdAppointment);// ¿Le respondo con la cita creada, o con todas las citas? 
+
+        return res.send(createdAppointment);// ¿Le respondo con la cita creada, o con todas las citas?
+
 
     } catch (error) {
         next(error);
