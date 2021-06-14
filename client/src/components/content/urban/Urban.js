@@ -8,7 +8,7 @@ import Barber from '../barber/barber.js'
 function Urban() {
     const dispatch = useDispatch()
     useEffect(() => {
-         dispatch(getBarbersByType("urbano"))
+         dispatch(getBarbersByType("Urban"))
      }, [dispatch])
 
     // -------------------------------------------------- Paginate --------------------------------------------------
@@ -36,19 +36,21 @@ function Urban() {
             <div className="h-5/6" >
             <Barber barbersPerPage = {barbersPerPage} />
             </div>
-            <div className='' >              
+            <div className='pagination'>
                 {
                     barbersLoaded && <ReactPaginate
-                    previousLabel={'previous'}
-                    nextLabel={'next'}
-                    breakLabel={'...'}
-                    breakClassName={'break-me'}
-                    pageCount={barbersLoaded.length / barbersToShow}
-                    marginPagesDisplayed={1}
-                    pageRangeDisplayed={2}
-                    onPageChange={handlePaginate}
-                    containerClassName={`pagination flex justify-center`}
-                    activeClassName={'active'}
+                        previousLabel={'← Previous'}
+                        previousClassName={"px-4 font-bold"}
+                        nextLabel={'Next →'}
+                        nextClassName={"px-4 font-bold"}
+                        breakLabel={'...'}
+                        breakClassName={'break-me'}
+                        pageCount={barbersLoaded.length / barbersToShow}
+                        marginPagesDisplayed={1}
+                        pageRangeDisplayed={2}
+                        onPageChange={handlePaginate}
+                        containerClassName={"flex container mx-auto px-4 justify-evenly list-none cursor-pointer  "}
+                        activeClassName={'active'}
                     />
                 }
             </div>
