@@ -1,7 +1,6 @@
 const { Barber, ServiceBarber, faceTypeBarber, styleBarber, hairTypeBarber, HairType, FaceType, Style } = require("../db");
 require("dotenv").config();
 const { Op } = require("sequelize");
-const barbers = require("../../data"); // solo pruebas <-------
 
 // Ruta que devuelve todos los barberos
 
@@ -10,14 +9,28 @@ const getAllBarbers = async(req, res)=>{
 		include:[ { model: FaceType }, {model: HairType}, { model: Style } ] 
 	});
     if(barber){
-        res.send(barber)
+		let aux = barber
+		for (let i = 0; i < aux.length; i++) {
+			faces = []
+			hairs = []
+			barberStyles = []
+			if(aux[i].dataValues.faceTypes) {
+				aux[i].dataValues.faceTypes.map(b => faces.push(b.dataValues.description))
+			}
+			if(aux[i].dataValues.hairTypes) {
+				aux[i].dataValues.hairTypes.map(b => hairs.push(b.dataValues.description))
+			}
+			if(aux[i].dataValues.styles) {
+				aux[i].dataValues.styles.map(b => barberStyles.push(b.dataValues.description))
+			}
+			aux[i].dataValues.faces = faces
+			aux[i].dataValues.hairs = hairs
+			aux[i].dataValues.barberStyles = barberStyles
+		}
+        res.send(aux)
     }else{
         res.status(400).send("No hay barberos en la base de datos")
     }
-    // res.json(barbers)
-    // // console.log(json(barbers))
-    // console.log(barbers)
-
 };
 
 // filtra a los barberos por faceType hairType Style

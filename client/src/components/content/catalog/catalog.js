@@ -53,7 +53,7 @@ export default function Catalog() {
         setBarbersPerPage(barbersLoaded.slice(((selectedPage - 1) * barbersToShow), (selectedPage * barbersToShow)))
     }
     // ---------------------------------------------- End of Paginate -----------------------------------------------
-
+    console.log(barbersLoaded)
     return (
         <div className="flex">
             <div className="w-1/5 bg-gray-200">
@@ -69,10 +69,10 @@ export default function Catalog() {
                 <div onClick={handleClick} >
                     <h5 className="font-bold pl-4 pt-4 pb-2">Hair type</h5>
                     <div className="ml-2">
-                        <input type='button' id ='3' value='Straight' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' id ='4' value='Wavy' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' id ='2' value='Curly' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
                         <input type='button' id ='1' value='Afro' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='2' value='Curly' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='4' value='Wavy' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='3' value='Straight' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
                     </div>
                 </div>
                 <div onClick={handleClick} >
