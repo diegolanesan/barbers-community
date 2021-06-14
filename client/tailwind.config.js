@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: theme => ({
-        'barber-types': "url('./resources/barberTypes.jpg')",
+        'tecnico-capilar': "url('./resources/tecnico-capilar.jpg')",
+        'academico': "url('./resources/academico.jpg')",
+        'urbano': "url('./resources/urbano.jpg')",
         'hero': "url('./resources/hero.jpg')",
        }),
        height: {

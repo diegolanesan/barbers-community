@@ -10,7 +10,7 @@ function NavBar() {
             <Link to="/"><h1 className="text-xl py-2 px-4">Barber's Community </h1></Link>
           </div>
           <div className="px-4">
-            <Link className="pr-4" to="/catalog"> Services </Link>
+            <Link className="pr-4 hover:underline" to="/catalog"> Services </Link>
             {/* <Link className="pr-4" to="/"> Pricing </Link> */}
           </div>
           <SearchBar/>
