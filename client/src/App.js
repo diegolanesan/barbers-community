@@ -8,6 +8,9 @@ import Catalog from './components/content/catalog/catalog';
 import BarberTable from './components/content/barberTable/BarberTable';
 import Register from './components/content/register/Register';
 import BarberEdit from './components/content/barberEdit/BarberEdit';
+import Academic from './components/content/academic/Academic';
+import Urban from './components/content/urban/Urban';
+import HairTechnician from './components/content/hairTechnician/HairTechnician';
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
       <Route exact path="/admin/barbers" component={BarberTable} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/admin/barbers/edit/:id" component={BarberEdit} />
+      <Route exact path="/academic" component={Academic} />
+      <Route exact path="/urban" component={Urban} />
+      <Route exact path="/hair-technician" component={HairTechnician} />
 
     </div>   
   );
