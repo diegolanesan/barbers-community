@@ -37,7 +37,8 @@ INSERT INTO "categories" (name , description , image  ) VALUES ('MASK','MASCARIL
 
 SELECT * FROM CATEGORIES;
 
-INSERT INTO "services" (name , description , image  ) VALUES ('HAIRCUT','CORTE DE CABELLO', '{IMAGE1,image2}');
+INSERT INTO "services" (name , price, description, image  ) VALUES ('Haircut', '50.00', 'Corte de cabello', '{IMAGE1,image2}');
+
 
 
 
