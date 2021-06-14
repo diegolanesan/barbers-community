@@ -4,10 +4,6 @@ import {
     FILTER_BARBERS
 } from "../action/barbers"
 
-// solo pruebas
-// import barbers from "../../data.js"
-// solo pruebas
-
 const initialState = {
     barbersStorage: [],
     barbersLoaded: []
@@ -49,9 +45,18 @@ const barbersReducer = (state = initialState, action) => {
             let aux = state.barbersStorage
             console.log(state.barbersStorage)
             if (action.payload.Proficiency) {
-                for (let i = 0; i < state.barbersStorage.length; i++) {
-                    aux = state.barbersStorage.filter(n => n.type === action.payload.Proficiency)
-                }
+                aux = state.barbersStorage.filter(n => n.type === action.payload.Proficiency)
+            }
+            else aux = state.barbersStorage
+            if (action.payload.Hair) {
+                aux = aux.filter(m => m.hairs.includes(action.payload.Hair))
+            }
+            if (action.payload.Face) {
+                aux = aux.filter(m => m.faces.includes(action.payload.Face))
+                
+            }
+            if (action.payload.Style) {
+                aux = aux.filter(m => m.barberStyles.includes(action.payload.Style))
             }
             switch (action.payload.order) {
                 case "A-Z": aux = aux.sort(function (a, b) {
@@ -73,10 +78,6 @@ const barbersReducer = (state = initialState, action) => {
                 ...state,
                 barbersLoaded: aux
             }
-            // return {
-            //     ...state
-            // }
-    
 
         case GET_BARBERS_BY_NAME:
             return {
