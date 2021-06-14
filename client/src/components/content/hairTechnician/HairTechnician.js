@@ -48,7 +48,7 @@ function HairTechnician() {
                         marginPagesDisplayed={1}
                         pageRangeDisplayed={2}
                         onPageChange={handlePaginate}
-                        containerClassName={"flex container mx-auto px-4 justify-evenly list-none cursor-pointer  "}
+                        containerClassName={"flex container mx-auto px-4 justify-evenly list-none cursor-pointer absolute bottom-0 "}
                         activeClassName={'active'}
                     />
                 }
