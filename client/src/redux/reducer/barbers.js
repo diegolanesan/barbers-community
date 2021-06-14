@@ -20,13 +20,11 @@ const barbersReducer = (state = initialState, action) => {
                 barbersLoaded: action.payload
             }
         case POST_BARBER:
-            {console.log("Aaaaaaaaaaaaaa")}
             return {
                 ...state,
                 barbersLoaded: action.payload
             };
         case DELETE_BARBER:
-            {console.log("Aaaaaaaaaaaaaa")}
             return {
                 ...state,
                 barbersLoaded: state.barbersLoaded.filter((barber) => barber.id !== action.payload)
