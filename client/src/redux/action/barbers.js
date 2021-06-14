@@ -5,6 +5,8 @@ export const POST_BARBER = 'POST_BARBER'
 export const DELETE_BARBER = 'DELETE_BARBER'
 export const PUT_BARBER = 'PUT_BARBER'
 export const FILTER_BARBERS = 'FILTER_BARBERS'
+export const GET_BARBERS_BY_NAME = 'GET_BARBERS_BY_NAME'
+export const GET_BARBERS_BY_TYPE = 'GET_BARBERS_BY_TYPE'
 
 export const postBarber = (body) => (dispatch) => {
     console.log("aaaaaa", body)
@@ -32,8 +34,6 @@ export const putBarber = (id, body) => (dispatch) => {
                 dispatch({ type: "PUT_BARBER", payload: response.data })
             })
 };
-export const GET_BARBERS_BY_NAME = 'GET_BARBERS_BY_NAME'
-export const GET_BARBERS_BY_TYPE = 'GET_BARBERS_BY_TYPE'
 
 export const getBarbers = () => (dispatch) => axios.get('http://localhost:3001/barbers/all')
             .then(res => dispatch({type: GET_BARBERS, payload: res.data}))

@@ -54,7 +54,6 @@ export default function Catalog() {
     }
     // ---------------------------------------------- End of Paginate -----------------------------------------------
 
-
     return (
         <div className="flex">
             <div className="w-1/5 bg-gray-200">
