@@ -33,7 +33,7 @@ const getHFStypes = async (req, res)=>{
 	};
 	if(type === "hairType"){
 		const hair = await HairType.findByPk(id, {include:Barber});
-		if(face){
+		if(hair){
 			res.send(hair.barbers)
 		}else{
 			res.status(400).send("No se encontro el tipo de cara")
@@ -41,7 +41,7 @@ const getHFStypes = async (req, res)=>{
 	};
 	if(type === "style"){
 		const style = await Style.findByPk(id, {include:Barber});
-		if(face){
+		if(style){
 			res.send(style.barbers)
 		}else{
 			res.status(400).send("No se encontro el tipo de cara")
