@@ -23,5 +23,3 @@ export default function Barber({barbersPerPage}) {
       </div>
     )
   }
-
-//export default Barber

@@ -43,22 +43,23 @@ INSERT INTO "services" (name , price, description, image  ) VALUES ('Haircut', '
 
 
 
-{
-    "barber":{
-        "name":"Pablox",        
-        "lastname":"Lescano",
-        "email":"pablo@lescanos.atr",
-        "mobile":"02645410738",
-        "location":"Buenos Aires, San Isidro",
-        "password":"sebaEsElMasPiola",
-        "status":true,
-        "alias":"Pablitoo",
-        "resume":"dsadasdas",
-        "bio": "sjdsjadnasjndjasnjdn",
-        "rating":0,         
-        "type":"urbano"
-    }
-}
+-- {
+--     "barber":{
+--         "name":"Pablox",        
+--         "lastname":"Lescano",
+--         "email":"pablo@lescanos.atr",
+--         "mobile":"02645410738",
+--         "location":"Buenos Aires, San Isidro",
+--         "password":"sebaEsElMasPiola",
+--         "status":true,
+--         "alias":"Pablitoo",
+--         "resume":"dsadasdas",
+--         "bio": "sjdsjadnasjndjasnjdn",
+--         "rating":0,         
+--         "type":"urbano"
+--     }
+-- }
+
  (name , description , image  ) VALUES ('HAIRCUT','CORTE DE CABELLO', '{IMAGE1,image2}');
 
  INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)

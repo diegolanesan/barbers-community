@@ -14,6 +14,7 @@ function NavBar() {
             {/* <Link className="pr-4" to="/"> Pricing </Link> */}
           </div>
           <SearchBar/>
+            <Link to="/register"><button className="flex flex-row bg-blue-800 text-white py-1 px-3 rounded">Register Barber</button></Link>
         </nav>
     )
 }
