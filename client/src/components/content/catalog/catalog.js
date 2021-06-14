@@ -107,7 +107,7 @@ export default function Catalog() {
             </div>
             <div className="w-4/5" >
                 <div className="flex justify-end items-center w-full h-9 bg-gray-200" >
-                    <label className="px-4 font-bold">Ordenar por</label>
+                    <label className="px-4 font-bold">Order by</label>
                     <select className="px-2 mr-8 rounded" onChange={handleOrder} name='order'>
                         <option >A-Z</option>
                         <option>Z-A</option>
@@ -117,18 +117,20 @@ export default function Catalog() {
                     <div className="h-5/6" >
                         <Barber barbersPerPage = {barbersPerPage} />
                     </div>
-                    <div className='' >
+                    <div className='pagination'>
                         {
                             barbersLoaded && <ReactPaginate
-                                previousLabel={'previous'}
-                                nextLabel={'next'}
+                                previousLabel={'← Previous'}
+                                previousClassName={"px-4 font-bold"}
+                                nextLabel={'Next →'}
+                                nextClassName={"px-4 font-bold"}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
                                 pageCount={barbersLoaded.length / barbersToShow}
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={2}
                                 onPageChange={handlePaginate}
-                                containerClassName={`pagination flex justify-center`}
+                                containerClassName={"flex container mx-auto px-4 justify-evenly list-none cursor-pointer  "}
                                 activeClassName={'active'}
                             />
                         }

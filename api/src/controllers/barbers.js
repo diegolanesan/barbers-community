@@ -1,4 +1,4 @@
-const { Barber, ServiceBarber } = require("../db");
+const { Barber, ServiceBarber, faceTypeBarber, styleBarber, hairTypeBarber, HairType, FaceType, Style } = require("../db");
 require("dotenv").config();
 const { Op } = require("sequelize");
 const barbers = require("../../data"); // solo pruebas <-------
@@ -6,7 +6,9 @@ const barbers = require("../../data"); // solo pruebas <-------
 // Ruta que devuelve todos los barberos
 
 const getAllBarbers = async(req, res)=>{
-    const barber = await Barber.findAll();
+    const barber = await Barber.findAll({
+		include:[ { model: FaceType }, {model: HairType}, { model: Style } ] 
+	});
     if(barber){
         res.send(barber)
     }else{
@@ -17,6 +19,38 @@ const getAllBarbers = async(req, res)=>{
     // console.log(barbers)
 
 };
+
+// filtra a los barberos por faceType hairType Style
+const getHFStypes = async (req, res)=>{
+	const {id, type} = req.query;
+	if(type === "faceType"){
+		const face = await FaceType.findByPk(id, {include:Barber});
+		if(face){
+			res.send(face.barbers)
+		}else{
+			res.status(400).send("No se encontro el tipo de cara")
+		}
+	};
+	if(type === "hairType"){
+		const hair = await HairType.findByPk(id, {include:Barber});
+		if(face){
+			res.send(hair.barbers)
+		}else{
+			res.status(400).send("No se encontro el tipo de cara")
+		}
+	};
+	if(type === "style"){
+		const style = await Style.findByPk(id, {include:Barber});
+		if(face){
+			res.send(style.barbers)
+		}else{
+			res.status(400).send("No se encontro el tipo de cara")
+		}
+	}
+	
+}
+
+
 
 // Ruta que devuelve todos los barberos según su type
 const getTypeBarbers = async (req, res) => {
@@ -112,6 +146,43 @@ const relationServiceBarber = async (req, res) => {
 	}
 };
 
+// Agregar un tipo de cara a un barbero
+const relationFaiceType = async (req, res)=>{
+	const {barberId, faceTypeId} = req.body;
+	const resul = await faceTypeBarber.create({barberId, faceTypeId});
+	if (resul) {
+		res.send("se ha agregado el tipo al barbero");
+	} else {
+		res.send("No se ha agregado el servicio al barbero");
+	}
+};
+
+// Agregar un tipo de pelo a un barbero
+const relationHairType = async (req, res)=>{
+	const {barberId, hairTypeId} = req.body;
+	const resul = await hairTypeBarber.create({barberId, hairTypeId});
+	if (resul) {
+		res.send("se ha agregado el tipo al barbero");
+	} else {
+		res.send("No se ha agregado el servicio al barbero");
+	}
+};
+
+// Agregar un estilo a un barbero
+const relationStyle = async (req, res)=>{
+	const {barberId, styleId} = req.body;
+	const resul = await styleBarber.create({barberId, styleId});
+	if (resul) {
+		res.send("se ha agregado el tipo al barbero");
+	} else {
+		res.send("No se ha agregado el servicio al barbero");
+	}
+};
+
+
+
+
+
 module.exports = {
 	getAllBarbers,
 	postBarbers,
@@ -121,4 +192,8 @@ module.exports = {
 	deleteBarbers,
 	getTypeBarbers,
 	relationServiceBarber,
+	relationFaiceType,
+	relationHairType,
+	relationStyle,
+	getHFStypes
 };

@@ -529,5 +529,5 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'tecnicocapilar');
 
 
-select * from barbers;
 
+select * from barbers;
