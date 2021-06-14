@@ -54,7 +54,6 @@ export default function Catalog() {
     }
     // ---------------------------------------------- End of Paginate -----------------------------------------------
 
-
     return (
         <div className="flex">
             <div className="w-1/5 bg-gray-200">
@@ -121,15 +120,17 @@ export default function Catalog() {
                     <div className='' >
                         {
                             barbersLoaded && <ReactPaginate
-                                previousLabel={'previous'}
-                                nextLabel={'next'}
+                                previousLabel={'← Previous'}
+                                previousClassName={"px-4 font-bold"}
+                                nextLabel={'Next →'}
+                                nextClassName={"px-4 font-bold"}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
                                 pageCount={barbersLoaded.length / barbersToShow}
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={2}
                                 onPageChange={handlePaginate}
-                                containerClassName={`pagination flex justify-center`}
+                                containerClassName={"flex container mx-auto px-4 justify-evenly list-none cursor-pointer  "}
                                 activeClassName={'active'}
                             />
                         }
