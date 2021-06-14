@@ -114,7 +114,7 @@ const relationServiceBarber = async (req, res) => {
 	}
 };
 
-
+// Agregar un tipo de cara a un barbero
 const relationFaiceType = async (req, res)=>{
 	const {barberId, faceTypeId} = req.body;
 	const resul = await faceTypeBarber.create({barberId, faceTypeId});
@@ -125,7 +125,7 @@ const relationFaiceType = async (req, res)=>{
 	}
 };
 
-
+// Agregar un tipo de pelo a un barbero
 const relationHairType = async (req, res)=>{
 	const {barberId, hairTypeId} = req.body;
 	const resul = await hairTypeBarber.create({barberId, hairTypeId});
@@ -136,7 +136,7 @@ const relationHairType = async (req, res)=>{
 	}
 };
 
-
+// Agregar un estilo a un barbero
 const relationStyle = async (req, res)=>{
 	const {barberId, styleId} = req.body;
 	const resul = await styleBarber.create({barberId, styleId});
