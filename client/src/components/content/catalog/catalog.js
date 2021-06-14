@@ -38,7 +38,7 @@ export default function Catalog() {
     // -------------------------------------------------- Paginate --------------------------------------------------
     // Constants
     const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
-    const [barbersToShow] = useState(8)
+    const [barbersToShow] = useState(4)
     const [barbersPerPage, setBarbersPerPage] = useState([])
     
     // Update
@@ -107,7 +107,7 @@ export default function Catalog() {
             </div>
             <div className="w-4/5" >
                 <div className="flex justify-end items-center w-full h-9 bg-gray-200" >
-                    <label className="px-4 font-bold">Ordenar por</label>
+                    <label className="px-4 font-bold">Order by</label>
                     <select className="px-2 mr-8 rounded" onChange={handleOrder} name='order'>
                         <option >A-Z</option>
                         <option>Z-A</option>
@@ -117,7 +117,7 @@ export default function Catalog() {
                     <div className="h-5/6" >
                         <Barber barbersPerPage = {barbersPerPage} />
                     </div>
-                    <div className='' >
+                    <div className='pagination'>
                         {
                             barbersLoaded && <ReactPaginate
                                 previousLabel={'← Previous'}
