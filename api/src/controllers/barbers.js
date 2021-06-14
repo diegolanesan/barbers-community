@@ -20,6 +20,38 @@ const getAllBarbers = async(req, res)=>{
 
 };
 
+// filtra a los barberos por faceType hairType Style
+const getHFStypes = async (req, res)=>{
+	const {id, type} = req.query;
+	if(type === "faceType"){
+		const face = await FaceType.findByPk(id, {include:Barber});
+		if(face){
+			res.send(face.barbers)
+		}else{
+			res.status(400).send("No se encontro el tipo de cara")
+		}
+	};
+	if(type === "hairType"){
+		const hair = await HairType.findByPk(id, {include:Barber});
+		if(face){
+			res.send(hair.barbers)
+		}else{
+			res.status(400).send("No se encontro el tipo de cara")
+		}
+	};
+	if(type === "style"){
+		const style = await Style.findByPk(id, {include:Barber});
+		if(face){
+			res.send(style.barbers)
+		}else{
+			res.status(400).send("No se encontro el tipo de cara")
+		}
+	}
+	
+}
+
+
+
 // Ruta que devuelve todos los barberos según su type
 const getTypeBarbers = async (req, res) => {
 	const { type } = req.params;
@@ -162,5 +194,6 @@ module.exports = {
 	relationServiceBarber,
 	relationFaiceType,
 	relationHairType,
-	relationStyle
+	relationStyle,
+	getHFStypes
 };

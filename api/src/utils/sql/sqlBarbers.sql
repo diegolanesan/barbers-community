@@ -528,6 +528,6 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         4.5, 
         'tecnicocapilar');
 
-        INSERT INTO "faceTypes"(id, description) VALUES(1, 'ovalada')
+
 
 select * from barbers;
