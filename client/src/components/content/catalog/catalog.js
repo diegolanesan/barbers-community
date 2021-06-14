@@ -69,21 +69,21 @@ export default function Catalog() {
                 <div onClick={handleClick} >
                     <h5 className="font-bold pl-4 pt-4 pb-2">Hair type</h5>
                     <div className="ml-2">
-                        <input type='button' value='Straight' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='Wavy' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='Curly' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='Afro' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='3' value='Straight' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='4' value='Wavy' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='2' value='Curly' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='1' value='Afro' name='Hair' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
                     </div>
                 </div>
                 <div onClick={handleClick} >
                     <h5 className="font-bold pl-4 pt-4 pb-2">Face type</h5>
                     <div className="ml-2">
-                        <input type='button' value='Long' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='Square' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='Rectangular' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='Round' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='Oval' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='Triangular' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='1' value='Square' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='2' value='Triangular' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='3' value='Oval' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='4' value='Round' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='5' value='Long' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='6' value='Rectangular' name='Face' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
                     </div>
                 </div>
                 <div onClick={handleClick} >
@@ -98,10 +98,14 @@ export default function Catalog() {
                 <div onClick={handleClick} >
                     <h5 className="font-bold pl-4 pt-4 pb-2">Style</h5>
                     <div className="ml-2">
-                        <input type='button' value='Classic' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='American' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='European' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='Regular' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='1' value='American' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='2' value='Classic' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='3' value='Fresh' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='4' value='Youth' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='5' value='Modern' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='6' value='Versatile' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='7' value='European' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' id ='8' value='Regular' name='Style' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
                     </div>
                 </div>
             </div>
@@ -130,7 +134,7 @@ export default function Catalog() {
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={2}
                                 onPageChange={handlePaginate}
-                                containerClassName={"flex container mx-auto px-4 justify-evenly list-none cursor-pointer  "}
+                                containerClassName={"flex container mx-auto px-4 justify-evenly list-none cursor-pointer absolute bottom-10 "}
                                 activeClassName={'active'}
                             />
                         }
