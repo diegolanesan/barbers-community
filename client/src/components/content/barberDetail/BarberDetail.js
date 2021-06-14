@@ -21,6 +21,9 @@ function BarberDetail (props) {
          <div class="md:flex no-wrap md:-mx-2 ">
               {/* <!-- Left Side --> */}
             <div class="w-full md:w-3/12 md:mx-2">
+            <a href= "http://localhost:3000/catalog">
+               <button class="bg-blue-400 hover:bg-blue-600 border-b-2 text-white py-1 px-2 mx-10 mb-0 rounded-lg">Go back to Barbers</button>
+            </a>
                   {/* <!-- Profile Card --> */}
                   <div class="bg-white p-3 border-t-4 border-blue-400 ">
                      <div class="image overflow-hidden">
@@ -76,16 +79,16 @@ function BarberDetail (props) {
                                  <div class="px-4 py-2">{resp.type}</div>
                               </div>
                               <div class="grid grid-cols-2">
-                                 <div class="px-4 py-2 font-semibold">Contact No.</div>
-                                 <div class="px-4 py-2">{resp.mobile}</div>
+                                 <div class="px-4 py-2 font-semibold">Alias</div>
+                                 <div class="px-4 py-2">{resp.alias}</div>
                               </div>
                               <div class="grid grid-cols-2">
                                  <div class="px-4 py-2 font-semibold">Address</div>
                                  <div class="px-4 py-2">{resp.location}</div>
                               </div>
                               <div class="grid grid-cols-2">
-                                 <div class="px-4 py-2 font-semibold">Alias</div>
-                                 <div class="px-4 py-2">{resp.alias}</div>
+                                 <div class="px-4 py-2 font-semibold">Contact No.</div>
+                                 <div class="px-4 py-2">{resp.mobile}</div>
                               </div>
                               <div class="grid grid-cols-2">
                                  <div class="px-4 py-2 font-semibold">Email.</div>
@@ -141,8 +144,8 @@ function BarberDetail (props) {
                                  )) : "waiting"}
                               </ul>
                         </div>
-                     </div> */}
-                 {/*  </div> */}
+                     </div> 
+                 </div> */}
                       {/* <!-- End of Types --> */}
                   {/* <!-- End of profile tab --> */}
                   <div class="my-4"></div>
