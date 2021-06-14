@@ -12,7 +12,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.8, 
-        'academico');
+        'Academy');
 
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
@@ -29,7 +29,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Academic');
+        'Academy');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -45,7 +45,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'seminarios');
+        'Seminary');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -61,7 +61,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'urbano');
+        'Urban');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -77,7 +77,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'academico');
+        'Academy');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -93,7 +93,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -109,7 +109,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -125,7 +125,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -141,7 +141,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -157,7 +157,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -173,7 +173,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -189,7 +189,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
@@ -206,7 +206,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -222,7 +222,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -238,7 +238,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -254,7 +254,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -270,7 +270,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -286,7 +286,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -302,7 +302,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -318,7 +318,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -334,7 +334,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -350,7 +350,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -366,7 +366,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -382,7 +382,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -398,7 +398,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -414,7 +414,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -430,7 +430,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -446,7 +446,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -462,7 +462,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -478,7 +478,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -494,7 +494,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -510,7 +510,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
@@ -526,7 +526,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'tecnicocapilar');
+        'Hair technician');
 
 
 

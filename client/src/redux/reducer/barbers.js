@@ -9,6 +9,7 @@ import {
 // solo pruebas
 
 const initialState = {
+    barbersStorage: [],
     barbersLoaded: []
 }
 
@@ -17,6 +18,7 @@ const barbersReducer = (state = initialState, action) => {
         case GET_BARBERS:
             return {
                 ...state,
+                barbersStorage: action.payload,
                 barbersLoaded: action.payload
             }
         case POST_BARBER:
@@ -44,7 +46,13 @@ const barbersReducer = (state = initialState, action) => {
             }
         
         case FILTER_BARBERS:
-            let aux = state.barbersLoaded
+            let aux = state.barbersStorage
+            console.log(state.barbersStorage)
+            if (action.payload.Proficiency) {
+                for (let i = 0; i < state.barbersStorage.length; i++) {
+                    aux = state.barbersStorage.filter(n => n.type === action.payload.Proficiency)
+                }
+            }
             switch (action.payload.order) {
                 case "A-Z": aux = aux.sort(function (a, b) {
                     if (a.name > b.name) return 1;

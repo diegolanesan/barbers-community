@@ -63,7 +63,7 @@ export default function Catalog() {
                         <input type='button' value='Urban' name='Proficiency' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg "/>
                         <input type='button' value='Academy' name='Proficiency' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
                         <input type='button' value='Seminary' name='Proficiency' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
-                        <input type='button' value='hair technician' name='Proficiency' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
+                        <input type='button' value='Hair technician' name='Proficiency' className="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"/>
                     </div>
                 </div>
                 <div onClick={handleClick} >

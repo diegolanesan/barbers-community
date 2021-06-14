@@ -56,7 +56,8 @@ module.exports = (sequelize) => {
 			allowNull: false,
 		},
 		type:{
-			type: DataTypes.ENUM("urbano", "academico","tecnicocapilar","seminarios"),
+			// se realizó la traducción de los ENUMs al inglés para los filtros
+			type: DataTypes.ENUM("Urban", "Academy", "Hair technician", "Seminary"),
 			allowNull: false,
 		}
 
