@@ -38,7 +38,7 @@ export default function Catalog() {
     // -------------------------------------------------- Paginate --------------------------------------------------
     // Constants
     const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
-    const [barbersToShow] = useState(4)
+    const [barbersToShow] = useState(8)
     const [barbersPerPage, setBarbersPerPage] = useState([])
     
     // Update
