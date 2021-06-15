@@ -1,26 +1,45 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { putBarber } from "../../../redux/action/barbers";
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { putBarber } from '../../../redux/action/barbers';
+import { getBarberById } from '../../../redux/action/barbers';
 
 const BarberEdit = () => {
-	var { id } = useParams();
-	const newBarber = {
-		name: "",
-		lastname: "",
-		bio: "",
-		resume: "",
-		email: "",
-		password: "",
-		confirmedPassword: "",
-		alias: "",
-		location: "",
-		mobile: "",
-		img: "",
-		type: "",
-	};
+    const dispatch = useDispatch()
+    const barberSelected = useSelector(state => state.barbers.barberDetail)
 
-	const [barber, setBarber] = useState(newBarber);
+    const newBarber = {
+        name: "",
+        lastname: "",
+        bio: "",
+        resume: "",
+        email: "",
+        password: "",
+        confirmedPassword: "",
+        alias: "",
+        location: "",
+        mobile: "",
+        img: "",
+        type: "",
+
+	
+    const [barber, setBarber] = useState(newBarber) 
+    const [loading, setLoading] = useState(true)
+    var { id } = useParams()
+
+    function fetchData() {
+        dispatch(getBarberById(id))
+    }
+
+    useEffect(() => {
+        if(loading) {
+            fetchData()
+            barberSelected && setLoading(false)
+        } else {
+            setBarber(barberSelected)
+        }
+    
+    }, [barberSelected])
 
 	const handleInputChange = (e) => {
 		setBarber({
@@ -29,53 +48,50 @@ const BarberEdit = () => {
 		});
 	};
 
-	const dispatch = useDispatch();
-	const handleSubmit = () => {
-		const barberSend = {
-			// name: barber.name,
-			// lastname: barber.lastname,
-			// bio: barber.bio,
-			// resume: barber.resume,
-			// email: barber.email,
-			// password: barber.confirmedPassword,
-			// alias: barber.alias,
-			// location: barber.location,
-			// mobile: barber.mobile,
-			// //img: "aaaa",
-			// type: barber.type,
-			barberModify: {
-				status: true,
-				rating: 0,
-				name: barber.name,
-				lastname: barber.lastname,
-				bio: barber.bio,
-				resume: barber.resume,
-				email: barber.email,
-				password: barber.confirmedPassword,
-				alias: barber.alias,
-				location: barber.location,
-				mobile: barber.mobile,
-				//img: "",
-				type: barber.type,
-			},
-		};
-		console.log(barberSend);
-		dispatch(putBarber(id, barberSend));
-		alert("Sucessfull!");
 
-		window.location.replace("/admin/barbers");
-	};
 
-	console.log(barber);
-	return (
-		<body class=" bg-gray-200">
-			{/* <!-- Container --> */}
-			<div class="container mx-auto">
-				<div class="flex justify-center py-10 px-6 ">
-					{/* <!-- Row --> */}
-					<div class="w-full justify-center xl:w-3/4 lg:w-11/12 flex">
-						{/* <!-- Col --> */}
-						{/* <div
+    const handleSubmit = () => {
+        const barberSend = {
+            // name: barber.name,
+            // lastname: barber.lastname,
+            // bio: barber.bio,
+            // resume: barber.resume,
+            // email: barber.email,
+            // password: barber.confirmedPassword,
+            // alias: barber.alias,
+            // location: barber.location,
+            // mobile: barber.mobile,
+            // //img: "aaaa",
+            // type: barber.type,
+            barberModify: {
+                status: true,
+                rating: 0,
+                name: barber.name,
+                lastname: barber.lastname,
+                bio: barber.bio,
+                resume: barber.resume,
+                email: barber.email,
+                password: barber.confirmedPassword,
+                alias: barber.alias,
+                location: barber.location,
+                mobile: barber.mobile,
+                //img: "",
+                type: barber.type,
+            }
+        };
+        dispatch(putBarber(id, barberSend))
+    };
+
+    return (
+        <body class=" bg-gray-200">
+            {/* <!-- Container --> */}
+            <div class="container mx-auto">
+                <div class="flex justify-center py-10 px-6 ">
+                    {/* <!-- Row --> */}
+                    <div class="w-full justify-center xl:w-3/4 lg:w-11/12 flex">
+                        {/* <!-- Col --> */}
+                        {/* <div
+
                             class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
                             style={{ backgroundImage: "url('https://www.bu.edu/files/2019/04/resize-19-1292-BARBER2-076.jpg')" }}
                         ></div> */}

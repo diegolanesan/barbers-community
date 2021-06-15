@@ -12,17 +12,21 @@ function Home() {
 	}, [dispatch]);
 	const services = useSelector((state) => state.services.array);
 
-	return (
-		<div>
-			<div className="bg-hero h-screen bg-center bg-no-repeat bg-cover flex flex-col justify-center h-vh">
-				<h1 className="pl-20 pb-4 text-3xl text-white font-bold">
-					{" "}
-					Barber's Community{" "}
-				</h1>
-				<button className="w-1/5 ml-20 bg-blue-400 text-white font-bold text-xl hover:bg-blue-600 py-4 px-4 rounded">
-					<Link to="/catalog"> Find your next barber </Link>
-				</button>
-			</div>
+    return (
+        <div>
+            <div className="h-full w-full bg-gray-800 opacity-100">
+                <div className="bg-hero h-screen bg-center bg-no-repeat bg-cover h-vh flex flex-col justify-center">
+                    <h1 className="pl-20 pb-4 text-6xl mb-8 text-white font-bold text-center"> Barber's Community </h1>
+                    <div className="flex flex-row items-center justify-center">
+                        <button className="w-1/5 ml-20 bg-blue-400 text-white font-bold text-xl hover:bg-blue-600 py-4 px-4 rounded h-16 mb-4">
+                            <Link to="/catalog"> Find your next barber </Link>
+                        </button>
+                        <button className="w-1/5 ml-20 bg-blue-400 text-white font-bold text-xl hover:bg-blue-600 py-4 px-4 rounded h-16">
+                            <Link to="/register"> Join the barber's community </Link>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
 			<div className="text-center mt-16 mb-16">
 				<h2 className="text-3xl pb-4 font-bold">
