@@ -16,11 +16,13 @@ function SearchBar() {
 		e.preventDefault();
 		dispatch(getBarbersByName(input));
 		history.push("/catalog");
+		setinput("");
 	}
 
 	return (
 		<form onSubmit={onSubmit} className="">
 			<input
+				value={input}
 				type="text"
 				placeholder="Tu barbero"
 				onChange={onChange}

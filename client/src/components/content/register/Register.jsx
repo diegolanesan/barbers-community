@@ -72,6 +72,8 @@ const Register = () => {
 		};
 		console.log(barberSend);
 		dispatch(postBarber(barberSend));
+		alert("Register Sucessfull");
+		window.location.replace("/catalog");
 	};
 	// const handleSelect = () => {
 	//     let select = document.getElementById("");
