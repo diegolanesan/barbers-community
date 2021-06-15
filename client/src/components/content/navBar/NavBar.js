@@ -1,6 +1,6 @@
-import React from 'react'
-import SearchBar from '../searchBar/SearchBar'
-import { Link } from 'react-router-dom'
+import React from "react";
+import SearchBar from "../searchBar/SearchBar";
+import { Link } from "react-router-dom";
 // import Login from './Login/Login'
 
 function NavBar() {
@@ -19,4 +19,4 @@ function NavBar() {
     )
 }
 
-export default NavBar
+export default NavBar;

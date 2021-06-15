@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ReactPaginate from 'react-paginate';
-import { filterBarbers, getBarbers } from '../../../redux/action/barbers.js';
-import Barber from '../barber/barber.js'
+import ReactPaginate from "react-paginate";
+import { filterBarbers, getBarbers } from "../../../redux/action/barbers.js";
+import Barber from "../barber/barber.js";
 
 export default function Catalog() {
     
+  // Refactorear y llevar los estilos a otro archivo 
     const buttonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"
     const dispatch = useDispatch()
     useEffect(() => {
@@ -13,8 +14,6 @@ export default function Catalog() {
       // eslint-disable-next-line
     }, [])
     
-    const [isSelected, setIsSelected] = useState(false)
-
     const [filters, setFilters] = useState({
         Proficiency: '',
         Hair: '',
@@ -23,35 +22,33 @@ export default function Catalog() {
         Style: '',
         order: ''
     })
-    
+
     const handleClick = (e) => {
-        if (filters[e.target.name] === e.target.value) {
-            setFilters({...filters, [e.target.name]: ''})
-            setIsSelected(!isSelected)
-        }
-        else setFilters({...filters, [e.target.name]: e.target.value})
-    }
-    
-    const handleOrder = (e) => {
-        setFilters({...filters, [e.target.name]: e.target.value})
-    }
+		  if (filters[e.target.name] === e.target.value) setFilters({ ...filters, [e.target.name]: "" });
+		    else setFilters({ ...filters, [e.target.name]: e.target.value }); 
+      };
+
+	  const handleOrder = (e) => {
+		  setFilters({ ...filters, [e.target.name]: e.target.value });
+	  };
 
     useEffect(() => {
-        dispatch(filterBarbers(filters))
-        // eslint-disable-next-line
-    }, [filters])
-    
+      dispatch(filterBarbers(filters));
+      // eslint-disable-next-line
+    }, [filters]);
+
+
     // -------------------------------------------------- Paginate --------------------------------------------------
     // Constants
-    const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
-    const [barbersToShow] = useState(8)
-    const [barbersPerPage, setBarbersPerPage] = useState([])
-    
+    const barbersLoaded = useSelector((state) => state.barbers.barbersLoaded);
+    const [barbersToShow] = useState(8);
+    const [barbersPerPage, setBarbersPerPage] = useState([]);
+
     // Update
     useEffect(() => {
-        if (barbersLoaded.slice(0, barbersToShow) !== barbersPerPage) setBarbersPerPage(barbersLoaded.slice(0, barbersToShow))
-        // eslint-disable-next-line
-    }, [barbersLoaded, filters])
+      if (barbersLoaded.slice(0, barbersToShow) !== barbersPerPage) setBarbersPerPage(barbersLoaded.slice(0, barbersToShow));
+      // eslint-disable-next-line
+    }, [barbersLoaded, filters]);
 
     // Handler
     const handlePaginate = (e) => {
@@ -59,7 +56,7 @@ export default function Catalog() {
         setBarbersPerPage(barbersLoaded.slice(((selectedPage - 1) * barbersToShow), (selectedPage * barbersToShow)))
     }
     // ---------------------------------------------- End of Paginate -----------------------------------------------
-    console.log(barbersLoaded)
+    
     return (
         <div className="flex">
             <div className="w-1/5 bg-gray-200">
@@ -150,4 +147,4 @@ export default function Catalog() {
         </div>
     )
 }
-//
+

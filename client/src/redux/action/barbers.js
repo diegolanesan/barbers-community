@@ -11,42 +11,47 @@ export const GET_BARBER_BY_ID = 'GET_BARBERS_BY_ID'
 
 
 export const postBarber = (body) => (dispatch) => {
-    console.log("aaaaaa", body)
-        return axios.post("http://localhost:3001/barbers/", body)
-            .then(response => {
-                console.log(response.data)
-                dispatch({ type: "POST_BARBER", payload: response.data })
-            })
+	console.log("aaaaaa", body);
+	return axios.post("http://localhost:3001/barbers/", body).then((response) => {
+		console.log(response.data);
+		dispatch({ type: "POST_BARBER", payload: response.data });
+	});
 };
 
 export const deleteBarber = (id) => (dispatch) => {
-    console.log("aaaaaa", id)
-        return axios.delete("http://localhost:3001/barbers/" + id)
-            .then(response => {
-                console.log(response.data)
-                dispatch({ type: "DELETE_BARBER", payload: response.data })
-            })
+	console.log("aaaaaa", id);
+	return axios
+		.delete("http://localhost:3001/barbers/" + id)
+		.then((response) => {
+			console.log(response.data);
+			dispatch({ type: "DELETE_BARBER", payload: response.data });
+		});
 };
 
 export const putBarber = (id, body) => (dispatch) => {
-    console.log("aaaaaa", body)
-        return axios.put("http://localhost:3001/barbers/" + id, body)
-            .then(response => {
-                console.log(response.data)
-                dispatch({ type: "PUT_BARBER", payload: response.data })
-            })
+	console.log("aaaaaa", body);
+	return axios
+		.put("http://localhost:3001/barbers/" + id, body)
+		.then((response) => {
+			console.log(response.data);
+			dispatch({ type: "PUT_BARBER", payload: response.data });
+		});
 };
 
-export const getBarbers = () => (dispatch) => axios.get('http://localhost:3001/barbers/all')
-            .then(res => dispatch({type: GET_BARBERS, payload: res.data}))
+export const getBarbers = () => (dispatch) =>
+	axios
+		.get("http://localhost:3001/barbers/all")
+		.then((res) => dispatch({ type: GET_BARBERS, payload: res.data }));
 
-export const filterBarbers = (filters) => (dispatch) => dispatch({type: FILTER_BARBERS, payload: filters})
+export const filterBarbers = (filters) => (dispatch) =>
+	dispatch({ type: FILTER_BARBERS, payload: filters });
 
 
 export const getBarbersByName = (name) => (dispath) => {
-    axios.get(HOST_BACK + "/barbers/name/" + name)
-        .then(res => dispath({type: GET_BARBERS_BY_NAME, payload: res.data})
-        )}
+	axios
+		.get(HOST_BACK + "/barbers/name/" + name)
+		.then((res) => dispath({ type: GET_BARBERS_BY_NAME, payload: res.data }));
+};
 
 export const getBarbersByType = (type) => (dispath) => {
     axios.get(HOST_BACK + "/barbers/type/" + type)
@@ -55,5 +60,5 @@ export const getBarbersByType = (type) => (dispath) => {
 
 export const getBarberById = (id) => (dispatch) => {
     axios.get(HOST_BACK + '/barbers/id/' + id)
-    .then(res => dispatch({type: GET_BARBER_BY_ID, payload: res.data})
+      .then(res => dispatch({type: GET_BARBER_BY_ID, payload: res.data})
     )}
