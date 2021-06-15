@@ -1,12 +1,14 @@
 import {
     DELETE_BARBER, GET_BARBERS, POST_BARBER,
     PUT_BARBER, GET_BARBERS_BY_NAME, GET_BARBERS_BY_TYPE,
-    FILTER_BARBERS
+    FILTER_BARBERS,
+    GET_BARBER_BY_ID
 } from "../action/barbers"
 
 const initialState = {
     barbersStorage: [],
-    barbersLoaded: []
+    barbersLoaded: [],
+    barberDetail: {}
 }
 
 const barbersReducer = (state = initialState, action) => {
@@ -88,6 +90,11 @@ const barbersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 barbersLoaded: action.payload
+            }
+        case GET_BARBER_BY_ID:
+            return {
+                ...state,
+                barberDetail: action.payload
             }
         default:
             return state
