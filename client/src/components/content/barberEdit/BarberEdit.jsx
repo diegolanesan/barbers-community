@@ -21,7 +21,7 @@ const BarberEdit = () => {
         mobile: "",
         img: "",
         type: "",
-
+    }
 	
     const [barber, setBarber] = useState(newBarber) 
     const [loading, setLoading] = useState(true)
