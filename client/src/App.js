@@ -26,7 +26,6 @@ function App() {
       <Route exact path="/urban" component={Urban} />
       <Route exact path="/hair-technician" component={HairTechnician} />
       <Route exact path="/recovery" component={Recovery}/>
-
     </div>   
   );
 }
