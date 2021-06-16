@@ -23,6 +23,9 @@ const detailAppointments = require('./detailAppointments');
 // ruta del crud de categories
 const categories = require("./categories.js");
 
+// ruta para el envio de mail
+
+const email = require("./email");
 
 const router = Router();
 
@@ -34,5 +37,6 @@ router.use('/detailAppointments', detailAppointments);
 router.use('/barbers', barbers);
 router.use('/admin/service', service);
 router.use('/admin/categories', categories);
+router.use('/email', email)
 
 module.exports = router;
