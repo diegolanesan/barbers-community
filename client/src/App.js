@@ -11,7 +11,7 @@ import BarberEdit from './components/content/barberEdit/BarberEdit';
 import Academic from './components/content/academic/Academic';
 import Urban from './components/content/urban/Urban';
 import HairTechnician from './components/content/hairTechnician/HairTechnician';
-
+import Recovery from './components/container/recovery/Recovery';
 function App() {
   return (
     <div className="App">
@@ -25,6 +25,7 @@ function App() {
       <Route exact path="/academic" component={Academic} />
       <Route exact path="/urban" component={Urban} />
       <Route exact path="/hair-technician" component={HairTechnician} />
+      <Route exact path="/recovery" component={Recovery}/>
 
     </div>   
   );
