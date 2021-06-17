@@ -4,12 +4,10 @@ const { DataTypes, STRING } = require("sequelize");
 module.exports = (sequelize) => {
 	// defino el modelo
 	sequelize.define("detailAppointment", {
-		idAppointment: {
+		id: {
+			primaryKey: true,
 			type: DataTypes.INTEGER,
-			allowNull: false,
-		},
-		idService: {
-			type: DataTypes.INTEGER,
+			autoIncrement: true,
 			allowNull: false,
 		},
 		price: {
