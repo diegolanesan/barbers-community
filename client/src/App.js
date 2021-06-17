@@ -12,6 +12,7 @@ import Academic from './components/content/academic/Academic';
 import Urban from './components/content/urban/Urban';
 import HairTechnician from './components/content/hairTechnician/HairTechnician';
 import Recovery from './components/container/recovery/Recovery';
+import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 function App() {
   return (
     <div className="App">
@@ -25,7 +26,8 @@ function App() {
       <Route exact path="/academic" component={Academic} />
       <Route exact path="/urban" component={Urban} />
       <Route exact path="/hair-technician" component={HairTechnician} />
-      <Route exact path="/recovery" component={Recovery}/>
+      <Route exact path="/recovery" component={Recovery} />
+      <Route exact path="/appointment/date" component={AppointmentDate} />
     </div>   
   );
 }

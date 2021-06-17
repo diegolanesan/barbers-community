@@ -1,5 +1,6 @@
 import { React, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { barberDetail } from "../../../redux/action/barberDetail";
 import { getBarbers } from "../../../redux/action/barbers";
 import "./BarberDetail.modules.css";
@@ -280,11 +281,13 @@ function BarberDetail(props) {
 							{/* <!-- End of Services --> */}
 					</div>
 				)}
-				<div className="flex justify-center">
-					
-			<button className="px-20 py-2 -mt-3 mb-7 bg-blue-500 rounded">Next Step</button>
-				</div>
+					<div className="flex justify-center">		
+				<Link to="/appointment/date">
+						<button className="px-20 py-2 -mt-3 mb-7 bg-blue-500 fotn-bold rounded">Next Step</button>
+				</Link>
+					</div>
 			</div>
+
 			
 			</div>
 	);
