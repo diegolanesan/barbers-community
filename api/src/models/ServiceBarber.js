@@ -4,8 +4,14 @@ const { DataTypes, STRING } = require("sequelize");
 module.exports = (sequelize) => {
 	// defino el modelo
 	sequelize.define("serviceBarber", {
+		id: {
+			primaryKey: true,
+			type: DataTypes.INTEGER,
+			autoIncrement: true,
+			allowNull: false,
+		},
 		price: {
-			type: DataTypes.STRING,
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		image: {

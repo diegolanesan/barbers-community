@@ -1,4 +1,4 @@
-const { Client, Barber, DetailAppointment } = require('../db');
+const { Client, Barber, DetailAppointment, Appointment } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 
@@ -33,8 +33,9 @@ const getAppointmentById = (req, res, next) => {
     }
 }
 
-const addAppointment = (req, res, next) => {
+const addAppointment = async (req, res, next) => {
     const { 
+        id,
         barberId,   // Revisar cómo vienen estos datos de Sequelize!
         clientId,
         date,
@@ -42,7 +43,7 @@ const addAppointment = (req, res, next) => {
         total,
          } = req.body;
     try {
-        const createdAppointment = Appointment.create({
+        const createdAppointment = await Appointment.create({
             barberId,
             clientId,
             date,
@@ -74,6 +75,17 @@ const updateAppointment = async (req, res, next ) => {
 }
 
 
+const addRelation = async (req, res, next ) => {                // Establece la relacion entre appointment y serviceBarber
+    const {serviceBarberId, appointmentId, price } = req.body;
+    const resul = await Appointmensas.create({serviceBarberId, appointmentId, price});
+    if(resul){
+        res.send(resul)
+    }else{
+        res.status(400).send("No se pudo relacionar las tablas")
+    }
+}
+
+
 const deleteAppointment = (req, res, next) => {
     const id = req.params.id;
     Appointment.destroy({
@@ -94,6 +106,7 @@ module.exports = {
     getAppointmentById,
     addAppointment,
     deleteAppointment,
-    updateAppointment
+    updateAppointment,
+    addRelation
 }
 
