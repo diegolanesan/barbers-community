@@ -1,8 +1,9 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { barberDetail } from "../../../redux/action/barberDetail";
 import { getBarbers } from "../../../redux/action/barbers";
 import "./BarberDetail.modules.css";
+import BarberServices from "./BarberServices";
 
 function BarberDetail(props) {
 	const dispatch = useDispatch();
@@ -14,14 +15,20 @@ function BarberDetail(props) {
 		dispatch(barberDetail(id));
 		dispatch(getBarbers());
 	}, []);
+	
+	const scrollToRef = (ref) => window.scrollTo({ left: 0, top: ref.current.offsetTop, behavior: 'smooth' })
+	const myRef = useRef(null);
+	const executeScroll = () => scrollToRef(myRef)
+
 
 	return (
-		<div class="bg-gray-100 max-w-6xl  mx-auto my-20">
+		<div>
+		<div class="bg-gray-100 max-w-6xl mx-auto my-20">
 			{!resp ? (
 				<div class="loader"></div>
 			) : (
 				<div class="container mx-auto my-5 p-5">
-					<div class="md:flex no-wrap md:-mx-2 ">
+					<div class="md:flex no-wrap md:-mx-2 pt-16 pb-32 ">
 						{/* <!-- Left Side --> */}
 						<div class="w-full md:w-3/12 md:mx-2">
 							<a href="http://localhost:3000/catalog">
@@ -62,10 +69,7 @@ function BarberDetail(props) {
 									<li class="flex items-center py-3">
 										{resp.status === true ? (
 											<button
-												onClick={(e) => {
-													e.preventDefault();
-													alert("Coming Soon!!!");
-												}}
+												onClick={executeScroll}
 												class="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-10 mb-0 rounded-lg"
 											>
 												Get an apointment
@@ -211,7 +215,78 @@ function BarberDetail(props) {
 					</div>
 				</div>
 			)}
-		</div>
+			</div>
+			<div class="bg-gray-100 max-w-6xl  mx-auto my-20">
+			{!resp ? (
+				<div class="loader"></div>
+			) : (
+				<div ref={myRef} class="container mx-auto my-5 p-5">
+					<div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
+                    	<div class="grid">
+								<div>
+									<div class="flex justify-center text-2xl font-semibold text-gray-900 leading-8 mb-3">
+										<span class="tracking-wide">Get an appointment with {resp.name}</span>
+									</div>
+									<div class="flex items-center text-lg font-semibold text-gray-900 leading-8 mb-3">
+                                		<span class="tracking-wide">Choose a Haircut:</span>
+                            		</div>
+                              		<ul class="list-inside space-y-2">
+                                 		{/* {resp.services ? resp.hairTypes.map(n => (
+                                    	<li>
+                                       		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
+                                    	</li>
+                                 		)) : "waiting"} */}
+											<BarberServices />
+										</ul>
+										<div class="flex justify-center text-lg border-t-4 border-blue-200 font-semibold text-gray-900 leading-8 mt-2 mb-3">
+                                			<span class="tracking-wide mt-2 -mb-1">Extra Services</span>
+                            			</div>
+										<div class="flex items-center text-lg border-t-4 border-blue-200 font-semibold text-gray-900 leading-8 mb-3">
+                                			<span class="tracking-wide mt-1 ">Extra 1:</span>
+                            			</div>
+										<ul class="list-inside space-y-2">
+                                 		{/* {resp.services ? resp.hairTypes.map(n => (
+                                    	<li>
+                                       		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
+                                    	</li>
+                                 		)) : "waiting"} */}
+											<BarberServices />
+										</ul>
+										<div class="flex items-center text-lg border-t-2 border-blue-200 font-semibold text-gray-900 leading-8 mb-3">
+                                			<span class="tracking-wide mt-1 ">Extra 2:</span>
+                            			</div>
+										<ul class="list-inside space-y-2">
+                                 		{/* {resp.services ? resp.hairTypes.map(n => (
+                                    	<li>
+                                       		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
+                                    	</li>
+                                 		)) : "waiting"} */}
+											<BarberServices />
+										</ul>
+										<div class="flex items-center text-lg border-t-2 border-blue-200 font-semibold text-gray-900 leading-8 mb-3">
+                                			<span class="tracking-wide mt-1 ">Extra 3:</span>
+                            			</div>
+										<ul class="list-inside space-y-2">
+                                 		{/* {resp.services ? resp.hairTypes.map(n => (
+                                    	<li>
+                                       		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
+                                    	</li>
+                                 		)) : "waiting"} */}
+											<BarberServices />
+                              		</ul>
+                        		</div>
+                     		</div>
+                  		</div>
+							{/* <!-- End of Services --> */}
+					</div>
+				)}
+				<div className="flex justify-center">
+					
+			<button className="px-20 py-2 -mt-3 mb-7 bg-blue-500 rounded">Next Step</button>
+				</div>
+			</div>
+			
+			</div>
 	);
 }
 
