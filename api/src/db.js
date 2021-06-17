@@ -5,8 +5,8 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
-	 `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/barberscommunity`, // LOCAL DB
-	//`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_USER}`,		   // CLOUD DB (ELEPHANTSQL) --> DATOS EN CARPETA UTILS-SQL-elephantSQL
+	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/prueba`, // LOCAL DB
+	// `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_USER}`,		   // CLOUD DB (ELEPHANTSQL) --> DATOS EN CARPETA UTILS-SQL-elephantSQL
 	{
 		logging: false, // set to console.log to see the raw SQL queries
 		native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -65,18 +65,32 @@ HairType.belongsToMany(Barber, {through:"hairTypeBarber"});
 Barber.belongsToMany(Style, {through:"styleBarber"});
 Style.belongsToMany(Barber, {through:"styleBarber"});
 
-
 // Se va a crear una tabla intermedia con los id de las tablas
 // Appointment.belongsToMany(ServiceBarber, {through:"detailAppointment"})
 // ServiceBarber.belongsToMany(Appointment, {through:"detailAppointment"})
-
 
 // Se va a crear una tabla intermedia con los id de las tablas
 Barber.belongsToMany(Client, {through:"appointment"});
 Client.belongsToMany(Barber, {through:"appointment"});
 
+// Appointment es una tabla intermedia!
+Appointment.hasMany(DetailAppointment);		// Establecer estas las relaciones asi a mano!
+DetailAppointment.belongsTo(Appointment);
+
+// ServiceBarber es una tabla intermedia!
+DetailAppointment.hasMany(ServiceBarber); // Establecer estas las relaciones asi a mano!
+ServiceBarber.belongsTo(DetailAppointment);
 
 
+// Se le agrega el idBarber a client
+Style.hasMany(Client);
+Client.belongsTo(Style);
+
+FaceType.hasMany(Client);
+Client.belongsTo(FaceType);
+
+HairType.hasMany(Client);
+Client.belongsTo(HairType);
 
 
 
