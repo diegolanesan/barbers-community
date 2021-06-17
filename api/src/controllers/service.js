@@ -1,16 +1,28 @@
-const { Barber, Service, Category } = require('../db');
+const { Barber, Service, Category, ServiceBarber } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 
+// ruta que retorna los sevicios  según el barbero
+const getBarbersService = async (req, res) =>{
+    const {idBarber} = req.params;
+    const barber = await Barber.findByPk(idBarber, { include: { all: true, nested: true }});
+    if(barber){
+        res.send(barber)
+    }else{
+        res.status(400).send("No se encontro los servicios solicitados")
+    }
+
+};
+
 // ruta para buscar todos los servicios
 const getAllService = async (req, res)=>{
-    const allService = await Service.findAll({include:{model:Category}});
+    const allService = await Service.findAll({include:[{model:Category},{model:Barber}]});
     if(allService){
         res.send(allService)
     }else{
         res.status(400).send("No hay servicios")
     }
-}
+};
 
 // ruta para crear un servicio
 const postService = async (req,res)=>{
@@ -25,10 +37,25 @@ const postService = async (req,res)=>{
    }
 };
 
+// ruta que   vincular  un barber y un servicio
+const relationService = async (req, res)=>{
+    const {barberId, serviceId} = req.body;
+    const resul = ServiceBarber.create({barberId, serviceId});
+    if(resul){
+        res.send(resul)
+    }else{
+        res.status(400).send("No se pudo relacionar las tablas")
+    }
+
+}
+
+
 
 module.exports = {
     getAllService,
-    postService
+    postService,
+    getBarbersService,
+    relationService
 }
 
 
