@@ -26,9 +26,6 @@ const postService = async (req,res)=>{
 };
 
 
-
-
-
 module.exports = {
     getAllService,
     postService

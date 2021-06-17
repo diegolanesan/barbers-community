@@ -80,25 +80,31 @@ const addClient = async(req, res, next) => {
             faceTypeId, 
             hairTypeId
         });
-        return res.send(createdClient); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
+        const clientAll = await Client.findAll({include: [ { model: FaceType }, {model: HairType}, { model: Style } ]})
+        return res.send(clientAll); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
     } catch (error) {
         next(error);
     }
-
 }
 
 const updateClient = async (req, res, next ) => {
+    // const [numberOfAffectedRows, affectedRows] = await Client.update(body, {
+    //     where: {id},
+    //     returning: true, // needed for affectedRows to be populated
+    //     plain: true // makes sure that the returned instances are just plain objects
+
+    // })
     const id = req.params.id;
-    const body = req.body;
-    const [numberOfAffectedRows, affectedRows] = await Client.update(body, {
-        where: {id},
-        returning: true, // needed for affectedRows to be populated
-        plain: true // makes sure that the returned instances are just plain objects
-
-    })
-        return res.send(numberOfAffectedRows);
+	const { clientModified } = req.body;
+	let client = await Client.findByPk(id);
+	if (client) {
+		client = client.update(clientModified);
+		res.send(client);
+	} else {
+		res.send("No se ha podido modificar al barbero");
+	}
+        return res.send(clientModified);
 }
-
 
 
 const deleteClient = (req, res, next) => {
@@ -109,7 +115,7 @@ const deleteClient = (req, res, next) => {
         }
     })
     .then(() => {
-        res.sendStatus(200);
+        res.send("Barber deleted!");
     })
     .catch((error) => next(error));
 
