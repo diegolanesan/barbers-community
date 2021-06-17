@@ -8,6 +8,7 @@ export default function Catalog() {
     
   // Refactorear y llevar los estilos a otro archivo 
     const buttonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"
+    const buttonSelected = "bg-blue-800 text-white py-1 px-2 mx-2 mb-3 rounded-lg"
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getBarbers())
@@ -63,52 +64,52 @@ export default function Catalog() {
                 <div className="flex flex-col" onClick={handleClick} >
                     <h5 className="font-bold pl-4 pt-4 pb-2">Professional level</h5>
                     <div className="ml-2">  
-                        <input type='button' value='Urban' name='Proficiency' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'} />
-                        <input type='button' value='Academy' name='Proficiency' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' value='Seminary' name='Proficiency' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' value='Hair technician' name='Proficiency' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
+                        <input type='button' value='Urban' name='Proficiency' className={filters.Proficiency === 'Urban' ? buttonSelected : buttonStyle} />
+                        <input type='button' value='Academy' name='Proficiency' className={filters.Proficiency === 'Academy' ? buttonSelected : buttonStyle}/>
+                        <input type='button' value='Seminary' name='Proficiency' className={filters.Proficiency === 'Seminary' ? buttonSelected : buttonStyle}/>
+                        <input type='button' value='Hair technician' name='Proficiency' className={filters.Proficiency === 'Hair technician' ? buttonSelected : buttonStyle}/>
                     </div>
                 </div>
                 <div onClick={handleClick} >
                     <h5 className="font-bold pl-4 pt-4 pb-2">Hair type</h5>
                     <div className="ml-2">
-                        <input type='button' id ='1' value='Afro' name='Hair' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='2' value='Curly' name='Hair' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='4' value='Wavy' name='Hair' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='3' value='Straight' name='Hair' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
+                        <input type='button' id ='1' value='Afro' name='Hair' className={filters.Hair === 'Afro' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='2' value='Curly' name='Hair' className={filters.Hair === 'Curly' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='4' value='Wavy' name='Hair' className={filters.Hair === 'Wavy' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='3' value='Straight' name='Hair' className={filters.Hair === 'Straight' ? buttonSelected : buttonStyle}/>
                     </div>
                 </div>
                 <div onClick={handleClick} >
                     <h5 className="font-bold pl-4 pt-4 pb-2">Face type</h5>
                     <div className="ml-2">
-                        <input type='button' id ='1' value='Square' name='Face' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='2' value='Triangular' name='Face' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='3' value='Oval' name='Face' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='4' value='Round' name='Face' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='5' value='Long' name='Face' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='6' value='Rectangular' name='Face' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
+                        <input type='button' id ='1' value='Square' name='Face' className={filters.Face === 'Square' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='2' value='Triangular' name='Face' className={filters.Face === 'Triangular' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='3' value='Oval' name='Face' className={filters.Face === 'Oval' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='4' value='Round' name='Face' className={filters.Face === 'Round' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='5' value='Long' name='Face' className={filters.Face === 'Long' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='6' value='Rectangular' name='Face' className={filters.Face === 'Rectangular' ? buttonSelected : buttonStyle}/>
                     </div>
                 </div>
                 <div onClick={handleClick} >
                     <h5 className="font-bold pl-4 pt-4 pb-2">Service</h5>
                     <div className="ml-2">
-                        <input type='button' value='Haircut' name='Service' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' value='Colorimetry' name='Service' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' value='beard trim' name='Service' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' value='Tribal design' name='Service' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
+                        <input type='button' value='Haircut' name='Service' className={filters.Service === 'Haircut' ? buttonSelected : buttonStyle}/>
+                        <input type='button' value='Colorimetry' name='Service' className={filters.Service === 'Colorimetry' ? buttonSelected : buttonStyle}/>
+                        <input type='button' value='Beard trim' name='Service' className={filters.Service === 'Beard trim' ? buttonSelected : buttonStyle}/>
+                        <input type='button' value='Tribal design' name='Service' className={filters.Service === 'Tribal design' ? buttonSelected : buttonStyle}/>
                     </div>
                 </div>
                 <div onClick={handleClick} >
                     <h5 className="font-bold pl-4 pt-4 pb-2">Style</h5>
                     <div className="ml-2">
-                        <input type='button' id ='1' value='American' name='Style' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='2' value='Classic' name='Style' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='3' value='Fresh' name='Style' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='4' value='Youth' name='Style' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='5' value='Modern' name='Style' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='6' value='Versatile' name='Style' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='7' value='European' name='Style' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
-                        <input type='button' id ='8' value='Regular' name='Style' className={buttonStyle + ' focus:bg-blue-800 focus:ring-2'}/>
+                        <input type='button' id ='1' value='American' name='Style' className={filters.Style === 'American' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='2' value='Classic' name='Style' className={filters.Style === 'Classic' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='3' value='Fresh' name='Style' className={filters.Style === 'Fresh' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='4' value='Youth' name='Style' className={filters.Style === 'Youth' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='5' value='Modern' name='Style' className={filters.Style === 'Modern' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='6' value='Versatile' name='Style' className={filters.Style === 'Versatile' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='7' value='European' name='Style' className={filters.Style === 'European' ? buttonSelected : buttonStyle}/>
+                        <input type='button' id ='8' value='Regular' name='Style' className={filters.Style === 'Regular' ? buttonSelected : buttonStyle}/>
                     </div>
                 </div>
             </div>

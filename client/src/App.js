@@ -13,6 +13,7 @@ import Urban from './components/content/urban/Urban';
 import HairTechnician from './components/content/hairTechnician/HairTechnician';
 import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
+import BarberDashboard from './components/content/barberDashboard/barberDashboard';
 function App() {
   return (
     <div className="App">
@@ -28,6 +29,7 @@ function App() {
       <Route exact path="/hair-technician" component={HairTechnician} />
       <Route exact path="/recovery" component={Recovery} />
       <Route exact path="/appointment/date" component={AppointmentDate} />
+      <Route exact path="/barbers/dashboard" component={BarberDashboard} />
     </div>   
   );
 }
