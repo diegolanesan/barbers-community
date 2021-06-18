@@ -1,6 +1,9 @@
 const { Barber, ServiceBarber, faceTypeBarber, styleBarber, hairTypeBarber, HairType, FaceType, Style } = require("../db");
 require("dotenv").config();
 const { Op } = require("sequelize");
+const jwt = require('jsonwebtoken');
+const passport = require('passport')
+
 
 // Ruta que devuelve todos los barberos
 
@@ -192,6 +195,27 @@ const relationStyle = async (req, res)=>{
 	}
 };
 
+ const login = async (req, res) => {
+
+	const { username, password } = req.body;
+	const secret = "secret"
+    try {
+        const oldUser = await Barber.findOne({where: { email: username }});
+        if (!oldUser) return res.status(404).json({ message: { message: "User doesn`t exist", style: "red" } });
+
+        //const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
+
+        if (!password) return res.status(400).json({ message: { message: 'Invalid Password', style: "red" } });
+
+        const token = jwt.sign({ email: oldUser.email, id: oldUser.id }, secret, { expiresIn: '1hr' });
+        res.status(201).json({ result: oldUser, token, message: { message: "Log in Successful", style: "green" } });
+    } catch (error) {
+        res.status(500).json({ message: { message: 'Something went wrong', style: "red" } });
+        console.log(error);
+        res.status(500).json({message:{message:'Something went wrong', style:"red"}});
+    }
+}
+
 
 
 
@@ -208,5 +232,7 @@ module.exports = {
 	relationFaiceType,
 	relationHairType,
 	relationStyle,
-	getHFStypes
+	getHFStypes,
+	loginBarbers,
+	signin
 };

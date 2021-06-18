@@ -11,7 +11,9 @@ const { getAllBarbers,
         relationFaiceType, 
         relationHairType,
         relationStyle,
-        getHFStypes } = require('../controllers/barbers');
+        getHFStypes, 
+        loginBarbers,
+        signin} = require('../controllers/barbers');
 
 
 // Ruta que devuelve a todos los barberos   
@@ -52,9 +54,10 @@ server.put('/:id', putBarbers);
 
 
 //Ruta para eliminar un Barbero  
-
 server.delete('/:id', deleteBarbers);
 
+// Ruta de login
+server.post('/login', loginBarbers)
 
 
 
