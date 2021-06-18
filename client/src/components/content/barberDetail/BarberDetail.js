@@ -10,9 +10,7 @@ function BarberDetail(props) {
 	const dispatch = useDispatch();
 	const { resp } = useSelector((state) => state.barberDetail);
 	const id = props.match.params.id;
-	console.log(props);
 	useEffect(() => {
-		console.log(id + "");
 		dispatch(barberDetail(id));
 		dispatch(getBarbers());
 	}, []);
@@ -21,7 +19,7 @@ function BarberDetail(props) {
 	const myRef = useRef(null);
 	const executeScroll = () => scrollToRef(myRef)
 
-
+	console.log(resp)
 	return (
 		<div>
 		<div class="bg-gray-100 max-w-6xl mx-auto my-20">
@@ -32,6 +30,11 @@ function BarberDetail(props) {
 					<div class="md:flex no-wrap md:-mx-2 pt-16 pb-32 ">
 						{/* <!-- Left Side --> */}
 						<div class="w-full md:w-3/12 md:mx-2">
+							<a href={`http://localhost:3000/BarberConfig/${id}`}>
+								<button class="bg-blue-400 hover:bg-blue-600 border-b-2 text-white py-1 px-2 mx-10 mb-0 rounded-lg">
+									Barbers Configuration
+								</button>
+							</a>
 							<a href="http://localhost:3000/catalog">
 								<button class="bg-blue-400 hover:bg-blue-600 border-b-2 text-white py-1 px-2 mx-10 mb-0 rounded-lg">
 									Go back to Barbers
@@ -151,7 +154,7 @@ function BarberDetail(props) {
 							{/* <!-- End of about section --> */}
 							<div class="my-4"></div>
 							{/* <!-- Types --> */}
-							{/*                   <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
+							{                  <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
                      <div class="grid grid-cols-3">
                         <div>
                               <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
@@ -190,28 +193,10 @@ function BarberDetail(props) {
                               </ul>
                         </div>
                      </div> 
-                 </div> */}
+                 </div>}
 							{/* <!-- End of Types --> */}
 							{/* <!-- End of profile tab --> */}
 							<div class="my-4"></div>
-							{/* <!-- Services --> */}
-							{/*                   <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
-                     <div class="grid grid-cols-3">
-                        <div>
-                              <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-                                 <span class="tracking-wide">Services</span>
-                              </div>
-                              <ul class="list-inside space-y-2">
-                                 {resp.services ? resp.hairTypes.map(n => (
-                                    <li>
-                                       <div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
-                                    </li>
-                                 )) : "waiting"}
-                              </ul>
-                        </div>
-                     </div>
-                  </div> */}
-							{/* <!-- End of Services --> */}
 						</div>
 					</div>
 				</div>

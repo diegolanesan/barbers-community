@@ -8,6 +8,8 @@ export const FILTER_BARBERS = "FILTER_BARBERS";
 export const GET_BARBERS_BY_NAME = "GET_BARBERS_BY_NAME";
 export const GET_BARBERS_BY_TYPE = "GET_BARBERS_BY_TYPE";
 export const GET_BARBER_BY_ID = "GET_BARBERS_BY_ID";
+export const RELATION_FACE_TYPE = "RELATION_FACE_TYPE";
+export const RELATION_HAIR_TYPE = "RELATION_HAIR_TYPE";
 
 export const postBarber = (body) => (dispatch) => {
 	console.log("aaaaaa", body);
@@ -61,4 +63,16 @@ export const getBarberById = (id) => (dispatch) => {
 	axios
 		.get(HOST_BACK + "/barbers/id/" + id)
 		.then((res) => dispatch({ type: GET_BARBER_BY_ID, payload: res.data }));
+};
+
+export const relationFaiceType = (body) => (dispatch) => {
+	axios
+		.post(HOST_BACK + "/barbers/addFaceType", body)
+		.then((res) => dispatch({ type: RELATION_FACE_TYPE, payload: res.data }));
+};
+
+export const relationHairType = (body) => (dispatch) => {
+	axios
+		.post(HOST_BACK + "/barbers/addHairType", body)
+		.then((res) => dispatch({ type: RELATION_HAIR_TYPE, payload: res.data }));
 };

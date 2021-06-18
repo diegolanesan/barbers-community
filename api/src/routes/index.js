@@ -6,6 +6,8 @@ const { Router } = require("express");
 // Rutas del crud de servicio
 const service = require('./service');
 
+// Rutas del crud de typesHFS
+const typesHFS = require('./styles');
 
 // Rutas del crud de barberos
 const barbers = require("./barbers.js");
@@ -38,5 +40,6 @@ router.use('/barbers', barbers);
 router.use('/admin/service', service);
 router.use('/admin/categories', categories);
 router.use('/email', email)
+router.use('/types', typesHFS)
 
 module.exports = router;
