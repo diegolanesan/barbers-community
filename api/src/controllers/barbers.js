@@ -87,7 +87,7 @@ const getByIdBarbers = async (req, res) => {
 		include:[ { model: FaceType }, {model: HairType}, { model: Style } ] */ 
 	});
 	if (resul) {
-		console.log(resul, "aaaaaaaa")
+		console.log(resul, "aaaaaaaaaa")
 		/* let aux = barber
 			faces = []
 			hairs = []
