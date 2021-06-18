@@ -14,10 +14,12 @@ import HairTechnician from './components/content/hairTechnician/HairTechnician';
 import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
+import { useLocation } from "react-router-dom";
 function App() {
+  const location = useLocation();
   return (
     <div className="App">
-      <Route path="/" component={NavBar}/>
+      {(location.pathname === "/" || location.pathname === "/catalog") &&  <Route path="/" component={NavBar}/>}
       <Route path="/Detail/:id" component={showBarberDetail}/>
       <Route exact path="/" component={Home}/>
       <Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
@@ -27,7 +29,7 @@ function App() {
       <Route exact path="/academic" component={Academic} />
       <Route exact path="/urban" component={Urban} />
       <Route exact path="/hair-technician" component={HairTechnician} />
-      <Route exact path="/recovery" component={Recovery} />
+      <Route exact path="/recovery/:token" component={Recovery} />
       <Route exact path="/appointment/date" component={AppointmentDate} />
       <Route exact path="/barbers/dashboard" component={BarberDashboard} />
     </div>   

@@ -43,8 +43,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Barber, ServiceBarber, Category, FaceType, HairType, Style, Client, Appointment, Service, DetailAppointment } = sequelize.models;
 
 // Se va a crear una tabla intermedia con los id de las tablas
-Barber.belongsToMany(Service, {through:"serviceBarber"});
-Service.belongsToMany(Barber, {through:"serviceBarber"});
+// Barber.belongsToMany(Service, {through:"serviceBarber"});
+// Service.belongsToMany(Barber, {through:"serviceBarber"});
 
 // Se va a crear una tabla intermedia con los id de las tablas 
 Service.belongsToMany(Category, {through:"categoryService"})
