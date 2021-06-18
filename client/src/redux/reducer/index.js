@@ -2,6 +2,7 @@ import barbersReducer from "./barbers";
 import reducerPublication from "./publication";
 import reducerBarberDetail from "./barberDetail";
 import reducerServices from './services'
+import reducerTypes from './types'
 
 function combineReducer(state = {}, action) {
     return {
@@ -10,7 +11,8 @@ function combineReducer(state = {}, action) {
       followers:{},
       follow:{},
       barberDetail: reducerBarberDetail(state.barberDetail,action),
-      services: reducerServices(state.services, action)
+      services: reducerServices(state.services, action),
+      types: reducerTypes(state.types, action)
     };
   }
   
