@@ -83,11 +83,11 @@ const getTypeBarbers = async (req, res) => {
 
 const getByIdBarbers = async (req, res) => {
 	const idBarber = req.params.id;
-	const resul = await Barber.findOne({where :{id: idBarber}, 
-		include:[ { model: FaceType }, {model: HairType}, { model: Style } ] 
+	const resul = await Barber.findOne({where :{id: idBarber}/* , 
+		include:[ { model: FaceType }, {model: HairType}, { model: Style } ] */ 
 	});
 	if (resul) {
-		console.log(resul, "aaaaa")
+		console.log(resul, "aaaaaaaa")
 		/* let aux = barber
 			faces = []
 			hairs = []
