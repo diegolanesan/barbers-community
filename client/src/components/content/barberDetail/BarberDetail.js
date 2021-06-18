@@ -27,19 +27,14 @@ function BarberDetail(props) {
 				<div class="loader"></div>
 			) : (
 				<div class="container mx-auto my-5 p-5">
-					<div class="md:flex no-wrap md:-mx-2 pt-16 pb-32 ">
-						{/* <!-- Left Side --> */}
-						<div class="w-full md:w-3/12 md:mx-2">
-							<a href={`http://localhost:3000/BarberConfig/${id}`}>
-								<button class="bg-blue-400 hover:bg-blue-600 border-b-2 text-white py-1 px-2 mx-10 mb-0 rounded-lg">
-									Barbers Configuration
-								</button>
-							</a>
 							<a href="http://localhost:3000/catalog">
 								<button class="bg-blue-400 hover:bg-blue-600 border-b-2 text-white py-1 px-2 mx-10 mb-0 rounded-lg">
 									Go back to Barbers
 								</button>
 							</a>
+					<div class="md:flex no-wrap md:-mx-2 pt-8 pb-32 ">
+						{/* <!-- Left Side --> */}
+						<div class="w-full md:w-3/12 md:mx-2">
 							{/* <!-- Profile Card --> */}
 							<div class="bg-white p-3 border-t-4 border-blue-400 ">
 								<div class="image overflow-hidden">

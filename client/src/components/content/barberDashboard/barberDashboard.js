@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import BarberServicesDashboard from './barberDashboardServices/BarberServicesDashboard.jsx'
 // import style from './barberDashboard.module.css'
 
 const BarberDashboard = () => {
@@ -73,7 +74,7 @@ const BarberDashboard = () => {
                                 </div>
                             </div>
                         </div>
-                        <div>servicios</div>
+                        <BarberServicesDashboard />
                     </div>
                 )}
                 {buttonState.menu === 'Config' && (
