@@ -10,9 +10,7 @@ function BarberDetail(props) {
 	const dispatch = useDispatch();
 	const { resp } = useSelector((state) => state.barberDetail);
 	const id = props.match.params.id;
-	console.log(props);
 	useEffect(() => {
-		console.log(id + "");
 		dispatch(barberDetail(id));
 		dispatch(getBarbers());
 	}, []);
@@ -21,7 +19,7 @@ function BarberDetail(props) {
 	const myRef = useRef(null);
 	const executeScroll = () => scrollToRef(myRef)
 
-
+	console.log(resp)
 	return (
 		<div>
 		<div class="bg-gray-100 max-w-6xl mx-auto my-20">

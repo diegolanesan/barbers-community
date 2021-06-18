@@ -22,7 +22,6 @@ const BarberConfig = () => {
         mobile: "",
         img: "",
         type: "",
-        barberId: "",
         faceTypeId: [],
         hairTypeId: []
     }
@@ -52,8 +51,8 @@ const BarberConfig = () => {
 			...barber,
 			[e.target.name]: e.target.value,
 		});
-    console.log(barber)
 	};
+  console.log(barber)
   const handleClick = (e) => {
     /* if(e[0] === "hair") {
       setBarber({
@@ -126,6 +125,7 @@ const BarberConfig = () => {
                       type="checkbox"
                       name="faceTypeId"
                       value={e.id}
+                      onChange={handleInputChange}
                       onClick={handleClick(["face", e.id])}
                       class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
                       />
@@ -143,6 +143,7 @@ const BarberConfig = () => {
                       type="checkbox"
                       name="hairTypeId"
                       value={e.id}
+                      onChange={handleInputChange}
                       onClick={handleClick(["hair", e.id])}
                       class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
                       />

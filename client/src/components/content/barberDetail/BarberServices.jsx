@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const BarberServices = () => {
     const barbersPerPage = barbers
     const [appointment, setAppointment] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
-    console.log(appointment)
     return (
         <div className="grid overflow-auto h-80 sm:grid-cols-1 sm:grid-cols-4">
             {barbersPerPage &&
