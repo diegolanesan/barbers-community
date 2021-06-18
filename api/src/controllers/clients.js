@@ -2,7 +2,6 @@ const { Client, FaceType, HairType, Style } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 
-
 const getClients = (req, res, next) => {
 
 /* ----------------------- El usuario (administrador) busca todos los clientes ---------------------------------*/
@@ -14,7 +13,7 @@ const getClients = (req, res, next) => {
             .then((result) => {
                 res.status(200).send(result);
             })
-     
+    
         } catch(e){
             console.log("No se pudo realizar la petición HTTP correctamente " + e)
         }
@@ -51,7 +50,6 @@ const getClientById = (req, res, next) => {
     }
 }
 
-
 const addClient = async(req, res, next) => {
     const { 
         name, 
@@ -86,6 +84,7 @@ const addClient = async(req, res, next) => {
         next(error);
     }
 }
+
 
 const updateClient = async (req, res, next ) => {
     // const [numberOfAffectedRows, affectedRows] = await Client.update(body, {
