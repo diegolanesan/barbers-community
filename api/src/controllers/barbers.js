@@ -83,9 +83,28 @@ const getTypeBarbers = async (req, res) => {
 
 const getByIdBarbers = async (req, res) => {
 	const idBarber = req.params.id;
-	const resul = await Barber.findByPk(idBarber);
+	const resul = await Barber.findOne({where :{id: idBarber}/* , 
+		include:[ { model: FaceType }, {model: HairType}, { model: Style } ] */ 
+	});
 	if (resul) {
-		res.send(resul);
+		console.log(resul, "aaaaaaaaaa")
+		/* let aux = barber
+			faces = []
+			hairs = []
+			barberStyles = []
+			if(aux.dataValues.faceTypes) {
+				aux.dataValues.faceTypes.map(b => faces.push(b.dataValues.description))
+			}
+			if(aux.dataValues.hairTypes) {
+				aux.dataValues.hairTypes.map(b => hairs.push(b.dataValues.description))
+			}
+			if(aux.dataValues.styles) {
+				aux.dataValues.styles.map(b => barberStyles.push(b.dataValues.description))
+			}
+			aux.dataValues.faces = faces
+			aux.dataValues.hairs = hairs
+			aux.dataValues.barberStyles = barberStyles */
+		res.send(resul.barber);
 	} else {
 		res.status(400).send("No se encontro el barbero");
 	}
