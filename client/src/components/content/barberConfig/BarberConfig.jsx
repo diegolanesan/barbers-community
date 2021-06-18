@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { putBarber } from '../../../redux/action/barbers';
-import { getBarberById } from '../../../redux/action/barbers';
+import { getBarberById, relationFaiceType, relationHairType } from '../../../redux/action/barbers';
+import { getAllHairTypes, getAllFaceTypes } from '../../../redux/action/types';
 
 const BarberConfig = () => {
     const dispatch = useDispatch()
     const barberSelected = useSelector(state => state.barbers.barberDetail)
-
+    const {hair, face} = useSelector(state => state.types)
     const newBarber = {
         name: "",
         lastname: "",
@@ -21,8 +22,11 @@ const BarberConfig = () => {
         mobile: "",
         img: "",
         type: "",
+        barberId: "",
+        faceTypeId: [],
+        hairTypeId: []
     }
-	
+
     const [barber, setBarber] = useState(newBarber) 
     const [loading, setLoading] = useState(true)
     var { id } = useParams()
@@ -37,6 +41,8 @@ const BarberConfig = () => {
             barberSelected && setLoading(false)
         } else {
             setBarber(barberSelected)
+            dispatch(getAllHairTypes())
+            dispatch(getAllFaceTypes())
         }
     
     }, [barberSelected])
@@ -46,9 +52,23 @@ const BarberConfig = () => {
 			...barber,
 			[e.target.name]: e.target.value,
 		});
+    console.log(barber)
 	};
+  const handleClick = (e) => {
+    /* if(e[0] === "hair") {
+      setBarber({
+        ...barber,
 
-
+      });
+    }
+    else {
+      setBarber({
+        ...barber,
+ 
+      });
+    } */
+    console.log(barber.hairTypeId, barber.faceTypeId)
+	};
 
     const handleSubmit = () => {
         const barberSend = {
@@ -69,6 +89,8 @@ const BarberConfig = () => {
             }
         };
         dispatch(putBarber(id, barberSend))
+        dispatch(relationHairType({hairTypeId :barber.hairTypeId, barberId : id}))
+        dispatch(relationFaiceType({faceTypeId :barber.faceTypeId, barberId : id}))
     };
     return (
         <div class="flex h-screen bg-gray-200 items-center justify-center  mt-32 mb-32">
@@ -83,23 +105,63 @@ const BarberConfig = () => {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Styles</label>
-              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Input 1" />
+              <div class="block pt-3 pb-2 space-x-4">
+          <label>
+            <input
+              type="radio"
+              name="radio"
+              value="1"
+              class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+            />
+            Option 1
+          </label>
+        </div>
             </div>
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Face Types</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Input 2" />
+                <div class="block pt-3 pb-2 space-x-4">
+                  {face ? face.map(e => {
+                    return <label>
+                    <input
+                      type="checkbox"
+                      name="faceTypeId"
+                      value={e.id}
+                      onClick={handleClick(["face", e.id])}
+                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+                      />
+                      {e.description}
+                    </label>
+                  }) : ""}
+                </div>
               </div>
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Hair Types</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Input 3" />
+                <div class="block pt-3 pb-2 space-x-4">
+                  { hair ? hair.map(e => {
+                    return <label>
+                    <input
+                      type="checkbox"
+                      name="hairTypeId"
+                      value={e.id}
+                      onClick={handleClick(["hair", e.id])}
+                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+                      />
+                      {e.description}
+                    </label>
+                  }): ""}
+                </div>
               </div>
             <div class="grid grid-cols-1">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Professional level</label>
-              <select class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+              <select class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      name="type"
+											value={barber.type}
+											onChange={handleInputChange}
+              >
                 <option>Urban</option>
                 <option>Academy</option>
                 <option>Seminary</option>
-                <option>Hair Technician</option>
+                <option>Hair technician</option>
               </select>
             </div>
             </div>
@@ -124,10 +186,10 @@ const BarberConfig = () => {
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Last Name</label>
                 <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
-                        id="lastName"
+                        id="lastname"
                         type="text"
                         placeholder="Last Name"
-                        name="lastName"
+                        name="lastname"
                         value={barber.lastname}
                         onChange={handleInputChange} 
                 />

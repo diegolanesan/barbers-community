@@ -1,0 +1,81 @@
+.recoveryContainer
+{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    background-image: url("https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-position: center;
+    background-size: cover;
+}
+
+.recoveryColor
+{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 2, 37, 0.541);
+    z-index: 0;
+}
+
+.conteinerForm
+{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+}
+.recoveryForm
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.747);
+    padding: 20px;
+    border-radius: 5px ;
+}
+.recoveryForm h1
+{
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    font-weight: 900;
+}
+.recoveryForm input 
+{
+    border: 1px solid rgb(175, 173, 173);
+    border-radius: 5px ;
+}
+
+.recoveryForm  label
+{
+    text-align: start;
+    width: 100%;
+    font-weight: 500;
+}
+
+.recoveryForm  button
+{
+    background-color:white;
+    margin-top: 10px;
+    padding: 5px;
+    width: 40%;
+    border-radius: 5px;
+    transition:0.5s;
+    font-weight: bold;
+}
+.recoveryForm  button:hover
+{
+    background-color:rgb(29, 29, 255);
+    color: rgb(255, 255, 255);
+}
