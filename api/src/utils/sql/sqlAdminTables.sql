@@ -125,34 +125,56 @@ INSERT INTO "services" (name ,price, description , image  )
 
 INSERT INTO "services" (name ,price, description , image  ) 
     VALUES (
-      '',
+      'MOHICANO',
       5000,
-      '',
- '{
+      'La principal característica del corte de pelo mohicano es que se lleva el pelo rapado por los lados y la parte central más larga y peinada hacia arriba. El largo de la parte superior puede variar.',
+ '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623898846/Catalog/services/1.HAIRCUT/mohicanoCut/mohicanoCut07_ml01kq.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898846/Catalog/services/1.HAIRCUT/mohicanoCut/mohicanoCut03_ovyhyj.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898846/Catalog/services/1.HAIRCUT/mohicanoCut/mohicanoCut05_swi520.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898846/Catalog/services/1.HAIRCUT/mohicanoCut/mohicanoCut08_tbj0xp.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898845/Catalog/services/1.HAIRCUT/mohicanoCut/mohicanoCut10_tibncc.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898845/Catalog/services/1.HAIRCUT/mohicanoCut/mohicanoCut06_d8ow7s.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898845/Catalog/services/1.HAIRCUT/mohicanoCut/mohicanoCut09_nujgvr.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898845/Catalog/services/1.HAIRCUT/mohicanoCut/mohicanoCut01_vqfzio.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898845/Catalog/services/1.HAIRCUT/mohicanoCut/mohicanoCut02_omalhr.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898845/Catalog/services/1.HAIRCUT/mohicanoCut/mohicanoCut04_m6pooy.jpg
  }');
 
 INSERT INTO "services" (name ,price, description , image  ) 
     VALUES (
-      '',
+      'MULLET CUT',
       5000,
-      '',
- '{
+      'El mullet fue el corte por excelencia de los años 70 y principios de los 80, Las modas siempre vuelven, pero esta sí que no la esperábamos y se ha convertido en el peinado estrella del 2021.',
+ '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623898852/Catalog/services/1.HAIRCUT/mulletCut/mulletCut07_olyo6l.png,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898852/Catalog/services/1.HAIRCUT/mulletCut/mulletCut06_q2cobr.png,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898852/Catalog/services/1.HAIRCUT/mulletCut/mulletCut03_vl33hl.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898852/Catalog/services/1.HAIRCUT/mulletCut/mulletCut01_dplg09.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898851/Catalog/services/1.HAIRCUT/mulletCut/mulletCut02_cusjni.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898851/Catalog/services/1.HAIRCUT/mulletCut/mulletCut05_vkwovg.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898851/Catalog/services/1.HAIRCUT/mulletCut/mulletCut04_hp9mzo.jpg
  }');
 
 INSERT INTO "services" (name ,price, description , image  ) 
     VALUES (
-      '',
-      5000,
-      '',
- '{
+      'POMPADOUR',
+      70000,
+      'Este corte se familiarizó entre los hombres durante la década de los 50, aunque su origen hacía referencia al peinado que popularizó Madame Pompadour hacia el 1700 y que consistía en elevar el flequillo.',
+ '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623983929/Catalog/services/1.HAIRCUT/pompadourCut/pompadour_gvndxg.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623984056/Catalog/services/1.HAIRCUT/pompadourCut/pompadour01_q05tms.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623984057/Catalog/services/1.HAIRCUT/pompadourCut/pompadour02_yov52x.png
  }');
 
 INSERT INTO "services" (name ,price, description , image  ) 
     VALUES (
-      '',
+      'SPIKY',
       5000,
-      '',
- '{
+      'Es el clásico “pelo pincho” de toda la vida. Le sienta bien a hombres de todas las edades, por su versatilidad y que se ajusta a la forma de cada rostro.',
+ '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623898847/Catalog/services/1.HAIRCUT/spikyCut/spikyCut01_kyltub.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898847/Catalog/services/1.HAIRCUT/spikyCut/spikyCut06_ixkb8t.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898847/Catalog/services/1.HAIRCUT/spikyCut/spikyCut02_yfqvba.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898847/Catalog/services/1.HAIRCUT/spikyCut/spikyCut04_bp5p7m.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898846/Catalog/services/1.HAIRCUT/spikyCut/spikyCut05_se8mi8.jpg,
+ https://res.cloudinary.com/doovf5g5c/image/upload/v1623898846/Catalog/services/1.HAIRCUT/spikyCut/spikyCut03_hpmwku.jpg
  }');
 
 INSERT INTO "services" (name ,price, description , image  ) 
