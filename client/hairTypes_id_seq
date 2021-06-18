@@ -1,0 +1,30 @@
+                   List of relations
+ Schema |           Name            |   Type   | Owner 
+--------+---------------------------+----------+-------
+ public | appointments              | table    | alex
+ public | barbers                   | table    | alex
+ public | barbers_id_seq            | sequence | alex
+ public | categories                | table    | alex
+ public | categories_id_seq         | sequence | alex
+ public | categoryService           | table    | alex
+ public | clients                   | table    | alex
+ public | clients_id_seq            | sequence | alex
+ public | detailAppointments        | table    | alex
+ public | detailAppointments_id_seq | sequence | alex
+ public | faceTypeBarber            | table    | alex
+ public | faceTypes                 | table    | alex
+ public | faceTypes_id_seq          | sequence | alex
+ public | hairTypeBarber            | table    | alex
+ public | hairTypes                 | table    | alex
+ public | hairTypes_id_seq          | sequence | alex
+ public | serviceBarbers            | table    | alex
+ public | services                  | table    | alex
+ public | services_id_seq           | sequence | alex
+ public | styleBarber               | table    | alex
+ public | styles                    | table    | alex
+ public | styles_id_seq             | sequence | alex
+ public | subscriptions             | table    | alex
+ public | users                     | table    | alex
+ public | users_id_seq              | sequence | alex
+(25 rows)
+
