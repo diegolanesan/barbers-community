@@ -34,7 +34,7 @@ const BarberConfig = () => {
     function fetchData() {
         dispatch(getBarberById(id))
     }
-
+      console.log("hola")
     useEffect(() => {
         if(loading) {
             fetchData()
