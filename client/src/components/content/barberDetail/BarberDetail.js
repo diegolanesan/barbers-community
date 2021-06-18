@@ -12,7 +12,7 @@ function BarberDetail(props) {
 	const id = props.match.params.id;
 	console.log(props);
 	useEffect(() => {
-		console.log(id + "idddd");
+		console.log(id + "iddddddd");
 		dispatch(barberDetail(id));
 		dispatch(getBarbers());
 	}, []);
