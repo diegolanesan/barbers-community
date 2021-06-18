@@ -5,7 +5,7 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
-	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/prueba`, // LOCAL DB
+	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/barberscommunity`, // LOCAL DB
 	// `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_USER}`,		   // CLOUD DB (ELEPHANTSQL) --> DATOS EN CARPETA UTILS-SQL-elephantSQL
 	{
 		logging: false, // set to console.log to see the raw SQL queries
@@ -73,13 +73,12 @@ Style.belongsToMany(Barber, {through:"styleBarber"});
 Barber.belongsToMany(Client, {through:"appointment"});
 Client.belongsToMany(Barber, {through:"appointment"});
 
-// Appointment es una tabla intermedia!
-Appointment.hasMany(DetailAppointment);		// Establecer estas las relaciones asi a mano!
-DetailAppointment.belongsTo(Appointment);
+Barber.belongsToMany(Service, {through:"serviceBarber"});
+Service.belongsToMany(Barber, {through:"serviceBarber"});
 
-// ServiceBarber es una tabla intermedia!
-DetailAppointment.hasMany(ServiceBarber); // Establecer estas las relaciones asi a mano!
-ServiceBarber.belongsTo(DetailAppointment);
+Appointment.belongsToMany(ServiceBarber, {through:"detailAppointment"});
+ServiceBarber.belongsToMany(Appointment, {through:"detailAppointment"});
+
 
 
 // Se le agrega el idBarber a client

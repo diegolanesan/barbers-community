@@ -389,6 +389,3 @@ Table "public.users"
  updatedAt  | timestamp with time zone |           | not null | 
 Indexes:
     "users_pkey" PRIMARY KEY, btree (id)
-
-
-

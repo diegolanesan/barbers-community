@@ -4,6 +4,12 @@ const { DataTypes, STRING } = require("sequelize");
 module.exports = (sequelize) => {
 	// defino el modelo
 	sequelize.define("appointment", {
+		id: {
+			primaryKey: true,
+			type: DataTypes.INTEGER,
+			autoIncrement: true,
+			allowNull: false,
+		},
 		date: {
 			type: DataTypes.DATE,
 			allowNull: false,
