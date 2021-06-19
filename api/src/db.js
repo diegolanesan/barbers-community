@@ -51,37 +51,23 @@ Service.belongsToMany(Category, {through:"categoryService"})
 Category.belongsToMany(Service, {through:"categoryService"})
 
 // Se va a crear una tabla intermedia con los id de las tablas
-
 Barber.belongsToMany(FaceType, {through:"faceTypeBarber"});
 FaceType.belongsToMany(Barber, {through:"faceTypeBarber"});
 
 // Se va a crear una tabla intermedia con los id de las tablas
-
 Barber.belongsToMany(HairType, {through:"hairTypeBarber"});
 HairType.belongsToMany(Barber, {through:"hairTypeBarber"});
-
-// Se va a crear una tabla intermedia con los id de las tablas
 
 Barber.belongsToMany(Style, {through:"styleBarber"});
 Style.belongsToMany(Barber, {through:"styleBarber"});
 
 // Se va a crear una tabla intermedia con los id de las tablas
-// Appointment.belongsToMany(ServiceBarber, {through:"detailAppointment"})
-// ServiceBarber.belongsToMany(Appointment, {through:"detailAppointment"})
-
-// Se va a crear una tabla intermedia con los id de las tablas
-Barber.belongsToMany(Client, {through:"appointment"});
+Barber.belongsToMany(Client, {through:"appointment"});		// ¿Acá esta implicita la asosiación entre appointment y barber?
 Client.belongsToMany(Barber, {through:"appointment"});
-
-Barber.belongsToMany(Service, {through:"serviceBarber"});
-Service.belongsToMany(Barber, {through:"serviceBarber"});
 
 Appointment.belongsToMany(ServiceBarber, {through:"detailAppointment"});
 ServiceBarber.belongsToMany(Appointment, {through:"detailAppointment"});
 
-
-
-// Se le agrega el idBarber a client
 Style.hasMany(Client);
 Client.belongsTo(Style);
 

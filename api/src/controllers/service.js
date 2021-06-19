@@ -8,10 +8,9 @@ const getBarbersService = async (req, res) =>{
     const barber = await Barber.findByPk(idBarber, { include: { all: true, nested: true }});
     if(barber){
         res.send(barber)
-    }else{
+    }else {
         res.status(400).send("No se encontro los servicios solicitados")
     }
-
 };
 
 // ruta para buscar todos los servicios
@@ -46,9 +45,7 @@ const relationService = async (req, res)=>{
     }else{
         res.status(400).send("No se pudo relacionar las tablas")
     }
-
 }
-
 
 
 module.exports = {

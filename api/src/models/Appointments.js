@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
 			allowNull: false,
 		},
 		date: {
-			type: DataTypes.DATE,
+			type: DataTypes.DATE,  // RE-VER ESTO WACHIN!
 			allowNull: false,
 		},
 		status: {
