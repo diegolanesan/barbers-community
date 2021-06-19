@@ -1,18 +1,17 @@
-const { Client, Barber, DetailAppointment, Appointment, ServiceBarber, Service, AppointmentDetail} = require('../db');
+const { Client, Barber, DetailAppointment, Appointment } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 
-const addAppointment = async (req, res, next) => {
-    const { 
-        id,
-        barberId,
+const addAppointment = (req, res, next) => {
+    const {
+        barberId,   // ¿Esta bien si no le paso el id? Así se aplica el Autoincrement
         clientId,
         date,
         status,
         total,
          } = req.body;
     try {
-        const createdAppointment = await Appointment.create({
+        const createdAppointment = Appointment.create({
             barberId,
             clientId,
             date,
