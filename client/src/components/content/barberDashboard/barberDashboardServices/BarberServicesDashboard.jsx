@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import BarberServicesData from './barberServicesData';
 
-const BarberServicesDashboard = () => {
+const BarberServicesDashboard = ({filters}) => {
+
+    // console.log(filters)
 
     const buttonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-1 px-0 mx-0 mb-0 w-full"
     const buttonSelected = "bg-blue-800 text-white py-1 px-0 mx-0 mb-0 w-full"
@@ -33,14 +35,14 @@ const BarberServicesDashboard = () => {
         filters: 'Haircut'
     })
 
-    console.log(buttonState)
+    // console.log(buttonState)
     const handleClick = (e) => {
         if (!e.target.name) e.preventDefault()
         else setButtonState({ ...buttonState, menu: { selected: e.target.value, change: true } })
     }
 
     return (
-        <div class="container mx-auto my-5 p-5">
+        <div class="container mx-auto my-0 p-5">
             <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
                 <div class="grid">
                     <div>
@@ -56,7 +58,7 @@ const BarberServicesDashboard = () => {
                                        		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
                                     	</li>
                                  		)) : "waiting"} */}
-                            <BarberServicesData />
+                            <BarberServicesData filters = {filters} />
                         </ul>
                     </div>
                 </div>
