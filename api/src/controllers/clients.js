@@ -80,7 +80,8 @@ const addClient = async(req, res, next) => {
         });
         const clientAll = await Client.findAll({include: [ { model: FaceType }, {model: HairType}, { model: Style } ]})
         return res.send(clientAll); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
-    } catch (error) {
+        
+        } catch (error) {
         next(error);
     }
 }

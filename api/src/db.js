@@ -5,7 +5,7 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
-	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/postgres`, // LOCAL DB
+	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/barberscommunity`, // LOCAL DB
 	// `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_USER}`,		   // CLOUD DB (ELEPHANTSQL) --> DATOS EN CARPETA UTILS-SQL-elephantSQL
 	{
 		logging: false, // set to console.log to see the raw SQL queries
@@ -40,48 +40,69 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 
 // const { Comentarios, Publicaciones, Usuario,  Seguidor} = sequelize.models;
-const { Barber, ServiceBarber, Category, FaceType, HairType, Style, Client, Appointment, Service, DetailAppointment } = sequelize.models;
+const {
+	Barber,
+	ServiceBarber,
+	Category,
+	FaceType,
+	HairType,
+	Style,
+	Client,
+	Appointment,
+	Service,
+	DetailAppointment,
+	Invoice,
+	DetailInvoice,
+} = sequelize.models;
 
 // Se va a crear una tabla intermedia con los id de las tablas
-Barber.belongsToMany(Service, {through:"serviceBarber"});
-Service.belongsToMany(Barber, {through:"serviceBarber"});
-
-// Se va a crear una tabla intermedia con los id de las tablas 
-Service.belongsToMany(Category, {through:"categoryService"})
-Category.belongsToMany(Service, {through:"categoryService"})
+Barber.belongsToMany(Service, { through: "serviceBarber" });
+Service.belongsToMany(Barber, { through: "serviceBarber" });
 
 // Se va a crear una tabla intermedia con los id de las tablas
-
-Barber.belongsToMany(FaceType, {through:"faceTypeBarber"});
-FaceType.belongsToMany(Barber, {through:"faceTypeBarber"});
-
-// Se va a crear una tabla intermedia con los id de las tablas
-
-Barber.belongsToMany(HairType, {through:"hairTypeBarber"});
-HairType.belongsToMany(Barber, {through:"hairTypeBarber"});
+Service.belongsToMany(Category, { through: "categoryService" });
+Category.belongsToMany(Service, { through: "categoryService" });
 
 // Se va a crear una tabla intermedia con los id de las tablas
-
-Barber.belongsToMany(Style, {through:"styleBarber"});
-Style.belongsToMany(Barber, {through:"styleBarber"});
+Barber.belongsToMany(FaceType, { through: "faceTypeBarber" });
+FaceType.belongsToMany(Barber, { through: "faceTypeBarber" });
 
 // Se va a crear una tabla intermedia con los id de las tablas
-// Appointment.belongsToMany(ServiceBarber, {through:"detailAppointment"})
-// ServiceBarber.belongsToMany(Appointment, {through:"detailAppointment"})
+Barber.belongsToMany(HairType, { through: "hairTypeBarber" });
+HairType.belongsToMany(Barber, { through: "hairTypeBarber" });
+
+Barber.belongsToMany(Style, { through: "styleBarber" });
+Style.belongsToMany(Barber, { through: "styleBarber" });
+
+// Se va a crear una tabla intermedia con los id de las tablas
+Barber.belongsToMany(Client, { through: "appointment" }); // ¿Acá esta implicita la asosiación entre appointment y barber?
+Client.belongsToMany(Barber, { through: "appointment" });
+
+Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
+ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" });
 
 // Se va a crear una tabla intermedia con los id de las tablas
 Barber.belongsToMany(Client, {through:"appointment"});
 Client.belongsToMany(Barber, {through:"appointment"});
 
-Barber.belongsToMany(Service, {through:"serviceBarber"});
-Service.belongsToMany(Barber, {through:"serviceBarber"});
+// Tabla de registro de facturas Cliente/Barber
+Barber.belongsToMany(Client, { through: "invoice" });
+Client.belongsToMany(Barber, { through: "invoice" });
 
-Appointment.belongsToMany(ServiceBarber, {through:"detailAppointment"});
-ServiceBarber.belongsToMany(Appointment, {through:"detailAppointment"});
+// Tabla de registro de servicios facturados
+Invoice.belongsToMany(ServiceBarber, { through: "detailInvoice" });
+ServiceBarber.belongsToMany(Invoice, { through: "detailInvoice" });
 
+// ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
+Style.hasMany(Client);
+Client.belongsTo(Style);
 
+HairType.hasMany(Client);
+Client.belongsTo(HairType);
 
-// Se le agrega el idBarber a client
+FaceType.hasMany(Client);
+Client.belongsTo(FaceType);
+
 Style.hasMany(Client);
 Client.belongsTo(Style);
 
@@ -91,15 +112,12 @@ Client.belongsTo(FaceType);
 HairType.hasMany(Client);
 Client.belongsTo(HairType);
 
-
-
 //+++++++++++++++++++++ Explicaciones sobre las relacines en la base de datos  ++++++++++++++++++
 // // -----------------relacion de uno a uno (hasOne, belongsTo)----------------------------------
 // // Se le agrega el idBarber a client
 // ---Barber.hasOne(Client);
 // // Se le agrega el idBarber a client
 // ---Client.belongsTo(Barber);
-
 
 // //---------------------relacion de uno a muchos (hasMany, belongsTo)----------------------------
 // // Se le agrega el idBarber a client
@@ -113,8 +131,6 @@ Client.belongsTo(HairType);
 
 // ---Barber.belongsToMany(Client, {through:"cita"})
 // ---Client.belongsToMany(Barber, {through:"cita"})
-
-
 
 // Nuevo comentario de prueba
 

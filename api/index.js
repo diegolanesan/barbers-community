@@ -29,5 +29,6 @@ conn.sync({ force: false }).then(() => {
 	});
 });
 // Quokka.js
-
+//sudo lsof -i :3001
+// kill processNumber (Node)
 // const { PORT } = require("./src/utils/config/index");

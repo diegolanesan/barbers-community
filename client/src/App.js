@@ -12,6 +12,7 @@ import Academic from './components/content/academic/Academic';
 import Urban from './components/content/urban/Urban';
 import BarberConfig from './components/content/barberConfig/BarberConfig';
 import LoginBarbers from './components/content/loginBarber/LoginBarber';
+import LoginClient from './components/content/loginClient/LoginClient';
 import HairTechnician from './components/content/hairTechnician/HairTechnician';
 import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
@@ -27,6 +28,7 @@ function App() {
       <Route exact path="/register" component={Register} />
       <Route exact path="/BarberConfig/:id" component={BarberConfig} />
       <Route exact path="/loginBarbers" component={LoginBarbers} />
+      <Route exact path="/loginClients" component={LoginClient} />
       <Route exact path="/admin/barbers/edit/:id" component={BarberEdit} />
       <Route exact path="/academic" component={Academic} />
       <Route exact path="/urban" component={Urban} />
