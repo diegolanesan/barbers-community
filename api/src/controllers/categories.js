@@ -81,6 +81,13 @@ const deleteCategory = async (req, res)=>{
     }
 }
 
+const relationsCategories = async (req, res) => {
+    const { categoryId, serviceId } = req.body
+    const result = await categoryService.findOrCreate({where: {categoryId, serviceId}})
+    if (result) res.send(result)
+    else res.status(400).send('Hay algo mal che')
+}
+
 
 
 
@@ -90,6 +97,6 @@ module.exports = {
     getAllCategory ,
     getByIdCategory,
     getByNameCategory,
-    putCategory
-
+    putCategory,
+    relationsCategories
 }

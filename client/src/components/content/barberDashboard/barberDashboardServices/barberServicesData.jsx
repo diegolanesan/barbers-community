@@ -5,42 +5,43 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBarbers } from '../../../../redux/action/barbers';
 import { getServices } from '../../../../redux/action/services';
 
-const BarberServicesData = () => {
+const BarberServicesData = ({filters}) => {
     const dispatch = useDispatch();
     const { resp } = useSelector((state) => state);
-    const { services } = useSelector((state) => state);
-    console.log(services)
+    const services = useSelector((state) => state.services.array);
     const { id } = useParams()
     //console.log(id);
     useEffect(() => {
-        console.log(id + "");
+        // console.log(id + "");
         //dispatch(barberDetail(id));
-        dispatch(getBarbers());
+        // dispatch(getBarbers());
         dispatch(getServices())
     }, []);
 
-    const barbersPerPage = services
+    const filtered = services.filter(n => n.Categories ? n.Categories.name === filters : 0)
+    console.log(filtered)
+    // const barbersPerPage = services
     const [appointment, setAppointment] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
     //console.log(appointment)
     return (
         <div>
             <div className="grid overflow-auto h-96 sm:grid-cols-1 sm:grid-cols-6">
-                {barbersPerPage &&
-                    barbersPerPage.array.map((n) => (
+                {filtered &&
+                    filtered.map((n) => (
                         <div
                             key={n.id}
-                            className="text-center m-8 border rounded-xl pb-1 shadow-md"
+                            className="text-center m-8 border rounded-xl pb-1 w-4/5 shadow-md"
                         >
 
                             <img
-                                className="rounded-lg h-24 w-full"
-                                src='https://www.pngitem.com/pimgs/m/15-151671_barber-barber-icon-png-transparent-png.png'
+                                className="rounded-lg h-30 w-full"
+                                src={n.image[0]}
                                 alt=""
                                 width="200px"
                                 height="200px"
                             />
                             <h4 className="font-bold">{`${n.name}`}</h4>
-                            <h4 className="font-bold">{`${n.description}`}</h4>
+                            {/* <h4 className="font-bold">{`${n.description}`}</h4> */}
                             <div className="flex justify-center pt-2">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"

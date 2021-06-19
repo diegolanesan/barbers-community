@@ -1,6 +1,6 @@
 const express = require('express');
 const server = express();
-const {postCategory, deleteCategory, getAllCategory, getByIdCategory, getByNameCategory,putCategory} = require('../controllers/categories');
+const {postCategory, deleteCategory, getAllCategory, getByIdCategory, getByNameCategory,putCategory, relationsCategories} = require('../controllers/categories');
 
 // Ruta que devuelve todas las categorias
 server.get('/all', getAllCategory);
@@ -19,6 +19,9 @@ server.put('/:id', putCategory)
 
 // Ruta para eliminar categoria
 server.delete('/:id',deleteCategory);
+
+// Ruta para crear una relación
+server.post('/relation', relationsCategories)
 
 
 module.exports= server;
