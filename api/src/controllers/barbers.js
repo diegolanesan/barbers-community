@@ -2,7 +2,7 @@ const { Barber, ServiceBarber, faceTypeBarber, styleBarber, hairTypeBarber, Hair
 require("dotenv").config();
 const { Op } = require("sequelize");
 const jwt = require('jsonwebtoken');
-const passport = require('passport')
+
 
 
 // Ruta que devuelve todos los barberos
@@ -212,7 +212,7 @@ const relationStyle = async (req, res)=>{
 	}
 };
 
- const login = async (req, res) => {
+ const loginBarbers = async (req, res) => {
 
 	const { username, password } = req.body;
 	const secret = "secret"
@@ -251,5 +251,4 @@ module.exports = {
 	relationStyle,
 	getHFStypes,
 	loginBarbers,
-	signin
 };
