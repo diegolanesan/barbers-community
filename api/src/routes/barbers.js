@@ -11,11 +11,10 @@ const { getAllBarbers,
         relationFaiceType, 
         relationHairType,
         relationStyle,
-        getHFStypes } = require('../controllers/barbers');
+        getHFStypes } = require('../controllers/barbers');      // GET Hair, Face & Styles
 
 
 // Ruta que devuelve a todos los barberos   
-
 server.get('/all', getAllBarbers);
 
 // filtra a los barberos por faceType hairType Style
@@ -23,7 +22,6 @@ server.get('/FHStype', getHFStypes)
 
 //Ruta que devuelve los barbero según su id
 server.get('/id/:id', getByIdBarbers);
-
 
 //Ruta que devuelve a los barberos según su nombre
 
@@ -50,16 +48,8 @@ server.post('/addStyle',relationStyle)
 // Ruta para modificar un barbero
 server.put('/:id', putBarbers);
 
-
 //Ruta para eliminar un Barbero  
-
 server.delete('/:id', deleteBarbers);
-
-
-
-
-
-
 
 
 module.exports= server;

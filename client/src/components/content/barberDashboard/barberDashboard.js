@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import BarberServicesDashboard from './barberDashboardServices/BarberServicesDashboard.jsx'
+import AppointmentsDash from './Appointments/Appointments.js'
 // import style from './barberDashboard.module.css'
 
 const BarberDashboard = () => {
@@ -9,12 +11,15 @@ const BarberDashboard = () => {
 
     const [buttonState, setButtonState] = useState({
         menu: 'Dashboard',
-        filters: 'Haircut'
+        filters: 'HAIRCUT',
     })
 
     const handleClick = (e) => {
         if(!e.target.name) e.preventDefault()
-        else setButtonState({...buttonState, [e.target.name]: e.target.value})
+        else {
+            if(e.target.name === 'menu') setButtonState({...buttonState, [e.target.name]: e.target.value})
+            else setButtonState({...buttonState, [e.target.name]: e.target.id})
+        }
     }
 
     return (
@@ -41,7 +46,9 @@ const BarberDashboard = () => {
                     <div>Dashboard</div>
                 )}
                 {buttonState.menu === 'Appointments' && (
-                    <div>Appointments</div>
+                    <div>
+                        <AppointmentsDash />
+                    </div>
                 )}
                 {buttonState.menu === 'Invoices' && (
                     <div>Invoices</div>
@@ -49,31 +56,31 @@ const BarberDashboard = () => {
                 {buttonState.menu === 'Catalog' && (
                     <div>
                         <div >
-                            <div className={`w-full justify-center flex`} onClick={handleClick} >
+                            <div className={`w-full mt-4 justify-center flex`} onClick={handleClick} >
                                 <div>  
-                                    <input type='button' value='Haircut' name='filters' className={buttonState.filters === 'Haircut' ? filterSelected : filterButtonStyle} />
+                                    <input type='button' id='HAIRCUT' value='Haircut' name='filters' className={buttonState.filters === 'HAIRCUT' ? filterSelected : filterButtonStyle} />
                                 </div>
                                 <div>  
-                                    <input type='button' value='Beard trim' name='filters' className={buttonState.filters === 'Beard trim' ? filterSelected : filterButtonStyle} />
+                                    <input type='button' id='BEARDCUT' value='Beard trim' name='filters' className={buttonState.filters === 'BEARDCUT' ? filterSelected : filterButtonStyle} />
                                 </div>
                                 <div>  
-                                    <input type='button' value='Kids haircuts' name='filters' className={buttonState.filters === 'Kids haircuts' ? filterSelected : filterButtonStyle} />
+                                    <input type='button' id='KIDHAIRCUT' value='Kids haircuts' name='filters' className={buttonState.filters === 'KIDHAIRCUT' ? filterSelected : filterButtonStyle} />
                                 </div>
                                 <div>  
-                                    <input type='button' value='Coloration' name='filters' className={buttonState.filters === 'Coloration' ? filterSelected : filterButtonStyle} />
+                                    <input type='button' id='HAIRCOLOR' value='Coloration' name='filters' className={buttonState.filters === 'HAIRCOLOR' ? filterSelected : filterButtonStyle} />
                                 </div>
                                 <div>
-                                    <input type='button' value='Tribal trim' name='filters' className={buttonState.filters === 'Tribal trim' ? filterSelected : filterButtonStyle} />
+                                    <input type='button' id='DESIGN' value='Tribal trim' name='filters' className={buttonState.filters === 'DESIGN' ? filterSelected : filterButtonStyle} />
                                 </div>
                                 <div>
-                                    <input type='button' value='Ozone' name='filters' className={buttonState.filters === 'Ozone' ? filterSelected : filterButtonStyle} />
+                                    <input type='button' id='OZON' value='Ozone' name='filters' className={buttonState.filters === 'OZON' ? filterSelected : filterButtonStyle} />
                                 </div>
                                 <div>
-                                    <input type='button' value='Face mask' name='filters' className={buttonState.filters === 'Face mask' ? filterSelected : filterButtonStyle} />
+                                    <input type='button' id='MASK' value='Face mask' name='filters' className={buttonState.filters === 'MASK' ? filterSelected : filterButtonStyle} />
                                 </div>
                             </div>
                         </div>
-                        <div>servicios</div>
+                        <BarberServicesDashboard filters={buttonState.filters} />
                     </div>
                 )}
                 {buttonState.menu === 'Config' && (

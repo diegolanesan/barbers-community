@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
         unique: true
     },
     image:{
-        type: DataTypes.ARRAY(STRING), // Se puede ingresar un array de varias url 
+        type: DataTypes.ARRAY(STRING), // ¿Tiene sentido que el client tenga varias fotos? Por ahora vamos a hacer que sea solo una (Foto de perfil)
         allowNull: false,
         defaultValue:["https://imagenurl"]
     },
