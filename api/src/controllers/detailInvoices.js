@@ -6,7 +6,7 @@ const getDetailInvoices = (req, res, next) => {
 	/* ---- El usuario ( administrador/cliente/barbero ) busca todas los Invoices ----*/
 	try {
 		DetailInvoice.findAll({
-			include: [{ model: Barber }, { model: Client }, { model: Invoice }], // ¿Esta bien incluir estos datos?
+			include: [{ model: Barber }, { model: Client }, { model: Invoice }],
 		}).then((result) => {
 			res.status(200).send(result);
 		});

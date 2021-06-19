@@ -56,14 +56,6 @@ const {
 } = sequelize.models;
 
 // Se va a crear una tabla intermedia con los id de las tablas
-// Barber.belongsToMany(Service, {through:"serviceBarber"});
-// Service.belongsToMany(Barber, {through:"serviceBarber"});
-
-// Se va a crear una tabla intermedia con los id de las tablas 
-Service.belongsToMany(Category, {through:"categoryService"})
-Category.belongsToMany(Service, {through:"categoryService"})
-
-
 Barber.belongsToMany(Service, { through: "serviceBarber" });
 Service.belongsToMany(Barber, { through: "serviceBarber" });
 
@@ -89,6 +81,9 @@ Client.belongsToMany(Barber, { through: "appointment" });
 Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
 ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" });
 
+Barber.belongsToMany(Style, { through: "styleBarber" });
+Style.belongsToMany(Barber, { through: "styleBarber" });
+
 // Tabla de registro de facturas Cliente/Barber
 Barber.belongsToMany(Client, { through: "invoice" });
 Client.belongsToMany(Barber, { through: "invoice" });
@@ -96,6 +91,16 @@ Client.belongsToMany(Barber, { through: "invoice" });
 // Tabla de registro de servicios facturados
 Invoice.belongsToMany(ServiceBarber, { through: "detailInvoice" });
 ServiceBarber.belongsToMany(Invoice, { through: "detailInvoice" });
+
+// ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
+Style.hasMany(Client);
+Client.belongsTo(Style);
+
+HairType.hasMany(Client);
+Client.belongsTo(HairType);
+
+FaceType.hasMany(Client);
+Client.belongsTo(FaceType);
 
 Style.hasMany(Client);
 Client.belongsTo(Style);
