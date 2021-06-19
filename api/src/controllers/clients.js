@@ -78,13 +78,10 @@ const addClient = async(req, res, next) => {
             faceTypeId, 
             hairTypeId
         });
-<<<<<<< Updated upstream
         const clientAll = await Client.findAll({include: [ { model: FaceType }, {model: HairType}, { model: Style } ]})
         return res.send(clientAll); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
-=======
-        return res.send(createdClient); // ¿A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT?
->>>>>>> Stashed changes
-    } catch (error) {
+        
+        } catch (error) {
         next(error);
     }
 }

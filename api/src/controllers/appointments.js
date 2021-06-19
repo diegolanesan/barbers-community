@@ -1,55 +1,28 @@
-<<<<<<< Updated upstream
-const { Client, Barber, DetailAppointment, Appointment, ServiceBarber, Service, AppointmentDetail} = require('../db');
-require('dotenv').config();
-const { Op } = require('sequelize');
-
-const addAppointment = async (req, res, next) => {
-    const { 
-        id,
-        barberId,
-        clientId,
-        date,
-        status,
-        total,
-         } = req.body;
-    try {
-        const createdAppointment = await Appointment.create({
-=======
 const { Client, Barber, DetailAppointment, Appointment } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 
 const addAppointment = (req, res, next) => {
     const {
-        barberId,   // Revisar cómo vienen estos datos de Sequelize!
+        barberId,   // ¿Esta bien si no le paso el id? Así se aplica el Autoincrement
         clientId,
         date,
         status,
-        total,          // ¿Qué era este dato?
+        total,
          } = req.body;
     try {
         const createdAppointment = Appointment.create({
->>>>>>> Stashed changes
             barberId,
             clientId,
             date,
             status,
             total
-<<<<<<< Updated upstream
         })
         return res.send(createdAppointment);// ¿Le respondo con la cita creada, o con todas las citas?
     } catch (error) {
         next(error);
     }
 
-=======
-        });
-        return res.send(createdAppointment);// ¿Le respondo con la cita creada, o con todas las citas?
-
-    } catch (error) {
-        next(error);
-    }
->>>>>>> Stashed changes
 }
 
 const getAppointments = (req, res, next) => {

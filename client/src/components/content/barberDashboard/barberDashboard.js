@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import BarberServicesDashboard from './barberDashboardServices/BarberServicesDashboard.jsx'
 import AppointmentsDash from './Appointments/Appointments.js'
+import InvoicesDash from './Invoices/Invoices'
+
 // import style from './barberDashboard.module.css'
 
 const BarberDashboard = () => {
@@ -51,7 +53,9 @@ const BarberDashboard = () => {
                     </div>
                 )}
                 {buttonState.menu === 'Invoices' && (
-                    <div>Invoices</div>
+                    <div>
+                        <InvoicesDash />
+                    </div>
                 )}
                 {buttonState.menu === 'Catalog' && (
                     <div>
