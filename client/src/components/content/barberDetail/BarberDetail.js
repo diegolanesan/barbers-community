@@ -8,11 +8,11 @@ import BarberServices from "./BarberServices";
 
 function BarberDetail(props) {
 	const dispatch = useDispatch();
-	const { resp } = useSelector((state) => state.barberDetail);
+	const { resp } = useSelector((state) => state);
 	const id = props.match.params.id;
 	useEffect(() => {
 		dispatch(barberDetail(id));
-		dispatch(getBarbers());
+		//dispatch(getBarbers());
 	}, []);
 	
 	const scrollToRef = (ref) => window.scrollTo({ left: 0, top: ref.current.offsetTop, behavior: 'smooth' })

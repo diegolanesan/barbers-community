@@ -34,7 +34,7 @@ const BarberServicesData = () => {
 
                             <img
                                 className="rounded-lg h-24 w-full"
-                                src='https://www.pngitem.com/pimgs/m/15-151671_barber-barber-icon-png-transparent-png.png'
+                                src={n.image[0]}
                                 alt=""
                                 width="200px"
                                 height="200px"
@@ -60,8 +60,8 @@ const BarberServicesData = () => {
                     ))}
             </div>
             <div className="border-t-4 border-blue-400 mt-10"></div>
-            <div class="flex justify-center text-2xl font-semibold text-gray-900 leading-8 mt-4 ">
-                <span class="tracking-wide"> Your New Service </span>
+            <div className="flex justify-center text-2xl font-semibold text-gray-900 leading-8 mt-4 ">
+                <span className="tracking-wide"> Your New Service </span>
             </div>
             <div>
                 <div className="grid sm:grid-cols-3 mt-6 mb-4 grid-cols-1">
