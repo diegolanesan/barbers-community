@@ -4,7 +4,6 @@ const { Op } = require("sequelize");
 const jwt = require('jsonwebtoken');
 
 
-
 // Ruta que devuelve todos los barberos
 
 const getAllBarbers = async(req, res)=>{

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Route } from "react-router-dom";
 import Home from './components/container/Home/Home';
 import './App.css';
@@ -17,8 +18,19 @@ import HairTechnician from './components/content/hairTechnician/HairTechnician';
 import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
+
+import { loadBarber } from './redux/action/auth'
+
+
 function App() {
+  const dispatch = useDispatch()
+  const auth = useSelector(state => state.auth.token)
+  useEffect(() => {
+    dispatch(loadBarber())
+    }, [dispatch])
+
   return (
+    
     <div className="App">
       <Route path="/" component={NavBar}/>
       <Route path="/Detail/:id" component={showBarberDetail}/>
@@ -36,7 +48,8 @@ function App() {
       <Route exact path="/recovery" component={Recovery} />
       <Route exact path="/appointment/date" component={AppointmentDate} />
       <Route exact path="/barbers/dashboard" component={BarberDashboard} />
-    </div>   
+    </div> 
+     
   );
 }
 

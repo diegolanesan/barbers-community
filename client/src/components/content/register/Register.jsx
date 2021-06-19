@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { postBarber } from "../../../redux/action/barbers";
+//import { postBarber } from "../../../redux/action/barbers";
+import { signOutBarber } from "../../../redux/action/auth";
 
 const validate = (input) => {
 	let errors = {}
@@ -101,12 +102,12 @@ const Register = () => {
 				type: barber.type,
 			},
 		};
-		if (errors || !barberSend.barber.name) {
-			e.preventDefault()
-			return alert("There's some required fields empty, check please.")
-		}
+		// if (errors || !barberSend.barber.name) {
+		// 	e.preventDefault()
+		// 	return alert("There's some required fields empty, check please.")
+		// }
 		console.log(barberSend);
-		dispatch(postBarber(barberSend));
+		dispatch(signOutBarber(barberSend)); // Reemplazar por la nueva action que almacena el JWT
 		alert("Register Sucessfull");
 		window.location.replace("/catalog");
 	};
