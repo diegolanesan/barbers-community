@@ -7,7 +7,7 @@ const {
 	addRelation,
 	updateInvoice,
 	deleteInvoice,
-} = require("../controllers/Invoices"); // updateClient
+} = require("../controllers/invoices"); // updateClient
 
 router.get("/", getInvoices);
 router.get("/:id", getInvoiceById);
