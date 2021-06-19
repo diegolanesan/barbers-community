@@ -83,9 +83,7 @@ const getTypeBarbers = async (req, res) => {
 
 const getByIdBarbers = async (req, res) => {
 	const idBarber = req.params.id;
-	const resul = await Barber.findOne({where :{id: idBarber}/* , 
-		include:[ { model: FaceType }, {model: HairType}, { model: Style } ] */ 
-	});
+	const resul = await Barber.findByPk(idBarber);
 	if (resul) {
 		console.log(resul, "aaaaaaaaaa")
 		/* let aux = barber
@@ -104,7 +102,7 @@ const getByIdBarbers = async (req, res) => {
 			aux.dataValues.faces = faces
 			aux.dataValues.hairs = hairs
 			aux.dataValues.barberStyles = barberStyles */
-		res.send(resul.barber);
+		res.send(resul);
 	} else {
 		res.status(400).send("No se encontro el barbero");
 	}

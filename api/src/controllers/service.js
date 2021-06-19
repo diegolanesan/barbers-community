@@ -8,16 +8,21 @@ const getBarbersService = async (req, res) =>{
     const barber = await Barber.findByPk(idBarber, { include: { all: true, nested: true }});
     if(barber){
         res.send(barber)
-    }else{
+    }else {
         res.status(400).send("No se encontro los servicios solicitados")
     }
-
 };
 
 // ruta para buscar todos los servicios
 const getAllService = async (req, res)=>{
     const allService = await Service.findAll({include:[{model:Category},{model:Barber}]});
     if(allService){
+        for (let i = 0; i < allService.length; i++) {
+            if (allService[i].dataValues.categories[0] !== undefined) allService[i].dataValues.Categories = {
+                name: allService[i].dataValues.categories[0].dataValues.name,
+                description: allService[i].dataValues.categories[0].dataValues.description
+            }
+        }
         res.send(allService)
     }else{
         res.status(400).send("No hay servicios")
@@ -46,9 +51,7 @@ const relationService = async (req, res)=>{
     }else{
         res.status(400).send("No se pudo relacionar las tablas")
     }
-
 }
-
 
 
 module.exports = {
