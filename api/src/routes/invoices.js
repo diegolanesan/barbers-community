@@ -1,19 +1,19 @@
 const { Router } = require("express");
 const router = Router();
 const {
-	getAppointments,
-	getAppointmentById,
-	addAppointment,
+	getInvoices,
+	getInvoiceById,
+	addInvoice,
 	addRelation,
-	updateAppointment,
-	deleteAppointment,
-} = require("../controllers/appointments"); // updateClient
+	updateInvoice,
+	deleteInvoice,
+} = require("../controllers/Invoices"); // updateClient
 
-router.get("/", getAppointments);
-router.get("/:id", getAppointmentById);
-router.put("/:id", updateAppointment);
-router.post("/add", addAppointment);
-router.post("/addServiceToAppointment", addRelation);
-router.delete("/:id", deleteAppointment);
+router.get("/", getInvoices);
+router.get("/:id", getInvoiceById);
+router.put("/:id", updateInvoice);
+router.post("/add", addInvoice);
+router.post("/addServiceToInvoice", addRelation);
+router.delete("/:id", deleteInvoice);
 
 module.exports = router;

@@ -16,8 +16,17 @@ module.exports = (sequelize) => {
 				type: DataTypes.DATE, // RE-VER ESTO WACHIN!
 				allowNull: false,
 			},
-			status: {
-				type: DataTypes.ENUM("Pending", "Approved", "Cancel", "Delete"),
+			statusOrder: {
+				type: DataTypes.ENUM(
+					"unSuccessful",
+					"onHold",
+					"inProgress",
+					"Completed"
+				),
+				allowNull: false,
+			},
+			statusPay: {
+				type: DataTypes.ENUM("Cancel", "unPayd", "Pay"),
 				allowNull: false,
 			},
 			total: {
