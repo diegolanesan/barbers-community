@@ -1,9 +1,8 @@
 require('dotenv').config();
 const { Op } = require('sequelize');
-const { Category, Service } = require('../db');
+const { Category, Service, categoryService } = require('../db');
 
-
-const getAllCategory = async(req, res)=>{
+const getAllCategory = async (req, res) =>{
     const category = await Category.findAll({include:{model:Service}});
     if(category){
         res.send(category)
@@ -65,7 +64,7 @@ const putCategory = async (req, res)=>{
     if(category){
         category = category.update(categoryModify);
         res.send("se modifico correctamente la categoria")
-    }else{
+    }else {
         res.send("No se ha podido modificar la categoria")
     }
 }
@@ -81,7 +80,6 @@ const deleteCategory = async (req, res)=>{
         res.status(400).send("No se ha eliminado la categoria")
     }
 }
-
 
 
 
