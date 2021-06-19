@@ -48,7 +48,7 @@ const BarberDashboard = () => {
                     <div>Dashboard</div>
                 )}
                 {buttonState.menu === 'Appointments' && (
-                    <div>
+                    <div className="grid" >
                         <AppointmentsDash />
                     </div>
                 )}
