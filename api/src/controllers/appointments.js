@@ -1,28 +1,39 @@
-const { Client, Barber, DetailAppointment, Appointment, ServiceBarber, Service, AppointmentDetail} = require('../db');
+const { Client, Barber, DetailAppointment, Appointment, ServiceBarber, Service} = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 
 const addAppointment = (req, res, next) => {
     const {
-        barberId,   // ¿Esta bien si no le paso el id? Así se aplica el Autoincrement
+        barberId,
         clientId,
         date,
+        time,
         status,
         total,
-         } = req.body;
-    try {
-        const createdAppointment = Appointment.create({
+        serviceBarberId
+    } = req.body
+    Appointment.findOrCreate({
+        where: {
             barberId,
             clientId,
             date,
+            time,
             status,
-            total
-        })
-        return res.send(createdAppointment);// ¿Le respondo con la cita creada, o con todas las citas?
-    } catch (error) {
-        next(error);
-    }
-
+            total,
+        }
+    }).then((resp) => {
+        for (let i = 0; i < serviceBarberId.length; i++) {
+            const element = serviceBarberId[i];
+            DetailAppointment.findOrCreate({
+                where: {
+                appointmentId: resp[0].id,
+                serviceBarberId: Number(element),
+                price: 100
+                }})
+                console.log(element)
+        }
+        res.send(resp)
+    })
 }
 
 const getAppointments = (req, res, next) => {
@@ -33,6 +44,7 @@ const getAppointments = (req, res, next) => {
         })
         .then((result) => {
             res.status(200).send(result);
+            
         })
     } catch(e){
         console.log("No se pudo realizar la petición HTTP correctamente " + e);
