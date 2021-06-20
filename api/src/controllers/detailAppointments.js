@@ -33,21 +33,17 @@ const getDetailAppointmentById = (req, res, next) => {
     }
 }
 
-const addDetailAppointment = (req, res, next) => {
+const addDetailAppointment = async (req, res, next) => {
     const { 
-        idBarber,   // Revisar cómo vienen estos datos de Sequelize!
-        idClient,
-        date,
-        status,
-        total,
+        appointmentId,   // Revisar cómo vienen estos datos de Sequelize!
+        serviceBarber,
+        price
          } = req.body;
     try {
-        const createdDetail = DetailAppointment.create({
-            idBarber,
-            idClient,
-            date,
-            status,
-            total
+        const createdDetail = await DetailAppointment.create({
+            appointmentId,   // Revisar cómo vienen estos datos de Sequelize!
+            serviceBarberId: serviceBarber,
+            price
         });
         return res.send(createdDetail);// ¿Le respondo con la cita creada, o con todas las citas?
     } catch (error) {

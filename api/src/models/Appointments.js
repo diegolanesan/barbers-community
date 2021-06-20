@@ -11,7 +11,11 @@ module.exports = (sequelize) => {
 			allowNull: false,
 		},
 		date: {
-			type: DataTypes.DATE,  // RE-VER ESTO WACHIN!
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		time: {
+			type: DataTypes.STRING,
 			allowNull: false,
 		},
 		status: {
