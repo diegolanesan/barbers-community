@@ -82,9 +82,8 @@ Client.belongsToMany(Barber, { through: "appointment" });
 Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
 ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" });
 
-// Se va a crear una tabla intermedia con los id de las tablas
-Barber.belongsToMany(Client, {through:"appointment"});
-Client.belongsToMany(Barber, {through:"appointment"});
+Barber.belongsToMany(Style, { through: "styleBarber" });
+Style.belongsToMany(Barber, { through: "styleBarber" });
 
 // Tabla de registro de facturas Cliente/Barber
 Barber.belongsToMany(Client, { through: "invoice" });

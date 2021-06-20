@@ -35,7 +35,11 @@ const getInvoiceById = (req, res, next) => {
 		let queryId = req.params.id.toUpperCase();
 		Invoice.findOne({
 			where: { id: queryId },
+<<<<<<< HEAD
+			include: [{ model: Barber }, { model: Client }, { model: DetailInvoice }],
+=======
 			//	include: [{ model: Barber }, { model: Client }, { model: DetailInvoice }],
+>>>>>>> 6740ba57322b30405f8f3bdc849d16c27e4ef361
 		}).then((result) => {
 			res.status(200).send(result);
 		});
@@ -46,6 +50,16 @@ const getInvoiceById = (req, res, next) => {
 
 const updateInvoice = async (req, res, next) => {
 	const invoiceId = req.params.id;
+<<<<<<< HEAD
+	const { InvoiceModify } = req.body;
+	let Invoice = await Invoice.findByPk(invoiceId);
+	if (Invoice) {
+		Invoice = Invoice.update(InvoiceModify);
+		res.send(Invoice);
+	} else {
+		res.send("The invoice could not be modified");
+	}
+=======
 	const { invoiceModify } = req.body;
 	let invoice = await Invoice.findByPk(invoiceId);
 	console.log(invoice);
@@ -60,6 +74,7 @@ const updateInvoice = async (req, res, next) => {
 		res.send("The invoice could not be modified");
 	}
 	return res.send(invoiceModify);
+>>>>>>> 6740ba57322b30405f8f3bdc849d16c27e4ef361
 };
 
 const addRelation = async (req, res, next) => {

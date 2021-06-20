@@ -1,4 +1,4 @@
-const { Client, Barber, DetailAppointment, Appointment } = require('../db');
+const { Client, Barber, DetailAppointment, Appointment, ServiceBarber, Service, AppointmentDetail} = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 

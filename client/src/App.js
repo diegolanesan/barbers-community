@@ -18,21 +18,13 @@ import HairTechnician from './components/content/hairTechnician/HairTechnician';
 import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
-
-import { loadBarber } from './redux/action/auth'
-
-
+import { useLocation } from "react-router-dom";
 function App() {
-  const dispatch = useDispatch()
-  const auth = useSelector(state => state.auth.token)
-  useEffect(() => {
-    dispatch(loadBarber())
-    }, [dispatch])
-
+  const location = useLocation();
   return (
     
     <div className="App">
-      <Route path="/" component={NavBar}/>
+      {(location.pathname === "/" || location.pathname === "/catalog") &&  <Route path="/" component={NavBar}/>}
       <Route path="/Detail/:id" component={showBarberDetail}/>
       <Route exact path="/" component={Home}/>
       <Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
