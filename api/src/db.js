@@ -52,7 +52,6 @@ const {
 	Service,
 	DetailAppointment,
 	Invoice,
-	DetailInvoice,
 } = sequelize.models;
 
 // Se va a crear una tabla intermedia con los id de las tablas

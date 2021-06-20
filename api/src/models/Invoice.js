@@ -23,12 +23,10 @@ module.exports = (sequelize) => {
 					"inProgress",
 					"Completed"
 				),
-				allowNull: false,
 				defaultValue: "onHold",
 			},
 			statusPay: {
 				type: DataTypes.ENUM("Cancel", "unPaid", "Pay"),
-				allowNull: false,
 				defaultValue: "unPaid",
 			},
 			total: {
