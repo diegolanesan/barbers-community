@@ -76,3 +76,5 @@ export const relationHairType = (body) => (dispatch) => {
 		.post(HOST_BACK + "/barbers/addHairType", body)
 		.then((res) => dispatch({ type: RELATION_HAIR_TYPE, payload: res.data }));
 };
+
+

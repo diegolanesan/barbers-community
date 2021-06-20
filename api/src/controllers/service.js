@@ -4,7 +4,7 @@ const { Op } = require('sequelize');
 
 // ruta que retorna los sevicios  según el barbero
 const getBarbersService = async (req, res) =>{
-    const {idBarber} = req.params;
+    const idBarber = req.params.id;
     const barber = await Barber.findByPk(idBarber, { include: { all: true, nested: true }});
     if(barber){
         res.send(barber)
@@ -12,6 +12,27 @@ const getBarbersService = async (req, res) =>{
         res.status(400).send("No se encontro los servicios solicitados")
     }
 };
+
+// const getBarbersService = async (req, res) =>{
+//     const idBarber = req.params.id;
+//     const barber = await Barber.findByPk(idBarber, { include: { all: true, nested: true }});
+//     if (barber) {
+//         let servicios
+//         let categories
+//         if (barber.services) categories = barber.services.map(n => n.categories)
+//         const array = categories.flat()
+//         if(barber.services) barber.dataValues.Services = array
+//         if (barber.services) {
+//             servicios = barber.services.map(n => { n.id, n.name, n.description, n.image[0], n.price })
+//             barber.dataValues.CompleteService = servicios
+//         }
+
+        // barber.dataValues.services.push({name: "wachiturro"})
+//         res.send(barber)
+//     }else {
+//         res.status(400).send("No se encontro los servicios solicitados")
+//     }
+// };
 
 // ruta para buscar todos los servicios
 const getAllService = async (req, res)=>{

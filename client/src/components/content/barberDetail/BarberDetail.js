@@ -1,10 +1,11 @@
-import { React, useEffect, useRef } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { barberDetail } from "../../../redux/action/barberDetail";
 import { getBarbers } from "../../../redux/action/barbers";
+import { addToAppointment } from "../../../redux/action/services";
 import "./BarberDetail.modules.css";
-import BarberServices from "./BarberServices";
+import BarberDetailServices from "./BarberDetailServices.jsx";
 
 function BarberDetail(props) {
 	const dispatch = useDispatch();
@@ -15,9 +16,28 @@ function BarberDetail(props) {
 		dispatch(getBarbers());
 	}, []);
 	
+	
 	const scrollToRef = (ref) => window.scrollTo({ left: 0, top: ref.current.offsetTop, behavior: 'smooth' })
 	const myRef = useRef(null);
 	const executeScroll = () => scrollToRef(myRef)
+
+	    const buttonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-1 px-0 mx-0 mb-0 w-full"
+    const buttonSelected = "bg-blue-800 text-white py-1 px-0 mx-0 mb-0 w-full"
+    const filterButtonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-2 px-5 mx-2 mt-3 mb-3"
+    const filterSelected = "bg-blue-800 text-white py-2 px-5 mx-2 mt-3 mb-3"
+
+    const [boton, setBoton] = useState({
+        menu: 'Dashboard',
+        filters: 'HAIRCUT',
+    })
+
+    const handleClick = (e) => {
+        if(!e.target.name) e.preventDefault()
+        else {
+            if(e.target.name === 'menu') setBoton({ [e.target.name]: e.target.value})
+            else setBoton({ [e.target.name]: e.target.id})
+        }
+    }
 
 	console.log(resp)
 	return (
@@ -198,72 +218,37 @@ function BarberDetail(props) {
 			)}
 			</div>
 			<div class="bg-gray-100 max-w-6xl  mx-auto my-20">
-			{!resp ? (
-				<div class="loader"></div>
-			) : (
-				<div ref={myRef} class="container mx-auto my-5 p-5">
-					<div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
-                    	<div class="grid">
-								<div>
-									<div class="flex justify-center text-2xl font-semibold text-gray-900 leading-8 mb-3">
-										<span class="tracking-wide">Get an appointment with {resp.name}</span>
-									</div>
-									<div class="flex items-center text-lg font-semibold text-gray-900 leading-8 mb-3">
-                                		<span class="tracking-wide">Choose a Haircut:</span>
-                            		</div>
-                              		<ul class="list-inside space-y-2">
-                                 		{/* {resp.services ? resp.hairTypes.map(n => (
-                                    	<li>
-                                       		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
-                                    	</li>
-                                 		)) : "waiting"} */}
-											<BarberServices />
-										</ul>
-										<div class="flex justify-center text-lg border-t-4 border-blue-200 font-semibold text-gray-900 leading-8 mt-2 mb-3">
-                                			<span class="tracking-wide mt-2 -mb-1">Extra Services</span>
-                            			</div>
-										<div class="flex items-center text-lg border-t-4 border-blue-200 font-semibold text-gray-900 leading-8 mb-3">
-                                			<span class="tracking-wide mt-1 ">Extra 1:</span>
-                            			</div>
-										<ul class="list-inside space-y-2">
-                                 		{/* {resp.services ? resp.hairTypes.map(n => (
-                                    	<li>
-                                       		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
-                                    	</li>
-                                 		)) : "waiting"} */}
-											<BarberServices />
-										</ul>
-										<div class="flex items-center text-lg border-t-2 border-blue-200 font-semibold text-gray-900 leading-8 mb-3">
-                                			<span class="tracking-wide mt-1 ">Extra 2:</span>
-                            			</div>
-										<ul class="list-inside space-y-2">
-                                 		{/* {resp.services ? resp.hairTypes.map(n => (
-                                    	<li>
-                                       		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
-                                    	</li>
-                                 		)) : "waiting"} */}
-											<BarberServices />
-										</ul>
-										<div class="flex items-center text-lg border-t-2 border-blue-200 font-semibold text-gray-900 leading-8 mb-3">
-                                			<span class="tracking-wide mt-1 ">Extra 3:</span>
-                            			</div>
-										<ul class="list-inside space-y-2">
-                                 		{/* {resp.services ? resp.hairTypes.map(n => (
-                                    	<li>
-                                       		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
-                                    	</li>
-                                 		)) : "waiting"} */}
-											<BarberServices />
-                              		</ul>
-                        		</div>
-                     		</div>
-                  		</div>
-							{/* <!-- End of Services --> */}
-					</div>
-				)}
+				                    <div>
+                        <div >
+                            <div className={`w-full mt-4 justify-center flex`} onClick={handleClick} >
+                                <div>  
+                                    <input type='button' id='HAIRCUT' value='Haircut' name='filters' className={boton.filters === 'HAIRCUT' ? filterSelected : filterButtonStyle} />
+                                </div>
+                                <div>  
+                                    <input type='button' id='BEARDCUT' value='Beard trim' name='filters' className={boton.filters === 'BEARDCUT' ? filterSelected : filterButtonStyle} />
+                                </div>
+                                <div>  
+                                    <input type='button' id='KIDHAIRCUT' value='Kids haircuts' name='filters' className={boton.filters === 'KIDHAIRCUT' ? filterSelected : filterButtonStyle} />
+                                </div>
+                                <div>  
+                                    <input type='button' id='HAIRCOLOR' value='Coloration' name='filters' className={boton.filters === 'HAIRCOLOR' ? filterSelected : filterButtonStyle} />
+                                </div>
+                                <div>
+                                    <input type='button' id='DESIGN' value='Tribal trim' name='filters' className={boton.filters === 'DESIGN' ? filterSelected : filterButtonStyle} />
+                                </div>
+                                <div>
+                                    <input type='button' id='OZON' value='Ozone' name='filters' className={boton.filters === 'OZON' ? filterSelected : filterButtonStyle} />
+                                </div>
+                                <div>
+                                    <input type='button' id='MASK' value='Face mask' name='filters' className={boton.filters === 'MASK' ? filterSelected : filterButtonStyle} />
+                                </div>
+                            </div>
+                        </div>
+                        <BarberDetailServices filters={boton.filters} />
+                    </div>
 					<div className="flex justify-center">		
 				<Link to="/appointment/date">
-						<button className="px-20 py-2 -mt-3 mb-7 bg-blue-500 fotn-bold rounded">Next Step</button>
+						<button onClick={() => dispatch(addToAppointment(resp))} className="px-20 py-2 -mt-3 mb-7 bg-blue-500 fotn-bold rounded">Next Step</button>
 				</Link>
 					</div>
 			</div>
