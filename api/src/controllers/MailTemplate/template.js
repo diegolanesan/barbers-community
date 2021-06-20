@@ -1,4 +1,6 @@
-const template = `
+const template = (token)=>{
+    return (
+        `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
 <head>
@@ -162,7 +164,7 @@ cellspacing="0"><tr><td style="width:263px" valign="top"><![endif]-->
 <td align="center" valign="top" style="padding:0;Margin:0;width:590px">
 <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr style="border-collapse:collapse">
-<td align="left" style="Margin:0;padding-bottom:10px;padding-top:15px;padding-left:20px;padding-right:20px"><span class="es-button-border" style="border-style:solid;border-color:#0000FF;background:#0000FF;border-width:0px;display:inline-block;border-radius:0px;width:auto"><a href="https://http//localhost:3000/recovery" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:18px;border-style:solid;border-color:#0000FF;border-width:10px 25px;display:inline-block;background:#0000FF;border-radius:0px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:bold;font-style:normal;line-height:22px;width:auto;text-align:center">Reset Password</a></span></td>
+<td align="left" style="Margin:0;padding-bottom:10px;padding-top:15px;padding-left:20px;padding-right:20px"><span class="es-button-border" style="border-style:solid;border-color:#0000FF;background:#0000FF;border-width:0px;display:inline-block;border-radius:0px;width:auto"><a href="http://localhost:3000/recovery/${token}" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:18px;border-style:solid;border-color:#0000FF;border-width:10px 25px;display:inline-block;background:#0000FF;border-radius:0px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:bold;font-style:normal;line-height:22px;width:auto;text-align:center">Reset Password</a></span></td>
 </tr>
 <tr style="border-collapse:collapse">
 <td align="left" class="es-m-txt-l" style="padding:0;Margin:0;padding-left:25px;padding-right:25px"><h5 style="Margin:0;line-height:150%;mso-line-height-rule:exactly;font-family:verdana, geneva, sans-serif;color:#FFFFFF">Click on the button and</h5><h5 style="Margin:0;line-height:150%;mso-line-height-rule:exactly;font-family:verdana, geneva, sans-serif;color:#FFFFFF">enter the secret code</h5></td>
@@ -326,6 +328,8 @@ cellspacing="0"><tr><td style="width:263px" valign="top"><![endif]-->
 </html>
 
 `
+    )
+}
 module.exports= {
     template
 }

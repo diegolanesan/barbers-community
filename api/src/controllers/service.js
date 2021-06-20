@@ -70,7 +70,7 @@ const relationService = async (req, res)=>{
     if(resul){
         res.send(resul)
     }else{
-        res.status(400).send("No se pudo relacionar las tablas")
+        res.status(400).send("No se pudo relacionar las tablas");
     }
 }
 

@@ -51,7 +51,7 @@ const passwordRecovery = (req, res)=>{
         from:`Community Barber's <${USER_EMAIL}>`,
         to,
         subject: "RECUPERACIÓN DE CONTRASEÑA: ",
-        html:template
+        html:template(token)
     };
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {

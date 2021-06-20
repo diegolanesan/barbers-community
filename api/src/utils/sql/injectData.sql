@@ -20,6 +20,7 @@
 -- Remote:
 -- psql -h host -U username -d myDataBase -a -f myInsertFile
 -- psql -h batyr.db.elephantsql.com -U fcuxnish -d myDataBase -a -f 1.injectData.sql
+-- psql -h batyr.db.elephantsql.com -U fcuxnish -d fcuxnish -a -f injectData.sql
 
 INSERT INTO "faceTypes" (id, description) VALUES (1, 'Square');
 INSERT INTO "faceTypes" (id, description) VALUES (2, 'Triangular');

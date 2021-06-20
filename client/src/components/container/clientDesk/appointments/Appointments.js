@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const AppointmentsDash = () => {
+const AppointmentsDashClient = () => {
     const prueba = [{details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
     {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
     {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
@@ -149,4 +149,4 @@ const AppointmentsDash = () => {
     )
 }
 
-export default AppointmentsDash
+export default AppointmentsDashClient;
