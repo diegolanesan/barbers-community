@@ -4,13 +4,18 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getServices } from "../../../redux/action/services";
+import { loadUser } from '../../../redux/action/auth'
 
 function Home() {
 	const dispatch = useDispatch();
+ 
 	useEffect(() => {
-		dispatch(getServices());
+		dispatch(loadUser())
+		dispatch(getServices())
+		
 	}, [dispatch]);
 	const services = useSelector((state) => state.services.array);
+	const user = useSelector(state => state.auth)
 
     return (
         <div>

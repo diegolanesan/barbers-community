@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
-import BarberServicesData from './barberServicesData';
+import BarberServicesData from './ClientServicesData';
 
 const ClientServicesDashboard = ({filters}) => {
 
