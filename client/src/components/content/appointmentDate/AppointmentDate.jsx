@@ -78,11 +78,15 @@ export default function AppointmentDate() {
         }))
     }
 
+    const goBack = () => {
+        window.history.back();
+    }
+
     return (
         <div>
             <div class="bg-gray-100 max-w-6xl mx-auto mt-20">
                 <div class="container mx-auto my-5 p-5">
-                    <button onClick={() => history.back()} class="bg-blue-400 hover:bg-blue-600 border-b-2  text-white py-2 px-4 mx-4 mb-0 rounded-lg">
+                    <button onClick={() => goBack()} class="bg-blue-400 hover:bg-blue-600 border-b-2  text-white py-2 px-4 mx-4 mb-0 rounded-lg">
                         <svg className="transform rotate-180" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 24"><path d="M24 12l-12-9v5h-12v8h12v5l12-9z" /></svg>
                     </button>
                     <div class="md:flex no-wrap md:-mx-2 pt-8 ">
