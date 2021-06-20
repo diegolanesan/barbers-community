@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import BarberServicesData from './barberServicesData';
 
-const BarberServicesDashboard = ({filters}) => {
+const BarberServicesDashboard = ({ filters }) => {
 
     // console.log(filters)
 
@@ -58,7 +58,7 @@ const BarberServicesDashboard = ({filters}) => {
                                        		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
                                     	</li>
                                  		)) : "waiting"} */}
-                            <BarberServicesData filters = {filters} />
+                            <BarberServicesData filters={filters} />
                         </ul>
                     </div>
                 </div>
