@@ -22,8 +22,8 @@ const BarberConfig = () => {
         mobile: "",
         img: "",
         type: "",
-        faceTypeId: [],
-        hairTypeId: []
+        faces: [],
+        hairs: [],
     }
 
     const [barber, setBarber] = useState(newBarber) 
@@ -33,7 +33,7 @@ const BarberConfig = () => {
     function fetchData() {
         dispatch(getBarberById(id))
     }
-      console.log("hola")
+      
     useEffect(() => {
         if(loading) {
             fetchData()
@@ -45,30 +45,23 @@ const BarberConfig = () => {
         }
     
     }, [barberSelected])
-
-	const handleInputChange = (e) => {
-		setBarber({
-			...barber,
-			[e.target.name]: e.target.value,
-		});
-	};
-  console.log(barber)
-  const handleClick = (e) => {
-    /* if(e[0] === "hair") {
-      setBarber({
-        ...barber,
-
-      });
-    }
-    else {
-      setBarber({
-        ...barber,
- 
-      });
-    } */
-    console.log(barber.hairTypeId, barber.faceTypeId)
-	};
-
+    const handleInputChange = (e) => {
+      if(e.target.name === "faces" || e.target.name === "hairs"){
+        for(let i = 0; i< barber[e.target.name].length; i++) {
+          if(e.target.value === barber[e.target.name][i].toString()) { 
+            return barber[e.target.name].splice(i , 1);
+          }
+        }
+        setBarber({...barber, [e.target.name] : barber[e.target.name].concat(e.target.value)});
+      } else {
+        setBarber({
+          ...barber,
+          [e.target.name]: e.target.value,
+        });
+      }
+    };
+    console.log(barber.faces,barber.hairs)
+    
     const handleSubmit = () => {
         const barberSend = {
             barberModify: {
@@ -88,8 +81,8 @@ const BarberConfig = () => {
             }
         };
         dispatch(putBarber(id, barberSend))
-        dispatch(relationHairType({hairTypeId :barber.hairTypeId, barberId : id}))
-        dispatch(relationFaiceType({faceTypeId :barber.faceTypeId, barberId : id}))
+        dispatch(relationHairType({hairTypeId :barber.hairs, barberId : id}))
+        dispatch(relationFaiceType({faceTypeId :barber.faces, barberId : id}))
     };
     return (
         <div class="flex h-screen bg-gray-200 items-center justify-center  mt-32 mb-32">
@@ -119,17 +112,25 @@ const BarberConfig = () => {
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Face Types</label>
                 <div class="block pt-3 pb-2 space-x-4">
-                  {face ? face.map(e => {
+                  {face ? face.map(b => {
                     return <label>
-                    <input
+                      {barber.faces.includes(b.id) ? 
+                      <input
                       type="checkbox"
-                      name="faceTypeId"
-                      value={e.id}
+                      name="faces"
+                      defaultChecked
+                      value={`${b.id}`}
                       onChange={handleInputChange}
-                      onClick={handleClick(["face", e.id])}
                       class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
-                      />
-                      {e.description}
+                      /> :
+                      <input
+                      type="checkbox"
+                      name="faces"
+                      value={`${b.id}`}
+                      onChange={handleInputChange}
+                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+                      />}
+                      {b.description}
                     </label>
                   }) : ""}
                 </div>
@@ -137,17 +138,26 @@ const BarberConfig = () => {
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Hair Types</label>
                 <div class="block pt-3 pb-2 space-x-4">
-                  { hair ? hair.map(e => {
+                  { hair ? hair.map(b => {
                     return <label>
-                    <input
+                      {barber.hairs.includes(b.id) ? 
+                      <input
                       type="checkbox"
-                      name="hairTypeId"
-                      value={e.id}
+                      name="hairs"
+                      defaultChecked
+                      value={`${b.id}`}
                       onChange={handleInputChange}
-                      onClick={handleClick(["hair", e.id])}
                       class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
-                      />
-                      {e.description}
+                      /> :
+                      <input
+                      type="checkbox"
+                      name="hairs"
+                      
+                      value={`${b.id}`}
+                      onChange={handleInputChange}
+                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+                      />}
+                      {b.description}
                     </label>
                   }): ""}
                 </div>
