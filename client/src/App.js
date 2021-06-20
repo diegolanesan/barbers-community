@@ -18,7 +18,10 @@ import HairTechnician from './components/content/hairTechnician/HairTechnician';
 import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
+import ClientDesk from './components/container/clientDesk/ClientDesk';
 import { useLocation } from "react-router-dom";
+
+
 function App() {
   const location = useLocation();
   return (
@@ -40,6 +43,7 @@ function App() {
       <Route exact path="/recovery" component={Recovery} />
       <Route exact path="/appointment/date" component={AppointmentDate} />
       <Route exact path="/barbers/dashboard" component={BarberDashboard} />
+      <Route exact path="/clients/dashboard" component={ClientDesk} />
     </div> 
      
   );
