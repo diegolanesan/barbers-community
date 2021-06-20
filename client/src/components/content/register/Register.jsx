@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 //import { postBarber } from "../../../redux/action/barbers";
-import { signOutBarber } from "../../../redux/action/auth";
+import { signUpBarber } from "../../../redux/action/auth";
 
 const validate = (input) => {
 	let errors = {}
@@ -107,9 +107,9 @@ const Register = () => {
 		// 	return alert("There's some required fields empty, check please.")
 		// }
 		console.log(barberSend);
-		dispatch(signOutBarber(barberSend)); // Reemplazar por la nueva action que almacena el JWT
+		dispatch(signUpBarber(barberSend)); // Reemplazar por la nueva action que almacena el JWT
 		alert("Register Sucessfull");
-		window.location.replace("/catalog");
+		//window.location.replace("/catalog");
 	};
 	// const handleSelect = () => {
 	//     let select = document.getElementById("");

@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify'
 import jwtDecode from 'jwt-decode'
-import { SIGN_UP_BARBER, BARBER_LOADED, SIGN_IN_BARBER, SIGN_OUT_BARBER } from "../action/auth"
+import { SIGN_UP_BARBER, BARBER_LOADED, SIGN_IN_BARBER, SIGN_OUT } from "../action/auth"
 
 const initialState = {
     token: localStorage.getItem("barberToken"), // Obtenido de localStorage
@@ -23,7 +23,8 @@ const authReducer = (state = initialState, action) => {
                 barberUser: barber
             }
         
-        case SIGN_OUT_BARBER:
+
+        case SIGN_OUT:
             localStorage.removeItem('barberToken')
             toast("Sign out successfully", {
                 position: toast.POSITION.BOTTOM_RIGHT

@@ -125,12 +125,14 @@ const getByNameBarbers = async (req, res) => {
 
 // Ruta para crear barberos
 const postBarbers = async (req, res) => {
+	const secret = "secret"
 	const { barber } = req.body;
 	const resul = await Barber.create(barber);
+	const token = jwt.sign({ email: resul.email, id: resul.id }, secret, { expiresIn: '1hr' });
 
 	if (resul) {
 		const barbersAll = await Barber.findAll();
-		res.send(barbersAll);
+		res.send(token);
 	} else {
 		res.status(400).send("No se ha creado correctamente el barbero");
 	}
@@ -212,10 +214,10 @@ const relationStyle = async (req, res)=>{
 
  const loginBarbers = async (req, res) => {
 
-	const { username, password } = req.body;
+	const { email, password } = req.body;
 	const secret = "secret"
     try {
-        const oldUser = await Barber.findOne({where: { email: username }});
+        const oldUser = await Barber.findOne({where: { email: email }});
         if (!oldUser) return res.status(404).json({ message: { message: "User doesn`t exist", style: "red" } });
 
         //const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);

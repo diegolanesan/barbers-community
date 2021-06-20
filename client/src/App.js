@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Route } from "react-router-dom";
 import Home from './components/container/Home/Home';
 import './App.css';
@@ -20,7 +19,8 @@ import AppointmentDate from './components/content/appointmentDate/AppointmentDat
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
 import ClientDesk from './components/container/clientDesk/ClientDesk';
 import { useLocation } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const location = useLocation();
@@ -28,6 +28,9 @@ function App() {
     
     <div className="App">
       {(location.pathname === "/" || location.pathname === "/catalog") &&  <Route path="/" component={NavBar}/>}
+
+      <ToastContainer />
+      <Route path="/" component={NavBar}/>
       <Route path="/Detail/:id" component={showBarberDetail}/>
       <Route exact path="/" component={Home}/>
       <Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
