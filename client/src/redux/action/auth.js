@@ -5,8 +5,9 @@ export const SIGN_UP_BARBER = "SIGN_UP_BARBER"
 export const SIGN_IN_BARBER = "SIGN_IN_BARBER"
 export const SIGN_UP_CLIENT = "SIGN_UP_CLIENT"
 export const SIGN_IN_CLIENT = "SIGN_IN_CLIENT"
-export const BARBER_LOADED = "BARBER_LOADED"
+export const LOAD_USER = "LOAD_USER"
 export const SIGN_OUT = "SIGN_OUT"
+
 
 // ------------------------------  BARBER AUTHENTICATION --------------------------------------- //
 
@@ -25,13 +26,14 @@ export const signUpBarber = (barberUser) => (dispatch) => {
     })
 }
 
-export const signInBarber = (creds)=> (dispatch) => {
+export const signInBarber = (history, creds)=> (dispatch) => {
     axios.post(HOST_BACK + "/barbers/login", creds) // Verificar ruta de login
     .then( token => {
         console.log(token.data.token)
         localStorage.setItem('barberToken', JSON.stringify(token.data.token))
 
         dispatch({type: SIGN_IN_BARBER, token: token.data.token})
+        history.push("/barbers/dashboard")
     })
     .catch( error => {
         console.log(error.response)
@@ -51,6 +53,7 @@ export const signUpClient = (clientUser) => (dispatch) => {
         localStorage.setItem('clientToken', JSON.stringify(res.data.token))
 
         dispatch({type: SIGN_UP_CLIENT, token: res.data.token})
+        
     })
     .catch( error => {
         console.log(error.response)
@@ -60,13 +63,14 @@ export const signUpClient = (clientUser) => (dispatch) => {
     })
 }
 
-export const signInClient = (creds) => (dispatch) => {
-    axios.post(HOST_BACK + "/clients/login", creds) // Verificar ruta de login
+export const signInClient = (creds, history) => (dispatch) => {
+    axios.post(HOST_BACK + "/clients/login", creds)
     .then( token => {
         console.log(token.data.token)
         localStorage.setItem('clientToken', JSON.stringify(token.data.token))
 
         dispatch({type: SIGN_IN_CLIENT, token: token.data.token})
+        history.push("/clients/dashboard")
     })
     .catch( error => {
         console.log(error.response)
@@ -79,19 +83,19 @@ export const signInClient = (creds) => (dispatch) => {
 
 // -------------------------------------- COMMON AUTH ACTIONS ----------------------------------- //
 
-export const loadUser = () => (dispatch, getState) => {
-    // Agregar useSelector en App para que funcione
-    const token = getState().auth.token // Recuperamos el token de otro estado de Redux
+export const loadUser = () => (dispatch) => {
+    const token = localStorage.getItem("clientToken") // Recuperamos el token de otro estado de Redux
     if(token) {
-        dispatch({type: BARBER_LOADED, token})
+        dispatch({type: LOAD_USER, token: token})
     } else {
         return null
     }
 }
 
-export const signOut = () => (dispatch) => {
+export const signOut = (history) => (dispatch) => {
     dispatch({
         type: SIGN_OUT
     })
+    history.push("/")
 }
 

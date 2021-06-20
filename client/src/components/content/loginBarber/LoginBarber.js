@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import cutHair from "../../../resources/hero.jpg";
 import { signInBarber } from '../../../redux/action/auth'
 import {Link} from "react-router-dom"
 
 function LoginBarbers() {
     const dispatch = useDispatch()
+    const history = useHistory()
     const auth = useSelector(state => state.auth.barberUser)
 
     const [creds, setCreds] = useState({
@@ -23,15 +24,12 @@ function LoginBarbers() {
 
     function onSubmit(e) {
       e.preventDefault()
-      dispatch(signInBarber(creds))
+      dispatch(signInBarber(history, creds))
       // setCreds({
       //   email: "",
       //   password: "",
       // })
     }
-
-    // Si ya está logueado, no renderizar nada en el componente LoginBarber
-    //if(auth.id) return <Redirect to='/'/>
 
     return (
         <div class="flex flex-col md:flex-row h-screen items-center">

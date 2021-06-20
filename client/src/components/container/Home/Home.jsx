@@ -8,13 +8,14 @@ import { loadUser } from '../../../redux/action/auth'
 
 function Home() {
 	const dispatch = useDispatch();
-	const auth = useSelector(state => state.auth.token)
  
 	useEffect(() => {
-		dispatch(getServices())
 		dispatch(loadUser())
+		dispatch(getServices())
+		
 	}, [dispatch]);
 	const services = useSelector((state) => state.services.array);
+	const user = useSelector(state => state.auth)
 
     return (
         <div>

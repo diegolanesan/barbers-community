@@ -27,9 +27,8 @@ function App() {
   return (
     
     <div className="App">
-      {(location.pathname === "/" || location.pathname === "/catalog") &&  <Route path="/" component={NavBar}/>}
-
-      <ToastContainer />
+      {/* {(location.pathname === "/" || location.pathname === "/catalog") &&  <Route path="/" component={NavBar}/>} */}
+      
       <Route path="/" component={NavBar}/>
       <Route path="/Detail/:id" component={showBarberDetail}/>
       <Route exact path="/" component={Home}/>
@@ -47,6 +46,7 @@ function App() {
       <Route exact path="/appointment/date" component={AppointmentDate} />
       <Route exact path="/barbers/dashboard" component={BarberDashboard} />
       <Route exact path="/clients/dashboard" component={ClientDesk} />
+      <ToastContainer />
     </div> 
      
   );

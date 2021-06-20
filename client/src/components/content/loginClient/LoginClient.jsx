@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
 import { signInClient } from '../../../redux/action/auth';
+import { useHistory } from 'react-router-dom'
 import cutHair from "../../../resources/hero.jpg";
 
 
 function LoginClient() {
+  const history = useHistory()
     const dispatch = useDispatch()
     const [creds, setCreds] = useState({
       email: "",
@@ -20,7 +22,7 @@ function LoginClient() {
 
     function handleSubmit(e) {
       e.preventDefault()
-      dispatch(signInClient(creds))
+      dispatch(signInClient(creds, history))
     }
 
     return (

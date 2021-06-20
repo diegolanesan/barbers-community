@@ -1,6 +1,7 @@
 const { Client, FaceType, HairType, Style } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
+const jwt = require('jsonwebtoken');
 
 const getClients = (req, res, next) => {
 
@@ -127,7 +128,9 @@ const loginClient = async (req, res) => {
 	const { email, password } = req.body;
 	const secret = "secret"
     try {
+        console.log(email, password)
         const oldUser = await Client.findOne({where: { email: email }});
+        // console.log(oldUser)
         if (!oldUser) return res.status(404).json({ message: { message: "User doesn`t exist", style: "red" } });
 
         //const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
