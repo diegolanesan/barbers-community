@@ -1,17 +1,34 @@
-const { Client, Barber, Invoice, DetailInvoice } = require("../db");
+const { Invoice, DetailInvoice, Service } = require("../db");
 require("dotenv").config();
 const { Op } = require("sequelize");
 
+const addDetailInvoice = async (req, res, next) => {
+	const { invoiceId, serviceId, price } = req.body;
+	try {
+		const createdDetail = await DetailInvoice.create({
+			invoiceId,
+			serviceId,
+			price,
+		});
+		return res.send(createdDetail);
+	} catch (error) {
+		res.send(error);
+		next(error);
+	}
+};
+
+/* ---- Los usuarios ( admin/client/barber ) acceden a ver Invoices ----*/
 const getDetailInvoices = (req, res, next) => {
-	/* ---- El usuario ( administrador/cliente/barbero ) busca todas los Invoices ----*/
 	try {
 		DetailInvoice.findAll({
-			include: [{ model: Barber }, { model: Client }, { model: Invoice }],
+			//	include: [{ model: Barber }, { model: Client }, { model: Invoice }],
 		}).then((result) => {
 			res.status(200).send(result);
 		});
 	} catch (e) {
-		console.log("No se pudo realizar la petición HTTP correctamente " + e);
+		console.log(
+			"[getDetailInvoice]The HTTP request could not be made successfully " + e
+		);
 	}
 };
 
@@ -20,34 +37,14 @@ const getDetailInvoiceById = (req, res, next) => {
 		let queryId = req.params.id.toUpperCase();
 		DetailInvoice.findOne({
 			where: { id: queryId },
-			include: [{ model: Barber }, { model: Client }, { model: Invoice }],
+			//include: [{ model: Barber }, { model: Client }, { model: Invoice }],
 		}).then((result) => {
 			res.status(200).send(result);
 		});
 	} catch (e) {
-		console.log("No se pudo realizar la petición HTTP correctamente " + e);
-	}
-};
-
-const addDetailInvoice = (req, res, next) => {
-	const {
-		idBarber, // Revisar cómo vienen estos datos de Sequelize!
-		idClient,
-		date,
-		status,
-		total,
-	} = req.body;
-	try {
-		const createdDetail = DetailInvoice.create({
-			idBarber,
-			idClient,
-			date,
-			status,
-			total,
-		});
-		return res.send(createdDetail); // ¿Le respondo con la cita creada, o con todas las citas?
-	} catch (error) {
-		next(error);
+		console.log(
+			"[getDetailInvoice]The HTTP request could not be made successfully " + e
+		);
 	}
 };
 
@@ -56,12 +53,11 @@ const updateDetailInvoice = async (req, res, next) => {
 	const { detailModified } = req.body;
 	let detail = await DetailInvoice.findByPk(id);
 	if (detail) {
-		detail = detail.update(detailModified);
+		detail = await detail.update(detailModified);
 		res.send(detail);
 	} else {
-		res.send("No se ha podido modificar el detalle de la cita");
+		res.send("The detail invoice could not be updated");
 	}
-	return res.send(detailModified);
 };
 
 const deleteDetailInvoice = (req, res, next) => {

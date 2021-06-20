@@ -20,6 +20,7 @@
 -- Remote:
 -- psql -h host -U username -d myDataBase -a -f myInsertFile
 -- psql -h batyr.db.elephantsql.com -U fcuxnish -d myDataBase -a -f 1.injectData.sql
+-- psql -h batyr.db.elephantsql.com -U fcuxnish -d fcuxnish -a -f injectData.sql
 
 INSERT INTO "faceTypes" (id, description) VALUES (1, 'Square');
 INSERT INTO "faceTypes" (id, description) VALUES (2, 'Triangular');
@@ -1394,14 +1395,7 @@ SELECT COUNT(id) FROM services;
 SELECT COUNT(id) FROM clients;
 
 -- Local:
-<<<<<<< HEAD
--- psql -U alex -d barberscommunity -a -f 1.injectData.sql
--- Remote:
--- psql -h host -U username -d myDataBase -a -f myInsertFile
--- psql -h batyr.db.elephantsql.com -U fcuxnish -d myDataBase -a -f 1.injectData.sql
-=======
 -- psql -U alex -d barberscommunity -a -f injectData.sql
 -- Remote:
 -- psql -h host -U username -d myDataBase -a -f myInsertFile
 -- psql -h batyr.db.elephantsql.com -U fcuxnish -d myDataBase -a -f injectData.sql
->>>>>>> 6740ba57322b30405f8f3bdc849d16c27e4ef361

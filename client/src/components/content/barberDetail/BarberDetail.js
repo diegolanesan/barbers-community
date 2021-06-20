@@ -158,7 +158,7 @@ function BarberDetail(props) {
                               <ul class="list-inside space-y-2">
                                  {resp.faceTypes ? resp.faceTypes.map(n => (
                                     <li>
-                                       <div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
+                                       <div class="bg-blue-500 py-1 px-3  mx-12 rounded text-white text-sm">{n.description}</div>
                                     </li>
                                  )) : "waiting"}
                               </ul>
@@ -170,7 +170,7 @@ function BarberDetail(props) {
                               <ul class="list-inside space-y-2">
                                  {resp.styles ? resp.styles.map(n => (
                                     <li>
-                                       <div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
+                                       <div class="bg-blue-500 py-1 px-3 mx-12 rounded text-white text-sm">{n}</div>
                                     </li>
                                  )) : "waiting"}
                               </ul>
@@ -182,7 +182,7 @@ function BarberDetail(props) {
                               <ul class="list-inside space-y-2">
                                  {resp.hairTypes ? resp.hairTypes.map(n => (
                                     <li>
-                                       <div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
+                                       <div class="bg-blue-500 py-1 px-3 mx-12 rounded text-white text-sm">{n.description}</div>
                                     </li>
                                  )) : "waiting"}
                               </ul>

@@ -12,11 +12,21 @@ module.exports = (sequelize) => {
 				autoIncrement: true,
 				allowNull: false,
 			},
-			price: {
-				type: DataTypes.FLOAT,
+
+			invoiceId: {
+				type: DataTypes.INTEGER,
 				allowNull: false,
 			},
-		},
-		{ timestamps: false }
+
+			serviceId: {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+			},
+			price: {
+				type: DataTypes.FLOAT,
+				defaultValue: 0,
+			},
+		}
+		//{ timestamps: false }
 	);
 };

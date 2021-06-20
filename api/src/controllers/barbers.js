@@ -85,26 +85,20 @@ const getTypeBarbers = async (req, res) => {
 
 const getByIdBarbers = async (req, res) => {
 	const idBarber = req.params.id;
-	const resul = await Barber.findByPk(idBarber);
+	const resul = await Barber.findOne({where :{id: idBarber}, include : [{model: HairType},{model: FaceType}]});
 	if (resul) {
-		console.log(resul, "aaaaaaaaaa")
-		/* let aux = barber
+		let aux = resul
 			faces = []
 			hairs = []
-			barberStyles = []
-			if(aux.dataValues.faceTypes) {
-				aux.dataValues.faceTypes.map(b => faces.push(b.dataValues.description))
-			}
 			if(aux.dataValues.hairTypes) {
-				aux.dataValues.hairTypes.map(b => hairs.push(b.dataValues.description))
+				aux.dataValues.hairTypes.map(b => hairs.push(b.dataValues.id))
 			}
-			if(aux.dataValues.styles) {
-				aux.dataValues.styles.map(b => barberStyles.push(b.dataValues.description))
+			if(aux.dataValues.faceTypes) {
+				aux.dataValues.faceTypes.map(b => faces.push(b.dataValues.id))
 			}
 			aux.dataValues.faces = faces
 			aux.dataValues.hairs = hairs
-			aux.dataValues.barberStyles = barberStyles */
-		res.send(resul);
+		res.send(aux);
 	} else {
 		res.status(400).send("No se encontro el barbero");
 	}
@@ -181,22 +175,27 @@ const relationServiceBarber = async (req, res) => {
 // Agregar un tipo de cara a un barbero
 const relationFaiceType = async (req, res)=>{
 	const {barberId, faceTypeId} = req.body;
-	const resul = await faceTypeBarber.create({barberId, faceTypeId});
+	console.log(faceTypeId)
+	for(let i = 0; i < faceTypeId.length; i++) {
+	const resul = await faceTypeBarber.create({barberId, faceTypeId: faceTypeId[i]});
 	if (resul) {
 		res.send("se ha agregado el tipo al barbero");
 	} else {
 		res.send("No se ha agregado el servicio al barbero");
-	}
+	}}
 };
 
 // Agregar un tipo de pelo a un barbero
 const relationHairType = async (req, res)=>{
 	const {barberId, hairTypeId} = req.body;
-	const resul = await hairTypeBarber.create({barberId, hairTypeId});
-	if (resul) {
-		res.send("se ha agregado el tipo al barbero");
-	} else {
-		res.send("No se ha agregado el servicio al barbero");
+	console.log(hairTypeId)
+	for(let i = 0; i < hairTypeId.length; i++) {
+		const resul = await hairTypeBarber.create({barberId, hairTypeId : hairTypeId[i]});
+		if (resul) {
+			res.send("se ha agregado el tipo al barbero");
+		} else {
+			res.send("No se ha agregado el servicio al barbero");
+		}
 	}
 };
 
