@@ -1,7 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useDispatch } from 'react-redux'
+import { signInClient } from '../../../redux/action/auth';
+import { useHistory } from 'react-router-dom'
 import cutHair from "../../../resources/hero.jpg";
 
+
 function LoginClient() {
+  const history = useHistory()
+    const dispatch = useDispatch()
+    const [creds, setCreds] = useState({
+      email: "",
+      password: "",
+    })
+
+    function handleChange(e) {
+      setCreds({
+        ...creds,
+        [e.target.name] : e.target.value
+      })
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault()
+      dispatch(signInClient(creds, history))
+    }
+
     return (
         <div class="flex flex-col md:flex-row h-screen items-center">
         
@@ -17,15 +40,15 @@ function LoginClient() {
         
               <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
         
-              <form class="mt-6" action="#" method="POST">
+              <form class="mt-6" action="#" method="POST" onSubmit={handleSubmit}>
                 <div>
                   <label class="block text-gray-700">Email Address</label>
-                  <input type="email" name="" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"/>
+                  <input type="email" name="email" onChange={handleChange} placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"/>
                 </div>
         
                 <div class="mt-4">
                   <label class="block text-gray-700">Password</label>
-                  <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                  <input type="password" name="password" onChange={handleChange} placeholder="Enter Password" minlength="2" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                         focus:bg-white focus:outline-none"/>
                 </div>
         

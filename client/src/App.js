@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route } from "react-router-dom";
 import Home from './components/container/Home/Home';
 import './App.css';
@@ -17,12 +17,19 @@ import HairTechnician from './components/content/hairTechnician/HairTechnician';
 import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
+import ClientDesk from './components/container/clientDesk/ClientDesk';
 import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const location = useLocation();
   return (
+    
     <div className="App">
-      {(location.pathname === "/" || location.pathname === "/catalog") &&  <Route path="/" component={NavBar}/>}
+      {/* {(location.pathname === "/" || location.pathname === "/catalog") &&  <Route path="/" component={NavBar}/>} */}
+      
+      <Route path="/" component={NavBar}/>
       <Route path="/Detail/:id" component={showBarberDetail}/>
       <Route exact path="/" component={Home}/>
       <Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
@@ -38,7 +45,10 @@ function App() {
       <Route exact path="/recovery" component={Recovery} />
       <Route exact path="/appointment/date" component={AppointmentDate} />
       <Route exact path="/barbers/dashboard" component={BarberDashboard} />
-    </div>   
+      <Route exact path="/clients/dashboard" component={ClientDesk} />
+      <ToastContainer />
+    </div> 
+     
   );
 }
 

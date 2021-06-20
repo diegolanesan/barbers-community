@@ -1,6 +1,7 @@
 const { Client, FaceType, HairType, Style } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
+const jwt = require('jsonwebtoken');
 
 const getClients = (req, res, next) => {
 
@@ -79,7 +80,8 @@ const addClient = async(req, res, next) => {
             hairTypeId
         });
         const clientAll = await Client.findAll({include: [ { model: FaceType }, {model: HairType}, { model: Style } ]})
-        return res.send(clientAll); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
+        const token = jwt.sign({ email: createdClient.email, id: createdClient.id }, secret, { expiresIn: '1hr' });
+        return res.send(clientAll, token); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
         
         } catch (error) {
         next(error);
@@ -121,10 +123,34 @@ const deleteClient = (req, res, next) => {
 
 }
 
+const loginClient = async (req, res) => {
+
+	const { email, password } = req.body;
+	const secret = "secret"
+    try {
+        console.log(email, password)
+        const oldUser = await Client.findOne({where: { email: email }});
+        // console.log(oldUser)
+        if (!oldUser) return res.status(404).json({ message: { message: "User doesn`t exist", style: "red" } });
+
+        //const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
+
+        if (!password) return res.status(400).json({ message: { message: 'Invalid Password', style: "red" } });
+
+        const token = jwt.sign({ email: oldUser.email, id: oldUser.id }, secret, { expiresIn: '1hr' });
+        res.status(201).json({ result: oldUser, token, message: { message: "Log in Successful", style: "green" } });
+    } catch (error) {
+        res.status(500).json({ message: { message: 'Something went wrong', style: "red" } });
+        console.log(error);
+        res.status(500).json({message:{message:'Something went wrong', style:"red"}});
+    }
+}
+
 module.exports = {
     getClients,
     getClientById,
     addClient,
     deleteClient,
-    updateClient
+    updateClient,
+    loginClient
 }

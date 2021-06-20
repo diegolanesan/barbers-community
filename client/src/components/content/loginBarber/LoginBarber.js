@@ -1,8 +1,36 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import cutHair from "../../../resources/hero.jpg";
+import { signInBarber } from '../../../redux/action/auth'
 import {Link} from "react-router-dom"
 
 function LoginBarbers() {
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const auth = useSelector(state => state.auth.barberUser)
+
+    const [creds, setCreds] = useState({
+      email: "",
+      password: "",
+    })
+
+    function handleChange(e) {
+      setCreds({
+        ...creds,
+        [e.target.name]: e.target.value
+      })
+    }
+
+    function onSubmit(e) {
+      e.preventDefault()
+      dispatch(signInBarber(history, creds))
+      // setCreds({
+      //   email: "",
+      //   password: "",
+      // })
+    }
+
     return (
         <div class="flex flex-col md:flex-row h-screen items-center">
         
@@ -18,15 +46,15 @@ function LoginBarbers() {
         
               <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
         
-              <form class="mt-6" action="#" method="POST">
+              <form class="mt-6" action="#" method="POST" onSubmit={onSubmit}>
                 <div>
                   <label class="block text-gray-700">Email Address</label>
-                  <input type="email" name="" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"/>
+                  <input type="email" name="email" value={creds.email} onChange={handleChange} placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"/>
                 </div>
         
                 <div class="mt-4">
                   <label class="block text-gray-700">Password</label>
-                  <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                  <input type="password" name="password" value={creds.password} onChange={handleChange} placeholder="Enter Password" minlength="2" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                         focus:bg-white focus:outline-none"/>
                 </div>
         
@@ -34,8 +62,10 @@ function LoginBarbers() {
                   <Link to="/recovery" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</Link>
                 </div>
         
-                <button type="submit" class="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
-                      px-4 py-3 mt-6">Log In</button>
+                {/* <button type="submit" class="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
+                      px-4 py-3 mt-6">Log In</button> */}
+                <input type="submit" class="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
+                      px-4 py-3 mt-6" />
               </form>
         
               <hr class="my-6 border-gray-300 w-full"/>

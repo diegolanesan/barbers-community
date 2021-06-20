@@ -5,6 +5,7 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
+	//`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/postgres`, // LOCAL DB
 	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/barberscommunity`, // LOCAL DB
 	// `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_USER}`,		   // CLOUD DB (ELEPHANTSQL) --> DATOS EN CARPETA UTILS-SQL-elephantSQL
 	{

@@ -1,6 +1,8 @@
 const { Barber, ServiceBarber, faceTypeBarber, styleBarber, hairTypeBarber, HairType, FaceType, Style } = require("../db");
 require("dotenv").config();
 const { Op } = require("sequelize");
+const jwt = require('jsonwebtoken');
+
 
 // Ruta que devuelve todos los barberos
 
@@ -123,12 +125,14 @@ const getByNameBarbers = async (req, res) => {
 
 // Ruta para crear barberos
 const postBarbers = async (req, res) => {
+	const secret = "secret"
 	const { barber } = req.body;
 	const resul = await Barber.create(barber);
+	const token = jwt.sign({ email: resul.email, id: resul.id }, secret, { expiresIn: '1hr' });
 
 	if (resul) {
 		const barbersAll = await Barber.findAll();
-		res.send(barbersAll);
+		res.send(token);
 	} else {
 		res.status(400).send("No se ha creado correctamente el barbero");
 	}
@@ -208,6 +212,27 @@ const relationStyle = async (req, res)=>{
 	}
 };
 
+ const loginBarbers = async (req, res) => {
+
+	const { email, password } = req.body;
+	const secret = "secret"
+    try {
+        const oldUser = await Barber.findOne({where: { email: email }});
+        if (!oldUser) return res.status(404).json({ message: { message: "User doesn`t exist", style: "red" } });
+
+        //const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
+
+        if (!password) return res.status(400).json({ message: { message: 'Invalid Password', style: "red" } });
+
+        const token = jwt.sign({ email: oldUser.email, id: oldUser.id }, secret, { expiresIn: '1hr' });
+        res.status(201).json({ result: oldUser, token, message: { message: "Log in Successful", style: "green" } });
+    } catch (error) {
+        res.status(500).json({ message: { message: 'Something went wrong', style: "red" } });
+        console.log(error);
+        res.status(500).json({message:{message:'Something went wrong', style:"red"}});
+    }
+}
+
 
 
 
@@ -224,5 +249,6 @@ module.exports = {
 	relationFaiceType,
 	relationHairType,
 	relationStyle,
-	getHFStypes
+	getHFStypes,
+	loginBarbers,
 };
