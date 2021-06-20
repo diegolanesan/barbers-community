@@ -10,7 +10,8 @@ const initialState = {
         ozon: [],
         design: [],
         mask: [],
-        barber: []
+        barber: [],
+        id: []
     }
 }
 
@@ -36,12 +37,15 @@ const reducerServices = (state = initialState, action) => {
                     }
                 }
             }
-        if (action.payload.categories[0].name === "HAIRCUT") {
+            if (action.payload.categories[0].name === "HAIRCUT") {
+            //console.log(action.payload)
+            console.log(action.payload.serviceBarber)
                 return {
                     ...state,
                     services: {
                         ...state.services,
-                        haircut: [action.payload]
+                        haircut: [action.payload],
+                        id: [...state.services.id, action.payload.serviceBarber.id]
                     }
                 }
             }
@@ -50,7 +54,9 @@ const reducerServices = (state = initialState, action) => {
                     ...state,
                     services: {
                         ...state.services,
-                        kids: [action.payload]
+                        kids: [action.payload],
+                        id: [...state.services.id, action.payload.serviceBarber.id]
+
                     }
                 }
             }
@@ -59,7 +65,9 @@ const reducerServices = (state = initialState, action) => {
                     ...state,
                     services: {
                         ...state.services,
-                        beard: [action.payload]
+                        beard: [action.payload],
+                        id: [...state.services.id, action.payload.serviceBarber.id]
+
                     }
                 }
             }
@@ -68,7 +76,9 @@ const reducerServices = (state = initialState, action) => {
                     ...state,
                     services: {
                         ...state.services,
-                        color: [action.payload]
+                        color: [action.payload],
+                        id: [...state.services.id, action.payload.serviceBarber.id]
+
                     }
                 }
             }
@@ -77,7 +87,9 @@ const reducerServices = (state = initialState, action) => {
                     ...state,
                     services: {
                         ...state.services,
-                        design: [action.payload]
+                        design: [action.payload],
+                        id: [...state.services.id, action.payload.serviceBarber.id]
+
                     }
                 }
             }
@@ -86,7 +98,9 @@ const reducerServices = (state = initialState, action) => {
                     ...state,
                     services: {
                         ...state.services,
-                        ozon: [action.payload]
+                        ozon: [action.payload],
+                        id: [...state.services.id, action.payload.serviceBarber.id]
+
                     }
                 }
             }
@@ -95,7 +109,9 @@ const reducerServices = (state = initialState, action) => {
                     ...state,
                     services: {
                         ...state.services,
-                        mask: [action.payload]
+                        mask: [action.payload],
+                        id: [...state.services.id, action.payload.serviceBarber.id]
+
                     }
                 }
             }

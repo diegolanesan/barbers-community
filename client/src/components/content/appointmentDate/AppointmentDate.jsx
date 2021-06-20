@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import "react-datetime/css/react-datetime.css";
 import Datetime from "react-datetime";
 import moment from "moment";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { appointmentRelation, detailAppointment, postAppointment } from "../../../redux/action/appointment";
 
 export default function AppointmentDate() {
+    const dispatch = useDispatch()
 
     const services = useSelector(state => state.services.services)
-    //console.log(services)
+    console.log(services)
 
     let [fecha, setFecha] = useState({ fecha: "" })
     function onchange(args) { setAppointment({ ...appointment, date: `${args._d}` }) }
@@ -17,9 +19,25 @@ export default function AppointmentDate() {
     }
 
     const dateSelected = fecha.fecha.slice(0, 15)
-    console.log(dateSelected)
+    //console.log(dateSelected)
 
-    const [total, setTotal] = useState("")
+
+
+    useEffect(() => {
+        totalAmmount()
+    }, [])
+    const [appointment, setAppointment] = useState({
+        barberId: services.barber[0].id,
+        clientId: 1, //traer del localstorage
+        date: fecha.fecha,
+        time: "08:00",
+        status: "Pending",
+        total: "",
+        serviceBarberId: []
+    })
+    console.log(appointment)
+    const appointmentId = useSelector(state => state)
+    const [totalServices, setTotalServices] = useState("")
     const totalAmmount = () => {
         let kids
         let haircut
@@ -43,28 +61,21 @@ export default function AppointmentDate() {
         if (services.beard[0]) { beard = parseInt(services.beard[0].price) }
         else { beard = 0 }
         let sum = kids + haircut + design + ozon + mask + color + beard
-        setTotal(sum)
+        setAppointment({ ...appointment, total: sum })
+        setTotalServices(sum)
     }
 
-    useEffect(() => {
-        totalAmmount()
-    }, [])
-    // barberId,
-    //     clientId,
-    //     date,
-    //     status,
-    //     total,
-    const [appointment, setAppointment] = useState({
-        barberId: services.barber[0].id,
-        clientId: "",
-        date: fecha.fecha,
-        time: "08:00",
-        status: "Pending",
-        total: total
-    })
-    console.log(appointment)
-    const postAppointment = () => {
 
+    const sendAppointment = () => {
+        dispatch(postAppointment({
+            barberId: appointment.barberId,
+            clientId: 12,
+            date: appointment.date,
+            status: "Pending",
+            total: 100,
+            serviceBarberId: services.id,
+            time: appointment.time
+        }))
     }
 
     return (
@@ -121,11 +132,11 @@ export default function AppointmentDate() {
                                         {services.design.length !== 0 ? <div>{services.design[0].name} (${services.design[0].price})</div> : ""}
                                         {services.beard.length !== 0 ? <div>{services.beard[0].name} (${services.beard[0].price})</div> : ""}
                                         <br></br>
-                                        Date: {appointment.date.slice(0, 15)}
+                                        Date: {appointment.date && appointment.date.slice(0, 15)}
                                         <br></br>
                                         Time: {appointment.time}
                                         <br></br>
-                                        Total: $ {total}
+                                        Total: $ {totalServices}
 
                                         <br></br>
                                         <h5 className="text-sm">(Notice: You will pay for your service once the barber finishes)</h5>
@@ -139,7 +150,7 @@ export default function AppointmentDate() {
                     </div>
                     <div class="bg-white p-3 shadow-sm mt-10 rounded-sm border-t-4 border-blue-400">
                         <div class="flex justify-center space-x-2 font-semibold text-gray-900 leading-8">
-                            <button disabled={appointment.date === ""} className="rounded px-6 py-2 font-semibold text-gray-900 bg-blue-400">Confirm Appointment</button>
+                            <button disabled={appointment.date === ""} onClick={() => { sendAppointment() }} className="rounded px-6 py-2 font-semibold text-gray-900 bg-blue-400">Confirm Appointment</button>
                         </div>
                     </div>
                 </div>
