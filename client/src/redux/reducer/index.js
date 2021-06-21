@@ -11,7 +11,7 @@ import appointmentReducer from "./appointment";
 
 function combineReducer(state = {}, action) {
     return {
-      appointments: appointmentReduer(state.appointments, action),
+      appointments: appointmentReducer(state.appointments, action),
       auth: authReducer(state.auth, action),
       barbers: barbersReducer(state.barbers, action),
       publication: reducerPublication(state.publication,action),
