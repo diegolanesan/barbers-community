@@ -1,108 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAppointmentByBarber } from '../../../../redux/action/appointment'
 
 const AppointmentsDash = () => {
-    const prueba = [{details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},]
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getAppointmentByBarber(1))
+      // eslint-disable-next-line
+    }, [])
+
+    const appointments = useSelector(state => state.appointments.appointmentsById)
+
+    console.log(appointments)
 
     const [filtered, setFiltered] = useState([])
 
     const handleFilter = (e) => {
-        setFiltered(prueba.filter(n => n.status === e.target.value))
+        setFiltered(appointments.filter(n => n.status === e.target.value))
     }
 
     return (
@@ -124,22 +38,22 @@ const AppointmentsDash = () => {
                         <th className='border-solid border-2 border-black w-5 max-w-5 h-10 max-h-5' >Name</th>
                         <th className='border-solid border-2 border-black w-5 max-w-5 h-10 max-h-5' >Service</th>
                     </tr>
-                    {filtered.length ? filtered.map((n, i) => (
+                    {filtered.length ? filtered.map(n => (
                         <tr >
-                            <td>{i + 1}</td>
-                            <td>{n.details}</td>
+                            <td>{n.id}</td>
+                            <td>{n.date}</td>
                             <td>{n.status}</td>
                             <td>{n.name}</td>
-                            <td>{n.action}</td>
+                            <td>{n.time}</td>
                         </tr>
                     )) : (
-                        prueba.map((n, i) => (
+                        appointments.map(n => (
                             <tr >
-                                <td>{i + 1}</td>
-                                <td>{n.details}</td>
+                                <td>{n.id}</td>
+                                <td>{n.date}</td>
                                 <td>{n.status}</td>
                                 <td>{n.name}</td>
-                                <td>{n.action}</td>
+                                <td>{n.time}</td>
                             </tr>
                         )) 
                     )}

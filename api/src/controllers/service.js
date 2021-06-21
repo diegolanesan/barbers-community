@@ -4,12 +4,12 @@ const { Op } = require('sequelize');
 
 // ruta que retorna los sevicios  según el barbero
 const getBarbersService = async (req, res) =>{
-    const {idBarber} = req.params;
+    const idBarber = req.params.id;
     const barber = await Barber.findByPk(idBarber, { include: { all: true, nested: true }});
     if(barber){
         res.send(barber)
     }else {
-        res.status(400).send("No se encontro los servicios solicitados")
+        res.status(400).send("No se encontro los servicios solicitados");
     }
 };
 

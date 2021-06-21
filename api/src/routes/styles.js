@@ -4,6 +4,6 @@ const {getAllFaceTypes,getAllHairTypes,getAllStyles} = require('../controllers/t
 
 router.get('/Face', getAllFaceTypes);
 router.get('/Hair', getAllHairTypes);
-router.put('/Styles', getAllStyles);
+router.get('/Styles', getAllStyles);
 
 module.exports = router;

@@ -55,9 +55,9 @@ const Register = () => {
 		});
 		// console.log(e.target.name)
 		setErrors(validate({
-			...barber, 
+			...barber,
 			[e.target.name]: e.target.value
-		}))  
+		}))
 	};
 	// console.log(errors)
 
@@ -153,7 +153,7 @@ const Register = () => {
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="firstName"
+										// for="firstName"
 										>
 											First Name
 										</label>
@@ -171,7 +171,7 @@ const Register = () => {
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="lastName"
+										// for="lastName"
 										>
 											Last Name
 										</label>
@@ -191,7 +191,7 @@ const Register = () => {
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="firstName"
+										// for="firstName"
 										>
 											Username
 										</label>
@@ -208,7 +208,7 @@ const Register = () => {
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="lastName"
+										// for="lastName"
 										>
 											Location
 										</label>
@@ -227,7 +227,7 @@ const Register = () => {
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="firstName"
+										// for="firstName"
 										>
 											Phone
 										</label>
@@ -244,7 +244,7 @@ const Register = () => {
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="lastName"
+										// for="lastName"
 										>
 											Biography
 										</label>
@@ -262,7 +262,7 @@ const Register = () => {
 								<div className="mb-4">
 									<label
 										className="block mb-2 text-sm font-bold text-gray-700"
-										// for="email"
+									// for="email"
 									>
 										Resume
 									</label>
@@ -280,7 +280,7 @@ const Register = () => {
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="firstName"
+										// for="firstName"
 										>
 											Type
 										</label>
@@ -300,7 +300,7 @@ const Register = () => {
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="email"
+										// for="email"
 										>
 											Profile Image
 										</label>
@@ -318,7 +318,7 @@ const Register = () => {
 								<div className="mb-4">
 									<label
 										className="block mb-2 text-sm font-bold text-gray-700"
-										// for="email"
+									// for="email"
 									>
 										Email
 									</label>
@@ -337,7 +337,7 @@ const Register = () => {
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="password"
+										// for="password"
 										>
 											Password
 										</label>
@@ -358,7 +358,7 @@ const Register = () => {
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="c_password"
+										// for="c_password"
 										>
 											Confirm Password
 										</label>

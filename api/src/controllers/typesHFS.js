@@ -19,9 +19,7 @@ const getAllHairTypes = async (req, res)=>{
 };
 const getAllStyles = async (req, res)=>{
     const allStyles = await Style.findAll();
-    console.log(allStyles, "lelelelele")
     if(allStyles){
-        console.log(allStyles, "lelelelele")
         res.send(allStyles)
     }else{
         res.status(400).send("No hay servicios")

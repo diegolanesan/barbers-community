@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBarbers } from '../../../../redux/action/barbers';
 import { getServices } from '../../../../redux/action/services';
 
-const BarberServicesData = ({filters}) => {
+const BarberServicesData = ({ filters }) => {
     const dispatch = useDispatch();
     const { resp } = useSelector((state) => state);
     const services = useSelector((state) => state.services.array);
@@ -61,8 +61,8 @@ const BarberServicesData = ({filters}) => {
                     ))}
             </div>
             <div className="border-t-4 border-blue-400 mt-10"></div>
-            <div class="flex justify-center text-2xl font-semibold text-gray-900 leading-8 mt-4 ">
-                <span class="tracking-wide"> Your New Service </span>
+            <div className="flex justify-center text-2xl font-semibold text-gray-900 leading-8 mt-4 ">
+                <span className="tracking-wide"> Your New Service </span>
             </div>
             <div>
                 <div className="grid sm:grid-cols-3 mt-6 mb-4 grid-cols-1">

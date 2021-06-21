@@ -4,6 +4,7 @@ import BarberServicesDashboard from './clientDashboardServices/ClientServicesDas
 import {getAllAppointments} from '../../../redux/action/clients'
 import AppointmentsDash from './appointments/Appointments.js'
 import ClientData from './ClientData'
+import ClientConfig from './config/Config.js'
 
 // import style from './barberDashboard.module.css'
 
@@ -63,7 +64,9 @@ const ClientDesk = () => {
                 )}
 
                 {buttonState.menu === 'Config' && (
-                    <div>Config</div>
+                    <div>
+                        < ClientConfig/>
+                    </div>
                 )}
             </div>
         </div>

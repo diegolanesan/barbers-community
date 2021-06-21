@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import BarberServicesDashboard from './barberDashboardServices/BarberServicesDashboard.jsx'
 import AppointmentsDash from './Appointments/Appointments.js'
 import InvoicesDash from './Invoices/Invoices'
+import BarberConfig from '../barberConfig/BarberConfig.jsx'
 
 // import style from './barberDashboard.module.css'
 
@@ -88,7 +89,7 @@ const BarberDashboard = () => {
                     </div>
                 )}
                 {buttonState.menu === 'Config' && (
-                    <div>Config</div>
+                    <div><BarberConfig/></div>
                 )}
             </div>
         </div>
