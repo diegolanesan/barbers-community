@@ -1,4 +1,11 @@
-const { Client, Barber, DetailInvoice, Invoice, Service } = require("../db");
+const {
+	Client,
+	Barber,
+	DetailInvoice,
+	Invoice,
+	Service,
+	categoryServices,
+} = require("../db");
 require("dotenv").config();
 //const { Op } = require("sequelize");
 const { QueryTypes, json } = require("sequelize");
@@ -20,14 +27,10 @@ const addInvoice = async (req, res, next) => {
 		next(error);
 	}
 };
-// const tasks = await Task.findAll({ include: User });
-// console.log(JSON.stringify(tasks, null, 2));
-// const clientAll = await Client.findAll({include: [ { model: FaceType }, {model: HairType}, { model: Style } ]})
-// return res.send(clientAll); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
 
+//Request all invoices with DETAILS
 const getInvoices = async (req, res, next) => {
 	try {
-		//Invoice.findAll({ include: { all: true } })
 		let invoiceAll = await Invoice.findAll({ include: { all: true } });
 
 		if (invoiceAll) {
@@ -51,8 +54,7 @@ const getInvoices = async (req, res, next) => {
 				let client = await Barber.findByPk(aux["clientId"]);
 				aux["clientName"] = client.name + " " + client.lastname;
 
-				//services
-				let services = [];
+				//JSQL Services
 				let detailInvoiceAll = await DetailInvoice.findAll({
 					where: {
 						invoiceId: aux["invoiceId"],
@@ -65,6 +67,22 @@ const getInvoices = async (req, res, next) => {
 						let auxServiceId = detailInvoiceAll[j].dataValues.serviceId;
 						if (auxServiceId) {
 							let auxServiceName = await Service.findByPk(auxServiceId);
+							//-🚏
+							//JSQL categoryServices
+							// let categoryServicesAll = await categoryService.findAll({
+							// 	where: {
+							// 		serviceId: auxServiceId,
+							// 	},
+							// });
+							// if (detailInvoiceAll.length > 0) {
+							// 	let jsonInvoicesDetails = [];
+							// 	for (let j = 0; j < detailInvoiceAll.length; j++) {
+							// 		let auxServiceId = detailInvoiceAll[j].dataValues.serviceId;
+							// 		if (auxServiceId) {
+							// 			let auxServiceName = await Service.findByPk(auxServiceId);
+							// 			jsonInvoicesDetails.push(auxServiceName.dataValues);
+							// 		}
+							//--🦖
 							jsonInvoicesDetails.push(auxServiceName.dataValues);
 						}
 					}
@@ -79,23 +97,64 @@ const getInvoices = async (req, res, next) => {
 		}
 	} catch (e) {
 		console.log(
-			"[getInvoiceAll]The HTTP request could not be made successfully " + e
+			"[getInvoiceAll]The HTTP request could not be made successfully\n" + e
 		);
 	}
 };
 
-const getInvoiceById = (req, res, next) => {
+const getInvoiceById = async (req, res, next) => {
 	try {
 		let queryId = req.params.id.toUpperCase();
-		Invoice.findOne({
-			where: { id: queryId },
-			include: [{ model: Barber }, { model: Client }, { model: DetailInvoice }],
-		}).then((result) => {
-			res.status(200).send(result);
-		});
+
+		let invoiceById = await Invoice.findOne({ where: { id: queryId } });
+
+		if (invoiceById) {
+			let aux = {};
+			//invoiceId
+			aux["invoiceId"] = invoiceById.dataValues.id;
+
+			aux["date"] = invoiceById.dataValues.date;
+			aux["statusOrder"] = invoiceById.dataValues.statusOrder;
+			aux["statusPay"] = invoiceById.dataValues.statusPay;
+
+			//qryBarber
+			aux["barberId"] = invoiceById.dataValues.barberId;
+			let barber = await Barber.findByPk(aux["barberId"]);
+			aux["barberName"] = barber.name + " " + barber.lastname;
+
+			//qryClient
+			aux["clientId"] = invoiceById.dataValues.clientId;
+			let client = await Barber.findByPk(aux["clientId"]);
+			aux["clientName"] = client.name + " " + client.lastname;
+
+			//services
+			let services = [];
+			let detailInvoiceAll = await DetailInvoice.findAll({
+				where: {
+					invoiceId: aux["invoiceId"],
+				},
+			});
+
+			if (detailInvoiceAll.length > 0) {
+				let jsonInvoicesDetails = [];
+				for (let j = 0; j < detailInvoiceAll.length; j++) {
+					let auxServiceId = detailInvoiceAll[j].dataValues.serviceId;
+					if (auxServiceId) {
+						let auxServiceName = await Service.findByPk(auxServiceId);
+						jsonInvoicesDetails.push(auxServiceName.dataValues);
+					}
+				}
+				aux["service"] = jsonInvoicesDetails;
+				console.log(jsonInvoicesDetails);
+			}
+
+			console.log(aux);
+
+			res.status(200).send(aux);
+		}
 	} catch (e) {
 		console.log(
-			"[getInvoice]The HTTP request could not be made successfully " + e
+			"[getInvoiceById]The HTTP request could not be made successfully\n" + e
 		);
 	}
 };
@@ -125,6 +184,7 @@ const addRelation = async (req, res, next) => {
 		res.send(resul);
 	} else {
 		res.status(400).send("The tables could not be related");
+		next(error);
 	}
 };
 
