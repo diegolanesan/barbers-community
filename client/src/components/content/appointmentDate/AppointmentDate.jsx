@@ -46,19 +46,19 @@ export default function AppointmentDate() {
         let mask
         let color
         let beard
-        if (services.haircut[0]) { haircut = parseInt(services.haircut[0].price) }
+        if (services.haircut[0]) { haircut = parseInt(services.haircut[0].serviceBarber.price) }
         else { haircut = 0 }
-        if (services.kids[0]) { kids = parseInt(services.kids[0].price) }
+        if (services.kids[0]) { kids = parseInt(services.kids[0].serviceBarber.price) }
         else { kids = 0 }
-        if (services.design[0]) { design = parseInt(services.design[0].price) }
+        if (services.design[0]) { design = parseInt(services.design[0].serviceBarber.price) }
         else { design = 0 }
-        if (services.ozon[0]) { ozon = parseInt(services.ozon[0].price) }
+        if (services.ozon[0]) { ozon = parseInt(services.ozon[0].serviceBarber.price) }
         else { ozon = 0 }
-        if (services.mask[0]) { mask = parseInt(services.mask[0].price) }
+        if (services.mask[0]) { mask = parseInt(services.mask[0].serviceBarber.price) }
         else { mask = 0 }
-        if (services.color[0]) { color = parseInt(services.color[0].price) }
+        if (services.color[0]) { color = parseInt(services.color[0].serviceBarber.price) }
         else { color = 0 }
-        if (services.beard[0]) { beard = parseInt(services.beard[0].price) }
+        if (services.beard[0]) { beard = parseInt(services.beard[0].serviceBarber.price) }
         else { beard = 0 }
         let sum = kids + haircut + design + ozon + mask + color + beard
         setAppointment({ ...appointment, total: sum })
@@ -128,13 +128,13 @@ export default function AppointmentDate() {
                                 </div>
                                 <div class="grid grid-cols-2 text-gray-700 font-semibold">
                                     <div>
-                                        Services: {services.haircut.length !== 0 ? <div>Haircut: {services.haircut[0].name} (${services.haircut[0].price})</div> : ""}
-                                        {services.kids.length !== 0 ? <div>Kids: {services.kids[0].name} (${services.kids[0].price})</div> : ""}
-                                        {services.color.length !== 0 ? <div>{services.color[0].name} (${services.color[0].price})</div> : ""}
-                                        {services.mask.length !== 0 ? <div>{services.mask[0].name} (${services.mask[0].price})</div> : ""}
-                                        {services.ozon.length !== 0 ? <div>{services.ozon[0].name} (${services.ozon[0].price})</div> : ""}
-                                        {services.design.length !== 0 ? <div>{services.design[0].name} (${services.design[0].price})</div> : ""}
-                                        {services.beard.length !== 0 ? <div>{services.beard[0].name} (${services.beard[0].price})</div> : ""}
+                                        Services: {services.haircut.length !== 0 ? <div>Haircut: {services.haircut[0].name} (${services.haircut[0].serviceBarber.price})</div> : ""}
+                                        {services.kids.length !== 0 ? <div>Kids: {services.kids[0].name} (${services.kids[0].serviceBarber.price})</div> : ""}
+                                        {services.color.length !== 0 ? <div>{services.color[0].name} (${services.color[0].serviceBarber.price})</div> : ""}
+                                        {services.mask.length !== 0 ? <div>{services.mask[0].name} (${services.mask[0].serviceBarber.price})</div> : ""}
+                                        {services.ozon.length !== 0 ? <div>{services.ozon[0].name} (${services.ozon[0].serviceBarber.price})</div> : ""}
+                                        {services.design.length !== 0 ? <div>{services.design[0].name} (${services.design[0].serviceBarber.price})</div> : ""}
+                                        {services.beard.length !== 0 ? <div>{services.beard[0].name} (${services.beard[0].serviceBarber.price})</div> : ""}
                                         <br></br>
                                         Date: {appointment.date && appointment.date.slice(0, 15)}
                                         <br></br>

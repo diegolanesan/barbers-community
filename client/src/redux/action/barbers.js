@@ -11,6 +11,9 @@ export const GET_BARBER_BY_ID = "GET_BARBERS_BY_ID";
 export const RELATION_FACE_TYPE = "RELATION_FACE_TYPE";
 export const RELATION_HAIR_TYPE = "RELATION_HAIR_TYPE";
 export const RELATION_STYLE = "RELATION_STYLE";
+export const ADD_SERVICE_BARBER = "ADD_SERVICE_BARBER";
+export const REMOVE_SERVICE_BARBER = "REMOVE_SERVICE_BARBER";
+
 
 export const postBarber = (body) => (dispatch) => {
 	console.log("aaaaaa", body);
@@ -83,5 +86,13 @@ export const relationStyle = (body) => (dispatch) => {
 		.post(HOST_BACK + "/barbers/addStyle", body)
 		.then((res) => dispatch({ type: RELATION_STYLE, payload: res.data }));
 };
+
+export const addToService = (payload) => (dispatch) => {
+	dispatch({ type: ADD_SERVICE_BARBER, payload})
+}
+
+export const removeFromService = (payload) => (dispatch) => {
+	dispatch({ type: REMOVE_SERVICE_BARBER, payload})
+}
 
 
