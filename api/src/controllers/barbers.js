@@ -177,27 +177,28 @@ const relationServiceBarber = async (req, res) => {
 // Agregar un tipo de cara a un barbero
 const relationFaiceType = async (req, res)=>{
 	const {barberId, faceTypeId} = req.body;
-	console.log(faceTypeId)
+	await faceTypeBarber.destroy({where:{barberId: barberId}})
 	for(let i = 0; i < faceTypeId.length; i++) {
-	const resul = await faceTypeBarber.create({barberId, faceTypeId: faceTypeId[i]});
-	if (resul) {
+	await faceTypeBarber.create({barberId, faceTypeId: faceTypeId[i]});
+	}
+	if (faceTypeBarber) {
 		res.send("se ha agregado el tipo al barbero");
 	} else {
 		res.send("No se ha agregado el servicio al barbero");
-	}}
+	}
 };
 
 // Agregar un tipo de pelo a un barbero
 const relationHairType = async (req, res)=>{
 	const {barberId, hairTypeId} = req.body;
-	console.log(hairTypeId)
+	await hairTypeBarber.destroy({where:{barberId: barberId}})
 	for(let i = 0; i < hairTypeId.length; i++) {
-		const resul = await hairTypeBarber.create({barberId, hairTypeId : hairTypeId[i]});
-		if (resul) {
-			res.send("se ha agregado el tipo al barbero");
-		} else {
-			res.send("No se ha agregado el servicio al barbero");
-		}
+		await hairTypeBarber.create({barberId, hairTypeId : hairTypeId[i]});
+	}
+	if (hairTypeBarber) {
+		res.send("se ha agregado el tipo al barbero");
+	} else {
+		res.send("No se ha agregado el servicio al barbero");
 	}
 };
 
