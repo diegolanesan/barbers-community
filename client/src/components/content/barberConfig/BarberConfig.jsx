@@ -64,7 +64,6 @@ const BarberConfig = () => {
         });
       }
     };
-    console.log(barber.faces, barber.hairs, barber.barberStyles)
     
     const handleSubmit = () => {
       if(!barber.name || !barber.lastname ||
@@ -333,7 +332,7 @@ const BarberConfig = () => {
                 <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
                         id="c_password"
                         type="password"
-                        placeholder={`${barber.password}`}
+                        placeholder={`*********`}
                         name="confirmedPassword"
                         value={barber.confirmedPassword}
                         onChange={handleInputChange}

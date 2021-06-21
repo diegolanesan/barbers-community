@@ -96,7 +96,7 @@ function LoginClient() {
 					<p class="mt-8">
 						Need an account?{" "}
 						<a
-							href="http://localhost:3000/register"
+							href="http://localhost:3000/loginClients"
 							class="text-blue-500 hover:text-blue-700 font-semibold"
 						>
 							Create an account
