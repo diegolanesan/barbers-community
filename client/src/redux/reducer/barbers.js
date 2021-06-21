@@ -2,13 +2,25 @@ import {
     DELETE_BARBER, GET_BARBERS, POST_BARBER,
     PUT_BARBER, GET_BARBERS_BY_NAME, GET_BARBERS_BY_TYPE,
     FILTER_BARBERS,
-    GET_BARBER_BY_ID
+    GET_BARBER_BY_ID, REMOVE_SERVICE_BARBER,
+    ADD_SERVICE_BARBER
 } from "../action/barbers"
 
 const initialState = {
     barbersStorage: [],
     barbersLoaded: [],
-    barberDetail: {}
+    barberDetail: {},
+    services: {
+        haircut: [],
+        kids: [],
+        beard: [],
+        color: [],
+        ozon: [],
+        design: [],
+        mask: [],
+        barber: [],
+        id: []
+    }
 }
 
 const barbersReducer = (state = initialState, action) => {
@@ -95,6 +107,166 @@ const barbersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 barberDetail: action.payload
+            }
+        case ADD_SERVICE_BARBER:
+            if (action.payload.email) {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        barber: [action.payload]
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "HAIRCUT") {
+            //console.log(action.payload)
+            console.log(action.payload.serviceBarber)
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        haircut: [action.payload],
+                        id: [...state.services.id, action.payload.id]
+                    }
+                }
+            }
+        if (action.payload.categories[0].name === "KIDHAIRCUT") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        kids: [action.payload],
+                        id: [...state.services.id, action.payload.id]
+
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "BEARDCUT") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        beard: [action.payload],
+                        id: [...state.services.id, action.payload.id]
+
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "HAIRCOLOR") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        color: [action.payload],
+                        id: [...state.services.id, action.payload.id]
+
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "DESIGN") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        design: [action.payload],
+                        id: [...state.services.id, action.payload.id]
+
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "OZON") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        ozon: [action.payload],
+                        id: [...state.services.id, action.payload.id]
+
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "MASK") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        mask: [action.payload],
+                        id: [...state.services.id, action.payload.id]
+
+                    }
+                }
+            }
+            case REMOVE_SERVICE_BARBER:
+            console.log(action.payload.categories[0].name)
+        if (action.payload.categories[0].name === "HAIRCUT") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        haircut: [],
+                        id: []
+                    }
+                }
+            }
+        if (action.payload.categories[0].name === "KIDHAIRCUT") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        kids: [],
+                        id: []
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "BEARDCUT") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        beard: [],
+                        id: []
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "HAIRCOLOR") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        color: [],
+                        id: []
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "DESIGN") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        design: [],
+                        id: []
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "OZON") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        ozon: [],
+                        id: []
+                    }
+                }
+            }
+            if (action.payload.categories[0].name === "MASK") {
+                return {
+                    ...state,
+                    services: {
+                        ...state.services,
+                        mask: [],
+                        id: []
+                    }
+                }
             }
         default:
             return state
