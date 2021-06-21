@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import jwtDecode from 'jwt-decode'
 import { putBarber } from '../../../redux/action/barbers';
-import { getBarberById, relationFaiceType, relationHairType } from '../../../redux/action/barbers';
-import { getAllHairTypes, getAllFaceTypes } from '../../../redux/action/types';
+import { getBarberById, relationFaiceType, relationHairType, relationStyle } from '../../../redux/action/barbers';
+import { getAllHairTypes, getAllFaceTypes, getAllStyles } from '../../../redux/action/types';
 
 const BarberConfig = () => {
     const dispatch = useDispatch()
     const barberSelected = useSelector(state => state.barbers.barberDetail)
-    const {hair, face} = useSelector(state => state.types)
+    const {hair, face, style} = useSelector(state => state.types)
+    const token = jwtDecode(localStorage.getItem("barberToken"))
+    const id = token.id
+    console.log(token)
     const newBarber = {
         name: "",
         lastname: "",
@@ -24,11 +27,11 @@ const BarberConfig = () => {
         type: "",
         faces: [],
         hairs: [],
+        barberStyles: [],
     }
 
     const [barber, setBarber] = useState(newBarber) 
     const [loading, setLoading] = useState(true)
-    var { id } = useParams()
 
     function fetchData() {
         dispatch(getBarberById(id))
@@ -42,11 +45,12 @@ const BarberConfig = () => {
             setBarber(barberSelected)
             dispatch(getAllHairTypes())
             dispatch(getAllFaceTypes())
+            dispatch(getAllStyles())
         }
     
     }, [barberSelected])
     const handleInputChange = (e) => {
-      if(e.target.name === "faces" || e.target.name === "hairs"){
+      if(e.target.name === "faces" || e.target.name === "hairs" || e.target.name === "barberStyles"){
         for(let i = 0; i< barber[e.target.name].length; i++) {
           if(e.target.value === barber[e.target.name][i].toString()) { 
             return barber[e.target.name].splice(i , 1);
@@ -60,33 +64,45 @@ const BarberConfig = () => {
         });
       }
     };
-    console.log(barber.faces,barber.hairs)
+    console.log(barber.faces, barber.hairs, barber.barberStyles)
     
     const handleSubmit = () => {
+      if(!barber.name || !barber.lastname ||
+         !barber.bio || !barber.resume ||
+          !barber.email || !barber.password || !barber.confirmedPassword ||
+           !barber.alias || !barber.location || !barber.mobile) {
+            alert("Please complete all the camps")
+      } else if (barber.password !== barber.confirmedPassword) {
+            alert("password and confirm password must be the same")
+      } else {
         const barberSend = {
-            barberModify: {
-                status: true,
-                rating: 0,
-                name: barber.name,
-                lastname: barber.lastname,
-                bio: barber.bio,
-                resume: barber.resume,
-                email: barber.email,
-                password: barber.confirmedPassword,
-                alias: barber.alias,
-                location: barber.location,
-                mobile: barber.mobile,
-                //img: "",
-                type: barber.type,
-            }
-        };
-        dispatch(putBarber(id, barberSend))
-        dispatch(relationHairType({hairTypeId :barber.hairs, barberId : id}))
-        dispatch(relationFaiceType({faceTypeId :barber.faces, barberId : id}))
+          barberModify: {
+              status: true,
+              rating: 0,
+              name: barber.name,
+              lastname: barber.lastname,
+              bio: barber.bio,
+              resume: barber.resume,
+              email: barber.email,
+              password: barber.confirmedPassword,
+              alias: barber.alias,
+              location: barber.location,
+              mobile: barber.mobile,
+              //img: "",
+              type: barber.type,
+          }
+      };
+      dispatch(putBarber(id, barberSend))
+      dispatch(relationHairType({hairTypeId :barber.hairs, barberId : id}))
+      dispatch(relationFaiceType({faceTypeId :barber.faces, barberId : id}))
+      dispatch(relationStyle({styleId :barber.barberStyles, barberId : id}))
+      alert("Updated Successfully")
+      }
     };
+    console.log(barber)
     return (
-        <div class="flex h-screen bg-gray-200 items-center justify-center  mt-32 mb-32">
-          <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-1/2">
+        <div class="flex grid h-screen bg-gray-200 items-center justify-center ">
+          <div class="grid bg-white rounded-lg shadow-xl w-11/12  md:w-11/12 mx-12 mt-10">
             <div class="flex justify-center">
               <div class="flex">
                 <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Choose your Specialities</h1>
@@ -96,19 +112,31 @@ const BarberConfig = () => {
         
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
-              <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Styles</label>
-              <div class="block pt-3 pb-2 space-x-4">
-          <label>
-            <input
-              type="radio"
-              name="radio"
-              value="1"
-              class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
-            />
-            Option 1
-          </label>
-        </div>
-            </div>
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Styles</label>
+                <div class="block pt-3 pb-2 space-x-4">
+                  {style ? style.map(b => {
+                    return <label>
+                      {barber.barberStyles.includes(b.id) ? 
+                      <input
+                      type="checkbox"
+                      name="barberStyles"
+                      defaultChecked
+                      value={`${b.id}`}
+                      onChange={handleInputChange}
+                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+                      /> :
+                      <input
+                      type="checkbox"
+                      name="barberStyles"
+                      value={`${b.id}`}
+                      onChange={handleInputChange}
+                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+                      />}
+                      {b.description}
+                    </label>
+                  }) : ""}
+                </div>
+              </div>
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Face Types</label>
                 <div class="block pt-3 pb-2 space-x-4">
@@ -182,7 +210,7 @@ const BarberConfig = () => {
                 <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Change your Info</h1>
               </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mt-5 mx-7">
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">First Name</label>
                 <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
@@ -313,7 +341,6 @@ const BarberConfig = () => {
               </div>
               </div>
             <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-              <button class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Cancel</button>
               <button class='w-auto bg-blue-500 hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2' onClick={() => handleSubmit()}>Update</button>
             </div>
         

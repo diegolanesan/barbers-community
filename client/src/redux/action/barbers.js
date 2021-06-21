@@ -10,6 +10,7 @@ export const GET_BARBERS_BY_TYPE = "GET_BARBERS_BY_TYPE";
 export const GET_BARBER_BY_ID = "GET_BARBERS_BY_ID";
 export const RELATION_FACE_TYPE = "RELATION_FACE_TYPE";
 export const RELATION_HAIR_TYPE = "RELATION_HAIR_TYPE";
+export const RELATION_STYLE = "RELATION_STYLE";
 
 export const postBarber = (body) => (dispatch) => {
 	console.log("aaaaaa", body);
@@ -75,6 +76,12 @@ export const relationHairType = (body) => (dispatch) => {
 	axios
 		.post(HOST_BACK + "/barbers/addHairType", body)
 		.then((res) => dispatch({ type: RELATION_HAIR_TYPE, payload: res.data }));
+};
+
+export const relationStyle = (body) => (dispatch) => {
+	axios
+		.post(HOST_BACK + "/barbers/addStyle", body)
+		.then((res) => dispatch({ type: RELATION_STYLE, payload: res.data }));
 };
 
 
