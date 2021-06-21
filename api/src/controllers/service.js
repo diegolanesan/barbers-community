@@ -13,6 +13,8 @@ const getBarbersService = async (req, res) =>{
     }
 };
 
+
+
 // ruta para buscar todos los servicios
 const getAllService = async (req, res)=>{
     const allService = await Service.findAll({include:[{model:Category},{model:Barber}]});

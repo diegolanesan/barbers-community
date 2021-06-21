@@ -59,7 +59,7 @@ function LoginBarbers() {
                 </div>
         
                 <div class="text-right mt-2">
-                  <Link to="/recovery" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</Link>
+                  <Link to="/recovery/false" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</Link>
                 </div>
         
                 {/* <button type="submit" class="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
