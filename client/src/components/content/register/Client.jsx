@@ -1,77 +1,72 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect  } from "react";
+import { useDispatch, useSelector } from "react-redux";
 //import { postBarber } from "../../../redux/action/barbers";
-import { signUpBarber } from "../../../redux/action/auth";
+import { signUpClient } from "../../../redux/action/auth";
+import { getAllHairTypes, getAllFaceTypes, getAllStyles } from "../../../redux/action/types";
 
 const validate = (input) => {
-	let errors = {};
+	let errors = {}
 	// name
-	if (!input.name) errors.name = "First name is required.";
-	else if (/(?=.*[0-9])/.test(input.name))
-		errors.name = "Must contain only letters.";
+	if (!input.name) errors.name = "First name is required."
+	else if (/(?=.*[0-9])/.test(input.name)) errors.name = "Must contain only letters."
 	// lastname
-	if (!input.lastname) errors.lastname = "Last name is required.";
-	else if (/(?=.*[0-9])/.test(input.lastname))
-		errors.lastname = "Must contain only letters.";
+	if (!input.lastname) errors.lastname = "Last name is required."
+	else if (/(?=.*[0-9])/.test(input.lastname)) errors.lastname = "Must contain only letters."
 	// email
-	if (!input.email) errors.email = "E-mail is required.";
-	else if (
-		!/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(
-			input.email
-		)
-	)
-		errors.email = "Must be a valid E-mail.";
+	if (!input.email) errors.email = "E-mail is required."
+	else if (!/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(input.email)) errors.email = "Must be a valid E-mail."
 	// password
-	if (!input.password) errors.password = "Please choose a password.";
-	else if (!/^[A-Za-z0-9]+$/g.test(input.password))
-		errors.password = "Must contain only letters and numbers.";
-	else if (!/(?=.*[A-Za-z])/.test(input.password))
-		errors.password = "Must contain at least one letter.";
-	else if (!/(?=.*[0-9])/.test(input.password))
-		errors.password = "Must contain at least one number.";
-	if (!input.confirmedPassword)
-		errors.confirmedPassword = "Please confirm your password.";
-	else if (input.password !== input.confirmedPassword)
-		errors.confirmedPassword = "Passwords must match.";
+	if (!input.password) errors.password = "Please choose a password."
+	else if (!/^[A-Za-z0-9]+$/g.test(input.password)) errors.password = "Must contain only letters and numbers."
+	else if (!/(?=.*[A-Za-z])/.test(input.password)) errors.password = "Must contain at least one letter."
+	else if (!/(?=.*[0-9])/.test(input.password)) errors.password = "Must contain at least one number."
+	if (!input.confirmedPassword) errors.confirmedPassword = "Please confirm your password."
+	else if (input.password !== input.confirmedPassword) errors.confirmedPassword = "Passwords must match."
 	// type
-	if (!input.type) errors.type = "Shuold choose at least one.";
+	if (!input.styleId) errors.styleId = "Should choose at least one."
+    if (!input.faceTypeId) errors.faceTypeId = "Should choose at least one."
+    if (!input.hairTypeId) errors.hairTypeId = "Should choose at least one."
 
-	return errors;
-};
+	return errors
+}
 
-const Register = () => {
+const RegisterClient = () => {
+    const dispatch = useDispatch();
 	const [barberImg, setBarberImg] = useState([]);
 
-	const newBarber = {
-		name: "",
+	const newClient = {
+        name: "",
 		lastname: "",
-		bio: "",
-		resume: "",
 		email: "",
+		img: barberImg,
+		mobile: "",
+		location: "",
 		password: "",
 		confirmedPassword: "",
-		alias: "",
-		location: "",
-		mobile: "",
-		img: barberImg,
-		type: "",
+		status: "",
+        styleId: "", 
+        faceTypeId: "", 
+        hairTypeId: ""
 	};
-
-	const [barber, setBarber] = useState(newBarber);
-	const [errors, setErrors] = useState({});
-
+    const {hair, face, style} = useSelector(state => state.types)
+	const [client, setClient] = useState(newClient);
+	const [errors, setErrors] = useState({})
+    useEffect(() => {
+            dispatch(getAllHairTypes())
+            dispatch(getAllFaceTypes())
+            dispatch(getAllStyles())
+    }, [dispatch])
 	const handleInputChange = (e) => {
-		setBarber({
-			...barber,
+		setClient({
+			...client,
 			[e.target.name]: e.target.value,
 		});
 		// console.log(e.target.name)
-		setErrors(
-			validate({
-				...barber,
-				[e.target.name]: e.target.value,
-			})
-		);
+		setErrors(validate({
+			...client,
+			[e.target.name]: e.target.value
+		}))
+        console.log(client)
 	};
 	// console.log(errors)
 
@@ -97,34 +92,30 @@ const Register = () => {
 	// console.log(barberImg);
 
 	// console.log(barber);
-	const dispatch = useDispatch();
 	const handleSubmit = (e) => {
-		const barberSend = {
-			barber: {
-				status: true,
-				rating: 0,
-				name: barber.name,
-				lastname: barber.lastname,
-				bio: barber.bio,
-				resume: barber.resume,
-				email: barber.email,
-				password: barber.confirmedPassword,
-				alias: barber.alias,
-				location: barber.location,
-				mobile: barber.mobile,
+		const clientSend = {
+			client: {
+                name: client.name,
+				lastname: client.lastname,
+				email: client.email,
 				image: barberImg,
-				type: barber.type,
+				mobile: client.mobile,
+				location: client.location,
+				password: client.confirmedPassword,
+				status: true,
+				styleId: client.styleId, 
+                faceTypeId: client.faceTypeId, 
+                hairTypeId: client.hairTypeId
 			},
 		};
 		// if (errors || !barberSend.barber.name) {
 		// 	e.preventDefault()
 		// 	return alert("There's some required fields empty, check please.")
 		// }
-		console.log(barberSend);
-		dispatch(signUpBarber(barberSend)); // Reemplazar por la nueva action que almacena el JWT
+		console.log(clientSend);
+		dispatch(signUpClient(clientSend)); // Reemplazar por la nueva action que almacena el JWT
 		alert("Register Sucessfull");
-		window.location.href = "http://localhost:3000/catalog";
-		//window.location.replace("/catalog");
+		window.location.href = "http://localhost:3000/";
 	};
 	// const handleSelect = () => {
 	//     let select = document.getElementById("");
@@ -147,7 +138,7 @@ const Register = () => {
 	// useEffect(() => {
 	//     dispatch(postBarber(newBarber))
 	// }, [])
-
+    
 	return (
 		<body className=" bg-gray-200">
 			{/* <!-- Container --> */}
@@ -168,93 +159,45 @@ const Register = () => {
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="firstName"
+										// for="firstName"
 										>
 											First Name
 										</label>
 										<input
-											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${
-												errors.name && "border-red-500"
-											} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
+											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${errors.name && 'border-red-500'} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
 											// id="firstName"
 											type="text"
 											placeholder="First Name"
 											name="name"
-											value={barber.name}
+											value={client.name}
 											onChange={handleInputChange}
 										/>
-										{errors.name && (
-											<p className="text-xs italic text-red-500">
-												{errors.name}
-											</p>
-										)}
+										{errors.name && (<p className="text-xs italic text-red-500" >{errors.name}</p>)}
 									</div>
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="lastName"
+										// for="lastName"
 										>
 											Last Name
 										</label>
 										<input
-											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${
-												errors.lastname && "border-red-500"
-											} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
+											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${errors.lastname && 'border-red-500'} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
 											id="lastName"
 											type="text"
 											placeholder="Last Name"
 											name="lastname"
-											value={barber.lastname}
+											value={client.lastname}
 											onChange={handleInputChange}
 										/>
-										{errors.lastname && (
-											<p className="text-xs italic text-red-500">
-												{errors.lastname}
-											</p>
-										)}
+										{errors.lastname && (<p className="text-xs italic text-red-500" >{errors.lastname}</p>)}
 									</div>
 								</div>
 								<div className="mb-4 md:flex md:justify-between">
-									<div className="mb-4 md:mr-2 md:mb-0">
+                                <div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="firstName"
-										>
-											Username
-										</label>
-										<input
-											className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="userName"
-											type="text"
-											placeholder="Username"
-											name="alias"
-											value={barber.alias}
-											onChange={handleInputChange}
-										/>
-									</div>
-									<div className="md:ml-2">
-										<label
-											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="lastName"
-										>
-											Location
-										</label>
-										<input
-											className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="location"
-											type="text"
-											placeholder="location"
-											name="location"
-											value={barber.location}
-											onChange={handleInputChange}
-										/>
-									</div>
-								</div>
-								<div className="mb-4 md:flex md:justify-between">
-									<div className="mb-4 md:mr-2 md:mb-0">
-										<label
-											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="firstName"
+										// for="firstName"
 										>
 											Phone
 										</label>
@@ -264,74 +207,92 @@ const Register = () => {
 											type="number"
 											placeholder="phone"
 											name="mobile"
-											value={barber.mobile}
+											value={client.mobile}
 											onChange={handleInputChange}
 										/>
 									</div>
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="lastName"
+										// for="lastName"
 										>
-											Biography
+											Location
 										</label>
 										<input
 											className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="biography"
+											id="location"
 											type="text"
-											placeholder="Short Biography"
-											name="bio"
-											value={barber.bio}
+											placeholder="location"
+											name="location"
+											value={client.location}
 											onChange={handleInputChange}
 										/>
 									</div>
 								</div>
-								<div className="mb-4">
-									<label
-										className="block mb-2 text-sm font-bold text-gray-700"
-										// for="email"
-									>
-										Resume
-									</label>
-									<textarea
-										className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-										id="resume"
-										type="text"
-										placeholder="About You"
-										name="resume"
-										value={barber.resume}
-										onChange={handleInputChange}
-									/>
+                                <div className="mb-4 md:flex md:justify-between">
+                                <div className="mb-4 md:mr-2 md:mb-0">
+										<label
+											className="block mb-2 text-sm font-bold text-gray-700"
+										// for="firstName"
+										>
+											Type of Face
+										</label>
+                                        <select
+											name="faceTypeId"
+											value={client.faceTypeId}
+											onChange={handleInputChange}
+										>
+											<option value="" defaultChecked >Choose one...</option>
+											{face? face.map(b => {
+                                                return <option value={b.description}>{b.description}</option>
+                                            }): ""}
+										</select>
+									</div>
+									<div className="md:ml-2">
+										<label
+											className="block mb-2 text-sm font-bold text-gray-700"
+										// for="lastName"
+										>
+											Type of Hair
+										</label>
+										<select
+											name="hairTypeId"
+											value={client.hairTypeId}
+											onChange={handleInputChange}
+										>
+											<option value="" defaultChecked >Choose one...</option>
+											{hair? hair.map(b => {
+                                                return <option value={b.description}>{b.description}</option>
+                                            }): ""}
+										</select>
+									</div>
+								</div>
+								<div className="mb-4 md:flex md:justify-between">
 								</div>
 								<div className="mb-4 md:flex md:justify-between">
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="firstName"
+										// for="firstName"
 										>
-											Type
+											Style
 										</label>
 										<select
-											name="type"
-											value={barber.type}
+											name="styleId"
+											value={client.styleId}
 											onChange={handleInputChange}
 										>
 											<option value="" defaultChecked >Choose one...</option>
-											<option value="Urban">Urban</option>
-											<option value="Academy">Academy</option>
-											<option value="Hair technician">Hair technician</option>
-											<option value="Seminary">Seminary</option>
+											{style? style.map(b => {
+                                                return <option value={b.description}>{b.description}</option>
+                                            }): ""}
 										</select>
-										{errors.type && (
-											<p className="text-xs italic text-red-500">
-												{errors.type}
-											</p>
-										)}
+										{errors.type && (<p className="text-xs italic text-red-500" >{errors.type}</p>)}
 									</div>
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="email"
+										// for="email"
 										>
 											Profile Image
 										</label>
@@ -349,51 +310,39 @@ const Register = () => {
 								<div className="mb-4">
 									<label
 										className="block mb-2 text-sm font-bold text-gray-700"
-										// for="email"
+									// for="email"
 									>
 										Email
 									</label>
 									<input
-										className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${
-											errors.email && "border-red-500"
-										} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
+										className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${errors.email && 'border-red-500'} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
 										id="email"
 										type="email"
 										placeholder="Email"
 										name="email"
-										value={barber.email}
+										value={client.email}
 										onChange={handleInputChange}
 									/>
-									{errors.email && (
-										<p className="text-xs italic text-red-500">
-											{errors.email}
-										</p>
-									)}
+									{errors.email && (<p className="text-xs italic text-red-500" >{errors.email}</p>)}
 								</div>
 								<div className="mb-4 md:flex md:justify-between">
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="password"
+										// for="password"
 										>
 											Password
 										</label>
 										<input
-											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${
-												errors.password && "border-red-500"
-											} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
+											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${errors.password && 'border-red-500'} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
 											id="password"
 											type="password"
 											placeholder="*********"
 											name="password"
-											value={barber.password}
+											value={client.password}
 											onChange={handleInputChange}
 										/>
-										{errors.password && (
-											<p className="text-xs italic text-red-500">
-												{errors.password}
-											</p>
-										)}
+										{errors.password && (<p className="text-xs italic text-red-500" >{errors.password}</p>)}
 										{/* <p className="text-xs italic text-red-500">
 											Please choose a password.
 										</p> */}
@@ -401,26 +350,20 @@ const Register = () => {
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
-											// for="c_password"
+										// for="c_password"
 										>
 											Confirm Password
 										</label>
 										<input
-											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${
-												errors.confirmedPassword && "border-red-500"
-											} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
+											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${errors.confirmedPassword && 'border-red-500'} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
 											id="c_password"
 											type="password"
 											placeholder="*********"
 											name="confirmedPassword"
-											value={barber.confirmedPassword}
+											value={client.confirmedPassword}
 											onChange={handleInputChange}
 										/>
-										{errors.confirmedPassword && (
-											<p className="text-xs italic text-red-500">
-												{errors.confirmedPassword}
-											</p>
-										)}
+										{errors.confirmedPassword && (<p className="text-xs italic text-red-500" >{errors.confirmedPassword}</p>)}
 									</div>
 								</div>
 								<div className=" text-center">
@@ -458,4 +401,4 @@ const Register = () => {
 	);
 };
 
-export default Register;
+export default RegisterClient;
