@@ -4,8 +4,10 @@ import reducerBarberDetail from "./barberDetail";
 import reducerServices from './services'
 import reducerTypes from './types'
 import authReducer from "./auth";
+import clientsReducer from "./clients";
 import reducerRecovery from "./recovery";
-import appointmentReduer from "./appointment";
+import appointmentReducer from "./appointment";
+
 
 function combineReducer(state = {}, action) {
     return {
@@ -16,8 +18,8 @@ function combineReducer(state = {}, action) {
       barberDetail: reducerBarberDetail(state.barberDetail,action),
       services: reducerServices(state.services, action),
       types: reducerTypes(state.types, action),
+      clients: clientsReducer(state.clients, action),
       recovery: reducerRecovery(state.recovery, action)
-
     };
   }
   
