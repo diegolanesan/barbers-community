@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import BarberServicesDashboard from './clientDashboardServices/ClientServicesDashboard'
 import AppointmentsDash from './appointments/Appointments.js'
-
+import ClientConfig from './config/Config.js'
 // import style from './barberDashboard.module.css'
 
 const ClientDesk = () => {
@@ -86,7 +86,9 @@ const ClientDesk = () => {
                 )}
 
                 {buttonState.menu === 'Config' && (
-                    <div>Config</div>
+                    <div>
+                        < ClientConfig/>
+                    </div>
                 )}
             </div>
         </div>
