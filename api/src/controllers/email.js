@@ -3,6 +3,7 @@ const nodemailer = require('nodemailer');
 const {USER_EMAIL, PASSWORD_EMAIL } = process.env;
 const jwt = require('jsonwebtoken')
 const {template} = require('./MailTemplate/template')
+const {Barber} = require('../db');
 
 const sendEmail = (req, res) => {
     const {message, from, to, subject} = req.body
@@ -33,34 +34,44 @@ const sendEmail = (req, res) => {
 };
 
 // Ruta de recuperación de contraseña wachiiin
-const passwordRecovery = (req, res)=>{
+const passwordRecoveryBarber = async (req, res)=>{
     const {to} = req.body
-    const token = jwt.sign({check: true}, 'lalolanda', {
+    const barber  = await Barber.findAll({
+      where: {
+          email: to
+        }});
+    
+    if(barber.length !== 0){
+      const token = jwt.sign({check: true}, 'lalolanda', {
         expiresIn: 120
        });
-     
-    const transporter = nodemailer.createTransport({
+      
+      const transporter = nodemailer.createTransport({
         service:'gmail', // En este caso la enviamos por gmail
         auth: {
             user: USER_EMAIL,
             pass: PASSWORD_EMAIL
         }
-    });
-    
-    const mailOptions = {
+      });
+      
+      const mailOptions = {
         from:`Community Barber's <${USER_EMAIL}>`,
         to,
-        subject: "RECUPERACIÓN DE CONTRASEÑA: ",
+        subject: "RECOVERY PASSWORD: ",
         html:template(token)
-    };
-    transporter.sendMail(mailOptions, function(error, info){
+      };
+      transporter.sendMail(mailOptions, function(error, info){
         if (error) {
           console.log(error);
         } else {
-          res.send(token);
+          res.json({token, barber});
         }
       });
+    }else{
+      res.status(404).send("Email Barber not found")
+    }    
 };
+
 
 
 
@@ -68,7 +79,7 @@ const passwordRecovery = (req, res)=>{
 
 module.exports = {
     sendEmail,
-    passwordRecovery
+    passwordRecoveryBarber
 }
 
 

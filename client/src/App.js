@@ -42,7 +42,7 @@ function App() {
       <Route exact path="/academic" component={Academic} />
       <Route exact path="/urban" component={Urban} />
       <Route exact path="/hair-technician" component={HairTechnician} />
-      <Route exact path="/recovery" component={Recovery} />
+      <Route exact path="/recovery/:token" component={Recovery} />
       <Route exact path="/appointment/date" component={AppointmentDate} />
       <Route exact path="/barbers/dashboard" component={BarberDashboard} />
       <Route exact path="/clients/dashboard" component={ClientDesk} />
