@@ -116,8 +116,8 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
-        'Miguel' ,
-        'Lescano', 
+        'Mike' ,
+        'Ebanos', 
         'miguel@lescano.ar',         
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623563408/Barbers/29_zjimim.jpg}', 
         '02645410738', 
@@ -196,7 +196,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
 
 INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
         VALUES ( 
-        'Lorena' ,
+        'Zarco' ,
         'Solarte', 
         'maria@solarte.com',         
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Barbers/24_uflsju.jpg}', 
