@@ -98,17 +98,17 @@ const addRelation = async (req, res, next) => {
 };
 
 const deleteAppointment = (req, res, next) => {
-	const id = req.params.id;
-	Appointment.destroy({
-		where: {
-			id,
-		},
-	})
-		.then(() => {
-			res.sendStatus(200);
-		})
-		.catch((error) => next(error));
-};
+    const id = req.params.id;
+    Appointment.destroy({
+        where: {
+            id,
+        }
+    })
+    .then(() => {
+        res.sendStatus(200);
+    })
+    .catch((error) => next(error));
+}
 
 /* 
 ({
