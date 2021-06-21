@@ -1,8 +1,9 @@
-import { GET_HAIRTYPES, GET_FACETYPES } from "../action/types"
+import { GET_HAIRTYPES, GET_FACETYPES, GET_STYLES } from "../action/types"
 
 const initialState = {
     hair: [],
-    face: []
+    face: [],
+    style: []
 }
 
 const reducerTypes = (state = initialState, action) => {
@@ -16,6 +17,11 @@ const reducerTypes = (state = initialState, action) => {
             return {
                 ...state,
                 face: action.payload
+            }
+        case GET_STYLES:
+            return {
+                ...state,
+                style: action.payload
             }
     
         default:
