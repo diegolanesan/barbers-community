@@ -24,14 +24,14 @@ function SearchBar() {
 			<input
 				value={input}
 				type="text"
-				placeholder="Tu barbero"
+				placeholder="Your barber"
 				onChange={onChange}
-				className="py-1 px-3 border border-current px-2 mr-2 ml-4 text-black"
+				className="w-80 py-1 px-3 px-2 mr-2 ml-4 text-black rounded-3xl"
 			/>
 			<input
 				type="submit"
 				value="Search"
-				className="bg-blue-800 text-white py-1 px-3 rounded"
+				className="bg-blue-800 text-white py-1 px-3 rounded-3xl"
 			/>
 		</form>
 	);
