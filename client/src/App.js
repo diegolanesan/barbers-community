@@ -29,7 +29,9 @@ function App() {
 		<div className="App">
 			{(location.pathname === "/" ||
 				location.pathname === "/catalog" ||
-				location.pathname === "/dashboard") && (
+				location.pathname === "/dashboard" ||
+				location.pathname === "/loginBarbers" ||
+				location.pathname === "/loginClients") && (
 				<Route path="/" component={NavBar} />
 			)}
 			{/* <Route path="/" component={NavBar}/> */}

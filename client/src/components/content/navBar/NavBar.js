@@ -36,8 +36,8 @@ function NavBar() {
               <SearchBar/>
               <div class="flex flex-row-reverse mr-8 hidden md:flex">
                 <ul class="flex flex-row text-gray-700 pt-1">
-                  <li><Link to="/loginBarbers" class="mr-4 bg-gray-200 hover:bg-gray-400 py-1 px-3 block whitespace-no-wrap rounded-3xl" href="http://localhost:3000/loginBarbers"> Barber</Link></li>
-                  <li><Link to="/loginClients" class="bg-gray-200 hover:bg-gray-400 py-1 px-3 block whitespace-no-wrap rounded-3xl" href="http://localhost:3000/loginClients">Client</Link></li>
+                  <li><Link to="/loginBarbers" class="mr-4 bg-gray-200 hover:bg-gray-400 py-1 px-3 block whitespace-no-wrap rounded-3xl"> Barber</Link></li>
+                  <li><Link to="/loginClients" class="bg-gray-200 hover:bg-gray-400 py-1 px-3 block whitespace-no-wrap rounded-3xl">Client</Link></li>
                 </ul>
               </div>
           </nav> 
