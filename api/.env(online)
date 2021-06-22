@@ -1,3 +1,6 @@
 DB_USER = 'fcuxnish'
 DB_PASSWORD = 'u2_xR_k6KnHBpHP4Ge1T5RdXbwoaa9ui'
 DB_HOST = batyr.db.elephantsql.com
+Credenciales de prueba
+MP_Public_Key=TEST-a48cc4eb-ed2a-4e71-8fa9-d5ba42b13ffa
+MP_Access_Token=TEST-3888730639457536-062216-c6b57594025c0e15b256ff1570e5f33e-291816584
