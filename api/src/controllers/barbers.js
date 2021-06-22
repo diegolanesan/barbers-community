@@ -244,8 +244,22 @@ const relationStyle = async (req, res)=>{
     }
 }
 
+const googleLoginBarbers = async (req, res) => {
+	const email = req.body
+	console.log(email)
+	const secret = "secret"
+	try {
+		const oldUser = await Barber.findOne({where: { email: email }})	
+		if(!oldUser) return res.status(404).json({ message: { message: "User doesn`t exist", style: "red" } });
 
-
+        const token = jwt.sign({ email: oldUser.email, id: oldUser.id, name: oldUser.name }, secret, { expiresIn: '1hr' });
+        res.status(201).json({ result: oldUser, token, message: { message: "Log in Successful", style: "green" } });
+	} catch (error) {
+        res.status(500).json({ message: { message: 'Something went wrong', style: "red" } });
+        console.log(error);
+        res.status(500).json({message:{message:'Something went wrong', style:"red"}});
+    }
+}
 
 
 module.exports = {
@@ -262,4 +276,5 @@ module.exports = {
 	relationStyle,
 	getHFStypes,
 	loginBarbers,
+	googleLoginBarbers
 };
