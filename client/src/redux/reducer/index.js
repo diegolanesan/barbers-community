@@ -6,7 +6,7 @@ import reducerTypes from "./types";
 import authReducer from "./auth";
 import clientsReducer from "./clients";
 import reducerRecovery from "./recovery";
-import appointmentReduer from "./appointment";
+import appointmentReducer from "./appointment";
 
 function combineReducer(state = {}, action) {
 	return {

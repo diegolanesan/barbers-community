@@ -27,14 +27,15 @@ function App() {
 	const location = useLocation();
 	return (
 		<div className="App">
-			{(location.pathname === "/" ||
+			{/* {(location.pathname === "/" ||
 				location.pathname === "/catalog" ||
 				location.pathname === "/dashboard" ||
 				location.pathname === "/loginBarbers" ||
-				location.pathname === "/loginClients") && (
+				location.pathname === "/loginClients") ||
+				location.pathname === "/barbers/dashboard" && (
 				<Route path="/" component={NavBar} />
-			)}
-			{/* <Route path="/" component={NavBar}/> */}
+			)} */}
+			<Route path="/" component={NavBar}/>
 			<Route path="/Detail/:id" component={showBarberDetail} />
 			<Route exact path="/" component={Home} />
 			<Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
