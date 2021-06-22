@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import cutHair from "../../../resources/hero.jpg";
 import { signInBarber } from '../../../redux/action/auth'
 import {Link} from "react-router-dom"
+import GoogleLogin from 'react-google-login';
 
 function LoginBarbers() {
     const dispatch = useDispatch()
@@ -70,14 +71,23 @@ function LoginBarbers() {
         
               <hr class="my-6 border-gray-300 w-full"/>
         
-              <button type="button" class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
-                    <div class="flex items-center justify-center">  
-                    <span class="ml-4">
-                    Log in
-                    with
-                    Google</span>
-                    </div>
-                  </button>
+              <GoogleLogin
+                clientId="789841627890-pj14jctbj16a6uddmvs971j9572qt2rv.apps.googleusercontent.com"
+                render={renderProps => (
+                  <button
+                type="button" onClick={renderProps.onClick} disabled={renderProps.disabled}
+                class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
+                >
+                <div class="flex items-center justify-center">
+                  <span class="ml-4">Log in with Google</span>
+                </div>
+              </button>
+                )}
+                buttonText="Login with Google"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+					    />
         
               <p class="mt-8">Need an account? <a href="http://localhost:3000/register" class="text-blue-500 hover:text-blue-700 font-semibold">Create an
                       account</a></p>

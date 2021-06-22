@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signInClient } from "../../../redux/action/auth";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import GoogleLogin from 'react-google-login';
 import cutHair from "../../../resources/hero.jpg";
 
 function LoginClient() {
@@ -24,6 +25,10 @@ function LoginClient() {
 		dispatch(signInClient(creds, history));
 	}
 
+	function responseGoogle(res) {
+		console.log(res)
+		
+	}
 	return (
 		<div class="flex flex-col md:flex-row h-screen items-center">
 			<div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
@@ -65,12 +70,9 @@ function LoginClient() {
 						</div>
 
 						<div class="text-right mt-2">
-							<a
-								href="#"
-								class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700"
-							>
+							<Link to="/" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">
 								Forgot Password?
-							</a>
+							</Link>
 						</div>
 
 						<button
@@ -84,23 +86,31 @@ function LoginClient() {
 
 					<hr class="my-6 border-gray-300 w-full" />
 
-					<button
-						type="button"
+					
+
+					<GoogleLogin
+						clientId="789841627890-pj14jctbj16a6uddmvs971j9572qt2rv.apps.googleusercontent.com"
+						render={renderProps => (
+							<button
+						type="button" onClick={renderProps.onClick} disabled={renderProps.disabled}
 						class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
-					>
+						>
 						<div class="flex items-center justify-center">
 							<span class="ml-4">Log in with Google</span>
 						</div>
 					</button>
+						)}
+						buttonText="Login with Google"
+						onSuccess={responseGoogle}
+						onFailure={responseGoogle}
+						cookiePolicy={'single_host_origin'}
+					/>
 
 					<p class="mt-8">
 						Need an account?{" "}
-						<a
-							href="http://localhost:3000/loginClients"
-							class="text-blue-500 hover:text-blue-700 font-semibold"
-						>
+						<Link to="/register" class="text-blue-500 hover:text-blue-700 font-semibold">
 							Create an account
-						</a>
+						</Link>
 					</p>
 				</div>
 			</div>
