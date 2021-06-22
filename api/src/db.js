@@ -6,8 +6,8 @@ const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
 	//`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/postgres`, // LOCAL DB
-	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/barberscommunity`, // LOCAL DB
-	// `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_USER}`,		   // CLOUD DB (ELEPHANTSQL) --> DATOS EN CARPETA UTILS-SQL-elephantSQL
+	//`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/barberscommunity`, // LOCAL DB
+	`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_USER}`,		   // CLOUD DB (ELEPHANTSQL) --> DATOS EN CARPETA UTILS-SQL-elephantSQL
 	{
 		logging: false, // set to console.log to see the raw SQL queries
 		native: false, // lets Sequelize know we can use pg-native for ~30% more speed

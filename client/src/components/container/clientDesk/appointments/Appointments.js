@@ -1,108 +1,14 @@
 import React, { useState } from 'react'
+import jwtDecode from 'jwt-decode'
 
-const AppointmentsDashClient = () => {
-    const prueba = [{details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Canceled", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "adasdad", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Pending", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},
-    {details: "dasdadsad", status: "Approved", name: "qeqeqwe", n: 13131, action: "adadsaa"},]
-
+const AppointmentsDashClient = ({allAppointments}) => {
+    
+    const user = jwtDecode(localStorage.getItem("clientToken"))
+    const clientAppointments = allAppointments.filter(app => app.clientId === user.id )
     const [filtered, setFiltered] = useState([])
 
     const handleFilter = (e) => {
-        setFiltered(prueba.filter(n => n.status === e.target.value))
+        setFiltered(clientAppointments.filter(n => n.status === e.target.value))
     }
 
     return (
@@ -119,27 +25,24 @@ const AppointmentsDashClient = () => {
                 <table className='w-11/12 text-center ' >
                     <tr>
                         <th className='border-solid border-2 border-black w-5 max-w-5 h-10 max-h-5' >#</th>
-                        <th className='border-solid border-2 border-black w-5 max-w-5 h-10 max-h-5' >Details</th>
+                        <th className='border-solid border-2 border-black w-5 max-w-5 h-10 max-h-5' >Date</th>
                         <th className='border-solid border-2 border-black w-5 max-w-5 h-10 max-h-5' >Status</th>
-                        <th className='border-solid border-2 border-black w-5 max-w-5 h-10 max-h-5' >Name</th>
-                        <th className='border-solid border-2 border-black w-5 max-w-5 h-10 max-h-5' >Service</th>
+                        <th className='border-solid border-2 border-black w-5 max-w-5 h-10 max-h-5' >Total price</th>
                     </tr>
                     {filtered.length ? filtered.map((n, i) => (
-                        <tr >
+                        <tr>
                             <td>{i + 1}</td>
-                            <td>{n.details}</td>
+                            <td>{n.date}</td>
                             <td>{n.status}</td>
-                            <td>{n.name}</td>
-                            <td>{n.action}</td>
+                            <td>{n.total}</td>
                         </tr>
                     )) : (
-                        prueba.map((n, i) => (
+                        clientAppointments.map((n, i) => (
                             <tr >
                                 <td>{i + 1}</td>
-                                <td>{n.details}</td>
+                                <td>{n.date}</td>
                                 <td>{n.status}</td>
-                                <td>{n.name}</td>
-                                <td>{n.action}</td>
+                                <td>{n.total}</td>
                             </tr>
                         )) 
                     )}

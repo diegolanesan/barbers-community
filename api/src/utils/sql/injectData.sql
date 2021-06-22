@@ -2,9 +2,9 @@
 
 -- 1. Detener la ejecucion de la API
 -- 2. Eliminar database 
--- DROP DATABASE barberscommunity;
+-- DROP DATABASE fcuxnish;
 -- 3. Crear la base de datos
--- CREATE DATABASE barberscommunity;
+-- CREATE DATABASE fcuxnish;
 -- 4.Ejecutar ...api/ npm start (Para crear la estructura)
 --5. Ejecutar sentencias SQL
 

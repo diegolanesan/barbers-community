@@ -79,7 +79,7 @@ function LoginBarbers() {
                     </div>
                   </button>
         
-              <p class="mt-8">Need an account? <a href="http://localhost:3000/register" class="text-blue-500 hover:text-blue-700 font-semibold">Create an
+              <p class="mt-8">Need an account? <a href="https://barberscommunity.netlify.app/register" class="text-blue-500 hover:text-blue-700 font-semibold">Create an
                       account</a></p>
         
         

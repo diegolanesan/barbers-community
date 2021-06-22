@@ -40,9 +40,12 @@ function NavBar() {
               </div>
               <SearchBar/>
               <div class="dropdown inline-block relative">
+                
                 <ul class="flex flex-row text-gray-700 pt-1">
-                  <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="http://localhost:3000/loginBarbers">Barber</a></li>
-                  <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="http://localhost:3000/loginClients">Client</a></li>
+                <Link class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" to="/loginBarbers"><h1>Barbers</h1></Link>
+                <Link class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" to="/loginClients"><h1>Clients</h1></Link>
+                  {/* <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/loginBarbers">Barber</a></li>
+                  <li><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/loginClients">Client</a></li> */}
                 </ul>
               </div>
           </nav> 

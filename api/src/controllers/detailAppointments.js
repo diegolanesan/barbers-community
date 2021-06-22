@@ -45,7 +45,7 @@ const addDetailAppointment = async (req, res, next) => {
             serviceBarberId: serviceBarber,
             price
         });
-        return res.send(createdDetail);// ¿Le respondo con la cita creada, o con todas las citas?
+        return res.send(createdDetail); // ¿Le respondo con la cita creada, o con todas las citas?
     } catch (error) {
         next(error);
     }
