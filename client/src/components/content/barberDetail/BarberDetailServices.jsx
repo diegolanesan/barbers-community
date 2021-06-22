@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToAppointment, getBarberServices, removeFromAppointment } from '../../../redux/action/services';
+import { addToCart, removeFromCart } from '../../../redux/action/cart';
+import jwtDecode from 'jwt-decode';
+
 
 const BarberDetailServices = ({ filters }) => {
     const dispatch = useDispatch();
     const { resp } = useSelector((state) => state);
     const services = useSelector((state) => state.services.array);
     const selectedServices = useSelector((state) => state.services.services);
+    const token = jwtDecode(localStorage.getItem("clientToken"));
+
+
 
     const { id } = useParams()
     useEffect(() => {
@@ -21,12 +27,21 @@ const BarberDetailServices = ({ filters }) => {
     const [kids, setKids] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
     console.log(filters)
 
-    const handleAdd = (e) => {
-        dispatch(addToAppointment(e))
+    const handleRemove = (e) => {
+        const service = {
+            serviceBarberId: e.serviceBarber.id,
+            price: e.serviceBarber.price,
+            name: e.name
+        }
+        dispatch(addToCart(token.id, service))
     }
 
-    const handleRemove = (e) => {
-        dispatch(removeFromAppointment(e))
+    const handleAdd = (e) => {
+        console.log("sadfgasdfd" + e.serviceBarber.id)
+        const service = {
+            serviceBarberId: e.serviceBarber.id,
+        }
+        dispatch(removeFromCart(token.id, service.serviceBarberId));
     }
 
     return (
@@ -61,7 +76,7 @@ const BarberDetailServices = ({ filters }) => {
                                 </div>
 
                                 {filters === "HAIRCUT" ? selectedServices.haircut.length !== 0 && n.name === selectedServices.haircut[0].name ?
-                                    <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
+                                    ""
                                     : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
                                     : ""
                                 }

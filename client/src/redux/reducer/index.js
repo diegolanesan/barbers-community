@@ -7,11 +7,12 @@ import authReducer from "./auth";
 import clientsReducer from "./clients";
 import reducerRecovery from "./recovery";
 import appointmentReduer from "./appointment";
+import reducerCart from "./cart";
 
 
 function combineReducer(state = {}, action) {
     return {
-      appointments: appointmentReducer(state.appointments, action),
+      appointments: appointmentReduer(state.appointments, action),
       auth: authReducer(state.auth, action),
       barbers: barbersReducer(state.barbers, action),
       publication: reducerPublication(state.publication,action),
@@ -19,7 +20,8 @@ function combineReducer(state = {}, action) {
       services: reducerServices(state.services, action),
       types: reducerTypes(state.types, action),
       clients: clientsReducer(state.clients, action),
-      recovery: reducerRecovery(state.recovery, action)
+      recovery: reducerRecovery(state.recovery, action),
+      cart: reducerCart(state.cart, action),
     };
   }
   

@@ -19,6 +19,7 @@ import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
 import ClientDesk from './components/container/clientDesk/ClientDesk';
+import Cart from './components/container/cart/Cart';
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,14 +28,8 @@ function App() {
 	const location = useLocation();
 	return (
 		<div className="App">
-			{(location.pathname === "/" ||
-				location.pathname === "/catalog" ||
-				location.pathname === "/dashboard" ||
-				location.pathname === "/loginBarbers" ||
-				location.pathname === "/loginClients") && (
-				<Route path="/" component={NavBar} />
-			)}
-			{/* <Route path="/" component={NavBar}/> */}
+			
+			<Route path="/" component={NavBar}/>
 			<Route path="/Detail/:id" component={showBarberDetail} />
 			<Route exact path="/" component={Home} />
 			<Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
@@ -52,6 +47,7 @@ function App() {
 			<Route exact path="/appointment/date" component={AppointmentDate} />
 			<Route exact path="/barbers/dashboard" component={BarberDashboard} />
 			<Route exact path="/clients/dashboard" component={ClientDesk} />
+			<Route exact path="/cart" component={Cart} />
 			<ToastContainer />
 		</div>
 	);

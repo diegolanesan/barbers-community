@@ -23,7 +23,6 @@ const addItem = async (req, res) => {
 
 const getAllCarts = async(req, res) => {
     const carts = await Cart.findAll()
-
     res.send(carts)
 }
 
@@ -41,9 +40,7 @@ const changeStatus = async(req, res) => {
     const { cartId } = req.params.id
     const { status } = req.body
     const cart = await Cart.findOne({ where: { id: id } })
-
     cart.status = status
-
     res.send(cart)
 }
 
@@ -55,18 +52,17 @@ const getActiveCartFromUser = async(req, res) => {
 }
 
 const removeProductFromCart = async(req, res) => {
-    const { userId } = req.params.id
-    const { serviceId } = req.body
+    const  userId = req.params.id
+    const {serviceBarberId} = req.query
 
-    Items.destroy({
+    Item.destroy({
         where: {
-            serviceId
+            serviceBarberId
         }
     })
     .then(() => {
         res.sendStatus(200);
     })
-    .catch((error) => next(error));
 }
 
 const incrementServiceUnit = async(req, res) => {
