@@ -3,6 +3,7 @@ import axios from "axios"
 import {toast} from 'react-toastify'
 export const SIGN_UP_BARBER = "SIGN_UP_BARBER"
 export const SIGN_IN_BARBER = "SIGN_IN_BARBER"
+export const SIGN_IN_BARBER_GOOGLE = "SIGN_IN_BARBER_GOOGLE"
 export const SIGN_UP_CLIENT = "SIGN_UP_CLIENT"
 export const SIGN_IN_CLIENT = "SIGN_IN_CLIENT"
 export const LOAD_USER = "LOAD_USER"
@@ -27,12 +28,28 @@ export const signUpBarber = (barberUser) => (dispatch) => {
 }
 
 export const signInBarber = (history, creds)=> (dispatch) => {
-    axios.post(HOST_BACK + "/barbers/login", creds) // Verificar ruta de login
+    axios.post(HOST_BACK + "/barbers/login", creds) 
     .then( token => {
         console.log(token.data.token)
         localStorage.setItem('barberToken', JSON.stringify(token.data.token))
 
         dispatch({type: SIGN_IN_BARBER, token: token.data.token})
+        history.push("/barbers/dashboard")
+    })
+    .catch( error => {
+        console.log(error.response)
+        toast.error(error.response?.data, {
+            position: toast.POSITION.BOTTOM_RIGHT
+        })
+    })
+}
+
+export const signInBarberWithGoogle = (history, email)=> (dispatch) => {
+    axios.post(HOST_BACK + "/barbers/loginGoogle", email) 
+    .then( token => {
+        localStorage.setItem('barberToken', JSON.stringify(token.data.token))
+
+        dispatch({type: SIGN_IN_BARBER_GOOGLE, token: token.data.token})
         history.push("/barbers/dashboard")
     })
     .catch( error => {

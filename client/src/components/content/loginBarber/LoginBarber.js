@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import cutHair from "../../../resources/hero.jpg";
-import { signInBarber } from '../../../redux/action/auth'
+import { signInBarber, signInBarberWithGoogle } from '../../../redux/action/auth'
 import {Link} from "react-router-dom"
 import GoogleLogin from 'react-google-login';
 
@@ -26,10 +26,12 @@ function LoginBarbers() {
     function onSubmit(e) {
       e.preventDefault()
       dispatch(signInBarber(history, creds))
-      // setCreds({
-      //   email: "",
-      //   password: "",
-      // })
+    }
+
+    function responseGoogle(res) {
+      console.log(res.dt)
+      console.log(res.dt.Nt)
+      dispatch(signInBarberWithGoogle(history, res.dt))
     }
 
     return (

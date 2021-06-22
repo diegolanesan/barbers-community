@@ -6,6 +6,7 @@ import {
 	SIGN_IN_CLIENT,
 	LOAD_USER,
 	SIGN_OUT,
+	SIGN_IN_BARBER_GOOGLE,
 } from "../action/auth";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SIGN_IN_BARBER:
+		case SIGN_IN_BARBER_GOOGLE:
 		case SIGN_UP_BARBER:
 		case LOAD_USER:
 			toast("¡Welcome!", {
