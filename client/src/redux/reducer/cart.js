@@ -1,7 +1,9 @@
-import {ADD_TO_CART, REMOVE_FROM_CART} from "../action/cart";
+import {ADD_TO_CART, REMOVE_FROM_CART, GET_ACTIVE_CART_FROM_USER_ID} from "../action/cart";
 
 const initialState = {
     cart: [],
+    gessCart: [],
+    activeCart: {}
 }
 
 const reducerCart = (state=initialState, action)=>{
@@ -14,6 +16,11 @@ const reducerCart = (state=initialState, action)=>{
             console.log(action.payload + " entra al reducer")
             return {
                 ...state, cart: action.payload
+            }
+        case GET_ACTIVE_CART_FROM_USER_ID: 
+            return {
+                ...state,
+                activeCart: action.payload
             }
         default:
             return state

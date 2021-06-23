@@ -11,9 +11,9 @@ const BarberDetailServices = ({ filters }) => {
     const { resp } = useSelector((state) => state);
     const services = useSelector((state) => state.services.array);
     const selectedServices = useSelector((state) => state.services.services);
-    const token = jwtDecode(localStorage.getItem("clientToken"));
+    const token = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : null;
 
-
+    console.log(token)
 
     const { id } = useParams()
     useEffect(() => {
@@ -27,21 +27,35 @@ const BarberDetailServices = ({ filters }) => {
     const [kids, setKids] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
     console.log(filters)
 
-    const handleRemove = (e) => {
+    const handleAdd = (e) => {
         const service = {
             serviceBarberId: e.serviceBarber.id,
             price: e.serviceBarber.price,
             name: e.name
         }
+        
         dispatch(addToCart(token.id, service))
     }
 
-    const handleAdd = (e) => {
+    // REFACTOR | Creación de arreglo en local Storage 
+    let items = []
+    localStorage.setItem("items", JSON.stringify(items))
+
+    const handleRemove = (e) => {
         console.log("sadfgasdfd" + e.serviceBarber.id)
         const service = {
             serviceBarberId: e.serviceBarber.id,
+            price: e.serviceBarber.price,
+            name: e.name
         }
-        dispatch(removeFromCart(token.id, service.serviceBarberId));
+        if(token === null ) {
+            items.push(service)
+            localStorage.setItem("items", JSON.stringify(items))
+
+        } else {
+            dispatch(removeFromCart(token.id, service.serviceBarberId));
+        }
+       
     }
 
     return (
@@ -76,7 +90,7 @@ const BarberDetailServices = ({ filters }) => {
                                 </div>
 
                                 {filters === "HAIRCUT" ? selectedServices.haircut.length !== 0 && n.name === selectedServices.haircut[0].name ?
-                                    ""
+                                    <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
                                     : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
                                     : ""
                                 }

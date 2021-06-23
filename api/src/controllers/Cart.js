@@ -45,9 +45,9 @@ const changeStatus = async(req, res) => {
 }
 
 const getActiveCartFromUser = async(req, res) => {
-    const { userId } = req.params.id
-    const cart = Cart.findOne({where: {id: userId, status: "Active"}})
-
+    const userId = req.params.id
+    const cart = await Cart.findOne({where: {clientId: userId, state: "Active"}, include: {all: true, nested: true}})
+    console.log(cart)
     res.send(cart)
 }
 
@@ -79,5 +79,6 @@ const decrementServiceUnit = async(req, res) => {
 module.exports = {
 	addItem,
     getCartsById,
-    removeProductFromCart
+    removeProductFromCart,
+    getActiveCartFromUser
 };

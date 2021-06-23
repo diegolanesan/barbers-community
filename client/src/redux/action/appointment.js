@@ -23,3 +23,4 @@ export const getAppointmentByBarber = (id) => (dispatch) => {
 	return axios.get("http://localhost:3001/appointments")
 	.then(res => dispatch({ type: GET_APPOINTMENT_BY_BARBER, payload: {id: id, json: res.data} }))
 }
+
