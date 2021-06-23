@@ -37,37 +37,176 @@ const addAppointment = (req, res, next) => {
 	});
 };
 
-const getAppointments = (req, res, next) => {
-	/* ---- El usuario ( administrador/cliente/barbero ) busca todas los appointments ----*/
+// const getAppointments = (req, res, next) => {
+// 	/* ---- El usuario ( administrador/cliente/barbero ) busca todas los appointments ----*/
+// 	try {
+// 		//
+// 		Appointment.findAll({
+// 			include: { all: true },
+// 		}).then((result) => {
+// 			res.status(200).send(result);
+// 		});
+// 	} catch (e) {
+// 		console.log("No se pudo realizar la petición HTTP correctamente " + e);
+// 	}
+// };
+
+//-🦖
+const getAppointments = async (req, res, next) => {
 	try {
-		//
-		Appointment.findAll({
-			include: { all: true },
-		}).then((result) => {
-			res.status(200).send(result);
-		});
+		let appointmentAll = await Appointment.findAll({ include: { all: true } });
+
+		if (appointmentAll) {
+			let jsonAppointments = [];
+			for (let i = 0; i < appointmentAll.length; i++) {
+				let aux = {};
+				//appointmentId
+				aux["appointmentId"] = appointmentAll[i].dataValues.id;
+
+				aux["date"] = appointmentAll[i].dataValues.date;
+				aux["time"] = appointmentAll[i].dataValues.time;
+				aux["status"] = appointmentAll[i].dataValues.status;
+				aux["total"] = appointmentAll[i].dataValues.total;
+
+				//qryBarber
+				aux["barberId"] = appointmentAll[i].dataValues.barberId;
+				let barber = await Barber.findByPk(aux["barberId"]);
+				aux["barberName"] = barber.name + " " + barber.lastname;
+
+				//qryClient
+				aux["clientId"] = appointmentAll[i].dataValues.clientId;
+				let client = await Barber.findByPk(aux["clientId"]);
+				aux["name"] = client.name + " " + client.lastname;
+
+				//JSQL Services
+				let detailAppointmentAll = await DetailAppointment.findAll({
+					where: {
+						appointmentId: aux["appointmentId"],
+					},
+				});
+
+				if (detailAppointmentAll.length > 0) {
+					let jsonAppointmentsDetails = [];
+					for (let j = 0; j < detailAppointmentAll.length; j++) {
+						let auxServiceId = detailAppointmentAll[j].dataValues.serviceId;
+						if (auxServiceId) {
+							let auxServiceName = await Service.findByPk(auxServiceId);
+							//-🚏
+							//JSQL categoryServices
+							// let categoryServicesAll = await categoryService.findAll({
+							// 	where: {
+							// 		serviceId: auxServiceId,
+							// 	},
+							// });
+							// if (detailAppointmentAll.length > 0) {
+							// 	let jsonAppointmentsDetails = [];
+							// 	for (let j = 0; j < detailAppointmentAll.length; j++) {
+							// 		let auxServiceId = detailAppointmentAll[j].dataValues.serviceId;
+							// 		if (auxServiceId) {
+							// 			let auxServiceName = await Service.findByPk(auxServiceId);
+							// 			jsonAppointmentsDetails.push(auxServiceName.dataValues);
+							// 		}
+							//--🦖
+							jsonAppointmentsDetails.push(auxServiceName.dataValues);
+						}
+					}
+					aux["service"] = jsonAppointmentsDetails;
+					console.log(jsonAppointmentsDetails);
+				}
+				jsonAppointments.push(aux);
+			}
+			console.log(jsonAppointments);
+
+			res.status(200).send(jsonAppointments);
+		}
 	} catch (e) {
-		console.log("No se pudo realizar la petición HTTP correctamente " + e);
+		console.log(
+			"[getAppointmentAll]The HTTP request could not be made successfully\n" + e
+		);
 	}
 };
 
-const getAppointmentById = (req, res, next) => {
-	try {
-		let queryId = req.params.id.toUpperCase();
-		Appointment.findOne({
-			where: { id: queryId },
-			include: [
-				{ model: Barber },
-				{ model: Client },
-				{ model: DetailAppointment },
-			],
-		}).then((result) => {
-			res.status(200).send(result);
-		});
-	} catch (e) {
-		console.log("No se pudo realizar la petición HTTP correctamente " + e);
-	}
+//--🦖
+
+// const getAppointmentById = (req, res, next) => {
+// 	try {
+// 		let queryId = req.params.id.toUpperCase();
+// 		Appointment.findOne({
+// 			where: { id: queryId },
+// 			include: [
+// 				{ model: Barber },
+// 				{ model: Client },
+// 				{ model: DetailAppointment },
+// 			],
+// 		}).then((result) => {
+// 			res.status(200).send(result);
+// 		});
+// 	} catch (e) {
+// 		console.log("No se pudo realizar la petición HTTP correctamente " + e);
+// 	}
+// };
+
+//-🦖
+const getAppointmentById = async (req, res, next) => {
+	console.log(req.params.id);
+	// try {
+	// 	let queryId = req.params.id.toUpperCase();
+	// 	//let appointmentById = await Appointment.findOne({ where: { id: queryId } });
+
+	// 	// if (appointmentById) {
+	// 	// 	let aux = {};
+	// 	// 	//appointmentId
+	// 	// 	aux["appointmentId"] = appointmentById.dataValues.id;
+
+	// 	// 	aux["date"] = appointmentById.dataValues.date;
+	// 	// 	aux["time"] = appointmentById.dataValues.time;
+	// 	// 	aux["status"] = appointmentById.dataValues.status;
+	// 	// 	aux["total"] = appointmentById.dataValues.total;
+
+	// 	//
+	// 	// 	//qryBarber
+	// 	// 	aux["barberId"] = appointmentById.dataValues.barberId;
+	// 	// 	let barber = await Barber.findByPk(aux["barberId"]);
+	// 	// 	aux["barberName"] = barber.name + " " + barber.lastname;
+
+	// 	// 	//qryClient
+	// 	// 	aux["clientId"] = appointmentById.dataValues.clientId;
+	// 	// 	let client = await Barber.findByPk(aux["clientId"]);
+	// 	// 	aux["name"] = client.name + " " + client.lastname;
+
+	// 	// 	//services
+	// 	// 	let services = [];
+	// 	// 	let detailAppointmentAll = await DetailAppointment.findAll({
+	// 	// 		where: {
+	// 	// 			appointmentId: aux["appointmentId"],
+	// 	// 		},
+	// 	// 	});
+
+	// 	// 	if (detailAppointmentAll.length > 0) {
+	// 	// 		let jsonAppointmentsDetails = [];
+	// 	// 		for (let j = 0; j < detailAppointmentAll.length; j++) {
+	// 	// 			let auxServiceId = detailAppointmentAll[j].dataValues.serviceId;
+	// 	// 			if (auxServiceId) {
+	// 	// 				let auxServiceName = await Service.findByPk(auxServiceId);
+	// 	// 				jsonAppointmentsDetails.push(auxServiceName.dataValues);
+	// 	// 			}
+	// 	// 		}
+	// 	// 		aux["service"] = jsonAppointmentsDetails;
+	// 	// 		console.log(jsonAppointmentsDetails);
+	// 	// 	}
+
+	// 	// 	console.log(aux);
+
+	// 	// 	res.status(200).send(aux);
+	// 	// }
+	// } catch (e) {
+	// 	console.log(
+	// 		"[getAppointmentById]The HTTP request could not be made successfully\n" +
+	// 			e
+	// 	);
+	// }
 };
+//--🦖
 
 const updateAppointment = async (req, res, next) => {
 	const idAppointment = req.params.id;

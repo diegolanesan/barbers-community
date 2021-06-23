@@ -4,34 +4,66 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getServices } from "../../../redux/action/services";
-import { loadUser } from '../../../redux/action/auth'
+import { loadUser } from "../../../redux/action/auth";
+import axios from "axios";
 
 function Home() {
 	const dispatch = useDispatch();
- 
+
 	useEffect(() => {
-		dispatch(loadUser())
-		dispatch(getServices())
-		
+		dispatch(loadUser());
+		dispatch(getServices());
 	}, [dispatch]);
 	const services = useSelector((state) => state.services.array);
-	const user = useSelector(state => state.auth)
+	const user = useSelector((state) => state.auth);
 
-    return (
-        <div>
-            <div className="h-full w-full bg-gray-800 opacity-100">
-                <div className="bg-hero h-screen bg-center bg-no-repeat bg-cover h-vh flex flex-col justify-center">
-                    <h1 className="pl-20 pb-4 text-6xl mb-8 text-white font-bold text-center"> Barber's Community </h1>
-                    <div className="flex flex-row items-center justify-center">
-                        <button className="w-1/5 ml-20 bg-blue-400 text-white font-bold text-xl hover:bg-blue-600 py-4 px-4 rounded-3xl h-16 mb-4">
-                            <Link to="/catalog"> Find your next barber </Link>
-                        </button>
-                        <button className="w-1/5 ml-20 bg-blue-400 text-white font-bold text-xl hover:bg-blue-600 py-4 px-4 rounded-3xl h-16 mb-4">
-                            <Link to="/register"> Join the barber's community </Link>
-                        </button>
-                    </div>
-                </div>
-            </div>
+	const handleClick = (e) => {
+		let user = {
+			firstName: "UserTest",
+			lastName: "lastName Test",
+			email: "a@c.com",
+		};
+		let products = [
+			{ name: "fade", id: 1, quantity: 1, price: 2 },
+			{ name: "mohicano", id: 2, quantity: 2, price: 3 },
+		];
+		let url;
+		axios
+			.post("http://localhost:3001/checkout/create_preference", {
+				user,
+				products,
+			})
+			.then((data) => {
+				url = data.data.response.sandbox_init_point;
+				window.location.href = url;
+			});
+		return url;
+	};
+
+	return (
+		<div>
+			<div className="h-full w-full bg-gray-800 opacity-100">
+				<div className="bg-hero h-screen bg-center bg-no-repeat bg-cover h-vh flex flex-col justify-center">
+					<h1 className="pl-20 pb-4 text-6xl mb-8 text-white font-bold text-center">
+						{" "}
+						Barber's Community{" "}
+					</h1>
+					<div className="flex flex-row items-center justify-center">
+						<button className="w-1/5 ml-20 bg-blue-400 text-white font-bold text-xl hover:bg-blue-600 py-4 px-4 rounded-3xl h-16 mb-4">
+							<Link to="/catalog"> Find your next barber </Link>
+						</button>
+						<button className="w-1/5 ml-20 bg-blue-400 text-white font-bold text-xl hover:bg-blue-600 py-4 px-4 rounded-3xl h-16 mb-4">
+							<Link to="/register"> Join the barber's community </Link>
+						</button>
+						<button
+							className="w-1/5 ml-20 bg-blue-400 text-white font-bold text-xl hover:bg-blue-600 py-4 px-4 rounded-3xl h-16 mb-4"
+							onClick={async () => await handleClick()}
+						>
+							Checkout
+						</button>
+					</div>
+				</div>
+			</div>
 
 			<div className="text-center mt-16 mb-16">
 				<h2 className="text-3xl pb-4 font-bold">
