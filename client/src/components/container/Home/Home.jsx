@@ -19,9 +19,9 @@ function Home() {
 
 	const handleClick = (e) => {
 		let user = {
-			firstName: "UserTest",
-			lastName: "lastName Test",
-			email: "a@c.com",
+			firstName: "seba",
+			lastName: "ciare",
+			email: "sebastianciare@gmail.com",
 		};
 		let products = [
 			{ name: "fade", id: 1, quantity: 1, price: 2 },

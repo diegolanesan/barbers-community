@@ -1,10 +1,9 @@
 const mercadopago = require("mercadopago");
 
-//REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel/credentials
-mercadopago.configurations.setAccessToken(
-	"TEST-3888730639457536-062216-c6b57594025c0e15b256ff1570e5f33e-291816584"
-);
 
+mercadopago.configure({
+	access_token:process.env.ACCESS_TOKEN
+  });
 const postPay = async (req, res, next) => {
 	let { products, user } = req.body;
 	items =
@@ -20,13 +19,13 @@ const postPay = async (req, res, next) => {
 	let preference = {
 		items,
 		payer: {
-			email: user.email,
-			name: user.firstName + " " + user.lastName,
+			email:user.email,
+			name: user.name,
 		},
 		back_urls: {
-			failure: "http://localhost:3001/checkout/payment",
-			pending: "http://localhost:3001/checkout/payment",
-			success: "http://localhost:3001/checkout/payment",
+			failure: "http://localhost:3000",
+			pending: "http://localhost:3000",
+			success: "http://localhost:3000",
 		},
 		marketplace: "BARBERSCOMMUNITY",
 	};
@@ -36,10 +35,29 @@ const postPay = async (req, res, next) => {
 };
 
 const getPay = async (req, res, next) => {
-	response.json({
+	res.json({
 		Payment: req.query.payment_id,
 		Status: req.query.status,
 		MerchantOrder: req.query.merchant_order_id,
 	});
 };
 module.exports = { postPay, getPay };
+
+// USER DE PRUEBA 
+// {
+//     "id": 780183404,
+//     "nickname": "TESTFZQTGGPD",
+//     "password": "qatest7431",
+//     "site_status": "active",
+//     "email": "test_user_16621248@testuser.com"
+// }
+
+
+// CLIENT DE PRUEBA
+// {
+//     "id": 780213945,
+//     "nickname": "TETE7591024",
+//     "password": "qatest9408",
+//     "site_status": "active",
+//     "email": "test_user_99057707@testuser.com"
+// }
