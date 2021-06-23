@@ -2,6 +2,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
+const { userInfo } = require("os");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
@@ -53,6 +54,8 @@ const {
 	Service,
 	DetailAppointment,
 	Invoice,
+	Cart,
+	Items,
 } = sequelize.models;
 
 // Se va a crear una tabla intermedia con los id de las tablas
@@ -110,6 +113,13 @@ Client.belongsTo(FaceType);
 
 HairType.hasMany(Client);
 Client.belongsTo(HairType);
+
+// Relaciones de carrito de compras
+Client.hasMany(Cart)
+Cart.belongsTo(Client)
+
+Cart.belongsToMany(ServiceBarber, {through: "item"})
+ServiceBarber.belongsToMany(Cart, {through: "item"})
 
 //+++++++++++++++++++++ Explicaciones sobre las relacines en la base de datos  ++++++++++++++++++
 // // -----------------relacion de uno a uno (hasOne, belongsTo)----------------------------------

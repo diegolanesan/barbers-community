@@ -19,6 +19,8 @@ import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
 import ClientDesk from './components/container/clientDesk/ClientDesk';
+import CartLogged from './components/container/cart/CartLogged';
+import Cart from './components/container/cart/Cart';
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -53,6 +55,8 @@ function App() {
 			<Route exact path="/appointment/date" component={AppointmentDate} />
 			<Route exact path="/barbers/dashboard" component={BarberDashboard} />
 			<Route exact path="/clients/dashboard" component={ClientDesk} />
+			<Route exact path="/cart" component={CartLogged} />
+			<Route exact path="/guest/cart" component={Cart} />
 			<ToastContainer />
 		</div>
 	);
