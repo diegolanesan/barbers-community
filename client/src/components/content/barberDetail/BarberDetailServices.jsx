@@ -27,19 +27,23 @@ const BarberDetailServices = ({ filters }) => {
     const [kids, setKids] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
     console.log(filters)
 
+
     const handleAdd = (e) => {
         const service = {
             serviceBarberId: e.serviceBarber.id,
             price: e.serviceBarber.price,
             name: e.name
         }
-        
-        dispatch(addToCart(token.id, service))
+
+        if(token === null ) {
+            //dispatch(addToGuestCart(service))
+            dispatch(addToAppointment(e))
+        } else {
+            dispatch(addToCart(token.id, service))
+            dispatch(addToAppointment(e))
+        }
     }
 
-    // REFACTOR | Creación de arreglo en local Storage 
-    let items = []
-    localStorage.setItem("items", JSON.stringify(items))
 
     const handleRemove = (e) => {
         console.log("sadfgasdfd" + e.serviceBarber.id)
@@ -48,12 +52,12 @@ const BarberDetailServices = ({ filters }) => {
             price: e.serviceBarber.price,
             name: e.name
         }
-        if(token === null ) {
-            items.push(service)
-            localStorage.setItem("items", JSON.stringify(items))
-
+        
+        if(token === null ) {    
+            //dispatch(removeFromGuestCart(service))
         } else {
-            dispatch(removeFromCart(token.id, service.serviceBarberId));
+        dispatch(removeFromCart(token.id, service.serviceBarberId));
+        dispatch(removeFromAppointment(e))
         }
        
     }

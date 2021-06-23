@@ -15,9 +15,7 @@ const addItem = async (req, res) => {
         serviceName: name,
         servicePrice: price,
     })
-
-    cart.addServiceBarbers(createdItem)
-
+    //cart.addServiceBarbers(createdItem)
     res.send(createdItem)
 }
 

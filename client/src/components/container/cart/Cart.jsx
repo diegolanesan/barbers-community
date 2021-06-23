@@ -1,19 +1,20 @@
-import React, {useEffect} from 'react'
-import jwtDecode from 'jwt-decode'
+import React from 'react'
 
 export const Cart = () => {
-  
-    let items = []
-    // Remove item de localStorage
+
+
+    let items = JSON.parse(localStorage.getItem("items"));
+
     function removeItem(itemId) {
       console.log(itemId)
       let filterItems = items.filter(item => item.serviceBarberId !== itemId)
       localStorage.setItem("items", JSON.stringify(filterItems))
     }
+
     return (
-<div class="bg-gray-200 h-full md:h-screen">
-  <div class="grid grid-cols-12 gap-6">
-    <div class="col-span-12 sm:col-span-12 md:col-span-7 lg:col-span-8 xxl:col-span-8">
+        <div class="bg-gray-200 h-full md:h-screen">
+        <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 sm:col-span-12 md:col-span-7 lg:col-span-8 xxl:col-span-8">
 
       {
         items.map(item => {
@@ -43,7 +44,7 @@ export const Cart = () => {
           {/* <!-- classic add --> */}
           <div class="flex justify-between border-b-2 mb-2">
                 <div class="text-lg py-2"> 
-                  <p>Classic Ads</p>
+                  <p>Total amount</p>
                 </div>
                  <div class="text-lg py-2"> 
                  <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
@@ -84,9 +85,9 @@ export const Cart = () => {
           </div>
           {/* <!-- End Total PRice --> */}
        </div>
+        </div>
     </div>
-  </div>
-</div>
+    </div>
     )
 }
 
