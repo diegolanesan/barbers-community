@@ -68,6 +68,7 @@ export default function AppointmentDate() {
 
 
     const sendAppointment = () => {
+
         dispatch(postAppointment({
             barberId: appointment.barberId,
             clientId: 12,
@@ -77,6 +78,8 @@ export default function AppointmentDate() {
             serviceBarberId: services.id,
             time: appointment.time
         }))
+        alert("Appoiment send")
+        // window.location.href= "http://localhost:3000/clients/dashboard";
     }
 
     const goBack = () => {
