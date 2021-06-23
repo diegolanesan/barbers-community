@@ -19,7 +19,7 @@ const BarberDetailServices = ({ filters }) => {
 
     const [appointment, setAppointment] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
     const [kids, setKids] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
-    console.log(filters)
+    console.log(filters, "aaa")
 
     const handleAdd = (e) => {
         dispatch(addToAppointment(e))
