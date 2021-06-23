@@ -33,6 +33,8 @@ const categories = require("./categories.js");
 
 const email = require("./email");
 
+const mercadoPago = require("./mercadoPago");
+
 const router = Router();
 
 // Configurar los routers
@@ -47,5 +49,6 @@ router.use("/admin/service", service);
 router.use("/admin/categories", categories);
 router.use("/email", email);
 router.use("/types", typesHFS);
+router.use("/checkout", mercadoPago);
 
 module.exports = router;
