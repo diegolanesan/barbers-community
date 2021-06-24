@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import jwtDecode from 'jwt-decode'
-import { getActiveCartFromUserId, removeFromCart } from '../../../redux/action/cart'
+import { addToCart, getActiveCartFromUserId, removeFromCart } from '../../../redux/action/cart'
 
 
 
@@ -9,6 +9,7 @@ export const CartLogged = () => {
   const dispatch = useDispatch()
   const token = jwtDecode(localStorage.getItem("clientToken"))
   const services = useSelector(state => state.cart.activeCart)
+  const localCart = JSON.parse(localStorage.getItem("cart"))
   useEffect(() => {
     dispatch(getActiveCartFromUserId(token.id))
     // total de items
