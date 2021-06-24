@@ -6,6 +6,9 @@ import { getBarbers } from "../../../redux/action/barbers";
 import { addToAppointment } from "../../../redux/action/services";
 import "./BarberDetail.modules.css";
 import BarberDetailServices from "./BarberDetailServices.jsx";
+import "react-datetime/css/react-datetime.css";
+import Datetime from "react-datetime";
+import moment from "moment";
 
 function BarberDetail(props) {
 	const dispatch = useDispatch();
@@ -19,8 +22,7 @@ function BarberDetail(props) {
 	const scrollToRef = (ref) =>
 		window.scrollTo({
 			left: 0,
-			top: 0,
-			//top: ref.current.offsetTop, //error:Cannot read property 'offsetTop' of null
+			top: ref.current.offsetTop,
 			behavior: "smooth",
 		});
 	const myRef = useRef(null);
@@ -47,6 +49,27 @@ function BarberDetail(props) {
 		}
 	};
 
+	let [fecha, setFecha] = useState({ fecha: "" })
+	function onchange(args) { setAppointment({ ...appointment, date: `${args._d}` }) }
+	var yesterday = moment().subtract(1, "day");
+	function valid(current) {
+		return current.isAfter(yesterday);
+	}
+	
+	const [appointment, setAppointment] = useState({
+		barberId: "",
+		clientId: 1, //traer del localstorage
+		date: fecha.fecha,
+		time: "08:00",
+		status: "Pending",
+		total: "",
+		serviceBarberId: []
+	})
+	const Mon = ["08:00", "09:00"]
+	const time = [{ Mon: [{ time: "08:00" }, { time: "09:00" }]},
+		{Tue: [{ time: "10:00" }, { time: "11:00" }, { time: "12:00" }, { time: "13:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
+		{Wed: [{ time: "08:00" }, { time: "09:00" }, { time: "10:00" }, { time: "11:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]}
+	]
 	console.log(resp);
 	return (
 		<div>
@@ -60,58 +83,8 @@ function BarberDetail(props) {
 								Go back to Barbers
 							</button>
 						</a>
-						<div class="md:flex no-wrap md:-mx-2 pt-8 pb-32 ">
-							{/* <!-- Left Side --> */}
-							<div class="w-full md:w-3/12 md:mx-2">
-								{/* <!-- Profile Card --> */}
-								<div class="bg-white p-3 border-t-4 border-blue-400 ">
-									<div class="image overflow-hidden">
-										<img
-											class="h-auto w-full rounded mx-auto"
-											src={resp.image}
-											alt=""
-										/>
-									</div>
-									<h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-										{resp.name} {resp.lastname}
-									</h1>
-									<p class="text-sm text-gray-500 hover:text-gray-600 leading-6">
-										{resp.resume}
-									</p>
-									<ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-										<li class="flex items-center py-3">
-											<span>Status</span>
-											<span class="ml-auto">
-												<span
-													class={
-														resp.status === true
-															? "bg-green-500 py-1 px-10 rounded text-white text-sm"
-															: "bg-red-500 py-1 px-2 rounded text-white text-sm"
-													}
-												>
-													{resp.status ? "active" : "suspended"}
-												</span>
-											</span>
-										</li>
-										<li class="flex items-center py-3">
-											{resp.status === true ? (
-												<button
-													onClick={executeScroll}
-													class="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-10 mb-0 rounded-lg"
-												>
-													Get an apointment
-												</button>
-											) : (
-												""
-											)}
-										</li>
-									</ul>
-								</div>
-								{/* <!-- End of profile card --> */}
-								<div class="my-4"></div>
-							</div>
-							{/* <!-- Right Side --> */}
-							<div class="w-full md:w-9/12 mx-2 h-64">
+							<div class="md:flex no-wrap md:-mx-2 pt-8 pb-32 ">
+								<div class="w-full md:w-9/12 mx-2 h-64">
 								{/* <!-- About Section --> */}
 								<div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
 									<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
@@ -131,36 +104,35 @@ function BarberDetail(props) {
 												/>
 											</svg>
 										</span>
-										<span class="tracking-wide">About</span>
+										<span class="tracking-wide">Availability</span>
 									</div>
-									<div class="text-gray-700">
-										<div class="grid md:grid-cols-1 text-sm">
+									<div class="grid md:gid-cols-1 grid-cols-2 text-gray-700">
+										{/* <div class="grid md:grid-cols-1 grid-cols-2 font-semibold text-md">
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">First Name</div>
-												<div class="px-4 py-2">{resp.name}</div>
+												<div class="px-4 py-2"> Name: {resp.name}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Last Name</div>
-												<div class="px-4 py-2">{resp.lastname}</div>
+
+												<div class="px-4 py-2">Lastname: {resp.lastname}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Type</div>
+												
 												<div class="px-4 py-2">{resp.type}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Alias</div>
+												
 												<div class="px-4 py-2">{resp.alias}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Address</div>
+												
 												<div class="px-4 py-2">{resp.location}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Contact No.</div>
+
 												<div class="px-4 py-2">{resp.mobile}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Email.</div>
+												
 												<div class="px-4 py-2">
 													<a
 														class="text-blue-800"
@@ -171,10 +143,21 @@ function BarberDetail(props) {
 												</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Rating</div>
+												
 												<div class="px-4 py-2">{resp.rating}</div>
 											</div>
-										</div>
+										</div> */}
+											<div>
+												{appointment.date && appointment.date.includes("Mon") ? 
+													time.map(e => {<button>ass
+														
+															"aaasssacas"
+														
+													</button>})
+													: "aaaa"}
+											</div>
+                                <Datetime className="border-4 border-blue-400" input={false} isValidDate={valid} timeConstraints={{ hours: { min: 9, max: 22, step: 1 } }} timeFormat={false} onChange={onchange} />
+											
 									</div>
 								</div>
 								{/* <!-- End of about section --> */}
@@ -238,11 +221,69 @@ function BarberDetail(props) {
 								{/* <!-- End of profile tab --> */}
 								<div class="my-4"></div>
 							</div>
+							{/* <!-- Left Side --> */}
+							<div class="w-full md:w-3/12 md:mx-2">
+								{/* <!-- Profile Card --> */}
+								<div class="bg-white p-3 border-t-4 border-blue-400 ">
+									<div class="image overflow-hidden">
+										<img
+											class="h-auto w-full rounded mx-auto"
+											src={resp.image}
+											alt=""
+										/>
+									</div>
+									<h1 class="text-gray-900 font-bold text-xl leading-8 mt-1">
+										{resp.name} {resp.lastname}
+										</h1>
+										<h1 class="text-gray-900 font-semibold text-lg leading-8">
+											{resp.location} {resp.rating + " Stars"}
+										</h1>
+										<h1 class="text-gray-900 font-semibold text-md leading-8">
+											{ "Level: " + resp.type }
+										</h1>
+										
+									<p class="text-sm text-gray-700 font-semibold hover:text-gray-600 leading-6">
+										{resp.resume}
+									</p>
+									<ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+										<li class="flex items-center py-3">
+											<span>Status</span>
+											<span class="ml-auto">
+												<span
+													class={
+														resp.status === true
+															? "bg-green-500 py-1 px-10 rounded text-white text-sm"
+															: "bg-red-500 py-1 px-2 rounded text-white text-sm"
+													}
+												>
+													{resp.status ? "Active" : "Suspended"}
+												</span>
+											</span>
+										</li>
+										<li class="flex items-center py-3">
+											{resp.status === true ? (
+												<button
+													onClick={executeScroll}
+													class="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-10 mb-0 rounded-lg"
+												>
+													Available Services
+												</button>
+											) : (
+												""
+											)}
+										</li>
+									</ul>
+								</div>
+								{/* <!-- End of profile card --> */}
+								<div class="my-4"></div>
+							</div>
+							{/* <!-- Right Side --> */}
+							
 						</div>
 					</div>
 				)}
 			</div>
-			<div class="bg-gray-100 max-w-6xl  mx-auto my-20">
+			<div ref={myRef} class="bg-gray-100 max-w-6xl  mx-auto my-20">
 				<div>
 					<div>
 						<div

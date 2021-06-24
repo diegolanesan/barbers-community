@@ -44,7 +44,7 @@ const reducerServices = (state = initialState, action) => {
                     ...state,
                     services: {
                         ...state.services,
-                        haircut: [action.payload],
+                        haircut: [...state.services.haircut, action.payload],
                         id: [...state.services.id, action.payload.serviceBarber.id]
                     }
                 }

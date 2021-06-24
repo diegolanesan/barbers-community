@@ -35,7 +35,7 @@ const BarberDetailServices = ({ filters }) => {
             name: e.name
         }
 
-        if(token === null ) {
+        if (token === null) {
             //dispatch(addToGuestCart(service))
             dispatch(addToAppointment(e))
         } else {
@@ -52,14 +52,14 @@ const BarberDetailServices = ({ filters }) => {
             price: e.serviceBarber.price,
             name: e.name
         }
-        
-        if(token === null ) {    
+
+        if (token === null) {
             //dispatch(removeFromGuestCart(service))
         } else {
-        dispatch(removeFromCart(token.id, service.serviceBarberId));
-        dispatch(removeFromAppointment(e))
+            dispatch(removeFromCart(token.id, service.serviceBarberId));
+            dispatch(removeFromAppointment(e))
         }
-       
+
     }
 
     return (
