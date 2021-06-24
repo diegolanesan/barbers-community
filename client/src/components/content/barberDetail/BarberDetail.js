@@ -9,6 +9,7 @@ import BarberDetailServices from "./BarberDetailServices.jsx";
 import "react-datetime/css/react-datetime.css";
 import Datetime from "react-datetime";
 import moment from "moment";
+import StarRatingComponent from "react-star-rating-component";
 
 function BarberDetail(props) {
 	const dispatch = useDispatch();
@@ -65,12 +66,17 @@ function BarberDetail(props) {
 		total: "",
 		serviceBarberId: []
 	})
-	const Mon = ["08:00", "09:00"]
-	const time = [{ Mon: [{ time: "08:00" }, { time: "09:00" }]},
+	
+	const time = [{ Mon: [{ time: "08:00" }, { time: "09:00" }, {time: "10:00"}]},
 		{Tue: [{ time: "10:00" }, { time: "11:00" }, { time: "12:00" }, { time: "13:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
-		{Wed: [{ time: "08:00" }, { time: "09:00" }, { time: "10:00" }, { time: "11:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]}
+		{ Wed: [{ time: "08:00" }, { time: "09:00" }, { time: "10:00" }, { time: "11:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }] },
+		{Thu: [ { time: "12:00" }, { time: "13:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
+		{Fri: [{ time: "10:00" }, { time: "11:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
+		
 	]
-	console.log(resp);
+	const [mon, setMon] = useState(time[0].Mon)
+	
+	console.log(mon);
 	return (
 		<div>
 			<div class="bg-gray-100 max-w-6xl mx-auto my-20">
@@ -148,15 +154,18 @@ function BarberDetail(props) {
 											</div>
 										</div> */}
 											<div>
-												{appointment.date && appointment.date.includes("Mon") ? 
-													time.map(e => {<button>ass
-														
-															"aaasssacas"
-														
-													</button>})
-													: "aaaa"}
+												{appointment.date && appointment.date.includes("Mon") ?
+													time[0].Mon.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
+												{appointment.date && appointment.date.includes("Tue") ?
+													time[1].Tue.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
+												{appointment.date && appointment.date.includes("Wed") ?
+													time[2].Wed.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
+												{appointment.date && appointment.date.includes("Thu") ?
+													time[3].Thu.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
+												{appointment.date && appointment.date.includes("Fri") ?
+													time[4].Fri.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time }</button>) : ""}
 											</div>
-                                <Datetime className="border-4 border-blue-400" input={false} isValidDate={valid} timeConstraints={{ hours: { min: 9, max: 22, step: 1 } }} timeFormat={false} onChange={onchange} />
+                                <Datetime className="border-4 border-blue-400" input={false} isValidDate={valid} timeFormat={false} onChange={onchange} />
 											
 									</div>
 								</div>
@@ -236,8 +245,21 @@ function BarberDetail(props) {
 										{resp.name} {resp.lastname}
 										</h1>
 										<h1 class="text-gray-900 font-semibold text-lg leading-8">
-											{resp.location} {resp.rating + " Stars"}
+											{resp.location}
+											<div className="grid grid-cols-2 gap-4 -ml-16">
+											<StarRatingComponent
+                								name="rate2"
+                      						    editing={false}
+                      						    renderStarIcon={() => <span className=" text-xl">★</span>}
+                      						    starCount={5}
+                      						    value={resp.rating}
+												/>
+												<button className="w-28 bg-blue-400">
+													Add Review
+												</button>
+											</div>
 										</h1>
+										
 										<h1 class="text-gray-900 font-semibold text-md leading-8">
 											{ "Level: " + resp.type }
 										</h1>
