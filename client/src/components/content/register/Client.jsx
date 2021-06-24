@@ -94,7 +94,7 @@ const RegisterClient = () => {
 	// console.log(barber);
 	const handleSubmit = (e) => {
 		const clientSend = {
-			client: {
+			clientModified: {
                 name: client.name,
 				lastname: client.lastname,
 				email: client.email,
