@@ -31,7 +31,10 @@ function LoginBarbers() {
     function responseGoogle(res) {
       console.log(res.dt)
       console.log(res.dt.Nt)
-      dispatch(signInBarberWithGoogle(history, res.dt))
+      const email = {
+        email: res.dt.Nt
+      }
+      dispatch(signInBarberWithGoogle(history, email))
     }
 
     return (

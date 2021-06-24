@@ -245,8 +245,7 @@ const relationStyle = async (req, res)=>{
 }
 
 const googleLoginBarbers = async (req, res) => {
-	const email = req.body
-	console.log(email)
+	const {email} = req.body
 	const secret = "secret"
 	try {
 		const oldUser = await Barber.findOne({where: { email: email }})	
