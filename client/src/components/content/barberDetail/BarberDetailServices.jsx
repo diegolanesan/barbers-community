@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToAppointment, getBarberServices, removeFromAppointment } from '../../../redux/action/services';
-import { addToCart, removeFromCart } from '../../../redux/action/cart';
+import { addToCart, removeFromCart, getGuestCart, addToGuestCart, removeFromGuestCart } from '../../../redux/action/cart';
 import jwtDecode from 'jwt-decode';
 
 
@@ -13,7 +13,7 @@ const BarberDetailServices = ({ filters }) => {
     const selectedServices = useSelector((state) => state.services.services);
     const token = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : null;
 
-    console.log(token)
+
 
     const { id } = useParams()
     useEffect(() => {
@@ -36,7 +36,7 @@ const BarberDetailServices = ({ filters }) => {
         }
 
         if (token === null) {
-            //dispatch(addToGuestCart(service))
+            addToGuestCart(service)
             dispatch(addToAppointment(e))
         } else {
             dispatch(addToCart(token.id, service))
@@ -54,7 +54,12 @@ const BarberDetailServices = ({ filters }) => {
         }
 
         if (token === null) {
-            //dispatch(removeFromGuestCart(service))
+            const service = {
+                serviceBarberId: e.serviceBarber.id,
+                price: e.serviceBarber.price,
+                name: e.name
+            }
+            removeFromGuestCart(service)
         } else {
             dispatch(removeFromCart(token.id, service.serviceBarberId));
             dispatch(removeFromAppointment(e))
