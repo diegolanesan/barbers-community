@@ -4,62 +4,45 @@ export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const GET_ACTIVE_CART_FROM_USER_ID = "GET_ACTIVE_CART_FROM_USER_ID";
 
 
-
-
-
 // ACTIONS PARA CARRITO DE GUEST
-// export const addToGuestCart = (service) => (dispatch) => {
+export const getGuestCart = () => {
+    const getCart = JSON.parse(localStorage.getItem('cart'))
+    if (!getCart){
+        const newCart = {
+            userId: null,
+            items:[], 
+            state: 'active',
+            totalAmount: 0
+        }
+        localStorage.setItem('cart', JSON.stringify(newCart))
+        return newCart
+    }
+    return getCart;
+}
 
-// 		getCart.items.push(service)
-//         localStorage.setItem("cart", JSON.stringify(getCart))
-        
-// 		return dispatch({ type: "ADD_TO_GUEST_CART", payload: getCart })
-		
-// }
+export const addToGuestCart = (service) => {
+    let cart = getGuestCart()
+    console.log("CCCCC",cart)
+    console.log("ADDITEMNOTLOGGED",service)
+    const {serviceBarberId, price, name} = service
+    
+    cart.items.push(service)
+    cart.totalAmount += price
+    
+    localStorage.setItem('cart', JSON.stringify(cart))
+}
 
-// export const removeFromGuestCart = (serviceId) => {
-// 	let cart = getCartNotLogged();
-// 	let productIndex = cart.items.findIndex((i) => i.productId === productId);
-// 	if (productIndex > -1) {
-// 		const price = cart.items[productIndex].price;
+export const removeFromGuestCart = (service) => {
+    let cart = getGuestCart();
+    console.log(service)
+	const {serviceBarberId, price, name} = service
 
-// 		const items = cart.items.filter((i) => i.productId !== productId);
-// 		cart.items = items
-// 		cart.totalAmount -= price
-// 		localStorage.setItem('cart', JSON.stringify(cart))
-// 	}
-// }
-
-// export const getCartNotLogged = () => {
-//   const getCart = JSON.parse(localStorage.getItem('cart'))
-//  	console.log("BBBBB", getCart)
-//  	if (!getCart) {
-//  		const newCart = {
-//  			userId: null,
-//  			items: [],
-//  			state: 'active',
-//  			totalAmount: 0
-//  		}
-//  		localStorage.setItem('cart', JSON.stringify(newCart))
-// 		return newCart;
-//  	}
-//  	return getCart;
-// }
-
-// export const deleteItemNotLogged = (productId) => {
-// 	let cart = getCartNotLogged();
-// 	let productIndex = cart.items.findIndex((i) => i.productId === productId);
-// 	if (productIndex > -1) {
-// 		const price = cart.items[productIndex].price;
-// 		const quantity = cart.items[productIndex].quantity;
-
-// 		const items = cart.items.filter((i) => i.productId !== productId);
-// 		cart.items = items;
-// 		cart.totalAmount -= price * quantity;
-// 		localStorage.setItem('cart', JSON.stringify(cart))
-// 	}
-// }
-
+    const items = cart.items.filter((i) => i.serviceBarberId !== serviceBarberId)
+    cart.items = items
+    cart.totalAmount -= price 
+    localStorage.setItem('cart', JSON.stringify(cart))
+    
+}
 
 // ACTIONS PARA CARRITO LOGUEADO
 
