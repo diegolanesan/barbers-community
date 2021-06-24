@@ -10,6 +10,7 @@ export default function AppointmentDate() {
 
     const services = useSelector(state => state.services.services)
     console.log(services)
+   
 
     let [fecha, setFecha] = useState({ fecha: "" })
     function onchange(args) { setAppointment({ ...appointment, date: `${args._d}` }) }

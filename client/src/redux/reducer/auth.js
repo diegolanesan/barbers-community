@@ -25,7 +25,6 @@ const authReducer = (state = initialState, action) => {
 			const barber = jwtDecode(action.token);
 			return {
 				...state,
-				// Con el token desencriptado, debería quedarme acá el objeto de Barbero con todos sus datos
 				barberUser: barber,
 			};
 		case SIGN_IN_CLIENT:
@@ -35,14 +34,12 @@ const authReducer = (state = initialState, action) => {
 			const client = jwtDecode(action.token);
 			return {
 				...state,
-				// Con el token desencriptado, debería quedarme acá el objeto de Barbero con todos sus datos
 				clientUser: client,
 			};
 
 		case SIGN_OUT:
-			localStorage.clear();
-			// localStorage.removeItem('barberToken')
-			// localStorage.removeItem('clientToken')
+			localStorage.removeItem('barberToken')
+			localStorage.removeItem('clientToken')
 			toast("Sign out successfully", {
 				position: toast.POSITION.BOTTOM_RIGHT,
 			});

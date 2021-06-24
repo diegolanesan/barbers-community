@@ -1,4 +1,4 @@
-const { Barber, ServiceBarber, faceTypeBarber, styleBarber, hairTypeBarber, HairType, FaceType, Style } = require("../db");
+const { Barber, ServiceBarber, faceTypeBarber, styleBarber, hairTypeBarber, HairType, FaceType, Style, Appointments } = require("../db");
 require("dotenv").config();
 const { Op } = require("sequelize");
 const jwt = require('jsonwebtoken');
@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 
 const getAllBarbers = async(req, res)=>{
     const barber = await Barber.findAll({
-		include:[ { model: FaceType }, {model: HairType}, { model: Style } ] 
+		include:[ {all: true, nested:true} ] 
 	});
     if(barber){
 		let aux = barber
