@@ -9,7 +9,7 @@ const initialState = {
     appointmentsById: []
 }
 
-const appointmentReduer = (state = initialState, action) => {
+const appointmentReducer = (state = initialState, action) => {
     switch (action.type) {
         case APPOINTMENT_RELATION:
             return {
@@ -32,4 +32,4 @@ const appointmentReduer = (state = initialState, action) => {
     }
 }
 
-export default appointmentReduer
+export default appointmentReducer

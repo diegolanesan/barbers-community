@@ -112,14 +112,14 @@ const BarberServicesData = ({ filters }) => {
             </div>
             <div>
                 <div className="grid sm:grid-cols-3 mt-6 mb-4 grid-cols-1">
-                    <div>
+                    {/* <div>
                         <label className="font-semibold text-gray-900 leading-8 mr-2">Service Name:</label>
                         <input className="border-2 border-gray-700 rounded"></input>
                     </div>
                     <div>
                         <label className="font-semibold text-gray-900 leading-8 mr-2">Description:</label>
                         <input className="border-2 border-gray-700 rounded"></input>
-                    </div>
+                    </div> */}
                     <div>
                         <label className="font-semibold text-gray-900 leading-8 mr-2">Price:</label>
                         <input onChange={(e) => setData({ price: e.target.value })} className="border-2 border-gray-700 rounded"></input>
