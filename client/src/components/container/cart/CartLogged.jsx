@@ -50,9 +50,9 @@ export const CartLogged = () => {
 
         </div>
         <div class="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-4 xxl:col-span-4">
-          <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
-            {/* <!-- classic add --> */}
-            <div class="flex justify-between border-b-2 mb-2">
+          {/* <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4"> */}
+          {/* <!-- classic add --> */}
+          {/* <div class="flex justify-between border-b-2 mb-2">
               <div class="text-lg py-2">
                 <p>Classic Ads</p>
               </div>
@@ -71,26 +71,26 @@ export const CartLogged = () => {
                   </button>
                 </div>
               </div>
-            </div>
-            {/* <!-- End classic add --> */}
+            </div> */}
+          {/* <!-- End classic add --> */}
 
 
-            {/* <!-- Total Item --> */}
-            <div class="flex justify-center items-center text-center">
+          {/* <!-- Total Item --> */}
+          {/* <div class="flex justify-center items-center text-center">
               <div class="text-xl font-semibold">
                 <p>Total Item</p>
                 <p class="text-5xl">0</p>
               </div>
-            </div>
-            {/* <!-- End Total Item --> */}
+            </div> */}
+          {/* <!-- End Total Item --> */}
 
-          </div>
+          {/* </div> */}
           <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
             {/* <!-- Total Price --> */}
             <div class="flex justify-center items-center text-center">
               <div class="text-xl font-semibold">
                 <p>Total Price</p>
-                <p class="text-5xl">0</p>
+                <p class="text-5xl">${services.totalAmount}</p>
               </div>
             </div>
             {/* <!-- End Total PRice --> */}
