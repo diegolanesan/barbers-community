@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import jwtDecode from 'jwt-decode'
 import { addToCart, getActiveCartFromUserId, removeFromCart } from '../../../redux/action/cart'
+import axios from 'axios'
 
 
 
@@ -17,11 +18,22 @@ export const CartLogged = () => {
 
   }, [])
 
+  const paymentGenerator = (user, products) => {
+    axios
+      .post("http://localhost:3001/checkout/create_preference", {
+        user,
+        products,
+      })
+      .then((data) => {
+        window.location.href = data.data.response.sandbox_init_point;
+      });
+  };
+
+  console.log(token)
 
   function removeItem(id) {
     dispatch(removeFromCart(token.id, id)).then(() =>
       dispatch(getActiveCartFromUserId(token.id)))
-
   }
   return (
     <div class="bg-gray-200 h-full md:h-screen">
@@ -95,6 +107,16 @@ export const CartLogged = () => {
               </div>
             </div>
             {/* <!-- End Total PRice --> */}
+          </div>
+          <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
+            <div class="flex justify-center items-center text-center">
+              <div class="text-xl font-semibold">
+                <button onClick={() => paymentGenerator({ name: token.name, email: token.email }, services.serviceBarbers)} className="bg-green-400 px-4 rounded py-2">Checkout</button>
+                {/* paymentGenerator({firstName:"seba",lastName:"ciare", email: "s@gmail.com"}, [{name: "mohicano", id: 2, quantity: 2, price: 100 }]) */}
+              </div>
+
+
+            </div>
           </div>
         </div>
       </div>
