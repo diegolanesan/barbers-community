@@ -8,19 +8,23 @@ const addItem = async (req, res) => {
     const { serviceBarberId, name, price } = req.body
 
     const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
-    const items = await Item.findAll({where: {cartId: cart.id}})
     
-        console.log(cart)
+        //console.log(cart)
     const createdItem = await Item.create({
         cartId: cart.id,
         serviceBarberId,
         serviceName: name,
         servicePrice: price,
     })
-    cart.totalAmount += price;
-    await cart.save()
+    const items = await Item.findAll({where: {cartId: cart.id}})
+    let total = 0
+    items.map((i) => {
+        total += i.dataValues.servicePrice
+    })
+    await cart.update({totalAmount: total})
+
     //cart.addServiceBarbers(createdItem)
-    res.send(createdItem)
+    res.send(cart)
 }
 
 const getAllCarts = async(req, res) => {
@@ -49,7 +53,7 @@ const changeStatus = async(req, res) => {
 const getActiveCartFromUser = async(req, res) => {
     const userId = req.params.id
     const cart = await Cart.findOne({where: {clientId: userId, state: "Active"}, include: {all: true, nested: true}})
-    console.log(cart)
+    //console.log(cart)
     res.send(cart)
 }
 
@@ -58,7 +62,7 @@ const removeProductFromCart = async(req, res) => {
     const {serviceBarberId} = req.query
     const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
     const item = await Item.findOne({ where: { serviceBarberId: serviceBarberId }})
-    //cart.totalAmount -= await item.servicePrice;
+    cart.totalAmount -= await item.servicePrice;
     await cart.save()
     Item.destroy({
         where: {
