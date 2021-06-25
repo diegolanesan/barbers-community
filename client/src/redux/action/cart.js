@@ -47,10 +47,12 @@ export const removeFromGuestCart = (service) => {
 // ACTIONS PARA CARRITO LOGUEADO
 
 export const addToCart = (id, body) => (dispatch) => {
+    let localCart = getGuestCart() 
 	// Si no está logueado
 		return axios.post("http://localhost:3001/cart/addItem/" + id, body).then((response) => {
 		console.log(response.data);
-		dispatch({ type: "ADD_TO_CART", payload: response.data });
+            dispatch({ type: "ADD_TO_CART", payload: response.data });
+            //addToGuestCart(body)
 	});
 	
 }
@@ -60,7 +62,8 @@ export const removeFromCart = (id, body) => (dispatch) => {
      console.log("Body, servicebarberid ..= " + body.serviceBarberId);
 	
  	return axios.delete("http://localhost:3001/cart/" + id + "?serviceBarberId=" + body).then((response) => {
- 	dispatch({ type: "REMOVE_FROM_CART", payload: response.data });
+          dispatch({ type: "REMOVE_FROM_CART", payload: response.data });
+          //removeFromGuestCart(body)
 	});
 
 }

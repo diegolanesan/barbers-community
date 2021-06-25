@@ -13,7 +13,7 @@ const BarberDetailServices = ({ filters }) => {
     const selectedServices = useSelector((state) => state.services.services);
     const token = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : null;
 
-    
+
 
     const { id } = useParams()
     useEffect(() => {
@@ -35,7 +35,7 @@ const BarberDetailServices = ({ filters }) => {
             name: e.name
         }
 
-        if(token === null ) {
+        if (token === null) {
             addToGuestCart(service)
             dispatch(addToAppointment(e))
         } else {
@@ -52,8 +52,8 @@ const BarberDetailServices = ({ filters }) => {
             price: e.serviceBarber.price,
             name: e.name
         }
-        
-        if(token === null ) {    
+
+        if (token === null) {
             const service = {
                 serviceBarberId: e.serviceBarber.id,
                 price: e.serviceBarber.price,
@@ -61,10 +61,10 @@ const BarberDetailServices = ({ filters }) => {
             }
             removeFromGuestCart(service)
         } else {
-        dispatch(removeFromCart(token.id, service.serviceBarberId));
-        dispatch(removeFromAppointment(e))
+            dispatch(removeFromCart(token.id, service.serviceBarberId));
+            dispatch(removeFromAppointment(e))
         }
-       
+
     }
 
     return (

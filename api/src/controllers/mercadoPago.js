@@ -10,9 +10,9 @@ const postPay = async (req, res, next) => {
 		products &&
 		products.map((product) => {
 			return {
-				title: product.name,
+				title: product.item.serviceName,
 				id: product.id,
-				quantity: Number(product.quantity),
+				quantity: 1,
 				unit_price: product.price,
 			};
 		});

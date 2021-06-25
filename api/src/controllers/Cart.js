@@ -7,14 +7,18 @@ const addItem = async (req, res) => {
     const userId = req.params.id
     const { serviceBarberId, name, price } = req.body
 
-    const cart = await Cart.findOne({where: { clientId: userId, state: "Active" }})
-
+    const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
+    const items = await Item.findAll({where: {cartId: cart.id}})
+    
+        console.log(cart)
     const createdItem = await Item.create({
         cartId: cart.id,
         serviceBarberId,
         serviceName: name,
         servicePrice: price,
     })
+    cart.totalAmount += price;
+    await cart.save()
     //cart.addServiceBarbers(createdItem)
     res.send(createdItem)
 }
@@ -52,10 +56,14 @@ const getActiveCartFromUser = async(req, res) => {
 const removeProductFromCart = async(req, res) => {
     const  userId = req.params.id
     const {serviceBarberId} = req.query
-
+    const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
+    const item = await Item.findOne({ where: { serviceBarberId: serviceBarberId }})
+    //cart.totalAmount -= await item.servicePrice;
+    await cart.save()
     Item.destroy({
         where: {
-            serviceBarberId
+            serviceBarberId,
+            cartId: cart.id
         }
     })
     .then(() => {
