@@ -32,12 +32,10 @@ const categories = require("./categories.js");
 // ruta para el envio de mail
 const email = require("./email");
 
-<<<<<<< Updated upstream
+
 const cart = require("./cart")
 
-=======
 // ruta para gestionar pasarela de pago
->>>>>>> Stashed changes
 const mercadoPago = require("./mercadoPago");
 
 // ruta para gestionar desk client
