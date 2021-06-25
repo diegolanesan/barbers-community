@@ -12,14 +12,11 @@ import {
 export default function AppointmentDate() {
 	const dispatch = useDispatch();
 
-<<<<<<< Updated upstream
-    const services = useSelector(state => state.services.services)
-    console.log(services)
-   
-=======
+
+
 	const services = useSelector((state) => state.services.services);
 	console.log(services);
->>>>>>> Stashed changes
+
 
 	let [fecha, setFecha] = useState({ fecha: "" });
 	function onchange(args) {
