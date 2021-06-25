@@ -11,7 +11,6 @@ export const CartLogged = () => {
     const services = useSelector(state => state.cart.activeCart)
     useEffect(() => {
         dispatch(getActiveCartFromUserId(token.id))
-      // total de items
       // monto total de la compra
 
     }, [])
