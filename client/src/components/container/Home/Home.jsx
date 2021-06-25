@@ -24,20 +24,32 @@ function Home() {
 			email: "sebastianciare@gmail.com",
 		};
 		let products = [
-			{ name: "fade", id: 1, quantity: 1, price: 2 },
-			{ name: "mohicano", id: 2, quantity: 2, price: 3 },
+			{
+				name: "fade",
+				id: 1,
+				quantity: 1,
+				price: 2,
+				picture_url:
+					"https://res.cloudinary.com/doovf5g5c/image/upload/v1623898827/Catalog/services/4.HAIRCOLOR/discolor/discolor02_muq0zy.jpg",
+			},
+			{
+				name: "mohicano",
+				id: 2,
+				quantity: 2,
+				price: 3,
+				picture_url: "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
+			},
 		];
-		let url;
+
 		axios
 			.post("http://localhost:3001/checkout/create_preference", {
 				user,
 				products,
 			})
 			.then((data) => {
-				url = data.data.response.sandbox_init_point;
-				window.location.href = url;
+				window.location.href = data.data.response.sandbox_init_point;
+				console.log(data.data);
 			});
-		return url;
 	};
 
 	return (
