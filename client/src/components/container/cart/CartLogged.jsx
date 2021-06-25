@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import jwtDecode from 'jwt-decode'
 import { addToCart, getActiveCartFromUserId, removeFromCart } from '../../../redux/action/cart'
 import axios from 'axios'
-
+import Datetime from "react-datetime";
+import moment from "moment";
 
 
 export const CartLogged = () => {
@@ -17,6 +18,13 @@ export const CartLogged = () => {
     // monto total de la compra
 
   }, [])
+
+  let [fecha, setFecha] = useState({ fecha: "" })
+  function onchange(args) { setFecha(args._d) }
+  var yesterday = moment().subtract(1, "day");
+  function valid(current) {
+    return current.isAfter(yesterday);
+  }
 
   const paymentGenerator = (user, products) => {
     axios
@@ -89,12 +97,21 @@ export const CartLogged = () => {
 
 
           {/* <!-- Total Item --> */}
-          {/* <div class="flex justify-center items-center text-center">
+          <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
+
+            <div class="flex justify-center items-center text-center">
               <div class="text-xl font-semibold">
-                <p>Total Item</p>
-                <p class="text-5xl">0</p>
+                <Datetime className="border-4 border-blue-400" input={false} isValidDate={valid} timeConstraints={{ hours: { min: 9, max: 22, step: 1 } }} timeFormat={false} />
               </div>
-            </div> */}
+            </div>
+          </div>
+          <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
+
+            <div class="flex justify-center items-center text-center">
+              <div class="text-xl font-semibold">
+              </div>
+            </div>
+          </div>
           {/* <!-- End Total Item --> */}
 
           {/* </div> */}
