@@ -19,8 +19,12 @@ import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
 import ClientDesk from './components/container/clientDesk/ClientDesk';
+<<<<<<< Updated upstream
 import CartLogged from './components/container/cart/CartLogged';
 import Cart from './components/container/cart/Cart';
+=======
+import AdminDesk from './components/content/admin/AdminDesk';
+>>>>>>> Stashed changes
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,7 +47,7 @@ function App() {
 			<Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
 			<Route exact path="/admin/barbers" component={BarberTable} />
 			<Route exact path="/register" component={Register} />
-			<Route exact path="/register" component={RegisterClient} />
+			<Route exact path="/registerClient" component={RegisterClient} />
 			<Route exact path="/BarberConfig/:id" component={BarberConfig} />
 			<Route exact path="/loginBarbers" component={LoginBarbers} />
 			<Route exact path="/loginClients" component={LoginClient} />
@@ -55,8 +59,12 @@ function App() {
 			<Route exact path="/appointment/date" component={AppointmentDate} />
 			<Route exact path="/barbers/dashboard" component={BarberDashboard} />
 			<Route exact path="/clients/dashboard" component={ClientDesk} />
+<<<<<<< Updated upstream
 			<Route exact path="/cart" component={CartLogged} />
 			<Route exact path="/guest/cart" component={Cart} />
+=======
+			<Route exact path="/admin/dashboard" component={AdminDesk} />
+>>>>>>> Stashed changes
 			<ToastContainer />
 		</div>
 	);

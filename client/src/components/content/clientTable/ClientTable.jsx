@@ -1,33 +1,32 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { deleteBarber, getBarbers, putBarber } from '../../../redux/action/barbers';
+import { deleteClient, getClients, putClient } from '../../../redux/action/clients';
 
-const BarberTable = () => {
+const ClientTable = () => {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getBarbers())
+        dispatch(getClients())
     }, [])
 
     const deleteC = (id) => {
-        dispatch(deleteBarber(id))
+        dispatch(deleteClient(id))
         window.location.reload()
     }
 
-    const changeStatus = (barber) => {
-        console.log(barber.id, barber.status)
-        const barberModify = {
-			barberModified: {
-				status: !barber.status,
+    const changeStatus = (client) => {
+        const clientSend = {
+			clientModified: {
+				status: !client.status,
 			},
 		};
-        dispatch(putBarber(barber.id, barberModify))
+        dispatch(putClient(client.id, clientSend))
         window.location.reload()
     }
 
-    const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
+    const clientsLoaded = useSelector(state => state.clients.clientsLoaded)
 
-    console.log(barbersLoaded)
+    console.log(clientsLoaded)
 
     return (
         <div className="tracking-wide font-bold bg-gray-200">
@@ -52,17 +51,17 @@ const BarberTable = () => {
             <table className="border-collapse w-full">
                 <thead>
                     <tr>
-                        <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Barber</th>
+                        <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Client</th>
                         <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Location</th>
                         <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
                         <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {barbersLoaded && barbersLoaded.length > 0 ? barbersLoaded.map((c, id) => {
+                    {clientsLoaded && clientsLoaded.length > 0 ? clientsLoaded.map((c, id) => {
                         return <tr key={id} className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                                {c.name} {c.lastName} ({c.alias})
+                                {c.name} {c.lastname}
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                 {c.location}
@@ -77,7 +76,7 @@ const BarberTable = () => {
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
 
                                 <div className="flex gap-5 justify-center" >
-                                    <button type="submit" title="Edit Category" onClick={() => changeStatus(c)} className="flex text-white bg-indigo-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z" /></svg></button>
+                                    <button type="submit"  onClick={() => changeStatus(c)} title="Edit Category" className="flex text-white bg-indigo-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z" /></svg></button>
                                     <button onClick={() => deleteC(c.id)} title="Delete Category" className="flex text-white bg-red-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-red-700 rounded">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z" /></svg>
                                     </button>
@@ -109,4 +108,4 @@ const BarberTable = () => {
     )
 }
 
-export default BarberTable
+export default ClientTable
