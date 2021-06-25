@@ -84,7 +84,7 @@ export const signInClient = (creds, history) => (dispatch) => {
         if (localStorageCart) {
             let user = await jwtDecode(token.data.token)
             console.log(user.id)
-            localStorageCart.items?.map(async (i) => {
+            localStorageCart.items?.map((i) => {
                 return dispatch(addToCart(user.id, i))
             })
         }  

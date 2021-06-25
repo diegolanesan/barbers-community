@@ -21,6 +21,7 @@ import BarberDashboard from './components/content/barberDashboard/barberDashboar
 import ClientDesk from './components/container/clientDesk/ClientDesk';
 import CartLogged from './components/container/cart/CartLogged';
 import Cart from './components/container/cart/Cart';
+import AdminDesk from './components/content/admin/AdminDesk';
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,7 +44,7 @@ function App() {
 			<Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
 			<Route exact path="/admin/barbers" component={BarberTable} />
 			<Route exact path="/register" component={Register} />
-			<Route exact path="/register" component={RegisterClient} />
+			<Route exact path="/registerClient" component={RegisterClient} />
 			<Route exact path="/BarberConfig/:id" component={BarberConfig} />
 			<Route exact path="/loginBarbers" component={LoginBarbers} />
 			<Route exact path="/loginClients" component={LoginClient} />
@@ -57,6 +58,7 @@ function App() {
 			<Route exact path="/clients/dashboard" component={ClientDesk} />
 			<Route exact path="/cart" component={CartLogged} />
 			<Route exact path="/guest/cart" component={Cart} />
+			<Route exact path="/admin/dashboard" component={AdminDesk} />
 			<ToastContainer />
 		</div>
 	);
