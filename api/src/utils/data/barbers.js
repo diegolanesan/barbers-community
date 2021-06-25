@@ -103,14 +103,14 @@ module.exports = [
 
 	{
 		//6
-		name: "Freddy",
-		lastname: "Perez",
-		email: "test06@barber.com",
+		name: "Seba",
+		lastname: "Ciare",
+		email: "eduardociare871@gmail.com",
 		image: [
 			"https://res.cloudinary.com/doovf5g5c/image/upload/v1623562802/Barbers/28_j8p1go.jpg",
 		],
 		mobile: "02645410738",
-		location: "Cali, Colombia",
+		location: "Buenos Aires, Argentina",
 		password: "clave123",
 		status: "active",
 		alias: "Colombian Barber",

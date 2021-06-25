@@ -43,7 +43,7 @@ const { Op } = require("sequelize");
 const { PORT } = require("./src/utils/config/index");
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
 	server.listen(PORT, async function () {
 		console.log(`Server run & listening at ${PORT}`); // eslint-disable-line no-console
 		try {
