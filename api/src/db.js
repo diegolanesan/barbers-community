@@ -50,6 +50,7 @@ const {
 	FaceType,
 	HairType,
 	Style,
+	StyleBarber,
 	Client,
 	Appointment,
 	Service,
@@ -69,15 +70,16 @@ Service.belongsToMany(Category, { through: "categoryService" });
 Category.belongsToMany(Service, { through: "categoryService" });
 
 // Se va a crear una tabla intermedia con los id de las tablas
+Barber.belongsToMany(Style, { through: "styleBarber" });
+Style.belongsToMany(Barber, { through: "styleBarber" });
+
+// Se va a crear una tabla intermedia con los id de las tablas
 Barber.belongsToMany(FaceType, { through: "faceTypeBarber" });
 FaceType.belongsToMany(Barber, { through: "faceTypeBarber" });
 
 // Se va a crear una tabla intermedia con los id de las tablas
 Barber.belongsToMany(HairType, { through: "hairTypeBarber" });
 HairType.belongsToMany(Barber, { through: "hairTypeBarber" });
-
-Barber.belongsToMany(Style, { through: "styleBarber" });
-Style.belongsToMany(Barber, { through: "styleBarber" });
 
 // // Se va a crear una tabla intermedia con los id de las tablas
 // Barber.belongsToMany(Client, { through: "appointment" }); // ¿Acá esta implicita la asosiación entre appointment y barber?
@@ -110,9 +112,6 @@ DetailInvoice.belongsTo(Invoice);
 // Tabla de registro de servicios facturados
 Invoice.belongsToMany(ServiceBarber, { through: "detailInvoice" });
 ServiceBarber.belongsToMany(Invoice, { through: "detailInvoice" });
-
-Barber.belongsToMany(Style, { through: "styleBarber" });
-Style.belongsToMany(Barber, { through: "styleBarber" });
 
 // ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
 Style.hasMany(Client);
