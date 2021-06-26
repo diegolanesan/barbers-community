@@ -11,6 +11,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 1,
+		hairTypeId: 1,
+		faceTypeId: 1,
 	},
 
 	{
@@ -25,6 +28,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 2,
+		hairTypeId: 4,
+		faceTypeId: 6,
 	},
 
 	{
@@ -39,6 +45,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 3,
+		hairTypeId: 4,
+		faceTypeId: 5,
 	},
 
 	{
@@ -53,6 +62,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 4,
+		hairTypeId: 4,
+		faceTypeId: 4,
 	},
 
 	{
@@ -67,6 +79,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 5,
+		hairTypeId: 3,
+		faceTypeId: 3,
 	},
 
 	{
@@ -81,6 +96,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 6,
+		hairTypeId: 3,
+		faceTypeId: 2,
 	},
 
 	{
@@ -95,6 +113,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 7,
+		hairTypeId: 1,
+		faceTypeId: 1,
 	},
 
 	{
@@ -109,6 +130,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 8,
+		hairTypeId: 1,
+		faceTypeId: 2,
 	},
 
 	{
@@ -123,6 +147,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 2,
+		hairTypeId: 2,
+		faceTypeId: 3,
 	},
 
 	{
@@ -137,6 +164,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 4,
+		hairTypeId: 2,
+		faceTypeId: 4,
 	},
 
 	{
@@ -151,6 +181,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 6,
+		hairTypeId: 3,
+		faceTypeId: 5,
 	},
 
 	{
@@ -165,6 +198,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 5,
+		hairTypeId: 3,
+		faceTypeId: 6,
 	},
 
 	{
@@ -179,6 +215,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 3,
+		hairTypeId: 3,
+		faceTypeId: 2,
 	},
 
 	{
@@ -193,6 +232,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 1,
+		hairTypeId: 2,
+		faceTypeId: 4,
 	},
 
 	{
@@ -207,6 +249,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 8,
+		hairTypeId: 2,
+		faceTypeId: 6,
 	},
 
 	{
@@ -221,6 +266,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 7,
+		hairTypeId: 1,
+		faceTypeId: 5,
 	},
 
 	{
@@ -235,6 +283,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 1,
+		hairTypeId: 4,
+		faceTypeId: 3,
 	},
 
 	{
@@ -249,6 +300,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 7,
+		hairTypeId: 4,
+		faceTypeId: 1,
 	},
 
 	{
@@ -263,6 +317,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 8,
+		hairTypeId: 1,
+		faceTypeId: 1,
 	},
 
 	{
@@ -277,6 +334,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 5,
+		hairTypeId: 1,
+		faceTypeId: 2,
 	},
 
 	{
@@ -291,6 +351,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 6,
+		hairTypeId: 2,
+		faceTypeId: 3,
 	},
 
 	{
@@ -305,6 +368,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 4,
+		hairTypeId: 3,
+		faceTypeId: 4,
 	},
 
 	{
@@ -319,6 +385,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 3,
+		hairTypeId: 4,
+		faceTypeId: 5,
 	},
 
 	{
@@ -333,6 +402,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 1,
+		hairTypeId: 4,
+		faceTypeId: 6,
 	},
 
 	{
@@ -347,6 +419,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 7,
+		hairTypeId: 1,
+		faceTypeId: 1,
 	},
 
 	{
@@ -361,6 +436,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 6,
+		hairTypeId: 2,
+		faceTypeId: 3,
 	},
 
 	{
@@ -375,6 +453,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 3,
+		hairTypeId: 3,
+		faceTypeId: 5,
 	},
 
 	{
@@ -389,6 +470,9 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 1,
+		hairTypeId: 2,
+		faceTypeId: 6,
 	},
 
 	{
@@ -403,7 +487,11 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 1,
+		hairTypeId: 3,
+		faceTypeId: 2,
 	},
+
 	{
 		//30
 		name: "Perez",
@@ -416,5 +504,8 @@ module.exports = [
 		location: "Cali",
 		password: "clave123",
 		status: "active",
+		styleId: 4,
+		hairTypeId: 3,
+		faceTypeId: 4,
 	},
 ];

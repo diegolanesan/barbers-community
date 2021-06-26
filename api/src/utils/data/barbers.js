@@ -17,8 +17,13 @@ module.exports = [
 		rating: 4.8,
 		type: "Academy",
 		serviceBarbers: [
-			1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 19, 21, 22, 23, 24, 25, 26, 27, 28,
+			1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+			22, 23, 24, 25, 26, 27, 28,
 		],
+		//styleBarber: [1, 2, 3, 4, 5, 6, 7, 8],
+		styleBarber: [1, 2],
+		faceTypeBarber: [1, 2, 3, 4, 5, 6],
+		hairTypeBarber: [1, 2, 3, 4],
 	},
 
 	{
@@ -38,7 +43,13 @@ module.exports = [
 		bio: "Educador y profesional",
 		rating: 4.8,
 		type: "Seminary",
-		serviceBarbers: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28],
+		serviceBarbers: [
+			1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+			22, 23, 24, 25, 26, 27, 28,
+		],
+		styleBarber: [1, 3, 5, 7],
+		faceTypeBarber: [1, , 3, , 5],
+		hairTypeBarber: [1, 3],
 	},
 
 	{
@@ -58,7 +69,13 @@ module.exports = [
 		bio: "Educador y profesional",
 		rating: 4.8,
 		type: "Urban",
-		serviceBarbers: [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 23],
+		serviceBarbers: [
+			1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+			22, 23, 24, 25, 26, 27, 28,
+		],
+		styleBarber: [1, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 4, 5, 6],
+		hairTypeBarber: [1, 4],
 	},
 
 	{
@@ -78,7 +95,13 @@ module.exports = [
 		bio: "Educador y profesional",
 		rating: 4.8,
 		type: "Urban",
-		serviceBarbers: [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 23],
+		serviceBarbers: [
+			1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+			22, 23, 24, 25, 26, 27, 28,
+		],
+		styleBarber: [3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [3, 4, 5, 6],
+		hairTypeBarber: [3, 4],
 	},
 
 	{
@@ -98,7 +121,13 @@ module.exports = [
 		bio: "Educador y profesional",
 		rating: 4.8,
 		type: "Seminary",
-		serviceBarbers: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28],
+		serviceBarbers: [
+			1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+			22, 23, 24, 25, 26, 27, 28,
+		],
+		styleBarber: [1, 2, 3, 4, 5],
+		faceTypeBarber: [1, 2, 3, 4],
+		hairTypeBarber: [1, 2, 3],
 	},
 
 	{
@@ -121,6 +150,9 @@ module.exports = [
 		serviceBarbers: [
 			1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 19, 21, 22, 23, 24, 25, 26, 27, 28,
 		],
+		styleBarber: [1, 2, 3, 6, 7, 8],
+		faceTypeBarber: [1, 2, 3, 6],
+		hairTypeBarber: [1, 2, 4],
 	},
 
 	{
@@ -141,6 +173,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Urban",
 		serviceBarbers: [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 23],
+		styleBarber: [1, 2, 5, 6, 7, 8],
+		faceTypeBarber: [1, 2, 5, 6],
+		hairTypeBarber: [1, 2],
 	},
 
 	{
@@ -161,6 +196,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Seminary",
 		serviceBarbers: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28],
+		styleBarber: [2, 4, 6, 8],
+		faceTypeBarber: [2, 4, 6],
+		hairTypeBarber: [2, 4],
 	},
 
 	{
@@ -183,6 +221,9 @@ module.exports = [
 		serviceBarbers: [
 			1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 19, 21, 22, 23, 24, 25, 26, 27, 28,
 		],
+		styleBarber: [1, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 2, 4, 5, 6],
+		hairTypeBarber: [1, 2, 4],
 	},
 
 	{
@@ -205,6 +246,9 @@ module.exports = [
 		serviceBarbers: [
 			1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 19, 21, 22, 23, 24, 25, 26, 27, 28,
 		],
+		styleBarber: [2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [2, 4, 5, 6],
+		hairTypeBarber: [1, 3, 4],
 	},
 
 	{
@@ -225,6 +269,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Urban",
 		serviceBarbers: [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 23],
+		styleBarber: [1, 2, 3, 4, 5, 8],
+		faceTypeBarber: [1, 2, 4],
+		hairTypeBarber: [1, 2, 3, 4],
 	},
 
 	{
@@ -245,6 +292,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Seminary",
 		serviceBarbers: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28],
+		styleBarber: [1, 2, 5, 6, 7, 8],
+		faceTypeBarber: [1, 2, 3, 4, 5, 6],
+		hairTypeBarber: [1, 2, 4],
 	},
 
 	{
@@ -265,6 +315,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Seminary",
 		serviceBarbers: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28],
+		styleBarber: [1, 2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 2, 3, 4, 5, 6],
+		hairTypeBarber: [1, 3, 4],
 	},
 
 	{
@@ -287,6 +340,9 @@ module.exports = [
 		serviceBarbers: [
 			1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 19, 21, 22, 23, 24, 25, 26, 27, 28,
 		],
+		styleBarber: [2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [2, 3, 4, 5, 6],
+		hairTypeBarber: [2, 3, 4],
 	},
 
 	{
@@ -307,6 +363,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Academy",
 		serviceBarbers: [1, 3, 5, 7, 9, 11, 12, 15, 17, 19, 21, 23, 25, 26, 27],
+		styleBarber: [1, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 4, 5, 6],
+		hairTypeBarber: [1, 3, 4],
 	},
 
 	{
@@ -327,6 +386,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Seminary",
 		serviceBarbers: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28],
+		styleBarber: [2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 3, 4, 5, 6],
+		hairTypeBarber: [1, 2, 4],
 	},
 
 	{
@@ -347,6 +409,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Seminary",
 		serviceBarbers: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28],
+		styleBarber: [1, 2, 6, 7, 8],
+		faceTypeBarber: [1, 2, 4, 5, 6],
+		hairTypeBarber: [1, 2, 4],
 	},
 
 	{
@@ -367,6 +432,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Urban",
 		serviceBarbers: [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 23],
+		styleBarber: [2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 4, 5, 6],
+		hairTypeBarber: [1, 3, 4],
 	},
 
 	{
@@ -387,6 +455,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Academy",
 		serviceBarbers: [1, 3, 5, 7, 9, 11, 12, 15, 17, 19, 21, 23, 25, 26, 27],
+		styleBarber: [1, 2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 3, 4, 5, 6],
+		hairTypeBarber: [2, 3, 4],
 	},
 
 	{
@@ -407,6 +478,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Urban",
 		serviceBarbers: [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 23],
+		styleBarber: [1, 2, 3, 8],
+		faceTypeBarber: [1, 2, 3, 6],
+		hairTypeBarber: [1, 2, 3, 4],
 	},
 
 	{
@@ -427,6 +501,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Academy",
 		serviceBarbers: [1, 3, 5, 7, 9, 11, 12, 15, 17, 19, 21, 23, 25, 26, 27],
+		styleBarber: [1, 2, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 2, 4, 5, 6],
+		hairTypeBarber: [1, 2, 4],
 	},
 
 	{
@@ -447,6 +524,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Urban",
 		serviceBarbers: [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 23],
+		styleBarber: [1, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 3, 4, 5, 6],
+		hairTypeBarber: [1, 3, 4],
 	},
 
 	{
@@ -469,6 +549,9 @@ module.exports = [
 		serviceBarbers: [
 			1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 19, 21, 22, 23, 24, 25, 26, 27, 28,
 		],
+		styleBarber: [1, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [2, 3, 4, 5, 6],
+		hairTypeBarber: [1, 3, 4],
 	},
 
 	{
@@ -489,6 +572,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Urban",
 		serviceBarbers: [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 23],
+		styleBarber: [2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 3, 5, 6],
+		hairTypeBarber: [2, 3, 4],
 	},
 
 	{
@@ -511,6 +597,9 @@ module.exports = [
 		serviceBarbers: [
 			1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 19, 21, 22, 23, 24, 25, 26, 27, 28,
 		],
+		styleBarber: [1, 2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 2, 3, 4, 5, 6],
+		hairTypeBarber: [1, 2, 3, 4],
 	},
 
 	{
@@ -533,6 +622,9 @@ module.exports = [
 		serviceBarbers: [
 			1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 19, 21, 22, 23, 24, 25, 26, 27, 28,
 		],
+		styleBarber: [1, 2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 2, 3, 4, 5, 6],
+		hairTypeBarber: [1, 2, 3, 4],
 	},
 
 	{
@@ -553,6 +645,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Urban",
 		serviceBarbers: [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 23],
+		styleBarber: [1, 2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 2, 3, 4, 5, 6],
+		hairTypeBarber: [1, 2, 3, 4],
 	},
 
 	{
@@ -573,6 +668,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Academy",
 		serviceBarbers: [1, 3, 5, 7, 9, 11, 12, 15, 17, 19, 21, 23, 25, 26, 27],
+		styleBarber: [1, 2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 2, 3, 4, 5, 6],
+		hairTypeBarber: [1, 2, 3, 4],
 	},
 
 	{
@@ -595,6 +693,9 @@ module.exports = [
 		serviceBarbers: [
 			1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 19, 21, 22, 23, 24, 25, 26, 27, 28,
 		],
+		styleBarber: [1, 2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [3, 4, 5, 6],
+		hairTypeBarber: [2, 3, 4],
 	},
 
 	{
@@ -617,6 +718,9 @@ module.exports = [
 		serviceBarbers: [
 			1, 2, 3, 4, 5, 6, 7, 13, 14, 15, 19, 21, 22, 23, 24, 25, 26, 27, 28,
 		],
+		styleBarber: [1, 2, 3, 4, 5, 6, 7, 8],
+		faceTypeBarber: [2, 4, 5, 6],
+		hairTypeBarber: [1, 3, 4],
 	},
 
 	{
@@ -637,6 +741,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Academy",
 		serviceBarbers: [1, 3, 5, 7, 9, 11, 12, 15, 17, 19, 21, 23, 25, 26, 27],
+		styleBarber: [1, 4, 5, 6, 7, 8],
+		faceTypeBarber: [1, 3, 4, 5, 6],
+		hairTypeBarber: [1, 3, 4],
 	},
 
 	{
@@ -657,6 +764,9 @@ module.exports = [
 		rating: 4.8,
 		type: "Academy",
 		serviceBarbers: [1, 3, 5, 7, 9, 11, 12, 15, 17, 19, 21, 23, 25, 26, 27],
+		styleBarber: [1, 2, 3, 4, 5, 6],
+		faceTypeBarber: [1, 2, 3, 4, 5],
+		hairTypeBarber: [1, 2, 3],
 	},
 
 	{
@@ -677,5 +787,8 @@ module.exports = [
 		rating: 4.8,
 		type: "Academy",
 		serviceBarbers: [1, 3, 5, 7, 9, 11, 12, 15, 17, 19, 21, 23, 25, 26, 27],
+		styleBarber: [1, 2, 3, 4, 5, 6],
+		faceTypeBarber: [1, 2, 3, 4, 5],
+		hairTypeBarber: [1, 2, 3],
 	},
 ];
