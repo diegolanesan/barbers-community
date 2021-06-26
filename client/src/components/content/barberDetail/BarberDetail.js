@@ -10,6 +10,7 @@ import "react-datetime/css/react-datetime.css";
 import Datetime from "react-datetime";
 import moment from "moment";
 import StarRatingComponent from "react-star-rating-component";
+import { getAppointmentByBarber } from "../../../redux/action/appointment";
 
 function BarberDetail(props) {
 	const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function BarberDetail(props) {
 	useEffect(() => {
 		dispatch(barberDetail(id));
 		dispatch(getBarbers());
+		dispatch(getAppointmentByBarber(id));
 	}, []);
 
 	const scrollToRef = (ref) =>
@@ -325,16 +327,13 @@ function BarberDetail(props) {
 					</div>
 					<BarberDetailServices filters={boton.filters} />
 				</div>
-				{/* <div className="flex justify-center">
-					<Link to="/appointment/date">
-						<button
-							onClick={() => dispatch(addToAppointment(resp))}
-							className="px-20 py-2 -mt-3 mb-7 bg-blue-500 fotn-bold rounded"
-						>
+				<div className="flex justify-center">
+					<Link to="/cart">
+						<button className="px-20 py-2 -mt-3 mb-7 bg-blue-500 fotn-bold rounded">
 							Next Step
 						</button>
 					</Link>
-				</div> */}
+				</div>
 			</div>
 											{/* <div>
 												{appointment.date && appointment.date.includes("Mon") ?

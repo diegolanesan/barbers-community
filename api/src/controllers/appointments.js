@@ -12,6 +12,8 @@ const { Op } = require("sequelize");
 const addAppointment = (req, res, next) => {
 	const { barberId, clientId, date, time, status, total, serviceBarberId } =
 		req.body;
+
+	console.log(req.body)
 	Appointment.findOrCreate({
 		where: {
 			barberId,
@@ -21,10 +23,10 @@ const addAppointment = (req, res, next) => {
 			status,
 			total,
 		},
-	}).then((resp) => {
+	}).then(async (resp) => {
 		for (let i = 0; i < serviceBarberId.length; i++) {
 			const element = serviceBarberId[i];
-			DetailAppointment.findOrCreate({
+			await DetailAppointment.findOrCreate({
 				where: {
 					appointmentId: resp[0].id,
 					serviceBarberId: Number(element),

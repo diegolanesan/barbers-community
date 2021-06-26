@@ -52,13 +52,18 @@ module.exports = (sequelize) => {
 			allowNull: false,
 		},
 		rating: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.FLOAT,
 			allowNull: false,
 		},
 		type:{
 			// se realizó la traducción de los ENUMs al inglés para los filtros
 			type: DataTypes.ENUM("Urban", "Academy", "Hair technician", "Seminary"),
 			allowNull: false,
+		},
+		slots:{
+			type: DataTypes.ARRAY(STRING),
+			allowNull: false,
+			defaultValue: ["09:00", "10:00", "11:00", "12:00"]
 		}
 
 	},{ timestamps: false })

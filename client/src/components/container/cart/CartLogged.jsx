@@ -5,6 +5,8 @@ import { addToCart, getActiveCartFromUserId, removeFromCart } from '../../../red
 import axios from 'axios'
 import Datetime from "react-datetime";
 import moment from "moment";
+import appointmentReducer from '../../../redux/reducer/appointment'
+import { postAppointment } from '../../../redux/action/appointment'
 
 
 export const CartLogged = () => {
@@ -12,18 +14,61 @@ export const CartLogged = () => {
   const token = jwtDecode(localStorage.getItem("clientToken"))
   const services = useSelector(state => state.cart.activeCart)
   const localCart = JSON.parse(localStorage.getItem("cart"))
+
+  const cart = useSelector(state => state.cart.activeCart)
+  const barber = useSelector(state => state.barberDetail.resp)
+  const slots = useSelector(state => state.barberDetail.resp.slots)
+  const appointments = useSelector(state => state.appointments.appointmentsById)
+  console.log(slots, appointments)
+
+  
+  const totalAmount = cart.totalAmount
+  const serviceBarbers = cart.serviceBarbers
+
   useEffect(() => {
     dispatch(getActiveCartFromUserId(token.id))
-    // total de items
-    // monto total de la compra
-
+    
   }, [])
 
   let [fecha, setFecha] = useState({ fecha: "" })
-  function onchange(args) { setFecha(args._d) }
+
+  function onchange(args) { setAppointment({ ...appointment, date: `${args._d}` })
+ }
+
+  const [appointment, setAppointment] = useState({
+    barberId: barber.id,
+    clientId: 21, //traer del localstorage
+    date: "",
+    time: "",
+    status: "Pending",
+    total: 100,
+    serviceBarberId: [1]
+  })
+
   var yesterday = moment().subtract(1, "day");
+  
   function valid(current) {
     return current.isAfter(yesterday);
+  }
+
+  // Map de fechas
+  const slotsLlenos = appointments.map(app => app.time)
+  let slotsCopy = slots
+  
+  const dates = appointments.map(app => {
+
+    const date = appointment.date.slice(0, 15)
+    if(app.date.includes(date)) {
+    slotsCopy = slotsCopy.filter(slot => app.time !== slot)  
+    }
+  })
+  // Map de fechas
+
+  function onChange(e) {
+    setAppointment({
+      ...appointment,
+      time: e.target.value
+    })
   }
 
   const paymentGenerator = (user, products) => {
@@ -37,12 +82,11 @@ export const CartLogged = () => {
       });
   };
 
-  console.log(token)
-
   function removeItem(id) {
     dispatch(removeFromCart(token.id, id)).then(() =>
       dispatch(getActiveCartFromUserId(token.id)))
   }
+
   return (
     <div class="bg-gray-200 h-full md:h-screen">
       <div class="grid grid-cols-12 gap-6">
@@ -101,7 +145,7 @@ export const CartLogged = () => {
 
             <div class="flex justify-center items-center text-center">
               <div class="text-xl font-semibold">
-                <Datetime className="border-4 border-blue-400" input={false} isValidDate={valid} timeConstraints={{ hours: { min: 9, max: 22, step: 1 } }} timeFormat={false} />
+                <Datetime className="border-4 border-blue-400" onChange={onchange} isValidDate={valid} input={false} timeConstraints={{ hours: { min: 9, max: 22, step: 1 } }} timeFormat={false} />
               </div>
             </div>
           </div>
@@ -109,12 +153,17 @@ export const CartLogged = () => {
 
             <div class="flex justify-center items-center text-center">
               <div class="text-xl font-semibold">
-              </div>
-            </div>
-          </div>
-          {/* <!-- End Total Item --> */}
 
-          {/* </div> */}
+											<div>
+                        
+												{slotsCopy && slotsCopy.length > 0 ?
+													slotsCopy.map(e => <button value={e} onClick={(event) => onChange(event)} className="mr-4 bg-blue-300 mb-4 px-2">{e}</button>) : ""}
+												
+											</div>
+              </div>
+            </div>   
+
+          </div>
           <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
             {/* <!-- Total Price --> */}
             <div class="flex justify-center items-center text-center">
@@ -128,7 +177,13 @@ export const CartLogged = () => {
           <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
             <div class="flex justify-center items-center text-center">
               <div class="text-xl font-semibold">
-                <button onClick={() => paymentGenerator({ name: token.name, email: token.email }, services.serviceBarbers)} className="bg-green-400 px-4 rounded py-2">Checkout</button>
+                <button onClick={() => { paymentGenerator({ name: token.name, email: token.email }, services.serviceBarbers)
+                                       dispatch(postAppointment(appointment))
+                        }
+                  } 
+                className="bg-green-400 px-4 rounded py-2">
+                  Checkout
+                </button>
                 {/* paymentGenerator({firstName:"seba",lastName:"ciare", email: "s@gmail.com"}, [{name: "mohicano", id: 2, quantity: 2, price: 100 }]) */}
               </div>
 
