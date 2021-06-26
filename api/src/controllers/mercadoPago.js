@@ -2,7 +2,7 @@ const mercadopago = require("mercadopago");
 
 
 mercadopago.configure({
-	access_token:process.env.ACCESS_TOKEN
+	access_token:process.env.ACCESS_TOKEN /* AGREGAR ACCESS_TOKEN AL .ENV */
   });
 const postPay = async (req, res, next) => {
 	let { products, user } = req.body;

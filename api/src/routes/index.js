@@ -33,6 +33,8 @@ const categories = require("./categories.js");
 
 const email = require("./email");
 
+const admins = require("./admin")
+
 const cart = require("./cart")
 
 const mercadoPago = require("./mercadoPago");
@@ -42,6 +44,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.use("/clients", clients);
+router.use("/admins", admins);
 router.use("/appointments", appointments);
 router.use("/detailAppointments", detailAppointments);
 router.use("/invoices", invoices);

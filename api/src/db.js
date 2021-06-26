@@ -43,6 +43,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // const { Comentarios, Publicaciones, Usuario,  Seguidor} = sequelize.models;
 const {
+	Admin,
 	Barber,
 	ServiceBarber,
 	Category,
