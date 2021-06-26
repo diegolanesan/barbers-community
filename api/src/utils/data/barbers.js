@@ -23,11 +23,11 @@ module.exports = [
 
 	{
 		//2
-		name: "Pablo",
-		lastname: "Lescano",
+		name: "Mike",
+		lastname: "Ebano",
 		email: "test02@barber.com",
 		image: [
-			"https://res.cloudinary.com/doovf5g5c/image/upload/v1623562800/Barbers/32_cjcpzm.jpg",
+			"https://res.cloudinary.com/doovf5g5c/image/upload/v1623563408/Barbers/29_zjimim.jpg",
 		],
 		mobile: "02645410738",
 		location: "Buenos Aires, Argentin",
@@ -83,11 +83,11 @@ module.exports = [
 
 	{
 		//5
-		name: "Mike",
-		lastname: "Ebanos",
+		name: "Tito",
+		lastname: "Cortez",
 		email: "test05@barber.com",
 		image: [
-			"https://res.cloudinary.com/doovf5g5c/image/upload/v1623563408/Barbers/29_zjimim.jpg",
+			"https://res.cloudinary.com/doovf5g5c/image/upload/v1623562800/Barbers/32_cjcpzm.jpg",
 		],
 		mobile: "02645410738",
 		location: "Cali, Colombia",
