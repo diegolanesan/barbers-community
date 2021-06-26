@@ -27,7 +27,7 @@ const BarberTable = () => {
 
     const AdminsLoaded = useSelector(state => state.admins.adminsLoaded)
 
-    console.log(AdminsLoaded)
+    console.log(AdminsLoaded, "aaaa")
 
     return (
         <div className="tracking-wide font-bold bg-gray-200">
