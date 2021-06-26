@@ -53,6 +53,7 @@ const {
 	Appointment,
 	Service,
 	DetailAppointment,
+	DetailInvoice,
 	Invoice,
 	Cart,
 	Items,
@@ -77,23 +78,40 @@ HairType.belongsToMany(Barber, { through: "hairTypeBarber" });
 Barber.belongsToMany(Style, { through: "styleBarber" });
 Style.belongsToMany(Barber, { through: "styleBarber" });
 
-// Se va a crear una tabla intermedia con los id de las tablas
-Barber.belongsToMany(Client, { through: "appointment" }); // ¿Acá esta implicita la asosiación entre appointment y barber?
-Client.belongsToMany(Barber, { through: "appointment" });
+// // Se va a crear una tabla intermedia con los id de las tablas
+// Barber.belongsToMany(Client, { through: "appointment" }); // ¿Acá esta implicita la asosiación entre appointment y barber?
+// Client.belongsToMany(Barber, { through: "appointment" });
 
-Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
-ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" });
+Client.hasMany(Appointment);
+Appointment.belongsTo(Client);
 
-Barber.belongsToMany(Style, { through: "styleBarber" });
-Style.belongsToMany(Barber, { through: "styleBarber" });
+Barber.hasMany(Appointment);
+Appointment.belongsTo(Barber);
+
+Appointment.hasMany(DetailAppointment);
+DetailAppointment.belongsTo(Appointment);
+
+//Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
+//ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" });
+ServiceBarber.hasMany(DetailAppointment);
+DetailAppointment.belongsTo(ServiceBarber);
 
 // Tabla de registro de facturas Cliente/Barber
-Barber.belongsToMany(Client, { through: "invoice" });
-Client.belongsToMany(Barber, { through: "invoice" });
+Client.hasMany(Invoice);
+Invoice.belongsTo(Client);
+
+Barber.hasMany(Invoice);
+Invoice.belongsTo(Barber);
+
+Invoice.hasMany(DetailInvoice);
+DetailInvoice.belongsTo(Invoice);
 
 // Tabla de registro de servicios facturados
 Invoice.belongsToMany(ServiceBarber, { through: "detailInvoice" });
 ServiceBarber.belongsToMany(Invoice, { through: "detailInvoice" });
+
+Barber.belongsToMany(Style, { through: "styleBarber" });
+Style.belongsToMany(Barber, { through: "styleBarber" });
 
 // ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
 Style.hasMany(Client);
@@ -115,11 +133,11 @@ HairType.hasMany(Client);
 Client.belongsTo(HairType);
 
 // Relaciones de carrito de compras
-Client.hasMany(Cart)
-Cart.belongsTo(Client)
+Client.hasMany(Cart);
+Cart.belongsTo(Client);
 
-Cart.belongsToMany(ServiceBarber, {through: "item"})
-ServiceBarber.belongsToMany(Cart, {through: "item"})
+Cart.belongsToMany(ServiceBarber, { through: "item" });
+ServiceBarber.belongsToMany(Cart, { through: "item" });
 
 //+++++++++++++++++++++ Explicaciones sobre las relacines en la base de datos  ++++++++++++++++++
 // // -----------------relacion de uno a uno (hasOne, belongsTo)----------------------------------
