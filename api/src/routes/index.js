@@ -32,6 +32,7 @@ const categories = require("./categories.js");
 // ruta para el envio de mail
 const email = require("./email");
 
+const admins = require("./admin")
 
 const cart = require("./cart")
 
@@ -47,6 +48,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.use("/clients/panel", panelClient);
 router.use("/clients", clients);
+router.use("/admins", admins);
 router.use("/appointments", appointments);
 router.use("/detailAppointments", detailAppointments);
 router.use("/invoices", invoices);

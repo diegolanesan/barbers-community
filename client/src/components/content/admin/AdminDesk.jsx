@@ -1,6 +1,9 @@
 import React, { useState, /* useEffect */ } from 'react'
-import AdminUsers from "./Users"
-import AdminRates from './Rates'
+import AdminConfig from './AdminConfig'
+import AdminDashboard from './AdminDashboard'
+import AdminAdmins from './Users/Admins'
+import AdminBarbers from "./Users/Barbers"
+import AdminClients from './Users/Clients'
 
 export default function AdminDesk() {
 	/* const dispatch = useDispatch() */
@@ -15,14 +18,14 @@ export default function AdminDesk() {
 
     const [buttonState, setButtonState] = useState({
         menu: 'Dashboard',
-        filters: 'HAIRCUT',
+        filters: 'BARBERS',
     })
 
     const handleClick = (e) => {
         if(!e.target.name) e.preventDefault()
         else {
             if(e.target.name === 'menu') setButtonState({...buttonState, [e.target.name]: e.target.value})
-            else setButtonState({...buttonState, [e.target.name]: e.target.id})
+            else setButtonState({...buttonState, [e.target.name]: e.target.value})
         }
     }
 
@@ -39,7 +42,13 @@ export default function AdminDesk() {
                     <input type='button' value='Rates' name='menu' className={buttonState.menu === 'Rates' ? buttonSelected : buttonStyle} />
                 </div>
                 <div>  
-                    <input type='button' value='Users' name='menu' className={buttonState.menu === 'Users' ? buttonSelected : buttonStyle} />
+                    <input type='button' value='Barbers' name='menu' className={buttonState.menu === 'Barbers' ? buttonSelected : buttonStyle} />
+                </div>
+                <div>  
+                    <input type='button' value='Clients' name='menu' className={buttonState.menu === 'Clients' ? buttonSelected : buttonStyle} />
+                </div>
+                <div>  
+                    <input type='button' value='Admins' name='menu' className={buttonState.menu === 'Admins' ? buttonSelected : buttonStyle} />
                 </div>
                 <div className="w-1/6 absolute bottom-2" >
                     <input type='button' value='Config' name='menu' className={buttonState.menu === 'Config' ? buttonSelected : buttonStyle} />
@@ -47,19 +56,25 @@ export default function AdminDesk() {
             </div>
             <div className="w-5/6" >
                 {buttonState.menu === 'Dashboard' && (
-                    <div>Dashboard</div>
+                    <AdminDashboard/>
                 )}
                 {buttonState.menu === 'Params' && (
                     <div>Params</div>
                 )}
                 {buttonState.menu === 'Rates' && (
-                    <AdminRates/>
+                    <div>Rates</div>
                 )}
-                {buttonState.menu === 'Users' && (
-                    <AdminUsers/>
+                {buttonState.menu === 'Barbers' && (
+                    <AdminBarbers/>
+                )}
+                {buttonState.menu === 'Clients' && (
+                    <AdminClients/>
+                )}
+                {buttonState.menu === 'Admins' && (
+                    <AdminAdmins/>
                 )}
                 {buttonState.menu === 'Config' && (
-                    <div>Config</div>
+                    <AdminConfig/>
                 )}
             </div>
         </div>

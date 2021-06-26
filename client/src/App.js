@@ -19,12 +19,9 @@ import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
 import ClientDesk from './components/container/clientDesk/ClientDesk';
-<<<<<<< Updated upstream
 import CartLogged from './components/container/cart/CartLogged';
 import Cart from './components/container/cart/Cart';
-=======
 import AdminDesk from './components/content/admin/AdminDesk';
->>>>>>> Stashed changes
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -33,11 +30,12 @@ function App() {
 	const location = useLocation();
 	return (
 		<div className="App">
-			{/* {(location.pathname === "/" ||
+			{/* {location.pathname === "/" ||
 				location.pathname === "/catalog" ||
 				location.pathname === "/dashboard" ||
+				location.pathname === "//admin/dashboard" ||
 				location.pathname === "/loginBarbers" ||
-				location.pathname === "/loginClients") ||
+				location.pathname === "/loginClients" ||
 				location.pathname === "/barbers/dashboard" && (
 				<Route path="/" component={NavBar} />
 			)} */}
@@ -59,12 +57,9 @@ function App() {
 			<Route exact path="/appointment/date" component={AppointmentDate} />
 			<Route exact path="/barbers/dashboard" component={BarberDashboard} />
 			<Route exact path="/clients/dashboard" component={ClientDesk} />
-<<<<<<< Updated upstream
+			<Route exact path="/admin/dashboard" component={AdminDesk} />
 			<Route exact path="/cart" component={CartLogged} />
 			<Route exact path="/guest/cart" component={Cart} />
-=======
-			<Route exact path="/admin/dashboard" component={AdminDesk} />
->>>>>>> Stashed changes
 			<ToastContainer />
 		</div>
 	);
