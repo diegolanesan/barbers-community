@@ -3,6 +3,7 @@ import { HOST_BACK } from "../back_constants";
 export const POST_APPOINTMENT = "POST_APPOINTMENT"
 export const APPOINTMENT_RELATION = "APPOINTMENT_RELATION"
 export const GET_APPOINTMENT_BY_BARBER = "GET_APPOINTMENT_BY_BARBER"
+export const GET_APPOINTMENT_DETAILS = "GET_APPOINTMENT_DETAILS"
 
 
 
@@ -25,3 +26,9 @@ export const getAppointmentByBarber = (id) => (dispatch) => {
 	.then(res => dispatch({ type: GET_APPOINTMENT_BY_BARBER, payload: {id: id, json: res.data} }))
 }
 
+export const getAppointmentDetails = (id) => (dispatch) => {
+	return dispatch({ 
+		type: GET_APPOINTMENT_DETAILS,
+		payload: id
+	})
+}
