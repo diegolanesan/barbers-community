@@ -6,6 +6,7 @@ export const GET_ACTIVE_CART_FROM_USER_ID = "GET_ACTIVE_CART_FROM_USER_ID";
 export const RESET_USER_CART = "RESET_USER_CART";
 export const CHANGE_CART_STATE = "CHANGE_CART_STATE"
 export const CHANGE_CART_STATE_MERCADO_PAGO = "CHANGE_CART_STATE_MERCADO_PAGO"
+export const GET_CARTS_BY_BARBER_ID = "GET_CARTS_BY_BARBER_ID"
 
 
 // ACTIONS PARA CARRITO DE GUEST
@@ -51,7 +52,8 @@ export const removeFromGuestCart = (service) => {
 // ACTIONS PARA CARRITO LOGUEADO
 
 export const addToCart = (id, body) => (dispatch) => {
-    let localCart = getGuestCart() 
+    let localCart = getGuestCart()
+    console.log(body)
 	// Si no está logueado
 		return axios.post(HOST_BACK + "/cart/addItem/" + id, body).then((response) => {
 		console.log(response.data);
@@ -107,6 +109,15 @@ export const changeCartStateMercadoPago = (id, body) => (dispatch) => {
  	return axios.put("http://localhost:3001/cart/state/payment/" + id, body).then((response) => {
           dispatch({ type: "CHANGE_CART_STATE_MERCADO_PAGO", payload: response.data });
           //removeFromGuestCart(body)
+	});
+
+}
+
+export const getCartsByBarberId = (id) => (dispatch) => {
+	
+	return axios.get(HOST_BACK + "/cart/barber/" + id)
+	.then((response) => {
+	dispatch({ type: GET_CARTS_BY_BARBER_ID, payload: response.data });
 	});
 
 }

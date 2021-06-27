@@ -103,6 +103,13 @@ const getActiveCartFromUser = async(req, res) => {
     res.send(cart)
 }
 
+const getCartbyBarberId = async(req, res) => {
+    const barberId = req.params.id
+    const cart = await Cart.findAll({where: {barberId: barberId, state: "Paid"}, include: {all: true, nested: true}})
+    //console.log(cart)
+    res.send(cart)
+}
+
 const removeProductFromCart = async(req, res) => {
     const  userId = req.params.id
     const {serviceBarberId} = req.query
@@ -154,5 +161,6 @@ module.exports = {
     getActiveCartFromUser,
     resetUserCart,
     changeCartState,
-    changeCartStateMercadoPago
+    changeCartStateMercadoPago,
+    getCartbyBarberId
 };

@@ -1,9 +1,14 @@
-import {ADD_TO_CART, REMOVE_FROM_CART, GET_ACTIVE_CART_FROM_USER_ID, RESET_USER_CART, CHANGE_CART_STATE, CHANGE_CART_STATE_MERCADO_PAGO} from "../action/cart";
+import {
+    ADD_TO_CART, REMOVE_FROM_CART, GET_ACTIVE_CART_FROM_USER_ID,
+    RESET_USER_CART, CHANGE_CART_STATE, CHANGE_CART_STATE_MERCADO_PAGO,
+    GET_CARTS_BY_BARBER_ID,
+} from "../action/cart";
 
 const initialState = {
     cart: [],
     gessCart: [],
-    activeCart: {}
+    activeCart: {},
+    barberAppointments: []
 }
 
 const reducerCart = (state=initialState, action)=>{
@@ -36,6 +41,11 @@ const reducerCart = (state=initialState, action)=>{
             return {
                 ...state,
                 activeCart: action.payload
+            }
+        case GET_CARTS_BY_BARBER_ID: 
+            return {
+                ...state,
+                barberAppointments: action.payload
             }
         default:
             return state
