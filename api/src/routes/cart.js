@@ -4,10 +4,11 @@ const { addItem,
     getCartsById,
     removeProductFromCart,
     getActiveCartFromUser,
-    resetUserCart,
     changeCartState,
     changeCartStateMercadoPago,
-    getCartbyBarberId} = require('../controllers/Cart');
+    getAppointments,
+    getCartbyBarberId,
+    getCartsByUser} = require('../controllers/Cart');
 
 server.post("/addItem/:id", addItem)
 
@@ -15,15 +16,17 @@ server.get("/:id", getCartsById)
 
 server.delete("/:id", removeProductFromCart)
 
-server.delete("/reset/:id", resetUserCart)
-
 server.get("/active/:id", getActiveCartFromUser)
 
 server.put("/state/:id", changeCartState)
 
 server.put("/state/payment/:id", changeCartStateMercadoPago)
 
-server.get("/barber/:id", getCartbyBarberId)
+server.get("/barber/:id", getAppointments)
+
+server.get("/barber/all/:id", getCartbyBarberId)
+
+server.get("/client/all/:id", getCartsByUser)
 
 
 module.exports= server;

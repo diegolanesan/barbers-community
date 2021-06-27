@@ -44,8 +44,9 @@ const getCartsById = async(req, res) => {
 }
 
 const getCartsByUser = async(req, res) => {
-    const { userId } = req.params.id
-    const cart = await Cart.findOne({ where: { userId } })
+    const userId = req.params.id;
+    const cart = await Cart.findAll({ where: { clientId: userId } });
+    res.send(cart);
 }
 
 const changeCartState = async(req, res) => {
@@ -102,12 +103,20 @@ const getActiveCartFromUser = async(req, res) => {
     res.send(cart)
 }
 
-const getCartbyBarberId = async(req, res) => {
+const getAppointments = async(req, res) => {
     const barberId = req.params.id
     const cart = await Cart.findAll({where: {barberId: barberId, state: "Paid"}, include: {all: true, nested: true}})
     //console.log(cart)
     res.send(cart)
 }
+
+const getCartbyBarberId = async(req, res) => {
+    const barberId = req.params.id
+    const cart = await Cart.findAll({where: {barberId: barberId}, include: {all: true, nested: true}})
+    //console.log(cart)
+    res.send(cart)
+}
+
 
 const removeProductFromCart = async(req, res) => {
     const  userId = req.params.id
@@ -127,21 +136,6 @@ const removeProductFromCart = async(req, res) => {
     })
 }
 
-const resetUserCart = async (req, res) => {
-    const userId = req.params.id
-    const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
-    cart.totalAmount = 0;
-    await cart.save()
-    Item.destroy({
-        where: {
-            cartId: cart.id
-        }
-    })
-        .then(() => {
-            res.sendStatus(200);
-        })
-}
-
 const incrementServiceUnit = async(req, res) => {
     
 }
@@ -154,11 +148,12 @@ const decrementServiceUnit = async(req, res) => {
 
 
 module.exports = {
+    getAppointments,
 	addItem,
+    getCartsByUser,
     getCartsById,
     removeProductFromCart,
     getActiveCartFromUser,
-    resetUserCart,
     changeCartState,
     changeCartStateMercadoPago,
     getCartbyBarberId
