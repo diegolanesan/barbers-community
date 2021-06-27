@@ -26,6 +26,7 @@ export const getAllAppointments = () => (dispatch) => {
 	});
 };
 
+
 export const putClient = (id, body) => (dispatch) => {
 	return axios
 		.put(HOST_BACK + "/clients/" + id, body)

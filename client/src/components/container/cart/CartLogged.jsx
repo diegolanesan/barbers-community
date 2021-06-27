@@ -64,7 +64,7 @@ export const CartLogged = () => {
 
     const date = appointment.date.slice(0, 15)
     if (app.date.includes(date)) {
-      slotsCopy = slotsCopy.filter(slot => app.time !== slot)
+      slotsCopy = slotsCopy && slotsCopy.filter(slot => app.time !== slot);
     }
   })
   // Map de fechas
