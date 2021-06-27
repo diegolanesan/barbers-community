@@ -251,6 +251,28 @@ const deleteAppointment = (req, res, next) => {
     })
     .catch((error) => next(error));
 }
+// const addItem = async (req, res) => {
+// 	const { services} = req.body;
+// 	const userId = req.params.id;
+// 	const cart = await Cart.findOrCreate({where : {clientId: userId, state: "Active"}})
+// 	let total = 0;
+// 	const items = services.map( async s => {
+// 		 console.log("Service name = " + s.serviceName)
+// 		  await Item.create({
+// 			  cartId: cart.id,
+// 			  clientId: userId,
+// 			  serviceName: s.name,
+// 			  servicePrice: s.price
+// 		  });
+// 		  total += s.price;
+// 	  })
+// 	  Cart.findByPk(cart.id)
+// 	  .then((resp) => {
+// 		  // resp.update({totalAmount: total})
+// 		  res.send(resp);
+// 	  })
+//   }
+
 
 const getAppointmentsByClientId = async (req, res, next) => {
     try {
