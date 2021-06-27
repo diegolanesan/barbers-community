@@ -62,8 +62,9 @@ const putCategory = async (req, res)=>{
     const {categoryModify} = req.body
     let category = await Category.findByPk(idCategory)
     if(category){
-        category = category.update(categoryModify);
-        res.send("se modifico correctamente la categoria")
+        category = await category.update(categoryModify);
+        const allCategory = await Category.findAll();
+        res.send(allCategory)
     }else {
         res.send("No se ha podido modificar la categoria")
     }
@@ -74,8 +75,9 @@ const deleteCategory = async (req, res)=>{
     const idCategory = req.params.id;
     const category = await Category.findByPk(idCategory);
     if(category){
-        const resul = category.destroy();
-        res.send("Se ha eliminado correctamente la categoria")
+        const resul = await category.destroy();
+        const allCategory = await Category.findAll();
+        res.send(allCategory)
     }else{
         res.status(400).send("No se ha eliminado la categoria")
     }
