@@ -59,9 +59,9 @@ function App() {
 			<Route exact path="/barbers/dashboard" component={BarberDashboard} />
 			<Route exact path="/barbers/dashboard/:id" component={DetailsAppointment} />
 			<Route exact path="/clients/dashboard" component={ClientDesk} />
-			<Route exact path="/admin/dashboard" component={AdminDesk} />
 			<Route exact path="/cart" component={CartLogged} />
 			<Route exact path="/guest/cart" component={Cart} />
+			<Route exact path="/admin/dashboard" component={AdminDesk} />
 			<ToastContainer />
 		</div>
 	);

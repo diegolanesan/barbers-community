@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BarberServicesData from './ClientServicesData';
 
-const ClientServicesDashboard = ({filters}) => {
+const ClientServicesDashboard = ({ filters }) => {
 
     // console.log(filters)
+    let params = useParams()
+    console.log(params)
 
     const buttonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-1 px-0 mx-0 mb-0 w-full"
     const buttonSelected = "bg-blue-800 text-white py-1 px-0 mx-0 mb-0 w-full"
@@ -58,7 +60,7 @@ const ClientServicesDashboard = ({filters}) => {
                                        		<div class="text-teal-600 bg-blue-500 py-1 px-2 rounded text-white text-sm">{n}</div>
                                     	</li>
                                  		)) : "waiting"} */}
-                            <BarberServicesData filters = {filters} />
+                            <BarberServicesData filters={filters} />
                         </ul>
                     </div>
                 </div>

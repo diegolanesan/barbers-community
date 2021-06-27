@@ -10,58 +10,62 @@ module.exports = (sequelize) => {
 				type: DataTypes.STRING,
 				allowNull: false,
 			},
-			lastname: {
-				type: DataTypes.STRING,
-				allowNull: false,
-			},
-			email: {
-				type: DataTypes.STRING,
-				allowNull: false,
-				unique: true,
-			},
-			image: {
-				type: DataTypes.ARRAY(STRING), // Se puede ingresar un array de varias url
-				allowNull: false,
-				defaultValue: ["https://imagenurl"],
-			},
-			mobile: {
-				type: DataTypes.STRING,
-				allowNull: false,
-			},
-			location: {
-				type: DataTypes.STRING,
-				allowNull: false,
-			},
-			password: {
-				type: DataTypes.STRING,
-				allowNull: false,
-			},
-			status: {
-				type: DataTypes.ENUM("active", "disabled", "banned"),
-				defaultValue: "active",
-			},
-			alias: {
-				type: DataTypes.STRING,
-				allowNull: false,
-			},
-			resume: {
-				type: DataTypes.STRING,
-				allowNull: false,
-			},
-			bio: {
-				type: DataTypes.STRING,
-				allowNull: false,
-			},
-			rating: {
-				type: DataTypes.FLOAT,
-				allowNull: false,
-			},
-			type: {
-				// se realizó la traducción de los ENUMs al inglés para los filtros
-				type: DataTypes.ENUM("Urban", "Academy", "Hair technician", "Seminary"),
-				allowNull: false,
-			},
+		lastname: {
+			type: DataTypes.STRING,
+			allowNull: false,
 		},
-		{ timestamps: false }
-	);
+		email: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			unique: true,
+		},
+		image: {
+			type: DataTypes.ARRAY(STRING), // Se puede ingresar un array de varias url
+			allowNull: false,
+			defaultValue: ["https://imagenurl"],
+		},
+		mobile: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		location: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		password: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		status: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false,
+		},
+		alias: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		resume: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		bio: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		rating: {
+			type: DataTypes.FLOAT,
+			allowNull: false,
+		},
+		type:{
+			// se realizó la traducción de los ENUMs al inglés para los filtros
+			type: DataTypes.ENUM("Urban", "Academy", "Hair technician", "Seminary"),
+			allowNull: false,
+		},
+		slots:{
+			type: DataTypes.ARRAY(STRING),
+			allowNull: false,
+			defaultValue: ["09:00", "10:00", "11:00", "12:00"]
+		}
+
+	},{ timestamps: false })
 };

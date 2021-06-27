@@ -23,5 +23,9 @@ module.exports = (sequelize) => {
 			allowNull: false,
 			defaultValue: ["https://imagenurl"],
 		},
+		name: {
+			type: DataTypes.STRING,
+			allowNull: false
+		}
 	},{ timestamps: false });
 };

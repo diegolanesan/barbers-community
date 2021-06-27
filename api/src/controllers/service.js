@@ -44,8 +44,8 @@ const postService = async (req,res)=>{
 
 // ruta que   vincular  un barber y un servicio
 const relationService = async (req, res)=>{
-    const {barberId, serviceId, price, image} = req.body;
-    const resul = ServiceBarber.create({barberId, serviceId, price, image});
+    const {barberId, serviceId, price, image, name} = req.body;
+    const resul = ServiceBarber.create({barberId, serviceId, price, image, name});
     if(resul){
         res.send(resul)
     }else{

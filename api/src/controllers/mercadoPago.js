@@ -9,9 +9,9 @@ const postPay = async (req, res, next) => {
 		products &&
 		products.map((product) => {
 			return {
-				title: product.name,
+				title: product.item.serviceName,
 				id: product.id,
-				quantity: Number(product.quantity),
+				quantity: 1,
 				unit_price: product.price,
 				picture_url: product.picture_url,
 			};
@@ -41,9 +41,9 @@ const postPay = async (req, res, next) => {
 			},
 		},
 		back_urls: {
-			failure: "http://localhost:3000",
-			pending: "http://localhost:3000",
-			success: "http://localhost:3000",
+			failure: "http://localhost:3000/clients/dashboard",
+			pending: "http://localhost:3000/clients/dashboard",
+			success: "http://localhost:3000/clients/dashboard",
 		},
 		marketplace: "BARBERSCOMMUNITY",
 	};

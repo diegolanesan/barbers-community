@@ -81,37 +81,6 @@ FaceType.belongsToMany(Barber, { through: "faceTypeBarber" });
 Barber.belongsToMany(HairType, { through: "hairTypeBarber" });
 HairType.belongsToMany(Barber, { through: "hairTypeBarber" });
 
-// // Se va a crear una tabla intermedia con los id de las tablas
-// Barber.belongsToMany(Client, { through: "appointment" }); // ¿Acá esta implicita la asosiación entre appointment y barber?
-// Client.belongsToMany(Barber, { through: "appointment" });
-
-Client.hasMany(Appointment);
-Appointment.belongsTo(Client);
-
-Barber.hasMany(Appointment);
-Appointment.belongsTo(Barber);
-
-Appointment.hasMany(DetailAppointment);
-DetailAppointment.belongsTo(Appointment);
-
-//Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
-//ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" });
-ServiceBarber.hasMany(DetailAppointment);
-DetailAppointment.belongsTo(ServiceBarber);
-
-// Tabla de registro de facturas Cliente/Barber
-Client.hasMany(Invoice);
-Invoice.belongsTo(Client);
-
-Barber.hasMany(Invoice);
-Invoice.belongsTo(Barber);
-
-Invoice.hasMany(DetailInvoice);
-DetailInvoice.belongsTo(Invoice);
-
-// Tabla de registro de servicios facturados
-Invoice.belongsToMany(ServiceBarber, { through: "detailInvoice" });
-ServiceBarber.belongsToMany(Invoice, { through: "detailInvoice" });
 
 // ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
 Style.hasMany(Client);
@@ -138,28 +107,6 @@ Cart.belongsTo(Client);
 
 Cart.belongsToMany(ServiceBarber, { through: "item" });
 ServiceBarber.belongsToMany(Cart, { through: "item" });
-
-//+++++++++++++++++++++ Explicaciones sobre las relacines en la base de datos  ++++++++++++++++++
-// // -----------------relacion de uno a uno (hasOne, belongsTo)----------------------------------
-// // Se le agrega el idBarber a client
-// ---Barber.hasOne(Client);
-// // Se le agrega el idBarber a client
-// ---Client.belongsTo(Barber);
-
-// //---------------------relacion de uno a muchos (hasMany, belongsTo)----------------------------
-// // Se le agrega el idBarber a client
-// ---Barber.hasMany(Client);
-// // Se le agrega el idBarber a client
-// ---Client.belongsTo(Barber);
-
-// //------------------------------------relacion de muchos a muchos  (belongsToMany, belongsToMany)-----------------------
-
-// // se agrega el idBarber y idClient a una tabla intermedia que especificamos con through
-
-// ---Barber.belongsToMany(Client, {through:"cita"})
-// ---Client.belongsToMany(Barber, {through:"cita"})
-
-// Nuevo comentario de prueba
 
 module.exports = {
 	...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
