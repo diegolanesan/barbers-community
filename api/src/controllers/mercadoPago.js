@@ -23,9 +23,9 @@ const postPay = async (req, res, next) => {
 			name: user.name,
 		},
 		back_urls: {
-			failure: "http://localhost:3000",
-			pending: "http://localhost:3000",
-			success: "http://localhost:3000",
+			failure: "http://localhost:3000/clients/dashboard",
+			pending: "http://localhost:3000/clients/dashboard",
+			success: "http://localhost:3000/clients/dashboard",
 		},
 		marketplace: "BARBERSCOMMUNITY",
 	};

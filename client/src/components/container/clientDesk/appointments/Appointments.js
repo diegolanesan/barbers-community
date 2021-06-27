@@ -7,6 +7,9 @@ const AppointmentsDashClient = ({allAppointments}) => {
     const clientAppointments = allAppointments.filter(app => app.clientId === user.id )
     const [filtered, setFiltered] = useState([])
 
+    let params = useParams()
+    console.log(params)
+    
     const handleFilter = (e) => {
         setFiltered(clientAppointments.filter(n => n.status === e.target.value))
     }

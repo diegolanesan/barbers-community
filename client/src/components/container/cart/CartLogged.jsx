@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import jwtDecode from 'jwt-decode'
-import { addToCart, getActiveCartFromUserId, removeFromCart } from '../../../redux/action/cart'
+import { addToCart, changeCartState, getActiveCartFromUserId, removeFromCart } from '../../../redux/action/cart'
 import axios from 'axios'
 import Datetime from "react-datetime";
 import moment from "moment";
@@ -21,23 +21,24 @@ export const CartLogged = () => {
   const appointments = useSelector(state => state.appointments.appointmentsById)
   console.log(slots, appointments)
 
-  
+
   const totalAmount = cart.totalAmount
   const serviceBarbers = cart.serviceBarbers
 
   useEffect(() => {
     dispatch(getActiveCartFromUserId(token.id))
-    
+
   }, [])
 
   let [fecha, setFecha] = useState({ fecha: "" })
 
-  function onchange(args) { setAppointment({ ...appointment, date: `${args._d}` })
- }
+  function onchange(args) {
+    setAppointment({ ...appointment, date: `${args._d}` })
+  }
 
   const [appointment, setAppointment] = useState({
     barberId: barber.id,
-    clientId: 21, //traer del localstorage
+    clientId: token.id, //traer del localstorage
     date: "",
     time: "",
     status: "Pending",
@@ -46,7 +47,7 @@ export const CartLogged = () => {
   })
 
   var yesterday = moment().subtract(1, "day");
-  
+
   function valid(current) {
     return current.isAfter(yesterday);
   }
@@ -54,12 +55,12 @@ export const CartLogged = () => {
   // Map de fechas
   const slotsLlenos = appointments.map(app => app.time)
   let slotsCopy = slots
-  
+
   const dates = appointments.map(app => {
 
     const date = appointment.date.slice(0, 15)
-    if(app.date.includes(date)) {
-    slotsCopy = slotsCopy.filter(slot => app.time !== slot)  
+    if (app.date.includes(date)) {
+      slotsCopy = slotsCopy.filter(slot => app.time !== slot)
     }
   })
   // Map de fechas
@@ -154,14 +155,14 @@ export const CartLogged = () => {
             <div class="flex justify-center items-center text-center">
               <div class="text-xl font-semibold">
 
-											<div>
-                        
-												{slotsCopy && slotsCopy.length > 0 ?
-													slotsCopy.map(e => <button value={e} onClick={(event) => onChange(event)} className="mr-4 bg-blue-300 mb-4 px-2">{e}</button>) : ""}
-												
-											</div>
+                <div>
+
+                  {slotsCopy && slotsCopy.length > 0 ?
+                    slotsCopy.map(e => <button value={e} onClick={(event) => onChange(event)} className="mr-4 bg-blue-300 mb-4 px-2">{e}</button>) : ""}
+
+                </div>
               </div>
-            </div>   
+            </div>
 
           </div>
           <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
@@ -177,11 +178,12 @@ export const CartLogged = () => {
           <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
             <div class="flex justify-center items-center text-center">
               <div class="text-xl font-semibold">
-                <button onClick={() => { paymentGenerator({ name: token.name, email: token.email }, services.serviceBarbers)
-                                       dispatch(postAppointment(appointment))
-                        }
-                  } 
-                className="bg-green-400 px-4 rounded py-2">
+                <button onClick={() => {
+                  dispatch(changeCartState(token.id, { state: "Pending", date: appointment.date, time: appointment.time, barberId: appointment.barberId }))
+                  paymentGenerator({ name: token.name, email: token.email }, services.serviceBarbers)
+                }
+                }
+                  className="bg-green-400 px-4 rounded py-2">
                   Checkout
                 </button>
                 {/* paymentGenerator({firstName:"seba",lastName:"ciare", email: "s@gmail.com"}, [{name: "mohicano", id: 2, quantity: 2, price: 100 }]) */}

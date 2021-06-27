@@ -77,12 +77,7 @@ HairType.belongsToMany(Barber, { through: "hairTypeBarber" });
 Barber.belongsToMany(Style, { through: "styleBarber" });
 Style.belongsToMany(Barber, { through: "styleBarber" });
 
-// Se va a crear una tabla intermedia con los id de las tablas
-Barber.belongsToMany(Client, { through: "appointment" }); // ¿Acá esta implicita la asosiación entre appointment y barber?
-Client.belongsToMany(Barber, { through: "appointment" });
 
-Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
-ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" });
 
 Barber.belongsToMany(Style, { through: "styleBarber" });
 Style.belongsToMany(Barber, { through: "styleBarber" });
@@ -120,6 +115,14 @@ Cart.belongsTo(Client)
 
 Cart.belongsToMany(ServiceBarber, {through: "item"})
 ServiceBarber.belongsToMany(Cart, {through: "item"})
+
+
+
+// Barber.belongsToMany(Client, { through: "appointment" }); // ¿Acá esta implicita la asosiación entre appointment y barber?
+// Client.belongsToMany(Barber, { through: "appointment" });
+
+// Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
+// ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" }); 
 
 //+++++++++++++++++++++ Explicaciones sobre las relacines en la base de datos  ++++++++++++++++++
 // // -----------------relacion de uno a uno (hasOne, belongsTo)----------------------------------

@@ -1,4 +1,4 @@
-import {ADD_TO_CART, REMOVE_FROM_CART, GET_ACTIVE_CART_FROM_USER_ID} from "../action/cart";
+import {ADD_TO_CART, REMOVE_FROM_CART, GET_ACTIVE_CART_FROM_USER_ID, RESET_USER_CART, CHANGE_CART_STATE, CHANGE_CART_STATE_MERCADO_PAGO} from "../action/cart";
 
 const initialState = {
     cart: [],
@@ -18,6 +18,21 @@ const reducerCart = (state=initialState, action)=>{
                 ...state, cart: action.payload
             }
         case GET_ACTIVE_CART_FROM_USER_ID: 
+            return {
+                ...state,
+                activeCart: action.payload
+            }
+        case RESET_USER_CART: 
+            return {
+                ...state,
+                activeCart: action.payload
+            }
+        case CHANGE_CART_STATE: 
+            return {
+                ...state,
+                activeCart: action.payload
+            }
+        case CHANGE_CART_STATE_MERCADO_PAGO: 
             return {
                 ...state,
                 activeCart: action.payload

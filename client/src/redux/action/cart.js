@@ -2,6 +2,9 @@ import axios from "axios";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const GET_ACTIVE_CART_FROM_USER_ID = "GET_ACTIVE_CART_FROM_USER_ID";
+export const RESET_USER_CART = "RESET_USER_CART";
+export const CHANGE_CART_STATE = "CHANGE_CART_STATE"
+export const CHANGE_CART_STATE_MERCADO_PAGO = "CHANGE_CART_STATE_MERCADO_PAGO"
 
 
 // ACTIONS PARA CARRITO DE GUEST
@@ -77,3 +80,32 @@ export const getActiveCartFromUserId = (id) => (dispatch) => {
 
 }
 
+export const resetUserCart = (id) => (dispatch) => {	
+ 	return axios.delete("http://localhost:3001/cart/reset/" + id).then((response) => {
+          dispatch({ type: "RESET_USER_CART", payload: response.data });
+          //removeFromGuestCart(body)
+	});
+
+}
+
+export const changeCartState = (id, body) => (dispatch) => {
+    
+     console.log("Body, servicebarberid ..= " + body);
+	
+ 	return axios.put("http://localhost:3001/cart/state/" + id, body).then((response) => {
+          dispatch({ type: "CHANGE_CART_STATE", payload: response.data });
+          //removeFromGuestCart(body)
+	});
+
+}
+
+export const changeCartStateMercadoPago = (id, body) => (dispatch) => {
+    
+     console.log("Body, servicebarberid ..= " + body);
+	
+ 	return axios.put("http://localhost:3001/cart/state/payment/" + id, body).then((response) => {
+          dispatch({ type: "CHANGE_CART_STATE_MERCADO_PAGO", payload: response.data });
+          //removeFromGuestCart(body)
+	});
+
+}

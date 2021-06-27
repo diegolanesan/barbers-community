@@ -6,15 +6,22 @@ module.exports = (sequelize) => {
 	sequelize.define("cart", {
 		
         state: {
-            type: DataTypes.ENUM("Active", "Paid", "Rejected"),
+            type: DataTypes.ENUM("Active", "Paid", "Rejected", "Pending"),
             defaultValue: "Active",
             allowNull: false
         },
         totalAmount: {
             type: DataTypes.FLOAT,
-            allowNull: false,
             defaultValue: 0
+        },
+        date: {
+            type: DataTypes.STRING
+        },
+        time: {
+            type: DataTypes.STRING
+        },
+        barberId: {
+            type: DataTypes.INTEGER
         }
-
 	},{ timestamps: false })
 };

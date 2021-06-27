@@ -3,7 +3,7 @@ import axios from "axios";
 export const PUT_CLIENT = "PUT_CLIENT";
 export const GET_CLIENT = "GET_CLIENT";
 export const DELETE_CLIENT = "DELETE_CLIENT";
-
+export const GET_APPOINTMENTS_BY_CLIENT_ID = "GET_APPOINTMENTS_BY_CLIENT_ID"
 
 export const deleteClient = (id) => (dispatch) => {
 	return axios
@@ -33,5 +33,13 @@ export const putClient = (id, body) => (dispatch) => {
 			console.log(response.data);
 			dispatch({ type: PUT_CLIENT, payload: response.data });
 		});
+};
+
+export const getAllAppointmentsByClientId = (id) => (dispatch) => {
+    return axios.get(HOST_BACK + "/appointments/byClientId/" + id)
+    .then((response) => {
+        console.log("Entra a la action!");
+        dispatch({ type: "GET_APPOINTMENTS_BY_CLIENT_ID", payload: response.data });
+    });
 };
 

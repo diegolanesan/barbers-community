@@ -251,6 +251,21 @@ const deleteAppointment = (req, res, next) => {
     .catch((error) => next(error));
 }
 
+const getAppointmentsByClientId = async (req, res, next) => {
+    try {
+        let id = req.params.id;
+        let appointmentsOfClient = await Appointment.findAll({
+             where: {
+                 clientId: id
+             },
+             include : {all: true} // {all: true, nested: true}
+             });
+             res.status(200).send(appointmentsOfClient);
+    } catch (e){
+        console.log("The appointment couldn’t be fetched properly" + e);
+    }
+}
+
 /* 
 ({
   include: [
@@ -266,4 +281,5 @@ module.exports = {
 	deleteAppointment,
 	updateAppointment,
 	addRelation,
+	getAppointmentsByClientId
 };

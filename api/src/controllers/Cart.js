@@ -1,5 +1,9 @@
-const { Cart, ServiceBarber, Item } = require("../db");
+const { Cart, ServiceBarber, Item, Client } = require("../db");
 const { Op } = require("sequelize");
+require('dotenv').config();
+const nodemailer = require('nodemailer');
+const {USER_EMAIL, PASSWORD_EMAIL } = process.env;
+
 
 
 
@@ -7,8 +11,11 @@ const addItem = async (req, res) => {
     const userId = req.params.id
     const { serviceBarberId, name, price } = req.body
 
-    const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
-    
+    let cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
+    if (!cart) {
+        cart = await Cart.create({ clientId: userId, state: "Active" })
+        
+    }
         //console.log(cart)
     const createdItem = await Item.create({
         cartId: cart.id,
@@ -42,13 +49,52 @@ const getCartsByUser = async(req, res) => {
     const cart = await Cart.findOne({ where: { userId } })
 }
 
-const changeStatus = async(req, res) => {
-    const { cartId } = req.params.id
-    const { status } = req.body
-    const cart = await Cart.findOne({ where: { id: id } })
-    cart.status = status
+const changeCartState = async(req, res) => {
+    const userId = req.params.id
+    const { state, date, time, barberId, } = req.body
+    const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
+    cart.state = state
+    cart.date = date
+    cart.time = time
+    cart.barberId = barberId
+    cart.save()
     res.send(cart)
 }
+
+const changeCartStateMercadoPago = async(req, res) => {
+    const userId = req.params.id
+    const {state} = req.body
+    const cart = await Cart.findOne({ where: { clientId: userId, state: "Pending" }, include: {all: true }})
+    cart.state = state
+    if (state === "Paid") {
+        console.log(cart)
+        let client = await Client.findByPk(userId)
+        const transporter = nodemailer.createTransport({
+        service:'gmail', // En este caso la enviamos por gmail
+        auth: {
+            user: USER_EMAIL,
+            pass: PASSWORD_EMAIL
+        }
+      });
+      
+      const mailOptions = {
+        from:`Community Barber's <${USER_EMAIL}>`,
+        to: client.email,
+        subject: "Confirmed Order ",
+        html: "<h1>Hola</h1>"
+      };
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          res.send("Ok");
+        }
+      });
+    }
+    cart.save()
+    res.send(cart)
+}
+
 
 const getActiveCartFromUser = async(req, res) => {
     const userId = req.params.id
@@ -75,6 +121,21 @@ const removeProductFromCart = async(req, res) => {
     })
 }
 
+const resetUserCart = async (req, res) => {
+    const userId = req.params.id
+    const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
+    cart.totalAmount = 0;
+    await cart.save()
+    Item.destroy({
+        where: {
+            cartId: cart.id
+        }
+    })
+        .then(() => {
+            res.sendStatus(200);
+        })
+}
+
 const incrementServiceUnit = async(req, res) => {
     
 }
@@ -90,5 +151,8 @@ module.exports = {
 	addItem,
     getCartsById,
     removeProductFromCart,
-    getActiveCartFromUser
+    getActiveCartFromUser,
+    resetUserCart,
+    changeCartState,
+    changeCartStateMercadoPago
 };
