@@ -94,8 +94,7 @@ const RegisterClient = () => {
 	// console.log(barber);
 	const handleSubmit = (e) => {
 		const clientSend = {
-			clientModified: {
-                name: client.name,
+        name: client.name,
 				lastname: client.lastname,
 				email: client.email,
 				image: barberImg,
@@ -104,9 +103,9 @@ const RegisterClient = () => {
 				password: client.confirmedPassword,
 				status: true,
 				styleId: client.styleId, 
-                faceTypeId: client.faceTypeId, 
-                hairTypeId: client.hairTypeId
-			},
+        faceTypeId: client.faceTypeId, 
+        hairTypeId: client.hairTypeId
+
 		};
 		// if (errors || !barberSend.barber.name) {
 		// 	e.preventDefault()
@@ -114,8 +113,8 @@ const RegisterClient = () => {
 		// }
 		console.log(clientSend);
 		dispatch(signUpClient(clientSend)); // Reemplazar por la nueva action que almacena el JWT
-		alert("Register Sucessfull");
-		window.location.href = "http://localhost:3000/";
+		// alert("Register Sucessfull");
+		// window.location.href = "http://localhost:3000/";
 	};
 	// const handleSelect = () => {
 	//     let select = document.getElementById("");

@@ -41,6 +41,7 @@ const BarberDetailServices = ({ filters }) => {
         } else {
             dispatch(addToCart(token.id, service))
             dispatch(addToAppointment(e))
+            localStorage.setItem("barberId", id)
         }
     }
 

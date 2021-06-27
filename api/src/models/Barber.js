@@ -26,31 +26,24 @@ module.exports = (sequelize) => {
 		},
 		mobile: {
 			type: DataTypes.STRING,
-			allowNull: false,
 		},
 		location: {
 			type: DataTypes.STRING,
-			allowNull: false,
 		},
 		password: {
 			type: DataTypes.STRING,
-			allowNull: false,
 		},
 		status: {
 			type: DataTypes.BOOLEAN,
-			allowNull: false,
 		},
 		alias: {
 			type: DataTypes.STRING,
-			allowNull: false,
 		},
 		resume: {
 			type: DataTypes.STRING,
-			allowNull: false,
 		},
 		bio: {
 			type: DataTypes.STRING,
-			allowNull: false,
 		},
 		rating: {
 			type: DataTypes.FLOAT,
@@ -60,6 +53,7 @@ module.exports = (sequelize) => {
 			// se realizó la traducción de los ENUMs al inglés para los filtros
 			type: DataTypes.ENUM("Urban", "Academy", "Hair technician", "Seminary"),
 			allowNull: false,
+			defaultValue: "Urban"
 		},
 		slots:{
 			type: DataTypes.ARRAY(STRING),

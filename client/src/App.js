@@ -46,7 +46,7 @@ function App() {
 			<Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
 			<Route exact path="/admin/barbers" component={BarberTable} />
 			<Route exact path="/register" component={Register} />
-			<Route exact path="/registerClient" component={RegisterClient} />
+			<Route exact path="/clients/register" component={RegisterClient} />
 			<Route exact path="/BarberConfig/:id" component={BarberConfig} />
 			<Route exact path="/loginBarbers" component={LoginBarbers} />
 			<Route exact path="/loginClients" component={LoginClient} />

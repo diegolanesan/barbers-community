@@ -8,6 +8,7 @@ function ClientData({allAppointments}) {
     
     const user = jwtDecode(localStorage.getItem("clientToken"))
     const clientAppointments = allAppointments.filter(app => app.clientId === user.id )
+
     console.log("User  " + user.id);
     const dispatch = useDispatch()
     const search = useLocation().search;
