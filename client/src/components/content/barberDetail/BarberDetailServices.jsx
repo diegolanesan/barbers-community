@@ -40,11 +40,11 @@ const BarberDetailServices = ({ filters }) => {
         if (token === null) {
             addToGuestCart(service)
             dispatch(addToAppointment(e))
-        } else if (cart && cart.serviceBarbers[0].barberId === barberDetail.id) {
+        } else if (cart && cart.serviceBarbers.length > 0 && cart.serviceBarbers[0].barberId === barberDetail.id) {
             dispatch(addToCart(token.id, service))
             dispatch(addToAppointment(e))
             localStorage.setItem("barberId", id)
-        } else if (cart && cart.serviceBarbers[0].barberId !== barberDetail.id) {
+        } else if (cart && cart.serviceBarbers.length > 0 && cart.serviceBarbers[0].barberId !== barberDetail.id) {
             dispatch(resetUserCart(token.id)).then(() =>
                 dispatch(addToCart(token.id, service)))
             dispatch(addToAppointment(e))

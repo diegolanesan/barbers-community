@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import jwtDecode from 'jwt-decode'
+import { useParams } from 'react-router-dom'
 
 const AppointmentsDashClient = ({allAppointments}) => {
     

@@ -7,6 +7,7 @@ import Datetime from "react-datetime";
 import moment from "moment";
 import appointmentReducer from '../../../redux/reducer/appointment'
 import { postAppointment } from '../../../redux/action/appointment'
+import { getBarberById } from '../../../redux/action/barbers'
 
 
 export const CartLogged = () => {
@@ -17,11 +18,10 @@ export const CartLogged = () => {
 
   const cart = useSelector(state => state.cart.activeCart)
   const barber = useSelector(state => state.barberDetail.resp)
-  const slots = useSelector(state => state.barberDetail.resp.slots)
+  const slots = useSelector(state => state.barbers.barberDetail.slots)
   const appointments = useSelector(state => state.appointments.appointmentsById)
   const barberId = localStorage.getItem("barberId")
-  const barberApp = useSelector(state => state.cart.barberAppointments)
-  console.log(barberApp)
+  console.log(barberId)
 
 
   const totalAmount = cart.totalAmount
@@ -29,10 +29,13 @@ export const CartLogged = () => {
 
   useEffect(() => {
     dispatch(getActiveCartFromUserId(token.id))
+    dispatch(getBarberById(barberId))
     dispatch(getCartsByBarberId(barberId))
 
 
   }, [])
+
+  const barberApp = useSelector(state => state.cart.barberAppointments)
 
   let [fecha, setFecha] = useState({ fecha: "" })
 
@@ -41,7 +44,7 @@ export const CartLogged = () => {
   }
 
   const [appointment, setAppointment] = useState({
-    barberId: barber.id,
+    barberId: barberId,
     clientId: token.id, //traer del localstorage
     date: "",
     time: "",
@@ -63,7 +66,7 @@ export const CartLogged = () => {
   const dates = barberApp.map(app => {
 
     const date = appointment.date.slice(0, 15)
-    if (app.date.includes(date)) {
+    if (slotsCopy && app.date.includes(date)) {
       slotsCopy = slotsCopy.filter(slot => app.time !== slot)
     }
   })

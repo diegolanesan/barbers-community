@@ -1,50 +1,69 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
-import {getAllAppointmentsByClientId} from '../../../redux/action/clients'
-import { changeCartStateMercadoPago, resetUserCart } from '../../../redux/action/cart'
+//import { HOST_BACK } from '../../../redux/back_constants'
+import { changeCartStateMercadoPago, getCartsByUser, addToCart } from '../../../redux/action/cart'
+
 function ClientData({allAppointments}) {
     
     const user = jwtDecode(localStorage.getItem("clientToken"))
+
     const clientAppointments = allAppointments.filter(app => app.clientId === user.id )
 
-    console.log("User  " + user.id);
+    const appointments = useSelector(state => state.cart.clientsAppointments)
+
     const dispatch = useDispatch()
-        const search = useLocation().search;
+
+    const search = useLocation().search;
+
     const state = new URLSearchParams(search).get('collection_status');
     useEffect(() => {
-        dispatch(getAllAppointmentsByClientId(user.id))
-    
-    console.log(state)
+        dispatch(getCartsByUser(user.id));
+        
+        if (state && state === "approved") {
+            dispatch(changeCartStateMercadoPago(user.id, { state: "Paid" })).then(() =>
+            window.location.replace("http://localhost:3000/clients/dashboard"))
+        }
 
-    
-    if (state && state === "approved") {
-        dispatch(changeCartStateMercadoPago(user.id, {state: "Paid"}))
-    }
+        if (state && state === "rejected") {
+            dispatch(changeCartStateMercadoPago(user.id, { state: "Rejected" })).then(() =>
+            window.location.replace("http://localhost:3000/clients/dashboard"))
+            
+        }
 
-    if (state && state === "rejected") {
-        dispatch(changeCartStateMercadoPago(user.id, {state: "Rejected"}))
-    }
-
-    if (state && state === "pending") {
-        dispatch(changeCartStateMercadoPago(user.id, {state: "Pending"}))
-    }
+        if (state && state === "pending") {
+            dispatch(changeCartStateMercadoPago(user.id, { state: "Pending" })).then(() =>
+            window.location.replace("http://localhost:3000/clients/dashboard"))
+            
+        }
 
     }, [])
-
     
-    function onClick(status) {
-        if(status === "Approved"){
-            // window.location.replace("http://localhost:3000/cart"); // ¿Dónde me redirige y cómo?
-            // console.log("")
-            //Dispatch al carro con los datos de la cita (menos el dia y la hora que los va a elegir ahi)
-            dispatch(resetUserCart(user.id))
+    function dispatchAdd(id, service) {
+        dispatch(addToCart(id, service))
+    }
+
+    async function onClick(state, service) {
+        if(state === "Paid"){
+                service?.serviceBarbers && service?.serviceBarbers?.map (async x => {
+                    let serviceToRepeat = {
+                        serviceBarberId : x.id,
+                        name : x.name,
+                        price : x.price
+                    }
+                    dispatchAdd(user.id, serviceToRepeat);
+                    localStorage.setItem("barberId", JSON.stringify(service.serviceBarbers[0].barberId)),
+                    window.location.replace("http://localhost:3000/cart");
+                    // window.location.href = `http://localhost:3000/cart`
+                })
+            
         } else {
-            alert("You need to have your appointment approved to repeat date!")
+            alert("You need to have your appointment approved to repeat it!");
         }
     }
     
+
     return (
         <div>
             <h2 class="text-3xl font-bold mt-12">Welcome, {user.name}! </h2>
@@ -72,20 +91,26 @@ function ClientData({allAppointments}) {
                 </tr>
             </thead>
                 {
-                    clientAppointments.map(app => {
+                    appointments && appointments.length > 0 ? 
+                    appointments.map(app => {
                         return <tbody class="text-center">
                         <tr>
                         <td> {app.id} </td>
-                        <td> {app.date.slice(0, 10)} </td>
-                        <td> {app.serviceBarbers && app.serviceBarbers.map(x => { return x.name + " "})} </td>
-                        <td> {app.status} </td>
-                        <td> $ {app.total} </td>
-                        <td><button onClick={() => onClick(app.status)} class="h-8 px-4 text-sm text-white transition-colors bg-blue-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-blue-600">Repeat</button></td>
+                        <td> {app.date && app.date.slice(0, 10)} </td>
+                        <td> {app.serviceBarbers && app.serviceBarbers.map(x => {
+                             if(app.serviceBarbers.length > 1){
+                                return "| " + x.name + " |";
+                            } else {return x.name + " "}
+                        })} </td>
+                        <td> {app && app.state} </td>
+                        <td> $ {app.totalAmount && app.totalAmount} </td>
+                        <td><button onClick={() => onClick(app.state, app)} class="h-8 px-4 text-sm text-white transition-colors bg-blue-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-blue-600">Clone</button></td>
                         </tr>
-                    </tbody>})
+                    </tbody>}) : ""
                 }
             </table>
         </div>
     )
 }
-export default ClientData
+
+export default ClientData;
