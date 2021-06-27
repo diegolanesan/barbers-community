@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToAppointment, getBarberServices, removeFromAppointment } from '../../../redux/action/services';
-import { addToCart, removeFromCart, getGuestCart, addToGuestCart, removeFromGuestCart } from '../../../redux/action/cart';
+import { addToCart, removeFromCart, getGuestCart, addToGuestCart, removeFromGuestCart, getActiveCartFromUserId, resetUserCart } from '../../../redux/action/cart';
 import jwtDecode from 'jwt-decode';
 
 
@@ -12,12 +12,14 @@ const BarberDetailServices = ({ filters }) => {
     const services = useSelector((state) => state.services.array);
     const selectedServices = useSelector((state) => state.services.services);
     const token = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : null;
-
+    const cart = useSelector(state => state.cart.activeCart)
+    const barberDetail = useSelector(state => state.barberDetail.resp)
 
 
     const { id } = useParams()
     useEffect(() => {
         dispatch(getBarberServices(id))
+        dispatch(getActiveCartFromUserId(token.id))
     }, []);
 
     const filtered = services?.services?.filter(n => n.categories.length && n.categories[0].name === filters)
@@ -38,6 +40,15 @@ const BarberDetailServices = ({ filters }) => {
         if (token === null) {
             addToGuestCart(service)
             dispatch(addToAppointment(e))
+        } else if (cart && cart.serviceBarbers[0].barberId === barberDetail.id) {
+            dispatch(addToCart(token.id, service))
+            dispatch(addToAppointment(e))
+            localStorage.setItem("barberId", id)
+        } else if (cart && cart.serviceBarbers[0].barberId !== barberDetail.id) {
+            dispatch(resetUserCart(token.id)).then(() =>
+                dispatch(addToCart(token.id, service)))
+            dispatch(addToAppointment(e))
+            localStorage.setItem("barberId", id)
         } else {
             dispatch(addToCart(token.id, service))
             dispatch(addToAppointment(e))
