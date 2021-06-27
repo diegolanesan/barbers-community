@@ -26,6 +26,7 @@ import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DetailsAppointment from "./components/content/barberDashboard/Appointments/DetailsAppointment";
+import Categories from "./components/container/createAdmin/categories/Categories";
 
 function App() {
 	const location = useLocation();
@@ -62,6 +63,7 @@ function App() {
 			<Route exact path="/cart" component={CartLogged} />
 			<Route exact path="/guest/cart" component={Cart} />
 			<Route exact path="/admin/dashboard" component={AdminDesk} />
+			<Route exact path="/pruebaSeba" component={Categories} />
 			<ToastContainer />
 		</div>
 	);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "react-datetime/css/react-datetime.css";
 import Datetime from "react-datetime";
 import moment from "moment";
+import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
 import {
 	appointmentRelation,
@@ -13,6 +14,13 @@ export default function AppointmentDate() {
 	const dispatch = useDispatch();
 
 
+
+    let [fecha, setFecha] = useState({ fecha: "" })
+    function onchange(args) { setAppointment({ ...appointment, date: `${args._d}` }) }
+    var yesterday = moment().subtract(1, "day");
+    function valid(current) {
+        return current.isAfter(yesterday);
+    }
 
 	const services = useSelector((state) => state.services.services);
 	console.log(services);
@@ -109,9 +117,19 @@ export default function AppointmentDate() {
 		// window.location.href= "http://localhost:3000/clients/dashboard";
 	};
 
-	const goBack = () => {
-		window.history.back();
-	};
+        dispatch(postAppointment({
+            barberId: appointment.barberId,
+            clientId: 12,
+            date: appointment.date,
+            status: "Pending",
+            total: 100,
+            serviceBarberId: services.id,
+            time: appointment.time
+        }))
+        alert("Appoiment send")
+        
+       
+    }
 
 	return (
 		<div>
@@ -290,4 +308,3 @@ export default function AppointmentDate() {
 			</div>
 		</div>
 	);
-}
