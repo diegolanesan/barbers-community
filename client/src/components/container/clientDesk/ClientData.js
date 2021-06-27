@@ -8,7 +8,6 @@ function ClientData({allAppointments}) {
     
     const user = jwtDecode(localStorage.getItem("clientToken"))
     const clientAppointments = allAppointments.filter(app => app.clientId === user.id )
-    
 
     return (
 <div>

@@ -29,12 +29,12 @@ function LoginBarbers() {
     }
 
     function responseGoogle(res) {
-      console.log(res.dt)
-      console.log(res.dt.Nt)
-      const email = {
-        email: res.dt.Nt
+      const userData = {
+        email: res.dt.Nt,
+        name: res.dt.uU,
+        lastname: res.dt.qS,
       }
-      dispatch(signInBarberWithGoogle(history, email))
+      dispatch(signInBarberWithGoogle(history, userData))
     }
 
     return (

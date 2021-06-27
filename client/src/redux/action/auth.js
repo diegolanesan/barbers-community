@@ -44,8 +44,8 @@ export const signInBarber = (history, creds)=> (dispatch) => {
     })
 }
 
-export const signInBarberWithGoogle = (history, email)=> (dispatch) => {
-    axios.post(HOST_BACK + "/barbers/loginGoogle", email) 
+export const signInBarberWithGoogle = (history, userData)=> (dispatch) => {
+    axios.post(HOST_BACK + "/barbers/login/google", userData) 
     .then( token => {
         localStorage.setItem('barberToken', JSON.stringify(token.data.token))
 
@@ -87,6 +87,22 @@ export const signInClient = (creds, history) => (dispatch) => {
         localStorage.setItem('clientToken', JSON.stringify(token.data.token))
 
         dispatch({type: SIGN_IN_CLIENT, token: token.data.token})
+        history.push("/clients/dashboard")
+    })
+    .catch( error => {
+        console.log(error.response)
+        toast.error(error.response?.data, {
+            position: toast.POSITION.BOTTOM_RIGHT
+        })
+    })
+}
+
+export const signInClientWithGoogle = (history, userData)=> (dispatch) => {
+    axios.post(HOST_BACK + "/clients/login/google", userData) 
+    .then( token => {
+        localStorage.setItem('clientToken', JSON.stringify(token.data.token))
+
+        dispatch({type: SIGN_IN_BARBER_GOOGLE, token: token.data.token})
         history.push("/clients/dashboard")
     })
     .catch( error => {

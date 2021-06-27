@@ -245,18 +245,34 @@ const relationStyle = async (req, res)=>{
 }
 
 const googleLoginBarbers = async (req, res) => {
-	const {email} = req.body
+	const {
+        email,
+        name,
+        lastname
+    } = req.body;
+	
 	const secret = "secret"
-	try {
-		const oldUser = await Barber.findOne({where: { email: email }})	
-		if(!oldUser) return res.status(404).json({ message: { message: "User doesn`t exist", style: "red" } });
 
-        const token = jwt.sign({ email: oldUser.email, id: oldUser.id, name: oldUser.name }, secret, { expiresIn: '1hr' });
-        res.status(201).json({ result: oldUser, token, message: { message: "Log in Successful", style: "green" } });
-	} catch (error) {
-        res.status(500).json({ message: { message: 'Something went wrong', style: "red" } });
-        console.log(error);
-        res.status(500).json({message:{message:'Something went wrong', style:"red"}});
+    if (!req.body) {
+        res.status(403).end();
+    }
+    try {
+        const oldUser = await Barber.findOne({where : { email } });
+        if (oldUser) {
+            const token = jwt.sign({ id: oldUser.id, email: oldUser.email, name: oldUser.name }, secret, { expiresIn: '1hr' })
+            return res.status(201).json({ result: oldUser, token, message: { message: "Log in Successful" } })
+        } else {
+            const result = await Barber.create({
+                email,
+                name,
+                lastname,
+            })
+            const token = jwt.sign({ id: result.id, email: result.email, name: result.name }, secret, { expiresIn: '1hr' });
+            return res.status(201).json({ result, token, message: { message: "Registered with Google" } })
+        }
+    } catch (error) {
+        console.log("ERROR", error)
+        return res.status(500).json({ message: { message: "Something went wrong" } });
     }
 }
 

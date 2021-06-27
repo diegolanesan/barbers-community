@@ -4,7 +4,7 @@ import { signInClient } from "../../../redux/action/auth";
 import { useHistory, Link } from "react-router-dom";
 import GoogleLogin from 'react-google-login';
 import cutHair from "../../../resources/hero.jpg";
-import { signInBarberWithGoogle } from "../../../redux/action/auth";
+import { signInBarberWithGoogle, signInClientWithGoogle } from "../../../redux/action/auth";
 
 function LoginClient() {
 	const history = useHistory();
@@ -27,8 +27,12 @@ function LoginClient() {
 	}
 
 	function responseGoogle(res) {
-		console.log(res.dt.Nt)
-		dispatch(signInBarberWithGoogle(history, res.dt.Nt))
+		const userData = {
+			email: res.dt.Nt,
+			name: res.dt.uU,
+			lastname: res.dt.qS
+		  }
+		dispatch(signInClientWithGoogle(history, userData))
 		
 	}
 	return (

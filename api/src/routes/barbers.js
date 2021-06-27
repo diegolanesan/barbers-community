@@ -55,6 +55,7 @@ server.delete('/:id', deleteBarbers);
 
 // Rutas de login local y con Google 
 server.post('/login', loginBarbers)
-server.post('/loginGoogle', googleLoginBarbers)
+
+server.post('/login/google', googleLoginBarbers)
 
 module.exports= server;
