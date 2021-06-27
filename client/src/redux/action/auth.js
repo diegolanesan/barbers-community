@@ -1,6 +1,8 @@
 import { HOST_BACK } from "../back_constants/index"
 import axios from "axios"
 import {toast} from 'react-toastify'
+import { addToCart } from "./cart"
+import jwtDecode from "jwt-decode"
 export const SIGN_UP_BARBER = "SIGN_UP_BARBER"
 export const SIGN_IN_BARBER = "SIGN_IN_BARBER"
 export const SIGN_IN_BARBER_GOOGLE = "SIGN_IN_BARBER_GOOGLE"
@@ -14,9 +16,14 @@ export const SIGN_OUT = "SIGN_OUT"
 
 export const signUpBarber = (barberUser) => (dispatch) => {
     axios.post(HOST_BACK + "/barbers/", barberUser)
-    .then( token => {
+        .then(async token => {
+        
         localStorage.setItem('barberToken', JSON.stringify(token.data))
-
+        // let localStorageCart = await JSON.parse(localStorage.getItem('cart'))
+        //     if (localStorageCart) {
+        //     let user = jwtDecode(token)
+        //     localStorageCart.items?.map(async(i)=> addToCart(user.id, {serviceBarberId: i.serviceBarberId, price: i.price, name: i.name}))
+        // }    
         dispatch({type: SIGN_UP_BARBER, token: token.data})
     })
     .catch( error => {
@@ -63,12 +70,16 @@ export const signInBarberWithGoogle = (history, userData)=> (dispatch) => {
 // ------------------------------  CLIENT AUTHENTICATION --------------------------------------- //
 
 
-export const signUpClient = (clientUser) => (dispatch) => {
+export const signUpClient = (clientUser) => async (dispatch) => {
     axios.post(HOST_BACK + "/clients/add", clientUser)
-    .then( res => {
+    .then(async res => {
         console.log(res.data.token)
         localStorage.setItem('clientToken', JSON.stringify(res.data.token))
-
+        let localStorageCart = await JSON.parse(localStorage.getItem('cart'))
+            if (localStorageCart) {
+            let user = jwtDecode(res.data.token)
+            localStorageCart.items?.map(async(i)=> addToCart(user.id, {serviceBarberId: i.serviceBarberId, price: i.price, name: i.name}))
+        }    
         dispatch({type: SIGN_UP_CLIENT, token: res.data.token})
         
     })
@@ -82,10 +93,18 @@ export const signUpClient = (clientUser) => (dispatch) => {
 
 export const signInClient = (creds, history) => (dispatch) => {
     axios.post(HOST_BACK + "/clients/login", creds)
-    .then( token => {
+    .then(async token => {
         console.log(token.data.token)
         localStorage.setItem('clientToken', JSON.stringify(token.data.token))
-
+        let localStorageCart = JSON.parse(localStorage.getItem('cart'))
+        console.log(localStorageCart, "aAAAAAAAAAA")
+        if (localStorageCart) {
+            let user = await jwtDecode(token.data.token)
+            console.log(user.id)
+            localStorageCart.items?.map((i) => {
+                return dispatch(addToCart(user.id, i))
+            })
+        }  
         dispatch({type: SIGN_IN_CLIENT, token: token.data.token})
         history.push("/clients/dashboard")
     })

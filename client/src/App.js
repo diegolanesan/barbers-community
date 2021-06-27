@@ -19,22 +19,28 @@ import Recovery from './components/container/recovery/Recovery';
 import AppointmentDate from './components/content/appointmentDate/AppointmentDate';
 import BarberDashboard from './components/content/barberDashboard/barberDashboard';
 import ClientDesk from './components/container/clientDesk/ClientDesk';
+import CartLogged from './components/container/cart/CartLogged';
+import Cart from './components/container/cart/Cart';
+import AdminDesk from './components/content/admin/AdminDesk';
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DetailsAppointment from "./components/content/barberDashboard/Appointments/DetailsAppointment";
 
 function App() {
 	const location = useLocation();
 	return (
 		<div className="App">
-			{(location.pathname === "/" ||
+			{/* {location.pathname === "/" ||
 				location.pathname === "/catalog" ||
 				location.pathname === "/dashboard" ||
+				location.pathname === "//admin/dashboard" ||
 				location.pathname === "/loginBarbers" ||
-				location.pathname === "/loginClients") && (
+				location.pathname === "/loginClients" ||
+				location.pathname === "/barbers/dashboard" && (
 				<Route path="/" component={NavBar} />
-			)}
-			{/* <Route path="/" component={NavBar}/> */}
+			)} */}
+			<Route path="/" component={NavBar}/>
 			<Route path="/Detail/:id" component={showBarberDetail} />
 			<Route exact path="/" component={Home} />
 			<Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
@@ -51,7 +57,11 @@ function App() {
 			<Route exact path="/recovery/:token" component={Recovery} />
 			<Route exact path="/appointment/date" component={AppointmentDate} />
 			<Route exact path="/barbers/dashboard" component={BarberDashboard} />
+			<Route exact path="/barbers/dashboard/:id" component={DetailsAppointment} />
 			<Route exact path="/clients/dashboard" component={ClientDesk} />
+			<Route exact path="/cart" component={CartLogged} />
+			<Route exact path="/guest/cart" component={Cart} />
+			<Route exact path="/admin/dashboard" component={AdminDesk} />
 			<ToastContainer />
 		</div>
 	);

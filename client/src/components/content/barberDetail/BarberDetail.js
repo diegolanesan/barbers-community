@@ -6,6 +6,11 @@ import { getBarbers } from "../../../redux/action/barbers";
 import { addToAppointment } from "../../../redux/action/services";
 import "./BarberDetail.modules.css";
 import BarberDetailServices from "./BarberDetailServices.jsx";
+import "react-datetime/css/react-datetime.css";
+import Datetime from "react-datetime";
+import moment from "moment";
+import StarRatingComponent from "react-star-rating-component";
+import { getAppointmentByBarber } from "../../../redux/action/appointment";
 
 function BarberDetail(props) {
 	const dispatch = useDispatch();
@@ -14,13 +19,13 @@ function BarberDetail(props) {
 	useEffect(() => {
 		dispatch(barberDetail(id));
 		dispatch(getBarbers());
+		dispatch(getAppointmentByBarber(id));
 	}, []);
 
 	const scrollToRef = (ref) =>
 		window.scrollTo({
 			left: 0,
-			top: 0,
-			//top: ref.current.offsetTop, //error:Cannot read property 'offsetTop' of null
+			top: ref.current.offsetTop,
 			behavior: "smooth",
 		});
 	const myRef = useRef(null);
@@ -47,7 +52,35 @@ function BarberDetail(props) {
 		}
 	};
 
-	console.log(resp);
+	let [fecha, setFecha] = useState({ fecha: "" })
+	function onchange(args) { setAppointment({ ...appointment, date: `${args._d}` }) }
+	var yesterday = moment().subtract(1, "day");
+	function valid(current) {
+		return current.isAfter(yesterday);
+	}
+	
+	const [appointment, setAppointment] = useState({
+		barberId: "",
+		clientId: 1, //traer del localstorage
+		date: fecha.fecha,
+		time: "08:00",
+		status: "Pending",
+		total: "",
+		serviceBarberId: []
+	})
+	
+	console.log(appointment.date)
+
+	const time = [{ Mon: [{ time: "08:00" }, { time: "09:00" }, {time: "10:00"}]},
+		{Tue: [{ time: "10:00" }, { time: "11:00" }, { time: "12:00" }, { time: "13:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
+		{ Wed: [{ time: "08:00" }, { time: "09:00" }, { time: "10:00" }, { time: "11:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }] },
+		{Thu: [ { time: "12:00" }, { time: "13:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
+		{Fri: [{ time: "10:00" }, { time: "11:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
+		
+	]
+	const [mon, setMon] = useState(time[0].Mon)
+	
+	console.log(mon);
 	return (
 		<div>
 			<div class="bg-gray-100 max-w-6xl mx-auto my-20">
@@ -60,9 +93,8 @@ function BarberDetail(props) {
 								Go back to Barbers
 							</button>
 						</a>
-						<div class="md:flex no-wrap md:-mx-2 pt-8 pb-32 ">
-							{/* <!-- Left Side --> */}
-							<div class="w-full md:w-3/12 md:mx-2">
+							<div class="md:flex no-wrap md:-mx-2 pt-8 pb-32 ">
+								<div class="w-full md:w-3/12 md:mx-2">
 								{/* <!-- Profile Card --> */}
 								<div class="bg-white p-3 border-t-4 border-blue-400 ">
 									<div class="image overflow-hidden">
@@ -72,10 +104,30 @@ function BarberDetail(props) {
 											alt=""
 										/>
 									</div>
-									<h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
+									<h1 class="text-gray-900 font-bold text-xl leading-8 mt-1">
 										{resp.name} {resp.lastname}
-									</h1>
-									<p class="text-sm text-gray-500 hover:text-gray-600 leading-6">
+										</h1>
+										<h1 class="text-gray-900 font-semibold text-lg leading-8">
+											{resp.location}
+											<div className="grid grid-cols-2 gap-4 -ml-16">
+											<StarRatingComponent
+                								name="rate2"
+                      						    editing={false}
+                      						    renderStarIcon={() => <span className=" text-xl">★</span>}
+                      						    starCount={5}
+                      						    value={resp.rating}
+												/>
+												<button className="w-28 bg-blue-400">
+													Add Review
+												</button>
+											</div>
+										</h1>
+										
+										<h1 class="text-gray-900 font-semibold text-md leading-8">
+											{ "Level: " + resp.type }
+										</h1>
+										
+									<p class="text-sm text-gray-700 font-semibold hover:text-gray-600 leading-6">
 										{resp.resume}
 									</p>
 									<ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
@@ -89,7 +141,7 @@ function BarberDetail(props) {
 															: "bg-red-500 py-1 px-2 rounded text-white text-sm"
 													}
 												>
-													{resp.status ? "active" : "suspended"}
+													{resp.status ? "Active" : "Suspended"}
 												</span>
 											</span>
 										</li>
@@ -99,7 +151,7 @@ function BarberDetail(props) {
 													onClick={executeScroll}
 													class="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-10 mb-0 rounded-lg"
 												>
-													Get an apointment
+													Available Services
 												</button>
 											) : (
 												""
@@ -110,8 +162,7 @@ function BarberDetail(props) {
 								{/* <!-- End of profile card --> */}
 								<div class="my-4"></div>
 							</div>
-							{/* <!-- Right Side --> */}
-							<div class="w-full md:w-9/12 mx-2 h-64">
+								<div class="w-full md:w-9/12 mx-2 h-64">
 								{/* <!-- About Section --> */}
 								<div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
 									<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
@@ -131,36 +182,35 @@ function BarberDetail(props) {
 												/>
 											</svg>
 										</span>
-										<span class="tracking-wide">About</span>
+										<span class="tracking-wide">Availability</span>
 									</div>
 									<div class="text-gray-700">
-										<div class="grid md:grid-cols-1 text-sm">
+										{/* <div class="grid md:grid-cols-1 grid-cols-2 font-semibold text-md">
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">First Name</div>
-												<div class="px-4 py-2">{resp.name}</div>
+												<div class="px-4 py-2"> Name: {resp.name}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Last Name</div>
-												<div class="px-4 py-2">{resp.lastname}</div>
+
+												<div class="px-4 py-2">Lastname: {resp.lastname}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Type</div>
+												
 												<div class="px-4 py-2">{resp.type}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Alias</div>
+												
 												<div class="px-4 py-2">{resp.alias}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Address</div>
+												
 												<div class="px-4 py-2">{resp.location}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Contact No.</div>
+
 												<div class="px-4 py-2">{resp.mobile}</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Email.</div>
+												
 												<div class="px-4 py-2">
 													<a
 														class="text-blue-800"
@@ -171,82 +221,15 @@ function BarberDetail(props) {
 												</div>
 											</div>
 											<div class="grid grid-cols-2">
-												<div class="px-4 py-2 font-semibold">Rating</div>
+												
 												<div class="px-4 py-2">{resp.rating}</div>
 											</div>
-										</div>
-									</div>
-								</div>
-								{/* <!-- End of about section --> */}
-								<div class="my-4"></div>
-								{/* <!-- Types --> */}
-								{
-									<div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
-										<div class="grid grid-cols-3">
-											<div>
-												<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-													<span class="tracking-wide">Face Types</span>
-												</div>
-												<ul class="list-inside space-y-2">
-													{resp.faceTypes
-														? resp.faceTypes.map((n) => (
-																<li>
-																	<div class="bg-blue-500 py-1 px-3  mx-12 rounded text-white text-sm">
-																		{n.description}
-																	</div>
-																</li>
-														  ))
-														: "waiting"}
-												</ul>
-											</div>
-											<div>
-												<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-													<span class="tracking-wide">Styles</span>
-												</div>
-												<ul class="list-inside space-y-2">
-													{resp.styles
-														? resp.styles.map((n) => (
-																<li>
-																	<div class="bg-blue-500 py-1 px-3 mx-12 rounded text-white text-sm">
-																		{n.description}
-																	</div>
-																</li>
-														  ))
-														: "waiting"}
-												</ul>
-											</div>
-											<div>
-												<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-													<span class="tracking-wide">Hair Types</span>
-												</div>
-												<ul class="list-inside space-y-2">
-													{resp.hairTypes
-														? resp.hairTypes.map((n) => (
-																<li>
-																	<div class="bg-blue-500 py-1 px-3 mx-12 rounded text-white text-sm">
-																		{n.description}
-																	</div>
-																</li>
-														  ))
-														: "waiting"}
-												</ul>
-											</div>
-										</div>
-									</div>
-								}
-								{/* <!-- End of Types --> */}
-								{/* <!-- End of profile tab --> */}
-								<div class="my-4"></div>
-							</div>
-						</div>
-					</div>
-				)}
-			</div>
-			<div class="bg-gray-100 max-w-6xl  mx-auto my-20">
+										</div> */}
+											<div ref={myRef} class="bg-gray-100 w-full  mx-auto">
 				<div>
 					<div>
 						<div
-							className={`w-full mt-4 justify-center flex`}
+							className={`w-full justify-center flex`}
 							onClick={handleClick}
 						>
 							<div>
@@ -345,16 +328,99 @@ function BarberDetail(props) {
 					<BarberDetailServices filters={boton.filters} />
 				</div>
 				<div className="flex justify-center">
-					<Link to="/appointment/date">
-						<button
-							onClick={() => dispatch(addToAppointment(resp))}
-							className="px-20 py-2 -mt-3 mb-7 bg-blue-500 fotn-bold rounded"
-						>
+					<Link to="/cart">
+						<button className="px-20 py-2 -mt-3 mb-7 bg-blue-500 fotn-bold rounded">
 							Next Step
 						</button>
 					</Link>
 				</div>
 			</div>
+											{/* <div>
+												{appointment.date && appointment.date.includes("Mon") ?
+													time[0].Mon.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
+												{appointment.date && appointment.date.includes("Tue") ?
+													time[1].Tue.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
+												{appointment.date && appointment.date.includes("Wed") ?
+													time[2].Wed.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
+												{appointment.date && appointment.date.includes("Thu") ?
+													time[3].Thu.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
+												{appointment.date && appointment.date.includes("Fri") ?
+													time[4].Fri.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time }</button>) : ""}
+											</div>
+                                <Datetime className="border-4 border-blue-400" input={false} isValidDate={valid} timeFormat={false} onChange={onchange} />
+											 */}
+									</div>
+								</div>
+								{/* <!-- End of about section --> */}
+								{/* <div class="my-4"></div>
+								{/* <!-- Types --> */}
+								{
+									// <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
+									// 	<div class="grid grid-cols-3">
+									// 		<div>
+									// 			<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+									// 				<span class="tracking-wide">Face Types</span>
+									// 			</div>
+									// 			<ul class="list-inside space-y-2">
+									// 				{resp.faceTypes
+									// 					? resp.faceTypes.map((n) => (
+									// 							<li>
+									// 								<div class="bg-blue-500 py-1 px-3  mx-12 rounded text-white text-sm">
+									// 									{n.description}
+									// 								</div>
+									// 							</li>
+									// 					  ))
+									// 					: "waiting"}
+									// 			</ul>
+									// 		</div>
+											// <div>
+											// 	<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+											// 		<span class="tracking-wide">Styles</span>
+											// 	</div>
+											// 	<ul class="list-inside space-y-2">
+											// 		{resp.styles
+											// 			? resp.styles.map((n) => (
+											// 					<li>
+											// 						<div class="bg-blue-500 py-1 px-3 mx-12 rounded text-white text-sm">
+											// 							{n.description}
+											// 						</div>
+											// 					</li>
+											// 			  ))
+											// 			: "waiting"}
+											// 	</ul>
+											// </div>
+											// <div>
+											// 	<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+											// 		<span class="tracking-wide">Hair Types</span>
+											// 	</div>
+											// 	<ul class="list-inside space-y-2">
+											// 		{resp.hairTypes
+											// 			? resp.hairTypes.map((n) => (
+											// 					<li>
+											// 						<div class="bg-blue-500 py-1 px-3 mx-12 rounded text-white text-sm">
+											// 							{n.description}
+											// 						</div>
+											// 					</li>
+											// 			  ))
+											// 			: "waiting"}
+											// 	</ul>
+											// </div>
+										// </div>
+									// </div>
+								}
+								 {/* <!-- End of Types --> */}
+								 {/* <!-- End of profile tab --> */}
+								 {/* <div class="my-4"></div> */}
+							</div>
+							{/* <!-- Left Side --> */}
+							
+							{/* <!-- Right Side --> */}
+							
+						</div>
+					</div>
+				)}
+			</div>
+			
 		</div>
 	);
 }

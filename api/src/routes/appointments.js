@@ -7,6 +7,7 @@ const {
 	addRelation,
 	updateAppointment,
 	deleteAppointment,
+	getAppointmentsByClientId,
 } = require("../controllers/appointments"); // updateClient
 
 router.get("/", getAppointments);
@@ -15,5 +16,6 @@ router.put("/:id", updateAppointment);
 router.post("/add", addAppointment);
 router.post("/addServiceToAppointment", addRelation);
 router.delete("/:id", deleteAppointment);
+router.get("/byClientId/:id", getAppointmentsByClientId);
 
 module.exports = router;

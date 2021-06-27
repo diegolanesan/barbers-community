@@ -94,7 +94,7 @@ const RegisterClient = () => {
 	// console.log(barber);
 	const handleSubmit = (e) => {
 		const clientSend = {
-                name: client.name,
+        name: client.name,
 				lastname: client.lastname,
 				email: client.email,
 				image: barberImg,
@@ -103,8 +103,8 @@ const RegisterClient = () => {
 				password: client.confirmedPassword,
 				status: true,
 				styleId: client.styleId, 
-                faceTypeId: client.faceTypeId, 
-                hairTypeId: client.hairTypeId
+        faceTypeId: client.faceTypeId, 
+        hairTypeId: client.hairTypeId
 
 		};
 		// if (errors || !barberSend.barber.name) {

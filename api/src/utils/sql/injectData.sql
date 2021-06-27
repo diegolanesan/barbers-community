@@ -1385,6 +1385,55 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         't'
         );
 
+INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
+        VALUES ( 
+        'Lucas' ,
+        'Ruiz', 
+        'lucas@ruiz.com',         
+        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
+        '64541075', 
+        'Barranquilla, Colombia',
+        'clave123');
+
+INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
+        VALUES ( 
+        'Aleister' ,
+        'Black', 
+        'aleister@black.com',         
+        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
+        '64541075', 
+        'Barranquilla, Colombia',
+        'clave123');
+
+INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
+        VALUES ( 
+        'Olivier' ,
+        'Armstrong', 
+        'oli@armstrong.com',         
+        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
+        '64541075', 
+        'Barranquilla, Colombia',
+        'clave123');
+
+INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
+        VALUES ( 
+        'Eduardo' ,
+        'Elric', 
+        'eduardo@elric.com',         
+        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
+        '64541075', 
+        'Barranquilla, Colombia',
+        'clave123');
+
+INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
+        VALUES ( 
+        'Carlos' ,
+        'Medel', 
+        'carlos@medel.com',         
+        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
+        '64541075', 
+        'Barranquilla, Colombia',
+        'clave123');
 
 SELECT COUNT(id) FROM "faceTypes";
 SELECT COUNT(id) FROM "hairTypes";
@@ -1393,9 +1442,11 @@ SELECT COUNT(name) FROM barbers;
 SELECT COUNT(id) FROM categories;
 SELECT COUNT(id) FROM services;
 SELECT COUNT(id) FROM clients;
+SELECT COUNT(id) FROM admins;
 
 -- Local:
 -- psql -U alex -d barberscommunity -a -f injectData.sql
 -- Remote:
 -- psql -h host -U username -d myDataBase -a -f myInsertFile
 -- psql -h batyr.db.elephantsql.com -U fcuxnish -d myDataBase -a -f injectData.sql
+

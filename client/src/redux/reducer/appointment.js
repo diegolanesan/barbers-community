@@ -1,15 +1,17 @@
 import {
     APPOINTMENT_RELATION,
     GET_APPOINTMENT_BY_BARBER,
+    GET_APPOINTMENT_DETAILS,
     POST_APPOINTMENT
 } from "../action/appointment"
 
 const initialState = {
     appointment: [],
-    appointmentsById: []
+    appointmentsById: [],
+    appointmentDetails: {}
 }
 
-const appointmentReduer = (state = initialState, action) => {
+const appointmentReducer = (state = initialState, action) => {
     switch (action.type) {
         case APPOINTMENT_RELATION:
             return {
@@ -27,9 +29,16 @@ const appointmentReduer = (state = initialState, action) => {
                 ...state,
                 appointmentsById: action.payload.json
             }
+        case GET_APPOINTMENT_DETAILS:
+            let aux = state.appointmentsById.filter(n => n.appointmentId === Number(action.payload))
+            return {
+                ...state,
+                appointmentDetails: {},
+                appointmentDetails: aux[0]
+            }
         default:
             return state
     }
 }
 
-export default appointmentReduer
+export default appointmentReducer

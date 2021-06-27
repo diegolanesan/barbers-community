@@ -29,15 +29,15 @@ function NavBar() {
     }
     return (
           <nav className="w-full flex flex-row items-center p-1 justify-between shadow-xs bg-blue-400 text-white py-2">
-              <div class="flex flex-row items-center">
+              <div className="flex flex-row items-center">
                 <Link to="/"><h1 className="text-xl px-4">Barber's Community </h1></Link>
                 <Link className="pr-4 hover:underline ml-4" to="/catalog"> Services </Link>
               </div>
               <SearchBar/>
-              <div class="flex flex-row-reverse mr-8 hidden md:flex">
-                <ul class="flex flex-row text-gray-700 pt-1">
-                  <li><Link to="/loginBarbers" class="mr-4 bg-gray-200 hover:bg-gray-400 py-1 px-3 block whitespace-no-wrap rounded-3xl"> Barber</Link></li>
-                  <li><Link to="/loginClients" class="bg-gray-200 hover:bg-gray-400 py-1 px-3 block whitespace-no-wrap rounded-3xl">Client</Link></li>
+              <div className="flex flex-row-reverse mr-8 hidden md:flex">
+                <ul className="flex flex-row text-gray-700 pt-1">
+                  <li><Link to="/loginBarbers" className="mr-4 bg-gray-200 hover:bg-gray-400 py-1 px-3 block whitespace-no-wrap rounded-3xl"> Barber</Link></li>
+                  <li><Link to="/loginClients" className="bg-gray-200 hover:bg-gray-400 py-1 px-3 block whitespace-no-wrap rounded-3xl">Client</Link></li>
                 </ul>
               </div>
           </nav> 

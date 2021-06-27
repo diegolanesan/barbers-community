@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAppointmentByBarber } from '../../../../redux/action/appointment'
+import { Link } from 'react-router-dom'
+// import DetailsAppointment from './DetailsAppointment.js'
+// import jwtDecode from 'jwt-decode'
 
 const AppointmentsDash = () => {
     const dispatch = useDispatch()
+    // const token = jwtDecode(localStorage.getItem("barberToken"))
+    const idBarber = useState(1)
     useEffect(() => {
-        dispatch(getAppointmentByBarber(1))
+        dispatch(getAppointmentByBarber(idBarber))
       // eslint-disable-next-line
     }, [])
 
@@ -40,7 +45,7 @@ const AppointmentsDash = () => {
                     </tr>
                     {filtered.length ? filtered.map(n => (
                         <tr >
-                            <td>{n.id}</td>
+                            <td>{n.appointmentId}</td>
                             <td>{n.date}</td>
                             <td>{n.status}</td>
                             <td>{n.name}</td>
@@ -48,8 +53,8 @@ const AppointmentsDash = () => {
                         </tr>
                     )) : (
                         appointments.map(n => (
-                            <tr >
-                                <td>{n.id}</td>
+                            <tr key={n.appointmentId} >
+                                <Link to={`/barbers/dashboard/${n.appointmentId}`} ><td>{n.appointmentId}</td></Link>
                                 <td>{n.date}</td>
                                 <td>{n.status}</td>
                                 <td>{n.name}</td>

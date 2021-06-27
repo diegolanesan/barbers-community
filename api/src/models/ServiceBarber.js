@@ -14,10 +14,18 @@ module.exports = (sequelize) => {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
+		name: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
 		image: {
 			type: DataTypes.ARRAY(STRING), // Se puede ingresar un array de varias url
 			allowNull: false,
 			defaultValue: ["https://imagenurl"],
 		},
+		name: {
+			type: DataTypes.STRING,
+			allowNull: false
+		}
 	},{ timestamps: false });
 };

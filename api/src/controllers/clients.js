@@ -1,7 +1,8 @@
-const { Client, FaceType, HairType, Style } = require('../db');
+const { Client, FaceType, HairType, Style, Cart } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 const jwt = require('jsonwebtoken');
+
 
 const getClients = (req, res, next) => {
 
@@ -79,9 +80,12 @@ const addClient = async(req, res, next) => {
             faceTypeId, 
             hairTypeId
         });
-        const clientAll = await Client.findAll({include: [ { model: FaceType }, {model: HairType}, { model: Style } ]})
+        const clientAll = await Client.findAll({include: [ { model: FaceType }, {model: HairType}, { model: Style }]})
+        const secret = "secret"
+        const cart = Cart.create({clientId : createdClient.id})
+        
         const token = jwt.sign({ email: createdClient.email, id: createdClient.id }, secret, { expiresIn: '1hr' });
-        return res.send(clientAll, token); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
+        return res.send(clientAll, token, cart); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
         
         } catch (error) {
         next(error);

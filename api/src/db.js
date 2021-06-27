@@ -2,6 +2,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
+const { userInfo } = require("os");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
@@ -42,17 +43,22 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // const { Comentarios, Publicaciones, Usuario,  Seguidor} = sequelize.models;
 const {
+	Admin,
 	Barber,
 	ServiceBarber,
 	Category,
 	FaceType,
 	HairType,
 	Style,
+	StyleBarber,
 	Client,
 	Appointment,
 	Service,
 	DetailAppointment,
+	DetailInvoice,
 	Invoice,
+	Cart,
+	Items,
 } = sequelize.models;
 
 // Se va a crear una tabla intermedia con los id de las tablas
@@ -64,6 +70,10 @@ Service.belongsToMany(Category, { through: "categoryService" });
 Category.belongsToMany(Service, { through: "categoryService" });
 
 // Se va a crear una tabla intermedia con los id de las tablas
+Barber.belongsToMany(Style, { through: "styleBarber" });
+Style.belongsToMany(Barber, { through: "styleBarber" });
+
+// Se va a crear una tabla intermedia con los id de las tablas
 Barber.belongsToMany(FaceType, { through: "faceTypeBarber" });
 FaceType.belongsToMany(Barber, { through: "faceTypeBarber" });
 
@@ -71,26 +81,6 @@ FaceType.belongsToMany(Barber, { through: "faceTypeBarber" });
 Barber.belongsToMany(HairType, { through: "hairTypeBarber" });
 HairType.belongsToMany(Barber, { through: "hairTypeBarber" });
 
-Barber.belongsToMany(Style, { through: "styleBarber" });
-Style.belongsToMany(Barber, { through: "styleBarber" });
-
-// Se va a crear una tabla intermedia con los id de las tablas
-Barber.belongsToMany(Client, { through: "appointment" }); // ¿Acá esta implicita la asosiación entre appointment y barber?
-Client.belongsToMany(Barber, { through: "appointment" });
-
-Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
-ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" });
-
-Barber.belongsToMany(Style, { through: "styleBarber" });
-Style.belongsToMany(Barber, { through: "styleBarber" });
-
-// Tabla de registro de facturas Cliente/Barber
-Barber.belongsToMany(Client, { through: "invoice" });
-Client.belongsToMany(Barber, { through: "invoice" });
-
-// Tabla de registro de servicios facturados
-Invoice.belongsToMany(ServiceBarber, { through: "detailInvoice" });
-ServiceBarber.belongsToMany(Invoice, { through: "detailInvoice" });
 
 // ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
 Style.hasMany(Client);
@@ -111,27 +101,12 @@ Client.belongsTo(FaceType);
 HairType.hasMany(Client);
 Client.belongsTo(HairType);
 
-//+++++++++++++++++++++ Explicaciones sobre las relacines en la base de datos  ++++++++++++++++++
-// // -----------------relacion de uno a uno (hasOne, belongsTo)----------------------------------
-// // Se le agrega el idBarber a client
-// ---Barber.hasOne(Client);
-// // Se le agrega el idBarber a client
-// ---Client.belongsTo(Barber);
+// Relaciones de carrito de compras
+Client.hasMany(Cart);
+Cart.belongsTo(Client);
 
-// //---------------------relacion de uno a muchos (hasMany, belongsTo)----------------------------
-// // Se le agrega el idBarber a client
-// ---Barber.hasMany(Client);
-// // Se le agrega el idBarber a client
-// ---Client.belongsTo(Barber);
-
-// //------------------------------------relacion de muchos a muchos  (belongsToMany, belongsToMany)-----------------------
-
-// // se agrega el idBarber y idClient a una tabla intermedia que especificamos con through
-
-// ---Barber.belongsToMany(Client, {through:"cita"})
-// ---Client.belongsToMany(Barber, {through:"cita"})
-
-// Nuevo comentario de prueba
+Cart.belongsToMany(ServiceBarber, { through: "item" });
+ServiceBarber.belongsToMany(Cart, { through: "item" });
 
 module.exports = {
 	...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
