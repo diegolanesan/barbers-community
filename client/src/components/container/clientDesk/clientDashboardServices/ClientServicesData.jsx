@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBarbers } from '../../../../redux/action/barbers';
 import { getServices } from '../../../../redux/action/services';
 
-const ClientServicesData = ({filters}) => {
+const ClientServicesData = ({ filters }) => {
     const dispatch = useDispatch();
     const { resp } = useSelector((state) => state);
     const services = useSelector((state) => state.services.array);
-    const { id } = useParams()
+    //const { id } = useParams()
     //console.log(id);
     useEffect(() => {
         // console.log(id + "");
