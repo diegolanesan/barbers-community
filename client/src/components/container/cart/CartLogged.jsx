@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import jwtDecode from 'jwt-decode'
-import { addToCart, changeCartState, getActiveCartFromUserId, removeFromCart } from '../../../redux/action/cart'
+import { addToCart, changeCartState, getActiveCartFromUserId, getCartsByBarberId, removeFromCart } from '../../../redux/action/cart'
 import axios from 'axios'
 import Datetime from "react-datetime";
 import moment from "moment";
@@ -19,7 +19,9 @@ export const CartLogged = () => {
   const barber = useSelector(state => state.barberDetail.resp)
   const slots = useSelector(state => state.barberDetail.resp.slots)
   const appointments = useSelector(state => state.appointments.appointmentsById)
-  console.log(slots, appointments)
+  const barberId = localStorage.getItem("barberId")
+  const barberApp = useSelector(state => state.cart.barberAppointments)
+  console.log(barberApp)
 
 
   const totalAmount = cart.totalAmount
@@ -27,6 +29,8 @@ export const CartLogged = () => {
 
   useEffect(() => {
     dispatch(getActiveCartFromUserId(token.id))
+    dispatch(getCartsByBarberId(barberId))
+
 
   }, [])
 
@@ -53,10 +57,10 @@ export const CartLogged = () => {
   }
 
   // Map de fechas
-  const slotsLlenos = appointments.map(app => app.time)
+  const slotsLlenos = barberApp.map(app => app.time)
   let slotsCopy = slots
 
-  const dates = appointments.map(app => {
+  const dates = barberApp.map(app => {
 
     const date = appointment.date.slice(0, 15)
     if (app.date.includes(date)) {

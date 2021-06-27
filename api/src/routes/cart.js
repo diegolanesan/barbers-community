@@ -6,7 +6,8 @@ const { addItem,
     getActiveCartFromUser,
     resetUserCart,
     changeCartState,
-    changeCartStateMercadoPago} = require('../controllers/Cart');
+    changeCartStateMercadoPago,
+    getCartbyBarberId} = require('../controllers/Cart');
 
 server.post("/addItem/:id", addItem)
 
@@ -21,6 +22,8 @@ server.get("/active/:id", getActiveCartFromUser)
 server.put("/state/:id", changeCartState)
 
 server.put("/state/payment/:id", changeCartStateMercadoPago)
+
+server.get("/barber/:id", getCartbyBarberId)
 
 
 module.exports= server;
