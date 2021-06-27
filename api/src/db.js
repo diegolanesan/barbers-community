@@ -43,16 +43,19 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // const { Comentarios, Publicaciones, Usuario,  Seguidor} = sequelize.models;
 const {
+	Admin,
 	Barber,
 	ServiceBarber,
 	Category,
 	FaceType,
 	HairType,
 	Style,
+	StyleBarber,
 	Client,
 	Appointment,
 	Service,
 	DetailAppointment,
+	DetailInvoice,
 	Invoice,
 	Cart,
 	Items,
@@ -67,6 +70,10 @@ Service.belongsToMany(Category, { through: "categoryService" });
 Category.belongsToMany(Service, { through: "categoryService" });
 
 // Se va a crear una tabla intermedia con los id de las tablas
+Barber.belongsToMany(Style, { through: "styleBarber" });
+Style.belongsToMany(Barber, { through: "styleBarber" });
+
+// Se va a crear una tabla intermedia con los id de las tablas
 Barber.belongsToMany(FaceType, { through: "faceTypeBarber" });
 FaceType.belongsToMany(Barber, { through: "faceTypeBarber" });
 
@@ -74,17 +81,28 @@ FaceType.belongsToMany(Barber, { through: "faceTypeBarber" });
 Barber.belongsToMany(HairType, { through: "hairTypeBarber" });
 HairType.belongsToMany(Barber, { through: "hairTypeBarber" });
 
-Barber.belongsToMany(Style, { through: "styleBarber" });
-Style.belongsToMany(Barber, { through: "styleBarber" });
+// // Se va a crear una tabla intermedia con los id de las tablas
+// Barber.belongsToMany(Client, { through: "appointment" }); // ¿Acá esta implicita la asosiación entre appointment y barber?
+// Client.belongsToMany(Barber, { through: "appointment" });
 
 
+Appointment.hasMany(DetailAppointment);
+DetailAppointment.belongsTo(Appointment);
 
-Barber.belongsToMany(Style, { through: "styleBarber" });
-Style.belongsToMany(Barber, { through: "styleBarber" });
+//Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
+//ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" });
+ServiceBarber.hasMany(DetailAppointment);
+DetailAppointment.belongsTo(ServiceBarber);
 
 // Tabla de registro de facturas Cliente/Barber
-Barber.belongsToMany(Client, { through: "invoice" });
-Client.belongsToMany(Barber, { through: "invoice" });
+Client.hasMany(Invoice);
+Invoice.belongsTo(Client);
+
+Barber.hasMany(Invoice);
+Invoice.belongsTo(Barber);
+
+Invoice.hasMany(DetailInvoice);
+DetailInvoice.belongsTo(Invoice);
 
 // Tabla de registro de servicios facturados
 Invoice.belongsToMany(ServiceBarber, { through: "detailInvoice" });
@@ -110,11 +128,11 @@ HairType.hasMany(Client);
 Client.belongsTo(HairType);
 
 // Relaciones de carrito de compras
-Client.hasMany(Cart)
-Cart.belongsTo(Client)
+Client.hasMany(Cart);
+Cart.belongsTo(Client);
 
-Cart.belongsToMany(ServiceBarber, {through: "item"})
-ServiceBarber.belongsToMany(Cart, {through: "item"})
+Cart.belongsToMany(ServiceBarber, { through: "item" });
+ServiceBarber.belongsToMany(Cart, { through: "item" });
 
 
 

@@ -30,18 +30,25 @@ const detailInvoices = require("./detailInvoices");
 const categories = require("./categories.js");
 
 // ruta para el envio de mail
-
 const email = require("./email");
+
+const admins = require("./admin")
 
 const cart = require("./cart")
 
+// ruta para gestionar pasarela de pago
 const mercadoPago = require("./mercadoPago");
+
+// ruta para gestionar desk client
+const panelClient = require("./panelClient");
 
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+router.use("/clients/panel", panelClient);
 router.use("/clients", clients);
+router.use("/admins", admins);
 router.use("/appointments", appointments);
 router.use("/detailAppointments", detailAppointments);
 router.use("/invoices", invoices);
@@ -53,5 +60,4 @@ router.use("/email", email);
 router.use("/types", typesHFS);
 router.use("/cart", cart);
 router.use("/checkout", mercadoPago);
-
 module.exports = router;

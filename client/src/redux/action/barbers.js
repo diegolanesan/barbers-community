@@ -17,7 +17,7 @@ export const REMOVE_SERVICE_BARBER = "REMOVE_SERVICE_BARBER";
 
 export const postBarber = (body) => (dispatch) => {
 	console.log("aaaaaa", body);
-	return axios.post("http://localhost:3001/barbers/", body).then((response) => {
+	return axios.post(HOST_BACK + "/barbers/", body).then((response) => {
 		console.log(response.data);
 		dispatch({ type: "POST_BARBER", payload: response.data });
 	});
@@ -26,7 +26,7 @@ export const postBarber = (body) => (dispatch) => {
 export const deleteBarber = (id) => (dispatch) => {
 	console.log("aaaaaa", id);
 	return axios
-		.delete("http://localhost:3001/barbers/" + id)
+		.delete(HOST_BACK + "/barbers/" + id)
 		.then((response) => {
 			console.log(response.data);
 			dispatch({ type: "DELETE_BARBER", payload: response.data });
@@ -36,7 +36,7 @@ export const deleteBarber = (id) => (dispatch) => {
 export const putBarber = (id, body) => (dispatch) => {
 	console.log("aaaaaa", body);
 	return axios
-		.put("http://localhost:3001/barbers/" + id, body)
+		.put(HOST_BACK + "/barbers/" + id, body)
 		.then((response) => {
 			console.log(response.data);
 			dispatch({ type: "PUT_BARBER", payload: response.data });
@@ -45,7 +45,7 @@ export const putBarber = (id, body) => (dispatch) => {
 
 export const getBarbers = () => (dispatch) =>
 	axios
-		.get("http://localhost:3001/barbers/all")
+		.get(HOST_BACK + "/barbers/all")
 		.then((res) => dispatch({ type: GET_BARBERS, payload: res.data }));
 
 export const filterBarbers = (filters) => (dispatch) =>

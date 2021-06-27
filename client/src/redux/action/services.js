@@ -8,12 +8,12 @@ export const POST_SERVICES = "POST_SERVICES";
 
 
 export const getServices = () => (dispath) => {
-    axios.get('http://localhost:3001/admin/service/')
+    axios.get(HOST_BACK + '/admin/service/')
             .then(res => dispath({type: GET_SERVICES, payload: res.data}))
 }
 
 export const getBarberServices = (id) => (dispath) => {
-    axios.get('http://localhost:3001/admin/service/barbers/'+ id)
+    axios.get(HOST_BACK + '/admin/service/barbers/'+ id)
             .then(res => dispath({type: GET_BARBER_SERVICES, payload: res.data}))
 }
 

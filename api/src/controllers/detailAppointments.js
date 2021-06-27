@@ -1,60 +1,54 @@
-const { Client, Barber, Appointment, DetailAppointment } = require('../db');
-require('dotenv').config();
-const { Op } = require('sequelize');
-
+const { Client, Barber, Appointment, DetailAppointment } = require("../db");
+require("dotenv").config();
+const { Op } = require("sequelize");
 
 const getDetailAppointments = (req, res, next) => {
-    /* ---- El usuario ( administrador/cliente/barbero ) busca todas los appointments ----*/
-    try {
-        DetailAppointment.findAll({
-            include: [ { model: Barber }, {model: Client}, { model: Appointment } ]  // ¿Esta bien incluir estos datos?
-        })
-        .then((result) => {
-            res.status(200).send(result);
-        })
-    } catch(e){
-        console.log("No se pudo realizar la petición HTTP correctamente " + e);
-    }
-}
-
+	/* ---- El usuario ( administrador/cliente/barbero ) busca todas los appointments ----*/
+	try {
+		DetailAppointment.findAll({
+			include: [{ model: Barber }, { model: Client }, { model: Appointment }], // ¿Esta bien incluir estos datos?
+		}).then((result) => {
+			res.status(200).send(result);
+		});
+	} catch (e) {
+		console.log("No se pudo realizar la petición HTTP correctamente " + e);
+	}
+};
 
 const getDetailAppointmentById = (req, res, next) => {
-    try {
-        let queryId = req.params.id.toUpperCase();
-        DetailAppointment.findOne({
-            where: {id: queryId},
-            include: [ { model: Barber }, {model: Client}, { model: Appointment } ]
-        })
-        .then((result) => {
-            res.status(200).send(result);
-        })
-        } catch(e){
-        console.log("No se pudo realizar la petición HTTP correctamente " + e);
-    }
-}
+	try {
+		let queryId = req.params.id.toUpperCase();
+		DetailAppointment.findOne({
+			where: { id: queryId },
+			include: [{ model: Barber }, { model: Client }, { model: Appointment }],
+		}).then((result) => {
+			res.status(200).send(result);
+		});
+	} catch (e) {
+		console.log("No se pudo realizar la petición HTTP correctamente " + e);
+	}
+};
 
 const addDetailAppointment = async (req, res, next) => {
-    const { 
-        appointmentId,   // Revisar cómo vienen estos datos de Sequelize!
-        serviceBarber,
-        price
-         } = req.body;
-    try {
-        const createdDetail = await DetailAppointment.create({
-            appointmentId,   // Revisar cómo vienen estos datos de Sequelize!
-            serviceBarberId: serviceBarber,
-            price
-        });
-        return res.send(createdDetail);// ¿Le respondo con la cita creada, o con todas las citas?
-    } catch (error) {
-        next(error);
-    }
+	const {
+		appointmentId, // Revisar cómo vienen estos datos de Sequelize!
+		serviceBarberId,
+		price,
+	} = req.body;
+	try {
+		const createdDetail = await DetailAppointment.create({
+			appointmentId, // Revisar cómo vienen estos datos de Sequelize!
+			serviceBarberId: serviceBarberId,
+			price,
+		});
+		return res.send(createdDetail); // ¿Le respondo con la cita creada, o con todas las citas?
+	} catch (error) {
+		next(error);
+	}
+};
 
-}
-
-const updateDetailAppointment = async (req, res, next ) => {
-
-    const id = req.params.id;
+const updateDetailAppointment = async (req, res, next) => {
+	const id = req.params.id;
 	const { detailModified } = req.body;
 	let detail = await DetailAppointment.findByPk(id);
 	if (detail) {
@@ -63,29 +57,26 @@ const updateDetailAppointment = async (req, res, next ) => {
 	} else {
 		res.send("No se ha podido modificar el detalle de la cita");
 	}
-        return res.send(detailModified);
-}
-
+	return res.send(detailModified);
+};
 
 const deleteDetailAppointment = (req, res, next) => {
-    const id = req.params.id;
-    DetailAppointment.destroy({
-        where: {
-            id,
-        }
-    })
-    .then(() => {
-        res.sendStatus(200);
-    })
-    .catch((error) => next(error));
-}
-
+	const id = req.params.id;
+	DetailAppointment.destroy({
+		where: {
+			id,
+		},
+	})
+		.then(() => {
+			res.sendStatus(200);
+		})
+		.catch((error) => next(error));
+};
 
 module.exports = {
-    getDetailAppointments,
-    getDetailAppointmentById,
-    addDetailAppointment,
-    updateDetailAppointment,
-    deleteDetailAppointment
-}
-
+	getDetailAppointments,
+	getDetailAppointmentById,
+	addDetailAppointment,
+	updateDetailAppointment,
+	deleteDetailAppointment,
+};

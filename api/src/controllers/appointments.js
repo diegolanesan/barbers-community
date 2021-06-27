@@ -77,7 +77,7 @@ const getAppointments = async (req, res, next) => {
 
 				//qryClient
 				aux["clientId"] = appointmentAll[i].dataValues.clientId;
-				let client = await Barber.findByPk(aux["clientId"]);
+				let client = await Client.findByPk(aux["clientId"]);
 				aux["name"] = client.name + " " + client.lastname;
 
 				//JSQL Services
@@ -86,11 +86,12 @@ const getAppointments = async (req, res, next) => {
 						appointmentId: aux["appointmentId"],
 					},
 				});
+				// console.log(detailAppointmentAll);
 
 				if (detailAppointmentAll.length > 0) {
 					let jsonAppointmentsDetails = [];
 					for (let j = 0; j < detailAppointmentAll.length; j++) {
-						let auxServiceId = detailAppointmentAll[j].dataValues.serviceId;
+						let auxServiceId = detailAppointmentAll[j].dataValues.serviceBarberId;
 						if (auxServiceId) {
 							let auxServiceName = await Service.findByPk(auxServiceId);
 							//-🚏
@@ -113,11 +114,11 @@ const getAppointments = async (req, res, next) => {
 						}
 					}
 					aux["service"] = jsonAppointmentsDetails;
-					console.log(jsonAppointmentsDetails);
+					// console.log(jsonAppointmentsDetails);
 				}
 				jsonAppointments.push(aux);
 			}
-			console.log(jsonAppointments);
+			// console.log(jsonAppointments);
 
 			res.status(200).send(jsonAppointments);
 		}

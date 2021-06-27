@@ -8,6 +8,7 @@ import clientsReducer from "./clients";
 import reducerRecovery from "./recovery";
 import appointmentReduer from "./appointment";
 import reducerCart from "./cart";
+import adminsReducer from "./admins";
 
 
 function combineReducer(state = {}, action) {
@@ -15,6 +16,7 @@ function combineReducer(state = {}, action) {
       appointments: appointmentReduer(state.appointments, action),
       auth: authReducer(state.auth, action),
       barbers: barbersReducer(state.barbers, action),
+      admins: adminsReducer(state.admins, action),
       publication: reducerPublication(state.publication,action),
       barberDetail: reducerBarberDetail(state.barberDetail,action),
       services: reducerServices(state.services, action),
