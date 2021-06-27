@@ -14,7 +14,6 @@ const addItem = async (req, res) => {
     let cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
     if (!cart) {
         cart = await Cart.create({ clientId: userId, state: "Active" })
-        
     }
         //console.log(cart)
     const createdItem = await Item.create({

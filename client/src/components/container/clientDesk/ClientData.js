@@ -10,7 +10,7 @@ function ClientData({allAppointments}) {
     const clientAppointments = allAppointments.filter(app => app.clientId === user.id )
     console.log("User  " + user.id);
     const dispatch = useDispatch()
-        const search = useLocation().search;
+    const search = useLocation().search;
     const state = new URLSearchParams(search).get('collection_status');
     useEffect(() => {
         dispatch(getAllAppointmentsByClientId(user.id))
@@ -38,7 +38,7 @@ function ClientData({allAppointments}) {
             // window.location.replace("http://localhost:3000/cart"); // ¿Dónde me redirige y cómo?
             // console.log("")
             //Dispatch al carro con los datos de la cita (menos el dia y la hora que los va a elegir ahi)
-            dispatch(resetUserCart(user.id))
+            dispatch(resetUserCart(user.id));
         } else {
             alert("You need to have your appointment approved to repeat date!")
         }

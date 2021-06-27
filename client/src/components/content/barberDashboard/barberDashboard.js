@@ -34,7 +34,7 @@ const BarberDashboard = () => {
                 <div>  
                     <input type='button' value='Appointments' name='menu' className={buttonState.menu === 'Appointments' ? buttonSelected : buttonStyle} />
                 </div>
-                <div>  
+                <div>
                     <input type='button' value='Invoices' name='menu' className={buttonState.menu === 'Invoices' ? buttonSelected : buttonStyle} />
                 </div>
                 <div>  
