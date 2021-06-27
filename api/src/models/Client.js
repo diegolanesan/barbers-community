@@ -26,15 +26,12 @@ module.exports = (sequelize) => {
 			},
 			mobile: {
 				type: DataTypes.STRING,
-				allowNull: false,
 			},
 			location: {
 				type: DataTypes.STRING,
-				allowNull: false,
 			},
 			password: {
 				type: DataTypes.STRING,
-				allowNull: false,
 			},
 			status: {
 				type: DataTypes.ENUM("active", "disabled", "banned"),
