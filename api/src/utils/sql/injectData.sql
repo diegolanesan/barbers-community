@@ -988,7 +988,7 @@ INSERT INTO "services" (name ,price, description , image  )
  '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623988219/Catalog/services/7.MASK/Goldmask/goldmaskman_sy2gjk.jpg
  }');
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Matias' ,
         'Sciutto', 
@@ -997,10 +997,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Cali, Colombia',
         'clave123',
-        'active'
+        'active',
+        'admin'
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Pablo' ,
         'Benavidez', 
@@ -1009,10 +1010,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Buenos Aires, Argentina',
         'demo123',
-        'active'
+        'active',
+        'client'
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Ricardo' ,
         'Fort', 
@@ -1021,10 +1023,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Buenos aires, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Lorenzo' ,
         'Miguel', 
@@ -1033,10 +1036,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Colorado, USA',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Miguel' ,
         'Lorenzini', 
@@ -1045,10 +1049,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Colorado, USA',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Freddy' ,
         'Villareal', 
@@ -1057,10 +1062,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Colorado, USA',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Gerardo' ,
         'Romano', 
@@ -1069,10 +1075,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Colorado, USA',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Milena' ,
         'Salamanca', 
@@ -1081,10 +1088,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Colorado, USA',
         'clave123',
-        'active'
+        'active',
+        'client'
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Maria Camila' ,
         'Delani', 
@@ -1093,10 +1101,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Cordoba, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Lorena' ,
         'Gonzalez', 
@@ -1105,10 +1114,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Cordoba, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Jose Miguel' ,
         'Buenaventura', 
@@ -1117,10 +1127,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Cordoba, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
+
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Sara' ,
         'Tricolti', 
@@ -1129,11 +1141,13 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Barranquilla, Colombia',
         'clave123',
-        'active'
+        'active',
+        'client'
+
        );
 
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Rodrigo' ,
         'Bueno', 
@@ -1142,10 +1156,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Nicolas' ,
         'Moradini', 
@@ -1154,10 +1169,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Arturo' ,
         'Vestillo', 
@@ -1166,10 +1182,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Pedro' ,
         'De Molina', 
@@ -1178,10 +1195,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Samuel' ,
         'Kalberti', 
@@ -1190,10 +1208,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Veronica' ,
         'Hernandez', 
@@ -1202,10 +1221,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Danilo' ,
         'Correa', 
@@ -1214,10 +1234,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Nariño' ,
         'Santofimio', 
@@ -1226,10 +1247,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Carlos' ,
         'Gonzalez', 
@@ -1238,10 +1260,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Camilo' ,
         'Debia', 
@@ -1250,10 +1273,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Joseph' ,
         'Keiroz', 
@@ -1262,10 +1286,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Huberto' ,
         'Escobar', 
@@ -1274,10 +1299,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Marino' ,
         'Marin', 
@@ -1286,10 +1312,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Nicolas' ,
         'Santa', 
@@ -1298,10 +1325,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Alberto' ,
         'Bolaños', 
@@ -1310,10 +1338,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Pedro' ,
         'Orozco', 
@@ -1322,10 +1351,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'mauricio' ,
         'torrente', 
@@ -1334,10 +1364,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Pedro' ,
         'Dimaria', 
@@ -1346,10 +1377,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Luis' ,
         'Armani', 
@@ -1358,10 +1390,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Ernesto' ,
         'Mejia', 
@@ -1370,10 +1403,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Teofilo' ,
         'Usurriaga', 
@@ -1382,58 +1416,10 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Mar de plata, Argentina',
         'clave123',
-        'active'
+        'active',
+        'client'
         );
 
-INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
-        VALUES ( 
-        'Lucas' ,
-        'Ruiz', 
-        'lucas@ruiz.com',         
-        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
-        'clave123');
-
-INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
-        VALUES ( 
-        'Aleister' ,
-        'Black', 
-        'aleister@black.com',         
-        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
-        'clave123');
-
-INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
-        VALUES ( 
-        'Olivier' ,
-        'Armstrong', 
-        'oli@armstrong.com',         
-        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
-        'clave123');
-
-INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
-        VALUES ( 
-        'Eduardo' ,
-        'Elric', 
-        'eduardo@elric.com',         
-        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
-        'clave123');
-
-INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
-        VALUES ( 
-        'Carlos' ,
-        'Medel', 
-        'carlos@medel.com',         
-        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
-        'clave123');
 
 SELECT COUNT(id) FROM "faceTypes";
 SELECT COUNT(id) FROM "hairTypes";
@@ -1442,7 +1428,6 @@ SELECT COUNT(name) FROM barbers;
 SELECT COUNT(id) FROM categories;
 SELECT COUNT(id) FROM services;
 SELECT COUNT(id) FROM clients;
-SELECT COUNT(id) FROM admins;
 
 -- Local:
 -- psql -U alex -d barberscommunity -a -f injectData.sql

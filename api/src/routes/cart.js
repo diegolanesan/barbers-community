@@ -8,6 +8,7 @@ const { addItem,
     changeCartStateMercadoPago,
     getCartbyBarberId,
     getAppointments,
+    getStatusAppointments,
     getCartsByUser} = require('../controllers/Cart');
 
 server.post("/addItem/:id", addItem)
@@ -27,6 +28,8 @@ server.get("/barber/:id", getAppointments)
 server.get("/barber/all/:id", getCartbyBarberId)
 
 server.get("/client/all/:id", getCartsByUser)
+
+server.get("/state/:status", getStatusAppointments)
 
 
 module.exports= server;

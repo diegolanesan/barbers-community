@@ -30,7 +30,7 @@ function Home() {
 							<Link to="/catalog"> Find your next barber </Link>
 						</button>
 						<button className="w-1/5 ml-20 bg-blue-400 text-white font-bold text-xl hover:bg-blue-600 py-4 px-4 rounded-3xl h-16 mb-4">
-							<Link to="/register"> Join the barber's community </Link>
+							<Link to="/register"> Join the community </Link>
 						</button>
 					
 					</div>

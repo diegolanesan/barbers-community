@@ -129,7 +129,14 @@ const getAppointments = async(req, res) => {
     const cart = await Cart.findAll({where: {barberId: barberId, state: "Paid"}, include: {all: true, nested: true}})
     //console.log(cart)
     res.send(cart)
-}
+} 
+
+const getStatusAppointments = async(req, res) => {
+    const status = req.params.status
+    const cart = await Cart.findAll({where: {state: status}, include: {all: true, nested: true}})
+    console.log(cart)
+    res.send(cart)
+} 
 
 const getCartbyBarberId = async(req, res) => {
     const barberId = req.params.id
@@ -177,5 +184,6 @@ module.exports = {
     getActiveCartFromUser,
     changeCartState,
     changeCartStateMercadoPago,
-    getCartbyBarberId
+    getCartbyBarberId,
+    getStatusAppointments
 };
