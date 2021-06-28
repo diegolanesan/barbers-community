@@ -1,5 +1,6 @@
 import React, { useState, useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom'
 //import { postBarber } from "../../../redux/action/barbers";
 import { signUpClient } from "../../../redux/action/auth";
 import { getAllHairTypes, getAllFaceTypes, getAllStyles } from "../../../redux/action/types";
@@ -31,6 +32,7 @@ const validate = (input) => {
 }
 
 const RegisterClient = () => {
+	const history = useHistory()
     const dispatch = useDispatch();
 	const [barberImg, setBarberImg] = useState([]);
 
@@ -66,9 +68,7 @@ const RegisterClient = () => {
 			...client,
 			[e.target.name]: e.target.value
 		}))
-        console.log(client)
 	};
-	// console.log(errors)
 
 	const [image, setImage] = useState("");
 	const [url, setUrl] = useState("");
@@ -101,7 +101,7 @@ const RegisterClient = () => {
 				mobile: client.mobile,
 				location: client.location,
 				password: client.confirmedPassword,
-				status: true,
+				status: "active",
 				styleId: client.styleId, 
         faceTypeId: client.faceTypeId, 
         hairTypeId: client.hairTypeId
@@ -112,31 +112,10 @@ const RegisterClient = () => {
 		// 	return alert("There's some required fields empty, check please.")
 		// }
 		console.log(clientSend);
-		dispatch(signUpClient(clientSend)); // Reemplazar por la nueva action que almacena el JWT
-		// alert("Register Sucessfull");
-		// window.location.href = "http://localhost:3000/";
+		dispatch(signUpClient(clientSend)); 
+		history.push("/")
 	};
-	// const handleSelect = () => {
-	//     let select = document.getElementById("");
-
-	//     if (select) {
-	//         let selectValue = select.options[select.selectedIndex].value;
-	//         let selectedCategoryNames = select.options[select.selectedIndex].innerText;
-
-	//         setSelectedName({
-	//             ...selectedName,
-	//             categoryName: selectedName.categoryName.concat(selectedCategoryNames)
-	//         });
-
-	//         let selectCategory = product.category.concat(selectValue);
-	//         setProduct({ ...product, category: selectCategory });
-
-	//     }
-	// };
-
-	// useEffect(() => {
-	//     dispatch(postBarber(newBarber))
-	// }, [])
+	
     
 	return (
 		<body className=" bg-gray-200">
@@ -243,7 +222,7 @@ const RegisterClient = () => {
 										>
 											<option value="" defaultChecked >Choose one...</option>
 											{face? face.map(b => {
-                                                return <option value={b.description}>{b.description}</option>
+                                                return <option value={b.id}>{b.description}</option>
                                             }): ""}
 										</select>
 									</div>
@@ -261,7 +240,7 @@ const RegisterClient = () => {
 										>
 											<option value="" defaultChecked >Choose one...</option>
 											{hair? hair.map(b => {
-                                                return <option value={b.description}>{b.description}</option>
+                                                return <option value={b.id}>{b.description}</option>
                                             }): ""}
 										</select>
 									</div>
@@ -283,7 +262,7 @@ const RegisterClient = () => {
 										>
 											<option value="" defaultChecked >Choose one...</option>
 											{style? style.map(b => {
-                                                return <option value={b.description}>{b.description}</option>
+                                                return <option value={b.id}>{b.description}</option>
                                             }): ""}
 										</select>
 										{errors.type && (<p className="text-xs italic text-red-500" >{errors.type}</p>)}
