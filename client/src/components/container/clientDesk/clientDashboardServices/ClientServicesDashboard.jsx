@@ -5,8 +5,6 @@ import BarberServicesData from './ClientServicesData';
 const ClientServicesDashboard = ({ filters }) => {
 
     // console.log(filters)
-    let params = useParams()
-    console.log(params)
 
     const buttonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-1 px-0 mx-0 mb-0 w-full"
     const buttonSelected = "bg-blue-800 text-white py-1 px-0 mx-0 mb-0 w-full"

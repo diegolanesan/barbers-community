@@ -1,0 +1,10 @@
+.containerTable
+{
+    height: 400px;
+    overflow-y: scroll;
+
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

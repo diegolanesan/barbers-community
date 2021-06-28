@@ -6,8 +6,8 @@ const { addItem,
     getActiveCartFromUser,
     changeCartState,
     changeCartStateMercadoPago,
-    getAppointments,
     getCartbyBarberId,
+    getAppointments,
     getCartsByUser} = require('../controllers/Cart');
 
 server.post("/addItem/:id", addItem)
