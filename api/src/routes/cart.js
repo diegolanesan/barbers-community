@@ -4,7 +4,6 @@ const { addItem,
     getCartsById,
     removeProductFromCart,
     getActiveCartFromUser,
-    resetUserCart,
     changeCartState,
     changeCartStateMercadoPago,
     getCartbyBarberId,
@@ -16,8 +15,6 @@ server.post("/addItem/:id", addItem)
 server.get("/:id", getCartsById)
 
 server.delete("/:id", removeProductFromCart)
-
-// server.delete("/reset/:id", resetUserCart)
 
 server.get("/active/:id", getActiveCartFromUser)
 

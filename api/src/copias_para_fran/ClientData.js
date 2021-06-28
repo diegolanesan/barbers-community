@@ -6,30 +6,39 @@ import jwtDecode from 'jwt-decode'
 import { changeCartStateMercadoPago, getCartsByUser, addToCart } from '../../../redux/action/cart'
 
 function ClientData({allAppointments}) {
+    
     const user = jwtDecode(localStorage.getItem("clientToken"))
+
     const clientAppointments = allAppointments.filter(app => app.clientId === user.id )
+
     const appointments = useSelector(state => state.cart.clientsAppointments)
+
     const dispatch = useDispatch()
+
     const search = useLocation().search;
+
     const state = new URLSearchParams(search).get('collection_status');
     useEffect(() => {
         dispatch(getCartsByUser(user.id));
+        
         if (state && state === "approved") {
-            dispatch(changeCartStateMercadoPago(user.id, { state: "Paid" })).then(() =>
-            window.location.replace("http://localhost:3000/clients/dashboard"))
+            dispatch(changeCartStateMercadoPago(user.id, {state: "Paid"}))
         }
+
         if (state && state === "rejected") {
-            dispatch(changeCartStateMercadoPago(user.id, { state: "Rejected" })).then(() =>
-            window.location.replace("http://localhost:3000/clients/dashboard"))
+            dispatch(changeCartStateMercadoPago(user.id, {state: "Rejected"}))
         }
+
         if (state && state === "pending") {
-            dispatch(changeCartStateMercadoPago(user.id, { state: "Pending" })).then(() =>
-            window.location.replace("http://localhost:3000/clients/dashboard"))
+            dispatch(changeCartStateMercadoPago(user.id, {state: "Pending"}))
         }
+
     }, [])
+    
     function dispatchAdd(id, service) {
-        dispatch(addToCart(id, service))
+        dispatch(addToCart(id, service));
     }
+
     async function onClick(state, service) {
         if(state === "Paid"){
                 service?.serviceBarbers && service?.serviceBarbers?.map (async x => {
@@ -39,14 +48,15 @@ function ClientData({allAppointments}) {
                         price : x.price
                     }
                     dispatchAdd(user.id, serviceToRepeat);
-                    localStorage.setItem('barberId', JSON.stringify(service.serviceBarbers[0].barberId));
-                    window.location.replace("http://localhost:3000/cart");
                     // window.location.href = `http://localhost:3000/cart`
                 })
+                localStorage.setItem("barberId", service.serviceBarberId);
         } else {
             alert("You need to have your appointment approved to repeat it!");
         }
     }
+    
+
     return (
         <div>
             <h2 class="text-3xl font-bold mt-12">Welcome, {user.name}! </h2>
@@ -87,7 +97,7 @@ function ClientData({allAppointments}) {
                         })} </td>
                         <td> {app && app.state} </td>
                         <td> $ {app.totalAmount && app.totalAmount} </td>
-                        <td><button onClick={() => onClick(app.state, app)} class="h-8 px-4 text-sm text-white transition-colors bg-blue-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-blue-600">Clone</button></td>
+                        <td><button onClick={() => onClick(app.state, app)} class="h-8 px-4 text-sm text-white transition-colors bg-blue-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-blue-600">Details</button></td>
                         </tr>
                     </tbody>}) : ""
                 }
@@ -95,4 +105,5 @@ function ClientData({allAppointments}) {
         </div>
     )
 }
+
 export default ClientData;
