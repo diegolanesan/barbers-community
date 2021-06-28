@@ -8,11 +8,8 @@ import clientsReducer from "./clients";
 import reducerRecovery from "./recovery";
 import appointmentReduer from "./appointment";
 import reducerCart from "./cart";
-<<<<<<< Updated upstream
 import adminsReducer from "./admins";
-=======
 import reducerCategory from "./categories";
->>>>>>> Stashed changes
 
 
 function combineReducer(state = {}, action) {
