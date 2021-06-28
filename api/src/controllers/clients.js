@@ -85,7 +85,8 @@ const addClient = async(req, res, next) => {
         const cart = Cart.create({clientId : createdClient.id})
         
         const token = jwt.sign({ email: createdClient.email, id: createdClient.id }, secret, { expiresIn: '1hr' });
-        return res.send(clientAll, token, cart); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
+        
+        return res.send({clientAll, token, cart}); // A MODIFICAR PARA ENVIAR TODOS LOS CLIENTS PARA FACILITARLE LA TAREA AL FRONT
         
         } catch (error) {
         next(error);
