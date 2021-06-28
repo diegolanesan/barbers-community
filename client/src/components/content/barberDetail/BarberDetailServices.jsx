@@ -19,7 +19,7 @@ const BarberDetailServices = ({ filters }) => {
     const { id } = useParams()
     useEffect(() => {
         dispatch(getBarberServices(id))
-        dispatch(getActiveCartFromUserId(token.id))
+        if (token) { dispatch(getActiveCartFromUserId(token.id)) }
     }, []);
 
     const filtered = services?.services?.filter(n => n.categories.length && n.categories[0].name === filters)
@@ -109,8 +109,8 @@ const BarberDetailServices = ({ filters }) => {
                                     </svg> */}
                                     <h6 className="">${n.serviceBarber.price}</h6>
                                 </div>
-
-                                {filters === "HAIRCUT" ? selectedServices.haircut.length !== 0 && n.name === selectedServices.haircut[0].name ?
+                                <button className="bg-blue-400 px-2 rounded" onClick={() => handleAdd(n)}>Add to Cart</button>
+                                {/* {filters === "HAIRCUT" ? selectedServices.haircut.length !== 0 && n.name === selectedServices.haircut[0].name ?
                                     <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
                                     : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
                                     : ""
@@ -144,7 +144,7 @@ const BarberDetailServices = ({ filters }) => {
                                     <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
                                     : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
                                     : ""
-                                }
+                                } */}
                             </div>
                         ))} </div> : <div className="flex my-20 justify-center">Ooops... Looks like there's no services here</div>}
 

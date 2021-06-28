@@ -165,7 +165,20 @@ const decrementServiceUnit = async(req, res) => {
     
 }
 
-
+const resetUserCart = async (req, res) => {
+    const userId = req.params.id
+    const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
+    cart.totalAmount = 0;
+    await cart.save()
+    Item.destroy({
+        where: {
+            cartId: cart.id
+        }
+    })
+        .then(() => {
+            res.sendStatus(200);
+        })
+}
 
 
 module.exports = {
@@ -177,5 +190,6 @@ module.exports = {
     getActiveCartFromUser,
     changeCartState,
     changeCartStateMercadoPago,
-    getCartbyBarberId
+    getCartbyBarberId,
+    resetUserCart
 };

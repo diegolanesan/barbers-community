@@ -14,7 +14,7 @@ import { getAppointmentByBarber } from "../../../redux/action/appointment";
 
 function BarberDetail(props) {
 	const dispatch = useDispatch();
-	const { resp } = useSelector((state) => state.barberDetail);
+	const  resp  = useSelector((state) => state.barberDetail.resp);
 	const id = props.match.params.id;
 	useEffect(() => {
 		dispatch(barberDetail(id));
@@ -97,13 +97,13 @@ function BarberDetail(props) {
 								<div class="w-full md:w-3/12 md:mx-2">
 								{/* <!-- Profile Card --> */}
 								<div class="bg-white p-3 border-t-4 border-blue-400 ">
-									<div class="image overflow-hidden">
+									<div class="">
 										<img
 											class="h-auto w-full rounded mx-auto"
 											src={resp.image}
 											alt=""
 										/>
-									</div>
+										</div>
 									<h1 class="text-gray-900 font-bold text-xl leading-8 mt-1">
 										{resp.name} {resp.lastname}
 										</h1>
@@ -411,13 +411,22 @@ function BarberDetail(props) {
 								 {/* <!-- End of Types --> */}
 								 {/* <!-- End of profile tab --> */}
 								 {/* <div class="my-4"></div> */}
-							</div>
+								</div>
+								
 							{/* <!-- Left Side --> */}
 							
 							{/* <!-- Right Side --> */}
 							
+							</div>
+							<div class="mapouter">
+								<div class="gmap_canvas">
+									<iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=9%20de%20julio%201000%20Cordoba&t=&z=13&ie=UTF8&iwloc=&output=embed"
+											frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+									</iframe>
+								</div>
+							</div>
 						</div>
-					</div>
+						
 				)}
 			</div>
 			

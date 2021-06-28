@@ -58,7 +58,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cali, Colombia',
         'clave123', 
-        'active',
+        't',
         'Colombian Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -75,7 +75,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Buenos Aires, Argentina',
         'demo123', 
-        'true',
+        't',
         'Argentino Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -91,7 +91,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Buenos aires, Argentina',
         'clave123', 
-        'true',
+        't',
         'Panama Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -107,7 +107,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -123,7 +123,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'Brazil Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -139,7 +139,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -155,7 +155,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -171,7 +171,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -187,7 +187,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cordoba, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -203,7 +203,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cordoba, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -219,7 +219,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cordoba, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -235,7 +235,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Barranquilla, Colombia',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -252,7 +252,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -268,7 +268,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -284,7 +284,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -300,7 +300,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -316,7 +316,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -332,7 +332,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -348,7 +348,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -364,7 +364,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -380,7 +380,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -396,7 +396,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -412,7 +412,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -428,7 +428,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -444,7 +444,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -460,7 +460,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -476,7 +476,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -492,7 +492,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -508,7 +508,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -524,7 +524,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -540,7 +540,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -556,7 +556,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -572,7 +572,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
@@ -997,7 +997,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Cali, Colombia',
         'clave123', 
-        'active',
+        'active'
        );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1009,7 +1009,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Buenos Aires, Argentina',
         'demo123', 
-        'active',
+        'active'
        );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1021,7 +1021,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Buenos aires, Argentina',
         'clave123', 
-        'active',
+        'active'
         );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1033,7 +1033,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Colorado, USA',
         'clave123', 
-        'active',
+        'active'
         );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1045,7 +1045,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Colorado, USA',
         'clave123', 
-        'active',
+        'active'
         );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1057,7 +1057,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Colorado, USA',
         'clave123', 
-        'active',
+        'active'
         );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1069,7 +1069,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Colorado, USA',
         'clave123', 
-        'active',
+        'active'
         );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1081,7 +1081,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Colorado, USA',
         'clave123', 
-        'active',
+        'active'
        );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1093,7 +1093,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Cordoba, Argentina',
         'clave123',
-        'active' 
+        'active'
        );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1105,7 +1105,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Cordoba, Argentina',
         'clave123', 
-        'active',
+        'active'
        );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1117,7 +1117,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Cordoba, Argentina',
         'clave123', 
-        'active',
+        'active'
        );
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
@@ -1129,7 +1129,7 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Barranquilla, Colombia',
         'clave123', 
-        'active',
+        'active'
        );
 
 
