@@ -69,7 +69,7 @@ function BarberDetail(props) {
 		serviceBarberId: []
 	})
 	
-	console.log(appointment.date)
+	console.log(resp.image)
 
 	const time = [{ Mon: [{ time: "08:00" }, { time: "09:00" }, {time: "10:00"}]},
 		{Tue: [{ time: "10:00" }, { time: "11:00" }, { time: "12:00" }, { time: "13:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
@@ -97,7 +97,7 @@ function BarberDetail(props) {
 								<div class="w-full md:w-3/12 md:mx-2">
 								{/* <!-- Profile Card --> */}
 								<div class="bg-white p-3 border-t-4 border-blue-400 ">
-									<div class="">
+									<div>
 										<img
 											class="h-auto w-full rounded mx-auto"
 											src={resp.image}
@@ -109,7 +109,7 @@ function BarberDetail(props) {
 										</h1>
 										<h1 class="text-gray-900 font-semibold text-lg leading-8">
 											{resp.location}
-											<div className="grid grid-cols-2 gap-4 -ml-16">
+											<div className="grid grid-cols-2 gap-4 -ml-10">
 											<StarRatingComponent
                 								name="rate2"
                       						    editing={false}
@@ -117,9 +117,9 @@ function BarberDetail(props) {
                       						    starCount={5}
                       						    value={resp.rating}
 												/>
-												<button className="w-28 bg-blue-400">
+{/* 												<button className="w-28 bg-blue-400">
 													Add Review
-												</button>
+												</button> */}
 											</div>
 										</h1>
 										
@@ -144,18 +144,6 @@ function BarberDetail(props) {
 													{resp.status ? "Active" : "Suspended"}
 												</span>
 											</span>
-										</li>
-										<li class="flex items-center py-3">
-											{resp.status === true ? (
-												<button
-													onClick={executeScroll}
-													class="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-10 mb-0 rounded-lg"
-												>
-													Available Services
-												</button>
-											) : (
-												""
-											)}
 										</li>
 									</ul>
 								</div>

@@ -37,6 +37,10 @@ module.exports = (sequelize) => {
 				type: DataTypes.ENUM("active", "disabled", "banned"),
 				defaultValue: "active",
 			},
+			rol: {
+				type: DataTypes.ENUM("client", "admin"),
+				defaultValue: "client",
+			}
 		},
 		{ timestamps: false }
 	);
