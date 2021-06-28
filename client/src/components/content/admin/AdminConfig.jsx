@@ -66,7 +66,7 @@ const AdminConfig = () => {
       alert("Updated Successfully")
       }
     };
-    console.log(admin)
+    console.log(admin, "aaaa")
     return (
         <div class="flex grid h-screen bg-gray-200 items-center justify-center ">
           <div class="grid bg-white rounded-lg shadow-xl w-11/12  md:w-11/12 mx-12 mt-10">
