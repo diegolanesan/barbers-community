@@ -42,6 +42,11 @@ const mercadoPago = require("./mercadoPago");
 // ruta para gestionar desk client
 const panelClient = require("./panelClient");
 
+// ruta del crud del cliente
+const reviews = require("./reviews");
+
+const wishlist = require("./wishlist");
+
 const router = Router();
 
 // Configurar los routers
@@ -60,4 +65,8 @@ router.use("/email", email);
 router.use("/types", typesHFS);
 router.use("/cart", cart);
 router.use("/checkout", mercadoPago);
+router.use("/reviews", reviews);
+router.use("/wishlist", wishlist);
+
+
 module.exports = router;
