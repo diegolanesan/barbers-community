@@ -26,7 +26,7 @@ function BarberDetail(props) {
 	console.log(token)
 	const id = props.match.params.id;
 
-	let address = "avenida del libertador 1220"
+	let address = "avenida del libertador 1220 buenos aires argentina"
     address = encodeURIComponent(address.trim())
     console.log(address)
 	
@@ -159,7 +159,7 @@ function BarberDetail(props) {
 													time[0].Mon.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""} */}
 												{reviews && reviews.length > 0 && cart && token ?
 													cart.map(e => e.state === "Paid" && e.clientId === token.id ?
-														<button className="w-28 text-md font-semibold  bg-blue-400">Add Review</button> : "")
+														<Link to={"/reviews/new/" + id}><button className="w-28 text-md font-semibold  bg-blue-400">Add Review</button></Link> : "")
 													: ""}
 												</div>
 										</h1>

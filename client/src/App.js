@@ -28,6 +28,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DetailsAppointment from "./components/content/barberDashboard/Appointments/DetailsAppointment";
 import Categories from "./components/container/createAdmin/categories/Categories";
 import Reviews from "./components/content/reviews/Reviews";
+import AddReview from "./components/content/reviews/AddReviews";
 
 function App() {
 	const location = useLocation();
@@ -66,6 +67,8 @@ function App() {
 			<Route exact path="/admin/dashboard" component={AdminDesk} />
 			<Route exact path="/pruebaSeba" component={Categories} />
 			<Route exact path="/reviews/:id" component={Reviews} />
+			<Route exact path="/reviews/new/:id" component={AddReview} />
+
 			<ToastContainer />
 		</div>
 	);
