@@ -49,7 +49,8 @@ const reducerCart = (state=initialState, action)=>{
                 ...state,
                 barberAppointments: action.payload
             }
-        case GET_CARTS_BY_USER: 
+        case GET_CARTS_BY_USER:
+            // console.log(action.payload)
         return {
             ...state,
             clientsAppointments: action.payload

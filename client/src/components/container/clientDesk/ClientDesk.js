@@ -33,7 +33,7 @@ const ClientDesk = () => {
     }
     return (
         <div className="flex h-full " >
-            <div className={`w-1/6 bg-gray-200 mr-12`} onClick={handleClick} >
+            <div className={`w-1/6 bg-gray-200`} onClick={handleClick} >
                 <div>  
                     <input type='button' value='Dashboard' name='menu' className={buttonState.menu === 'Dashboard' ? buttonSelected : buttonStyle} />
                 </div>
