@@ -19,7 +19,7 @@ const BarberDetailServices = ({ filters }) => {
     const { id } = useParams()
     useEffect(() => {
         dispatch(getBarberServices(id))
-        dispatch(getActiveCartFromUserId(token.id))
+        if (token) dispatch(getActiveCartFromUserId(token.id))
     }, []);
 
     const filtered = services?.services?.filter(n => n.categories.length && n.categories[0].name === filters)

@@ -28,15 +28,15 @@ const BarberDashboard = () => {
     return (
         <div className="flex h-full" >
             <div className={`w-1/6 bg-gray-200`} onClick={handleClick} >
-                <div>  
+                {/* <div>  
                     <input type='button' value='Dashboard' name='menu' className={buttonState.menu === 'Dashboard' ? buttonSelected : buttonStyle} />
-                </div>
+                </div> */}
                 <div>  
                     <input type='button' value='Appointments' name='menu' className={buttonState.menu === 'Appointments' ? buttonSelected : buttonStyle} />
                 </div>
-                <div>
+                {/* <div>
                     <input type='button' value='Invoices' name='menu' className={buttonState.menu === 'Invoices' ? buttonSelected : buttonStyle} />
-                </div>
+                </div> */}
                 <div>  
                     <input type='button' value='Catalog' name='menu' className={buttonState.menu === 'Catalog' ? buttonSelected : buttonStyle} />
                 </div>
