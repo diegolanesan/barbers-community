@@ -56,7 +56,8 @@ const {
 	Invoice,
 	Cart,
 	Items,
-	Review
+	Review,
+	Wishlist
 } = sequelize.models;
 
 // Se va a crear una tabla intermedia con los id de las tablas
@@ -121,6 +122,13 @@ Cart.belongsTo(Client)
 
 Cart.belongsToMany(ServiceBarber, {through: "item"})
 ServiceBarber.belongsToMany(Cart, { through: "item" })
+
+Client.hasOne(Wishlist)
+Wishlist.belongsTo(Client)
+
+Wishlist.belongsToMany(ServiceBarber, {through: "favorite"})
+ServiceBarber.belongsToMany(Wishlist, { through: "favorite" })
+
 
 Client.hasMany(Review)
 Review.belongsTo(Client)
