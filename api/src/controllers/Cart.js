@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 const {USER_EMAIL, PASSWORD_EMAIL } = process.env;
-
+const {confirmationMail} = require('./MailTemplate/confirmationMail')
 
 // const addItem = async (req, res) => {
 //   const { services} = req.body;
@@ -100,8 +100,8 @@ const changeCartStateMercadoPago = async(req, res) => {
       const mailOptions = {
         from:`Community Barber's <${USER_EMAIL}>`,
         to: client.email,
-        subject: "Confirmed Order ",
-        html: "<h1>Hola</h1>"
+        subject: "Confirmed Order",
+        html: confirmationMail(totalAmount)
       };
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {

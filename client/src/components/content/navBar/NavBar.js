@@ -14,7 +14,7 @@ function NavBar() {
     const client = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : ""
     
     if (barber.id || client.id) {
-      return <nav className="w-full flex flex-row items-center p-1 justify-between shadow-xs bg-blue-400 text-white py-2">
+      return <nav className="w-full flex flex-row items-center p-1 justify-between shadow-xs bg-primary text-white py-2">
         <div class="flex flex-row items-center">
           <Link to="/"><h1 className="text-xl px-4">Barber's Community </h1></Link>
           <Link className="pr-4 hover:underline ml-4" to="/catalog"> Services </Link>
@@ -28,7 +28,7 @@ function NavBar() {
       </nav>
     }
     return (
-          <nav className="w-full flex flex-row items-center p-1 justify-between shadow-xs bg-blue-400 text-white py-2">
+          <nav className="w-full flex flex-row items-center p-1 justify-between shadow-xs bg-primary text-white py-2">
               <div className="flex flex-row items-center">
                 <Link to="/"><h1 className="text-xl px-4">Barber's Community </h1></Link>
                 <Link className="pr-4 hover:underline ml-4" to="/catalog"> Services </Link>

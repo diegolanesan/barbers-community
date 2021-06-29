@@ -11,6 +11,12 @@ module.exports = {
        }),
        height: {
         'vh': 'calc(100vh - 44px)',
+      },
+      colors: {
+        primary: '#232227',
+        secondary: '#bc8c4b',
+        brown: '#9d8a79',
+        gray: '#7a7a7c',
       }
     },
   },

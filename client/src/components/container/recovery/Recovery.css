@@ -1,3 +1,5 @@
+@import '../../../index.css';
+
 .recoveryContainer
 {
     width: 100vw;
@@ -14,7 +16,7 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(10, 2, 37, 0.541);
+    background-color: rgba(10, 2, 37, 0.541); 
     z-index: 0;
 }
 
