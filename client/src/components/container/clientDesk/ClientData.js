@@ -80,10 +80,11 @@ function ClientData({allAppointments}) {
                         <tr>
                         <td> {app.id} </td>
                         <td> {app.date && app.date.slice(0, 10)} </td>
+                        {/* c.serviceBarbers.map(n => "| " + n.item.serviceName + " |") */}
                         <td> {app.serviceBarbers && app.serviceBarbers.map(x => {
                              if(app.serviceBarbers.length > 1){
-                                return "| " + x.name + " |";
-                            } else {return x.name + " "}
+                                return "| " + x.item.serviceName + " |";
+                            } else {return x.item.serviceName + " "}
                         })} </td>
                         <td> {app && app.state} </td>
                         <td> $ {app.totalAmount && app.totalAmount} </td>

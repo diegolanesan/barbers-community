@@ -58,7 +58,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cali, Colombia',
         'clave123', 
-        'active',
+        'true',
         'Colombian Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
