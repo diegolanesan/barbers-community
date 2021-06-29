@@ -8,7 +8,7 @@ const { addItem,
     changeCartStateMercadoPago,
     getCartbyBarberId,
     getAppointments,
-    getCartsByUser,
+    resetUserCart,
     getStatusAppointments,
     getCartsByUser} = require('../controllers/Cart');
 

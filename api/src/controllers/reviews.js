@@ -11,21 +11,25 @@ const getReviewsByBarberId = async(req, res) => {
 const postReview = async(req, res) => {
     const clientId = req.params.id
     const {barberId, text, rating} = req.body
-
-    const reviews = await Review.findAll({where: {barberId: barberId, clientId: clientId }, include: {all: true, nested: true}})
+    let review = {
+            text: text,
+            rating: rating
+        }
+    const reviews = await Review.findOne({where: {barberId: barberId, clientId: clientId }, include: {all: true, nested: true}})
     //console.log(cart)
-    // if (reviews) {
-    //     reviews.text = text,
-    //     reviews.rating = rating,
-    //     reviews.save()
-    // }
-
-    const createdReview = await Review.create({
-        text: text,
-        rating: rating,
-        barberId: barberId,
-        clientId: clientId
-    })
+    if (reviews) {
+        reviews.text = text,
+        reviews.rating = rating
+        reviews.save()
+    }
+    if (!reviews) {
+        const createdReview = await Review.create({
+            text: text,
+            rating: rating,
+            barberId: barberId,
+            clientId: clientId
+        })
+    }
     res.sendStatus(200)
 }
 
