@@ -26,9 +26,7 @@ function BarberDetail(props) {
 	console.log(token)
 	const id = props.match.params.id;
 
-	let address = "avenida del libertador 1220 buenos aires argentina"
-    address = encodeURIComponent(address.trim())
-    console.log(address)
+
 	
 	useEffect(() => {
 		dispatch(barberDetail(id));
@@ -105,7 +103,12 @@ function BarberDetail(props) {
 		averageRating()
 	})
 	console.log(average)
-	
+	let address = ""
+	if (resp && resp.location) {
+		address = resp.location
+		address = encodeURIComponent(address.trim())
+		console.log(address)
+	}
 	return (
 		<div>
 			<div class="bg-gray-100 max-w-6xl mx-auto my-20">

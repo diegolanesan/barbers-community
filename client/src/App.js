@@ -29,6 +29,7 @@ import DetailsAppointment from "./components/content/barberDashboard/Appointment
 import Categories from "./components/container/createAdmin/categories/Categories";
 import Reviews from "./components/content/reviews/Reviews";
 import AddReview from "./components/content/reviews/AddReviews";
+import Places from "./components/container/autocomplete/autocomplete";
 
 function App() {
 	const location = useLocation();
@@ -68,7 +69,7 @@ function App() {
 			<Route exact path="/pruebaSeba" component={Categories} />
 			<Route exact path="/reviews/:id" component={Reviews} />
 			<Route exact path="/reviews/new/:id" component={AddReview} />
-
+			<Route exact path="/places" component={	Places} />
 			<ToastContainer />
 		</div>
 	);
