@@ -34,9 +34,9 @@ const BarberDashboard = () => {
                 <div>  
                     <input type='button' value='Appointments' name='menu' className={buttonState.menu === 'Appointments' ? buttonSelected : buttonStyle} />
                 </div>
-                <div>  
+                {/* <div>
                     <input type='button' value='Invoices' name='menu' className={buttonState.menu === 'Invoices' ? buttonSelected : buttonStyle} />
-                </div>
+                </div> */}
                 <div>  
                     <input type='button' value='Catalog' name='menu' className={buttonState.menu === 'Catalog' ? buttonSelected : buttonStyle} />
                 </div>
@@ -53,11 +53,11 @@ const BarberDashboard = () => {
                         <AppointmentsDash />
                     </div>
                 )}
-                {buttonState.menu === 'Invoices' && (
+                {/* {buttonState.menu === 'Invoices' && (
                     <div>
                         <InvoicesDash />
                     </div>
-                )}
+                )} */}
                 {buttonState.menu === 'Catalog' && (
                     <div>
                         <div >

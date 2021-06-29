@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import BarberServicesDashboard from './clientDashboardServices/ClientServicesDashboard'
 import {getAllAppointments} from '../../../redux/action/clients'
+import {getCartsByUser} from '../../../redux/action/cart'
 import AppointmentsDash from './appointments/Appointments.js'
 import ClientData from './ClientData'
 import ClientConfig from './config/Config.js'
+import jwtDecode from 'jwt-decode'
 // import style from './barberDashboard.module.css'
 const ClientDesk = () => {
     const dispatch = useDispatch()
+    const idUser = jwtDecode(localStorage.getItem('clientToken'));
     useEffect(() => {
-        dispatch(getAllAppointments())
+        dispatch(getCartsByUser(idUser.id));
     }, [dispatch])
     const allAppointments = useSelector(state => state.clients.appointments)
     const buttonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-1 px-0 mx-0 mb-0 w-full"
@@ -30,7 +33,7 @@ const ClientDesk = () => {
     }
     return (
         <div className="flex h-full " >
-            <div className={`w-1/6 bg-gray-200 mr-12`} onClick={handleClick} >
+            <div className={`w-1/6 bg-gray-200`} onClick={handleClick} >
                 <div>  
                     <input type='button' value='Dashboard' name='menu' className={buttonState.menu === 'Dashboard' ? buttonSelected : buttonStyle} />
                 </div>

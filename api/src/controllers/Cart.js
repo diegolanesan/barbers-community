@@ -5,12 +5,31 @@ const nodemailer = require('nodemailer');
 const {USER_EMAIL, PASSWORD_EMAIL } = process.env;
 
 
+// const addItem = async (req, res) => {
+//   const { services} = req.body;
+//   const userId = req.params.id;
+//     const cart = await Cart.findOrCreate({where : {clientId: userId, state: "Active"}})
+//     let total = 0;
+//     const items = services.map( async s => {
+//         await Item.create({
+//             cartId: cart.id,
+//             clientId: userId,
+//             serviceName: s.name,
+//             servicePrice: s.price
+//         });
+//         total += s.price;
+//     })
+//     Cart.findByPk(cart.id)
+//     .then((resp) => {
+//         // resp.update({totalAmount: total})
+//         res.send(resp);
+//     })
+// }
 
 
 const addItem = async (req, res) => {
     const userId = req.params.id
     const { serviceBarberId, name, price } = req.body
-
     let cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
     if (!cart) {
         cart = await Cart.create({ clientId: userId, state: "Active" })
@@ -29,10 +48,10 @@ const addItem = async (req, res) => {
         total += i.dataValues.servicePrice
     })
     await cart.update({totalAmount: total})
-
     //cart.addServiceBarbers(createdItem)
     res.send(cart)
 }
+
 
 const getAllCarts = async(req, res) => {
     const carts = await Cart.findAll()
@@ -45,8 +64,9 @@ const getCartsById = async(req, res) => {
 }
 
 const getCartsByUser = async(req, res) => {
-    const { userId } = req.params.id
-    const cart = await Cart.findOne({ where: { userId } })
+    const userId = req.params.id;
+    const cart = await Cart.findAll({ where: { clientId: userId }, include: {all: true } });
+    res.send(cart);
 }
 
 const changeCartState = async(req, res) => {
@@ -91,6 +111,7 @@ const changeCartStateMercadoPago = async(req, res) => {
         }
       });
     }
+    Cart.create({clientId: userId});
     cart.save()
     res.send(cart)
 }
@@ -103,12 +124,27 @@ const getActiveCartFromUser = async(req, res) => {
     res.send(cart)
 }
 
-const getCartbyBarberId = async(req, res) => {
+const getAppointments = async(req, res) => {
     const barberId = req.params.id
     const cart = await Cart.findAll({where: {barberId: barberId, state: "Paid"}, include: {all: true, nested: true}})
     //console.log(cart)
     res.send(cart)
+} 
+
+const getStatusAppointments = async(req, res) => {
+    const status = req.params.status
+    const cart = await Cart.findAll({where: {state: status}, include: {all: true, nested: true}})
+    console.log(cart)
+    res.send(cart)
+} 
+
+const getCartbyBarberId = async(req, res) => {
+    const barberId = req.params.id
+    const cart = await Cart.findAll({where: {barberId: barberId}, include: {all: true, nested: true}})
+    //console.log(cart)
+    res.send(cart)
 }
+
 
 const removeProductFromCart = async(req, res) => {
     const  userId = req.params.id
@@ -128,21 +164,6 @@ const removeProductFromCart = async(req, res) => {
     })
 }
 
-const resetUserCart = async (req, res) => {
-    const userId = req.params.id
-    const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
-    cart.totalAmount = 0;
-    await cart.save()
-    Item.destroy({
-        where: {
-            cartId: cart.id
-        }
-    })
-        .then(() => {
-            res.sendStatus(200);
-        })
-}
-
 const incrementServiceUnit = async(req, res) => {
     
 }
@@ -155,12 +176,14 @@ const decrementServiceUnit = async(req, res) => {
 
 
 module.exports = {
+    getAppointments,
 	addItem,
+    getCartsByUser,
     getCartsById,
     removeProductFromCart,
     getActiveCartFromUser,
-    resetUserCart,
     changeCartState,
     changeCartStateMercadoPago,
-    getCartbyBarberId
+    getCartbyBarberId,
+    getStatusAppointments
 };

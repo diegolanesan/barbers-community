@@ -7,6 +7,8 @@ export const RESET_USER_CART = "RESET_USER_CART";
 export const CHANGE_CART_STATE = "CHANGE_CART_STATE"
 export const CHANGE_CART_STATE_MERCADO_PAGO = "CHANGE_CART_STATE_MERCADO_PAGO"
 export const GET_CARTS_BY_BARBER_ID = "GET_CARTS_BY_BARBER_ID"
+export const GET_CARTS_BY_USER = "GET_CARTS_BY_USER"
+export const GET_STATUS_APPOINTMENTS = "GET_STATUS_APPOINTMENTS"
 
 
 // ACTIONS PARA CARRITO DE GUEST
@@ -52,15 +54,12 @@ export const removeFromGuestCart = (service) => {
 // ACTIONS PARA CARRITO LOGUEADO
 
 export const addToCart = (id, body) => (dispatch) => {
-    let localCart = getGuestCart()
-    console.log(body)
 	// Si no está logueado
 		return axios.post(HOST_BACK + "/cart/addItem/" + id, body).then((response) => {
 		console.log(response.data);
             dispatch({ type: "ADD_TO_CART", payload: response.data });
             //addToGuestCart(body)
 	});
-	
 }
 
 export const removeFromCart = (id, body) => (dispatch) => {
@@ -82,6 +81,14 @@ export const getActiveCartFromUserId = (id) => (dispatch) => {
 	});
 
 }
+
+export const getCartsByUser = (id) => (dispatch) => {
+    console.log("Entra a la action!");
+	return axios.get(HOST_BACK + "/cart/client/all/" + id)
+    .then((response) => {	
+		dispatch({ type: "GET_CARTS_BY_USER", payload: response.data });
+	});
+};
 
 export const resetUserCart = (id) => (dispatch) => {	
  	return axios.delete("http://localhost:3001/cart/reset/" + id).then((response) => {
@@ -118,6 +125,15 @@ export const getCartsByBarberId = (id) => (dispatch) => {
 	return axios.get(HOST_BACK + "/cart/barber/" + id)
 	.then((response) => {
 	dispatch({ type: GET_CARTS_BY_BARBER_ID, payload: response.data });
+	});
+
+}
+
+export const getStatusAppointments = (status) => (dispatch) => {
+	
+	return axios.get(HOST_BACK + "/cart/state/" + status)
+	.then((response) => {
+	dispatch({ type: GET_STATUS_APPOINTMENTS, payload: response.data });
 	});
 
 }

@@ -4,6 +4,7 @@ import AdminDashboard from './AdminDashboard'
 import AdminAdmins from './Users/Admins'
 import AdminBarbers from "./Users/Barbers"
 import AdminClients from './Users/Clients'
+import Categories from '../../container/createAdmin/categories/Categories'
 
 export default function AdminDesk() {
 	/* const dispatch = useDispatch() */
@@ -59,7 +60,7 @@ export default function AdminDesk() {
                     <AdminDashboard/>
                 )}
                 {buttonState.menu === 'Params' && (
-                    <div>Params</div>
+                    <Categories/>
                 )}
                 {buttonState.menu === 'Rates' && (
                     <div>Rates</div>

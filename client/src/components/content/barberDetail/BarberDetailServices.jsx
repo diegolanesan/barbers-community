@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToAppointment, getBarberServices, removeFromAppointment } from '../../../redux/action/services';
-import { addToCart, removeFromCart, getGuestCart, addToGuestCart, removeFromGuestCart } from '../../../redux/action/cart';
+import { addToCart, removeFromCart, getGuestCart, addToGuestCart, removeFromGuestCart, getActiveCartFromUserId, resetUserCart } from '../../../redux/action/cart';
 import jwtDecode from 'jwt-decode';
 
 
@@ -12,12 +12,16 @@ const BarberDetailServices = ({ filters }) => {
     const services = useSelector((state) => state.services.array);
     const selectedServices = useSelector((state) => state.services.services);
     const token = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : null;
-
+    const cart = useSelector(state => state.cart.activeCart)
+    const barberDetail = useSelector(state => state.barberDetail.resp)
 
 
     const { id } = useParams()
     useEffect(() => {
         dispatch(getBarberServices(id))
+        if(token !== null) {
+            dispatch(getActiveCartFromUserId(token.id))
+        }
     }, []);
 
     const filtered = services?.services?.filter(n => n.categories.length && n.categories[0].name === filters)
@@ -38,6 +42,15 @@ const BarberDetailServices = ({ filters }) => {
         if (token === null) {
             addToGuestCart(service)
             dispatch(addToAppointment(e))
+        } else if (cart && cart.serviceBarbers.length > 0 && cart.serviceBarbers[0].barberId === barberDetail.id) {
+            dispatch(addToCart(token.id, service))
+            dispatch(addToAppointment(e))
+            localStorage.setItem("barberId", id)
+        } else if (cart && cart.serviceBarbers.length > 0 && cart.serviceBarbers[0].barberId !== barberDetail.id) {
+            dispatch(resetUserCart(token.id)).then(() =>
+                dispatch(addToCart(token.id, service)))
+            dispatch(addToAppointment(e))
+            localStorage.setItem("barberId", id)
         } else {
             dispatch(addToCart(token.id, service))
             dispatch(addToAppointment(e))
@@ -98,42 +111,7 @@ const BarberDetailServices = ({ filters }) => {
                                     </svg> */}
                                     <h6 className="">${n.serviceBarber.price}</h6>
                                 </div>
-
-                                {filters === "HAIRCUT" ? selectedServices.haircut.length !== 0 && n.name === selectedServices.haircut[0].name ?
-                                    <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
-                                    : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
-                                    : ""
-                                }
-                                {filters === "KIDHAIRCUT" ? selectedServices.kids.length !== 0 && n.name === selectedServices.kids[0].name ?
-                                    <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
-                                    : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
-                                    : ""
-                                }
-                                {filters === "MASK" ? selectedServices.mask.length !== 0 && n.name === selectedServices.mask[0].name ?
-                                    <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
-                                    : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
-                                    : ""
-                                }
-                                {filters === "OZON" ? selectedServices.ozon.length !== 0 && n.name === selectedServices.ozon[0].name ?
-                                    <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
-                                    : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
-                                    : ""
-                                }
-                                {filters === "HAIRCOLOR" ? selectedServices.color.length !== 0 && n.name === selectedServices.color[0].name ?
-                                    <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
-                                    : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
-                                    : ""
-                                }
-                                {filters === "DESIGN" ? selectedServices.design.length !== 0 && n.name === selectedServices.design[0].name ?
-                                    <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
-                                    : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
-                                    : ""
-                                }
-                                {filters === "BEARDCUT" ? selectedServices.beard.length !== 0 && n.name === selectedServices.beard[0].name ?
-                                    <button className="bg-red-400 px-2 rounded" onClick={() => handleRemove(n)}>Remove</button>
-                                    : <button className="bg-green-400 px-2 rounded" onClick={() => handleAdd(n)}>Add</button>
-                                    : ""
-                                }
+                                <button className="bg-blue-400 px-2 rounded" onClick={() => handleAdd(n)}>Add to Cart</button>
                             </div>
                         ))} </div> : <div className="flex my-20 justify-center">Ooops... Looks like there's no services here</div>}
 

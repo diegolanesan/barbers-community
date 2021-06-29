@@ -40,9 +40,9 @@ const authReducer = (state = initialState, action) => {
 			};
 
 		case SIGN_OUT:
-			localStorage.removeItem('barberToken')
-			localStorage.removeItem('clientToken')
+			localStorage.clear();
 			toast("Sign out successfully", {
+
 				position: toast.POSITION.BOTTOM_RIGHT,
 			});
 			return {
