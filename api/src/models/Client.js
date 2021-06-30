@@ -40,6 +40,12 @@ module.exports = (sequelize) => {
 			rol: {
 				type: DataTypes.ENUM("client", "admin"),
 				defaultValue: "client",
+			},
+			hairType: {
+				type: DataTypes.ENUM("Afro", "Curly", "Wavy","Straight")
+			},
+			faceType:{
+				type: DataTypes.ENUM("Square","Triangular", "Oval", "Round", "Long","Rectangular")
 			}
 		},
 		{ timestamps: false }
