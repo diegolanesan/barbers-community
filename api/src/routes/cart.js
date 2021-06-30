@@ -14,6 +14,7 @@ const { addItem,
     changeOrderStatus,
     getSomeCarts} = require('../controllers/Cart');
 
+
 server.post("/addItem/:id", addItem)
 
 server.get("/:id", getCartsById)
@@ -31,6 +32,8 @@ server.put("/state/payment/:id", changeCartStateMercadoPago)
 server.get("/barber/:id", getAppointments)
 
 server.get("/barber/all/:id", getCartbyBarberId)
+
+server.get("/", getSomeCarts)
 
 server.get("/client/all/:id", getCartsByUser)
 
