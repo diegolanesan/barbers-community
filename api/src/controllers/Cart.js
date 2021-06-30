@@ -217,12 +217,8 @@ module.exports = {
     changeCartState,
     changeCartStateMercadoPago,
     getCartbyBarberId,
-<<<<<<< Updated upstream
     resetUserCart,
     getStatusAppointments,
-    changeOrderStatus
-=======
-    getStatusAppointments,
+    changeOrderStatus,
     getSomeCarts
->>>>>>> Stashed changes
 };
