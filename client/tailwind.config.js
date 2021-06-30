@@ -7,16 +7,22 @@ module.exports = {
         'tecnico-capilar': "url('./resources/tecnico-capilar.jpg')",
         'academico': "url('./resources/academico.jpg')",
         'urbano': "url('./resources/urbano.jpg')",
-        'hero': "url('./resources/hero.jpg')",
+        'hero': "url('./resources/other-hero.jpg')",
        }),
        height: {
-        'vh': 'calc(100vh - 44px)',
+        'vh': 'calc(100vh - 84px)',
       },
       colors: {
         primary: '#232227',
         secondary: '#bc8c4b',
-        brown: '#9d8a79',
+        brown: '#9e8a78',
         gray: '#7a7a7c',
+        text: '#777',
+        background: '#fcf9f5'
+      },
+      fontFamily: {
+        'prata': ['Prata', 'sans-serif'],
+        'lato': ['Lato', 'sans-serif']
       }
     },
   },
