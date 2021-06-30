@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { deleteClient, getClients, putClient } from '../../../redux/action/clients';
-import { postAdmin } from '../../../redux/action/admin';
+import { deleteClient, getClients, putClient,} from '../../../redux/action/clients';
 
 const ClientTable = () => {
-
+    const [input, setinput] = useState("");
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getClients())
@@ -15,19 +14,25 @@ const ClientTable = () => {
         window.location.reload()
     }
 
+    function onChange(e) {
+		setinput(e.target.value);
+	}
+    
+    function onSubmit(e) {
+        e.preventDefault();
+		dispatch(getClients(input));
+		setinput("");
+	} 
+
     const promoteToAdmin = (client) => {
-        if(client.status) {
-            const newAdmin = {
-                name: client.name,
-                lastname: client.lastname,
-                email: client.email,
-                image: client.image,
-                mobile: client.mobile,
-                location: client.location,
-                password: client.password,
-            }
-            dispatch(postAdmin(newAdmin))
-        window.location.reload()
+        if(client.status === "active") {
+            const clientSend = {
+                clientModified: {
+                    rol: "admin",
+                },
+            };
+            dispatch(putClient(client.id, clientSend))
+            window.location.reload()
         }
         else alert("this account is suspended, please renovate it and try again")
     }
@@ -65,15 +70,15 @@ const ClientTable = () => {
                         Create category
                     </a>
                 </button> */}
-                <div className="relative mr-6 my-4 mb-1">
-                    <input type="search" className="bg-purple-white w-26 shadow rounded border-0 p-3" placeholder="Search by name...   " />
+                <form className="relative mr-6 my-4 mb-1" onSubmit={onSubmit}>
+                    <input type="search" value={input} onChange={onChange} className="bg-purple-white w-26 shadow rounded border-0 p-3" placeholder="Search by name...   " />
                     <button className="bg-gray" title="Buscar Categoria">🔍</button>
                     <div className="absolute pin-r pin-t mt-3 mr-4 text-purple-lighter">
                         <svg version="1.1" class="h-4 text-dark" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 52.966 52.966" style={{ enableBackground: "new 0 0 52.966 52.966" }} xmlSpace="preserve">
                         </svg>
                     </div>
-                </div>
+                </form>
             </div >
 
             <table className="border-collapse w-full">

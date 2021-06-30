@@ -37,6 +37,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 // const { Comentarios, Publicaciones, Usuario,  Seguidor} = sequelize.models;
 const {
+
     Barber,
     ServiceBarber,
     Category,
@@ -74,6 +75,11 @@ Style.belongsToMany(Barber, { through: "styleBarber" });
 
 // Style.hasMany(Client);
 // Client.belongsTo(Style);
+
+// ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
+// Style.hasMany(Client);
+// Client.belongsTo(Style);
+
 HairType.hasMany(Client);
 Client.belongsTo(HairType);
 
