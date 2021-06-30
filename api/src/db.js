@@ -46,10 +46,13 @@ const {
 	Barber,
 	ServiceBarber,
 	Category,
+	FaceType,
+	HairType,
 	Style,
 	Client,
 	Appointment,
 	Service,
+	DetailAppointment,
 	Invoice,
 	Cart,
 	Items,
@@ -65,16 +68,39 @@ Service.belongsToMany(Barber, { through: "serviceBarber" });
 Service.belongsToMany(Category, { through: "categoryService" });
 Category.belongsToMany(Service, { through: "categoryService" });
 
+// Se va a crear una tabla intermedia con los id de las tablas
+Barber.belongsToMany(FaceType, { through: "faceTypeBarber" });
+FaceType.belongsToMany(Barber, { through: "faceTypeBarber" });
+
+// Se va a crear una tabla intermedia con los id de las tablas
+Barber.belongsToMany(HairType, { through: "hairTypeBarber" });
+HairType.belongsToMany(Barber, { through: "hairTypeBarber" });
 
 Barber.belongsToMany(Style, { through: "styleBarber" });
 Style.belongsToMany(Barber, { through: "styleBarber" });
 
+// Se va a crear una tabla intermedia con los id de las tablas
+Barber.belongsToMany(Client, { through: "appointment" }); // ¿Acá esta implicita la asosiación entre appointment y barber?
+Client.belongsToMany(Barber, { through: "appointment" });
+
+Appointment.belongsToMany(ServiceBarber, { through: "detailAppointment" });
+ServiceBarber.belongsToMany(Appointment, { through: "detailAppointment" });
+
+Barber.belongsToMany(Style, { through: "styleBarber" });
+Style.belongsToMany(Barber, { through: "styleBarber" });
+
+// Tabla de registro de facturas Cliente/Barber
+Barber.belongsToMany(Client, { through: "invoice" });
+Client.belongsToMany(Barber, { through: "invoice" });
+
+// Tabla de registro de servicios facturados
+Invoice.belongsToMany(ServiceBarber, { through: "detailInvoice" });
+ServiceBarber.belongsToMany(Invoice, { through: "detailInvoice" });
 
 // ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
 Style.hasMany(Client);
 Client.belongsTo(Style);
 
-
 HairType.hasMany(Client);
 Client.belongsTo(HairType);
 
@@ -90,7 +116,6 @@ Client.belongsTo(FaceType);
 HairType.hasMany(Client);
 Client.belongsTo(HairType);
 
-//modificación para mergeo
 // Relaciones de carrito de compras
 Client.hasMany(Cart)
 Cart.belongsTo(Client)
