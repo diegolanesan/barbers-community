@@ -8,7 +8,10 @@ const { addItem,
     changeCartStateMercadoPago,
     getCartbyBarberId,
     getAppointments,
-    getCartsByUser} = require('../controllers/Cart');
+    resetUserCart,
+    getStatusAppointments,
+    getCartsByUser,
+    changeOrderStatus} = require('../controllers/Cart');
 
 server.post("/addItem/:id", addItem)
 
@@ -20,6 +23,8 @@ server.get("/active/:id", getActiveCartFromUser)
 
 server.put("/state/:id", changeCartState)
 
+server.put("/status/:id", changeOrderStatus)
+
 server.put("/state/payment/:id", changeCartStateMercadoPago)
 
 server.get("/barber/:id", getAppointments)
@@ -27,6 +32,10 @@ server.get("/barber/:id", getAppointments)
 server.get("/barber/all/:id", getCartbyBarberId)
 
 server.get("/client/all/:id", getCartsByUser)
+
+server.delete("/reset/:id", resetUserCart)
+
+server.get("/state/:status", getStatusAppointments)
 
 
 module.exports= server;

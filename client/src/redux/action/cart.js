@@ -8,6 +8,8 @@ export const CHANGE_CART_STATE = "CHANGE_CART_STATE"
 export const CHANGE_CART_STATE_MERCADO_PAGO = "CHANGE_CART_STATE_MERCADO_PAGO"
 export const GET_CARTS_BY_BARBER_ID = "GET_CARTS_BY_BARBER_ID"
 export const GET_CARTS_BY_USER = "GET_CARTS_BY_USER"
+export const GET_STATUS_APPOINTMENTS = "GET_STATUS_APPOINTMENTS"
+export const CHANGE_ORDER_STATUS = "CHANGE_ORDER_STATUS"
 
 
 // ACTIONS PARA CARRITO DE GUEST
@@ -125,5 +127,26 @@ export const getCartsByBarberId = (id) => (dispatch) => {
 	.then((response) => {
 	dispatch({ type: GET_CARTS_BY_BARBER_ID, payload: response.data });
 	});
+
+}
+
+export const getStatusAppointments = (status) => (dispatch) => {
+	
+	return axios.get(HOST_BACK + "/cart/state/" + status)
+	.then((response) => {
+	dispatch({ type: GET_STATUS_APPOINTMENTS, payload: response.data });
+	});
+
+}
+
+export const changeOrderStatus = (cartId, body) => (dispatch) => {
+    
+    console.log("entra a la action");
+    // console.log(body);
+   
+    return axios.put("http://localhost:3001/cart/status/" + cartId, body).then((response) => {
+         dispatch({ type: "CHANGE_ORDER_STATUS", payload: response.data });
+         //removeFromGuestCart(body)
+   });
 
 }

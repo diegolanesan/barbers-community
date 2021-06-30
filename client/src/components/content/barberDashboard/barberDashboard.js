@@ -53,11 +53,11 @@ const BarberDashboard = () => {
                         <AppointmentsDash />
                     </div>
                 )}
-                {buttonState.menu === 'Invoices' && (
+                {/* {buttonState.menu === 'Invoices' && (
                     <div>
                         <InvoicesDash />
                     </div>
-                )}
+                )} */}
                 {buttonState.menu === 'Catalog' && (
                     <div>
                         <div >

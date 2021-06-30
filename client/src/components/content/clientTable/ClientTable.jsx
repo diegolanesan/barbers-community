@@ -33,18 +33,28 @@ const ClientTable = () => {
     }
 
     const changeStatus = (client) => {
-        const clientSend = {
-			clientModified: {
-				status: !client.status,
-			},
-		};
-        dispatch(putClient(client.id, clientSend))
-        window.location.reload()
+        if(client.status === "active") {
+            const clientSend = {
+                clientModified: {
+                    status: "banned",
+                },
+            };
+            dispatch(putClient(client.id, clientSend))
+            window.location.reload()
+        } else {
+            const clientSend = {
+                clientModified: {
+                    status: "active",
+                },
+            };
+            dispatch(putClient(client.id, clientSend))
+            window.location.reload()
+        }
     }
 
     const clientsLoaded = useSelector(state => state.clients.clientsLoaded)
 
-    console.log(clientsLoaded)
+    console.log(clientsLoaded, "aa")
 
     return (
         <div className="tracking-wide font-bold bg-gray-200">
@@ -84,7 +94,7 @@ const ClientTable = () => {
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                 {c.email}
                             </td>
-                            {c.status === true ?
+                            {c.status === "active" ?
                                 <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                     Active
                                 </td> : <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
@@ -94,7 +104,7 @@ const ClientTable = () => {
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
 
                                 <div className="flex gap-5 justify-center" >
-                                    <button type="submit"  onClick={() => changeStatus(c)} title={c.status? "Suspend Client":"Renovate Client"} className="flex text-white bg-indigo-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z" /></svg></button>
+                                    <button type="submit"  onClick={() => changeStatus(c)} title={c.status === "active"? "Suspend Client":"Renovate Client"} className="flex text-white bg-indigo-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z" /></svg></button>
                                     <button type="submit"  onClick={() => promoteToAdmin(c)} title="Promote to Administrator" className="flex text-white bg-green-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-green-600 rounded" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z" /></svg></button>
                                     <button onClick={() => deleteC(c.id)} title="Delete Client" className="flex text-white bg-red-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-red-700 rounded">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z" /></svg>

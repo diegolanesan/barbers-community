@@ -22,6 +22,11 @@ module.exports = (sequelize) => {
         },
         barberId: {
             type: DataTypes.INTEGER
-        }
+        },
+        orderStatus: {
+            type: DataTypes.ENUM("Pending", "In progress", "Completed"),
+            defaultValue: "Pending",
+            allowNull: false
+        },
 	},{ timestamps: false })
 };

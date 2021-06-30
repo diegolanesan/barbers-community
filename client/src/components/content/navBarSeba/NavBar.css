@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Prata&display=swap');
+
+.navBarContainer
+{
+    display:  flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(34, 34, 39);
+    height: 90px;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
+.logoNav
+{
+    margin-left: 10%;
+}
+
+
+.ulNav
+{
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0;
+    align-items: center;
+    margin-right: 20px;
+}
+.ulNav li 
+{
+    margin: 15px;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+.ulNav li:hover, .ulNav li:focus 
+{
+    background-size: 100% 2px;
+}
+
+.navBarContainer button 
+{
+    background: rgb(158, 138, 120);
+    width: 140px;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 10px;
+    transition: 0.5s;
+}
+
+.navBarContainer button:hover
+{
+    background-color:rgb(131, 114, 99) ;
+}

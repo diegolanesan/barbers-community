@@ -129,7 +129,14 @@ const getAppointments = async(req, res) => {
     const cart = await Cart.findAll({where: {barberId: barberId, state: "Paid"}, include: {all: true, nested: true}})
     //console.log(cart)
     res.send(cart)
-}
+} 
+
+const getStatusAppointments = async(req, res) => {
+    const status = req.params.status
+    const cart = await Cart.findAll({where: {state: status}, include: {all: true, nested: true}})
+    console.log(cart)
+    res.send(cart)
+} 
 
 const getCartbyBarberId = async(req, res) => {
     const barberId = req.params.id
@@ -157,15 +164,39 @@ const removeProductFromCart = async(req, res) => {
     })
 }
 
-const incrementServiceUnit = async(req, res) => {
-    
+const changeOrderStatus = async(req, res) => {
+    const cartId = req.params.id
+    const { status } = req.body
+    // console.log(status)
+    const cart = await Cart.findOne({ where: { id: cartId } })
+    // console.log(cart)
+    cart.orderStatus = status
+    cart.save()
+    res.send(cart)
 }
 
-const decrementServiceUnit = async(req, res) => {
+// const incrementServiceUnit = async(req, res) => {
     
+// }
+
+// const decrementServiceUnit = async(req, res) => {
+    
+// }
+
+const resetUserCart = async (req, res) => {
+    const userId = req.params.id
+    const cart = await Cart.findOne({ where: { clientId: userId, state: "Active" } })
+    cart.totalAmount = 0;
+    await cart.save()
+    Item.destroy({
+        where: {
+            cartId: cart.id
+        }
+    })
+        .then(() => {
+            res.sendStatus(200);
+        })
 }
-
-
 
 
 module.exports = {
@@ -177,5 +208,8 @@ module.exports = {
     getActiveCartFromUser,
     changeCartState,
     changeCartStateMercadoPago,
-    getCartbyBarberId
+    getCartbyBarberId,
+    resetUserCart,
+    getStatusAppointments,
+    changeOrderStatus
 };

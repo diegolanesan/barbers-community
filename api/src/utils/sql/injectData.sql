@@ -49,7 +49,7 @@ INSERT INTO "styles" (id, description) VALUES (8, 'Regular');
 
 -- select * from styles;​
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Jorge' ,
         'Murillo', 
@@ -58,15 +58,16 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cali, Colombia',
         'clave123', 
-        'active',
+        'true',
         'Colombian Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.8, 
-        'Academy');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Pablo' ,
         'Lescano', 
@@ -75,14 +76,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Buenos Aires, Argentina',
         'demo123', 
-        'true',
+        't',
         'Argentino Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Academy');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Ricardo' ,
         'Morales', 
@@ -91,14 +93,14 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Buenos aires, Argentina',
         'clave123', 
-        'true',
+        't',
         'Panama Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
         'Seminary');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Lorenzo' ,
         'Rivas', 
@@ -107,14 +109,14 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
         'Urban');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Mike' ,
         'Ebanos', 
@@ -123,14 +125,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'Brazil Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Academy');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Freddy' ,
         'Perez', 
@@ -139,14 +142,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Gerardo' ,
         'Alzate', 
@@ -155,14 +159,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Milena' ,
         'Salamanca', 
@@ -171,14 +176,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Maria Camila' ,
         'Kuba', 
@@ -187,14 +193,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cordoba, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Zarco' ,
         'Solarte', 
@@ -203,14 +210,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cordoba, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Jose Miguel' ,
         'Buenaora', 
@@ -219,14 +227,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cordoba, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Delia' ,
         'Tellez', 
@@ -235,15 +244,16 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Barranquilla, Colombia',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Lorenzo' ,
         'Figueroa', 
@@ -252,14 +262,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Nicolas' ,
         'Mora', 
@@ -268,14 +279,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Arturo' ,
         'Arrechea', 
@@ -284,14 +296,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Tirso' ,
         'Lopez', 
@@ -300,14 +313,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Samuel' ,
         'Benavidez', 
@@ -316,14 +330,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Marcos' ,
         'Hernandez', 
@@ -332,14 +347,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Danilo' ,
         'Correa', 
@@ -348,14 +364,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Nariño' ,
         'Santofimio', 
@@ -364,14 +381,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Carlos' ,
         'Gonzalez', 
@@ -380,14 +398,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Camilo' ,
         'Debia', 
@@ -396,14 +415,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Joseph' ,
         'Keiroz', 
@@ -412,14 +432,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Huberto' ,
         'Escobar', 
@@ -428,14 +449,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Marino' ,
         'Marin', 
@@ -444,14 +466,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Nicolas' ,
         'Santa', 
@@ -460,14 +483,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Alberto' ,
         'Bolaños', 
@@ -476,14 +500,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Pedro' ,
         'Orozco', 
@@ -492,14 +517,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'mauricio' ,
         'torrente', 
@@ -508,14 +534,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Pedro' ,
         'Dimaria', 
@@ -524,14 +551,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Luis' ,
         'Armani', 
@@ -540,14 +568,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Ernesto' ,
         'Mejia', 
@@ -556,14 +585,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Teofilo' ,
         'Usurriaga', 
@@ -572,12 +602,13 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
 -- select * from barbers;
 
@@ -988,7 +1019,7 @@ INSERT INTO "services" (name ,price, description , image  )
  '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623988219/Catalog/services/7.MASK/Goldmask/goldmaskman_sy2gjk.jpg
  }');
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Matias' ,
         'Sciutto', 
@@ -996,11 +1027,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562796/Clients/jorge_o3tsir.jpg}', 
         '64541075', 
         'Cali, Colombia',
-        'clave123', 
+        'clave123',
         'active',
+        'admin'
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Pablo' ,
         'Benavidez', 
@@ -1008,11 +1040,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562800/Clients/32_cjcpzm.jpg}', 
         '64541075', 
         'Buenos Aires, Argentina',
-        'demo123', 
+        'demo123',
         'active',
+        'client'
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Ricardo' ,
         'Fort', 
@@ -1020,11 +1053,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562796/Clients/31_gvd74w.jpg}', 
         '64541075', 
         'Buenos aires, Argentina',
-        'clave123', 
+        'clave123',
         'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Lorenzo' ,
         'Miguel', 
@@ -1032,11 +1066,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/30_nc3uzy.jpg}', 
         '64541075', 
         'Colorado, USA',
-        'clave123', 
+        'clave123',
         'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Miguel' ,
         'Lorenzini', 
@@ -1044,11 +1079,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623563408/Clients/29_zjimim.jpg}', 
         '64541075', 
         'Colorado, USA',
-        'clave123', 
+        'clave123',
         'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Freddy' ,
         'Villareal', 
@@ -1056,11 +1092,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562802/Clients/28_j8p1go.jpg}', 
         '64541075', 
         'Colorado, USA',
-        'clave123', 
+        'clave123',
         'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Gerardo' ,
         'Romano', 
@@ -1068,11 +1105,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623563789/Clients/27_vxrkw6.jpg}', 
         '64541075', 
         'Colorado, USA',
-        'clave123', 
+        'clave123',
         'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Milena' ,
         'Salamanca', 
@@ -1080,11 +1118,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623563416/Clients/26_zzrh1w.jpg}', 
         '64541075', 
         'Colorado, USA',
-        'clave123', 
+        'clave123',
         'active',
+        'client'
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Maria Camila' ,
         'Delani', 
@@ -1093,10 +1132,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '64541075', 
         'Cordoba, Argentina',
         'clave123',
-        'active' 
+        'active',
+        'client'
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Lorena' ,
         'Gonzalez', 
@@ -1104,11 +1144,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/24_uflsju.jpg}', 
         '64541075', 
         'Cordoba, Argentina',
-        'clave123', 
+        'clave123',
         'active',
+        'client'
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Jose Miguel' ,
         'Buenaventura', 
@@ -1116,11 +1157,13 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562799/Clients/23_prjgkc.jpg}', 
         '64541075', 
         'Cordoba, Argentina',
-        'clave123', 
+        'clave123',
         'active',
+        'client'
+
        );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Sara' ,
         'Tricolti', 
@@ -1128,12 +1171,14 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
         '64541075', 
         'Barranquilla, Colombia',
-        'clave123', 
+        'clave123',
         'active',
+        'client'
+
        );
 
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Rodrigo' ,
         'Bueno', 
@@ -1141,11 +1186,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562796/Clients/21_fraryq.jpg}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Nicolas' ,
         'Moradini', 
@@ -1153,11 +1199,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562795/Clients/20_xwde4k.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Arturo' ,
         'Vestillo', 
@@ -1165,11 +1212,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562799/Clients/19_aw457q.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Pedro' ,
         'De Molina', 
@@ -1177,11 +1225,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562799/Clients/18_igfc9e.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Samuel' ,
         'Kalberti', 
@@ -1189,11 +1238,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562796/Clients/17_olfxnz.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Veronica' ,
         'Hernandez', 
@@ -1201,11 +1251,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562796/Clients/16_ni6xus.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Danilo' ,
         'Correa', 
@@ -1213,11 +1264,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562798/Clients/15_gaunpw.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Nariño' ,
         'Santofimio', 
@@ -1225,11 +1277,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562805/Clients/14_lbzzer.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Carlos' ,
         'Gonzalez', 
@@ -1237,11 +1290,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562794/Clients/13_cd9khp.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Camilo' ,
         'Debia', 
@@ -1249,11 +1303,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562797/Clients/12_iw4tn8.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Joseph' ,
         'Keiroz', 
@@ -1261,11 +1316,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562803/Clients/11_ta3pfh.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Huberto' ,
         'Escobar', 
@@ -1273,11 +1329,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562805/Clients/10_ntddef.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Marino' ,
         'Marin', 
@@ -1285,11 +1342,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562806/Clients/09_eqzv6a.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Nicolas' ,
         'Santa', 
@@ -1297,11 +1355,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562798/Clients/08_uafvyv.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Alberto' ,
         'Bolaños', 
@@ -1309,11 +1368,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562805/Clients/07_htdb3o.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Pedro' ,
         'Orozco', 
@@ -1321,11 +1381,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562804/Clients/06_ltjlyv.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'mauricio' ,
         'torrente', 
@@ -1333,11 +1394,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562795/Clients/05_c0e55p.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Pedro' ,
         'Dimaria', 
@@ -1345,11 +1407,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562806/Clients/04_iv7j5e.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Luis' ,
         'Armani', 
@@ -1357,11 +1420,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562805/Clients/03_azcsxr.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Ernesto' ,
         'Mejia', 
@@ -1369,11 +1433,12 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562795/Clients/02_n1deq5.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status)
+INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
         'Teofilo' ,
         'Usurriaga', 
@@ -1381,59 +1446,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562798/Clients/01_n67awf.png}', 
         '64541075', 
         'Mar de plata, Argentina',
-        'clave123', 
-        'active'
+        'clave123',
+        'active',
+        'client'
         );
 
-INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
-        VALUES ( 
-        'Lucas' ,
-        'Ruiz', 
-        'lucas@ruiz.com',         
-        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
-        'clave123');
-
-INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
-        VALUES ( 
-        'Aleister' ,
-        'Black', 
-        'aleister@black.com',         
-        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
-        'clave123');
-
-INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
-        VALUES ( 
-        'Olivier' ,
-        'Armstrong', 
-        'oli@armstrong.com',         
-        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
-        'clave123');
-
-INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
-        VALUES ( 
-        'Eduardo' ,
-        'Elric', 
-        'eduardo@elric.com',         
-        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
-        'clave123');
-
-INSERT INTO "admins" (name, lastname, email, image, mobile, location, password)
-        VALUES ( 
-        'Carlos' ,
-        'Medel', 
-        'carlos@medel.com',         
-        '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
-        'clave123');
 
 SELECT COUNT(id) FROM "faceTypes";
 SELECT COUNT(id) FROM "hairTypes";
@@ -1442,7 +1459,6 @@ SELECT COUNT(name) FROM barbers;
 SELECT COUNT(id) FROM categories;
 SELECT COUNT(id) FROM services;
 SELECT COUNT(id) FROM clients;
-SELECT COUNT(id) FROM admins;
 
 -- Local:
 -- psql -U alex -d barberscommunity -a -f injectData.sql

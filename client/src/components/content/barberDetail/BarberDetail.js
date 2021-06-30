@@ -11,25 +11,30 @@ import Datetime from "react-datetime";
 import moment from "moment";
 import StarRatingComponent from "react-star-rating-component";
 import { getAppointmentByBarber } from "../../../redux/action/appointment";
+import { getBarberReviews } from "../../../redux/action/reviews";
+import { getCartsByBarberId } from "../../../redux/action/cart";
+import jwtDecode from "jwt-decode";
 
 function BarberDetail(props) {
+
 	const dispatch = useDispatch();
-	const { resp } = useSelector((state) => state.barberDetail);
+	
+	const resp = useSelector((state) => state.barberDetail.resp);
+	const reviews = useSelector((state) => state.reviews.barberReviews)
+	const cart = useSelector((state) => state.cart.barberAppointments)
+    const token = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : null;
+	console.log(token)
 	const id = props.match.params.id;
+
+
+	
 	useEffect(() => {
 		dispatch(barberDetail(id));
 		dispatch(getBarbers());
 		dispatch(getAppointmentByBarber(id));
+		dispatch(getBarberReviews(id))
+		dispatch(getCartsByBarberId(id))
 	}, []);
-
-	const scrollToRef = (ref) =>
-		window.scrollTo({
-			left: 0,
-			top: ref.current.offsetTop,
-			behavior: "smooth",
-		});
-	const myRef = useRef(null);
-	const executeScroll = () => scrollToRef(myRef);
 
 	const buttonStyle =
 		"bg-blue-400 hover:bg-blue-600 text-white py-1 px-0 mx-0 mb-0 w-full";
@@ -69,18 +74,41 @@ function BarberDetail(props) {
 		serviceBarberId: []
 	})
 	
-	console.log(appointment.date)
-
-	const time = [{ Mon: [{ time: "08:00" }, { time: "09:00" }, {time: "10:00"}]},
-		{Tue: [{ time: "10:00" }, { time: "11:00" }, { time: "12:00" }, { time: "13:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
-		{ Wed: [{ time: "08:00" }, { time: "09:00" }, { time: "10:00" }, { time: "11:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }] },
-		{Thu: [ { time: "12:00" }, { time: "13:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
-		{Fri: [{ time: "10:00" }, { time: "11:00" }, { time: "14:00" }, { time: "15:00" }, { time: "16:00" }]},
-		
-	]
-	const [mon, setMon] = useState(time[0].Mon)
-	
-	console.log(mon);
+	// let rating = 0
+	// const ratingBarber = () => {
+	// 	reviews.map(e => {
+	// 		e.rating += rating
+	// 		rating = rating / e.length + 1 
+	// 	})
+	// }
+	const [average, setAverage] = useState(0)
+	const averageRating = () => {
+    	let sum = 0;
+    		if (reviews && reviews.length > 15) {
+      			for (var i = 0; i < 15; i++) {
+        			sum = sum + reviews[i].rating;
+      			}
+      			sum = sum / reviews.length;
+      			setAverage(sum);
+		}
+		if (reviews && reviews.length > 0) {
+      			for (var i = 0; i < reviews.length; i++) {
+        			sum = sum + reviews[i].rating;
+      			}
+      			sum = sum / reviews.length;
+      			setAverage(sum);
+    }
+	};
+	useEffect(() => {
+		averageRating()
+	})
+	console.log(average)
+	let address = ""
+	if (resp && resp.location) {
+		address = resp.location
+		address = encodeURIComponent(address.trim())
+		console.log(address)
+	}
 	return (
 		<div>
 			<div class="bg-gray-100 max-w-6xl mx-auto my-20">
@@ -97,30 +125,46 @@ function BarberDetail(props) {
 								<div class="w-full md:w-3/12 md:mx-2">
 								{/* <!-- Profile Card --> */}
 								<div class="bg-white p-3 border-t-4 border-blue-400 ">
-									<div class="image overflow-hidden">
+									<div>
 										<img
 											class="h-auto w-full rounded mx-auto"
 											src={resp.image}
 											alt=""
 										/>
-									</div>
+										</div>
 									<h1 class="text-gray-900 font-bold text-xl leading-8 mt-1">
 										{resp.name} {resp.lastname}
 										</h1>
 										<h1 class="text-gray-900 font-semibold text-lg leading-8">
 											{resp.location}
-											<div className="grid grid-cols-2 gap-4 -ml-16">
-											<StarRatingComponent
-                								name="rate2"
-                      						    editing={false}
-                      						    renderStarIcon={() => <span className=" text-xl">★</span>}
-                      						    starCount={5}
-                      						    value={resp.rating}
-												/>
-												<button className="w-28 bg-blue-400">
-													Add Review
-												</button>
+											<div className="grid grid-cols-2 gap-4 -ml-10">
+												{reviews && reviews.length > 0 ?
+													<StarRatingComponent
+														name="rate2"
+														editing={false}
+														renderStarIcon={() => <span className=" text-xl">★</span>}
+														starCount={5}
+														value={average}
+													/>
+													: ""}
+												
 											</div>
+											<div>
+													{reviews && reviews.length > 0 ?
+													<Link to={"/reviews/" + id} >
+														<button className="w-20 mr-4 font-semibold bg-blue-400">
+															Reviews
+														</button>
+													</Link>
+												 
+													: <h1>No Reviews</h1>}
+												{/* {appointment.date && appointment.date.includes("Mon") ?
+													time[0].Mon.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""} */}
+												{reviews && reviews.length > 0 && cart && token ?
+													cart.map(e => e.state === "Paid" && e.clientId === token.id ?
+														<Link to={"/reviews/new/" + id}><button className="w-28 text-md font-semibold  bg-blue-400">Add Review</button></Link> : "")
+													: ""}
+												</div>
 										</h1>
 										
 										<h1 class="text-gray-900 font-semibold text-md leading-8">
@@ -144,18 +188,6 @@ function BarberDetail(props) {
 													{resp.status ? "Active" : "Suspended"}
 												</span>
 											</span>
-										</li>
-										<li class="flex items-center py-3">
-											{resp.status === true ? (
-												<button
-													onClick={executeScroll}
-													class="bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-10 mb-0 rounded-lg"
-												>
-													Available Services
-												</button>
-											) : (
-												""
-											)}
 										</li>
 									</ul>
 								</div>
@@ -225,7 +257,7 @@ function BarberDetail(props) {
 												<div class="px-4 py-2">{resp.rating}</div>
 											</div>
 										</div> */}
-											<div ref={myRef} class="bg-gray-100 w-full  mx-auto">
+											<div class="bg-gray-100 w-full  mx-auto">
 				<div>
 					<div>
 						<div
@@ -411,13 +443,22 @@ function BarberDetail(props) {
 								 {/* <!-- End of Types --> */}
 								 {/* <!-- End of profile tab --> */}
 								 {/* <div class="my-4"></div> */}
-							</div>
+								</div>
+								
 							{/* <!-- Left Side --> */}
 							
 							{/* <!-- Right Side --> */}
 							
+							</div>
+							<div class="mapouter">
+								<div class="gmap_canvas">
+									<iframe width="600" height="500" id="gmap_canvas" src={`https://maps.google.com/maps?q=${address}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+											frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+									</iframe>
+								</div>
+							</div>
 						</div>
-					</div>
+						
 				)}
 			</div>
 			
