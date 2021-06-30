@@ -14,18 +14,6 @@ const barbers = require("./barbers.js");
 // ruta del crud del cliente
 const clients = require("./clients");
 
-// ruta del crud de la cita
-const appointments = require("./appointments");
-
-// ruta del crud del detalle de cita
-const detailAppointments = require("./detailAppointments");
-
-// router CRUD from Invoice
-const invoices = require("./invoices");
-
-// router CRUD from Details Invoice
-const detailInvoices = require("./detailInvoices");
-
 // ruta del crud de categories
 const categories = require("./categories.js");
 
@@ -47,6 +35,9 @@ const reviews = require("./reviews");
 
 const wishlist = require("./wishlist");
 
+// ruta para cargar datos 
+const insertFile = require("./insertFile");
+
 const router = Router();
 
 // Configurar los routers
@@ -54,10 +45,6 @@ const router = Router();
 router.use("/clients/panel", panelClient);
 router.use("/clients", clients);
 router.use("/admins", admins);
-router.use("/appointments", appointments);
-router.use("/detailAppointments", detailAppointments);
-router.use("/invoices", invoices);
-router.use("/detailInvoices", detailInvoices);
 router.use("/barbers", barbers);
 router.use("/admin/service", service);
 router.use("/admin/categories", categories);
@@ -65,14 +52,9 @@ router.use("/email", email);
 router.use("/types", typesHFS);
 router.use("/cart", cart);
 router.use("/checkout", mercadoPago);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 router.use("/reviews", reviews);
 router.use("/wishlist", wishlist);
+router.use("/insert", insertFile);
 
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 module.exports = router;

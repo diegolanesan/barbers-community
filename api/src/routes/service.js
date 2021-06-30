@@ -1,6 +1,6 @@
 const express = require('express');
 const server = express();
-const {getAllService, postService, getBarbersService, relationService,  putService,deleteService}  = require('../controllers/service');
+const {getAllService, postService, getBarbersService, createRelationService,  putService,deleteService, deleteRelationService}  = require('../controllers/service');
 
 // ruta para buscar todos los servicios
 server.get("/", getAllService);
@@ -18,7 +18,9 @@ server.put("/",  putService);
 server.delete("/:id", deleteService);
 
 // ruta para relacinar un barbero con un servicios
-server.post("/relationService", relationService);
+server.post("/relationService", createRelationService);
+
+server.delete("/relationService",deleteRelationService)
 
 
 

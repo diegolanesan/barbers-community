@@ -65,9 +65,20 @@ const deleteService = async (req, res)=>{
     }
 }
 // ruta que   vincular  un barber y un servicio
-const relationService = async (req, res)=>{
-    const {barberId, serviceId, price, image, name} = req.body;
-    const resul = await ServiceBarber.create({barberId, serviceId, price, image, name});
+const createRelationService = async (req, res)=>{
+    const {barberId, serviceId, price} = req.body;
+    const resul = await ServiceBarber.create({barberId, serviceId, price});
+    if(resul){
+        res.send(resul)
+    }else{
+        res.status(400).send("No se pudo relacionar las tablas");
+    }
+};
+
+const deleteRelationService = async (req, res) => {
+    // NO ANDAA !!!
+    const {barberId, serviceId, price} = req.body;
+    const resul = await ServiceBarber.delete({barberId, serviceId, price});
     if(resul){
         res.send(resul)
     }else{
@@ -75,14 +86,14 @@ const relationService = async (req, res)=>{
     }
 }
 
-
 module.exports = {
     getAllService,
     postService,
     getBarbersService,
-    relationService,
+    createRelationService,
     putService,
-    deleteService
+    deleteService,
+    deleteRelationService
 }
 
 
