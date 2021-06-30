@@ -57,5 +57,10 @@
 
 .navBarContainer button:hover
 {
-    background-color:rgb(131, 114, 99) ;
+    background-color:rgb(131, 114, 99);
+}
+
+button 
+{
+    transition: 0.5s;
 }

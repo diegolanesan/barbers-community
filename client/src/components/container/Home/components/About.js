@@ -9,7 +9,7 @@ function About() {
                 <p class="font-prata text-xl text-primary mb-2"> Introducing </p>
                 <h2 class="font-prata text-4xl text-brown"> Barbers Community </h2>
                 <img src={aboutLogo} class="my-8" alt="About Logo"/>
-                <p class="font-lato text-text"> Barbers Community is a social platform that allows barbers to connect with their clients. Our clients, can reserve and pay for any type of barber service.</p>
+                <p class="font-lato text-text text-center"> Barbers Community is a social platform that allows barbers to connect with their clients. Our clients, can reserve and pay for any type of barber service.</p>
                 <button class="mt-8 mb-4 p-4 bg-brown text-white text-sm font-medium hover:bg-primary"> 
                 FIND YOUR NEXT BARBER 
                 </button>

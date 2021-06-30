@@ -156,25 +156,15 @@ const Register = () => {
 								<div className="mb-4 md:flex md:justify-between">
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
-<<<<<<< HEAD
 											className="block mb-2 text-sm font-bold"
 											// for="firstName"
-=======
-											className="block mb-2 text-sm font-bold text-gray-700"
-										// for="firstName"
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 										>
 											First Name
 										</label>
 										<input
-<<<<<<< HEAD
 											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${
 												errors.name && "border-red-500"
 											} shadow appearance-none focus:outline-none focus:shadow-outline`}
-=======
-											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${errors.name && "border-red-500"
-												} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 											// id="firstName"
 											type="text"
 											placeholder="First Name"
@@ -190,25 +180,15 @@ const Register = () => {
 									</div>
 									<div className="md:ml-2">
 										<label
-<<<<<<< HEAD
 											className="block mb-2 text-sm font-bold"
 											// for="lastName"
-=======
-											className="block mb-2 text-sm font-bold text-gray-700"
-										// for="lastName"
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 										>
 											Last Name
 										</label>
 										<input
-<<<<<<< HEAD
 											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${
 												errors.lastname && "border-red-500"
 											} shadow appearance-none focus:outline-none focus:shadow-outline`}
-=======
-											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${errors.lastname && "border-red-500"
-												} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 											id="lastName"
 											type="text"
 											placeholder="Last Name"
@@ -226,13 +206,8 @@ const Register = () => {
 								<div className="mb-4 md:flex md:justify-between">
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
-<<<<<<< HEAD
 											className="block mb-2 text-sm font-bold"
 											// for="firstName"
-=======
-											className="block mb-2 text-sm font-bold text-gray-700"
-										// for="firstName"
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 										>
 											Username
 										</label>
@@ -249,7 +224,6 @@ const Register = () => {
 									</div>
 									<div className="md:ml-2">
 										<label
-<<<<<<< HEAD
 											className="block mb-2 text-sm font-bold"
 											// for="lastName"
 										>
@@ -265,51 +239,6 @@ const Register = () => {
 											value={barber.location}
 											onChange={handleInputChange}
 										/>
-=======
-											className="block mb-2 text-sm font-bold text-gray-700"
-										// for="lastName"
-										>
-											Location
-										</label>
-										<PlacesAutocomplete
-											value={address}
-											onChange={handleChange}
-											onSelect={handleSelect}
-										>
-											{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-												<div>
-													<input
-														{...getInputProps({
-															placeholder: 'Search Places ...',
-															className: 'location-search-input',
-														})}
-													/>
-													<div className="autocomplete-dropdown-container">
-														{loading && <div>Loading...</div>}
-														{suggestions.map(suggestion => {
-															const className = suggestion.active
-																? 'suggestion-item--active'
-																: 'suggestion-item';
-															// inline style for demonstration purpose
-															const style = suggestion.active
-																? { backgroundColor: '#fafafa', cursor: 'pointer' }
-																: { backgroundColor: '#ffffff', cursor: 'pointer' };
-															return (
-																<div
-																	{...getSuggestionItemProps(suggestion, {
-																		className,
-																		style,
-																	})}
-																>
-																	<span>{suggestion.description}</span>
-																</div>
-															);
-														})}
-													</div>
-												</div>
-											)}
-										</PlacesAutocomplete>
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 									</div>
 								</div>
 								<div className="mb-4 md:flex md:justify-between">
@@ -333,13 +262,8 @@ const Register = () => {
 									</div>
 									<div className="md:ml-2">
 										<label
-<<<<<<< HEAD
 											className="block mb-2 text-sm font-bold"
 											// for="lastName"
-=======
-											className="block mb-2 text-sm font-bold text-gray-700"
-										// for="lastName"
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 										>
 											Biography
 										</label>
@@ -357,13 +281,8 @@ const Register = () => {
 								</div>
 								<div className="mb-4">
 									<label
-<<<<<<< HEAD
 										className="block mb-2 text-sm font-bold"
 										// for="email"
-=======
-										className="block mb-2 text-sm font-bold text-gray-700"
-									// for="email"
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 									>
 										Resume
 									</label>
@@ -381,13 +300,8 @@ const Register = () => {
 								<div className="mb-4 md:flex md:justify-between">
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
-<<<<<<< HEAD
 											className="block mb-2 text-sm font-bold"
 											// for="firstName"
-=======
-											className="block mb-2 text-sm font-bold text-gray-700"
-										// for="firstName"
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 										>
 											Type
 										</label>
@@ -434,14 +348,9 @@ const Register = () => {
 										Email
 									</label>
 									<input
-<<<<<<< HEAD
 										className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${
 											errors.email && "border-red-500"
 										} shadow appearance-none focus:outline-none focus:shadow-outline`}
-=======
-										className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${errors.email && "border-red-500"
-											} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 										id="email"
 										type="email"
 										placeholder="Email"
@@ -464,14 +373,9 @@ const Register = () => {
 											Password
 										</label>
 										<input
-<<<<<<< HEAD
 											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${
 												errors.password && "border-red-500"
 											} shadow appearance-none focus:outline-none focus:shadow-outline`}
-=======
-											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${errors.password && "border-red-500"
-												} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 											id="password"
 											type="password"
 											placeholder="*********"
@@ -490,25 +394,15 @@ const Register = () => {
 									</div>
 									<div className="md:ml-2">
 										<label
-<<<<<<< HEAD
 											className="block mb-2 text-sm font-bold"
 											// for="c_password"
-=======
-											className="block mb-2 text-sm font-bold text-gray-700"
-										// for="c_password"
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 										>
 											Confirm Password
 										</label>
 										<input
-<<<<<<< HEAD
 											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${
 												errors.confirmedPassword && "border-red-500"
 											} shadow appearance-none focus:outline-none focus:shadow-outline`}
-=======
-											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${errors.confirmedPassword && "border-red-500"
-												} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
->>>>>>> 06fdc5184e46ee9c5830a4626f893fa1aa2cc4d0
 											id="c_password"
 											type="password"
 											placeholder="*********"

@@ -101,7 +101,7 @@ const changeCartStateMercadoPago = async(req, res) => {
         from:`Community Barber's <${USER_EMAIL}>`,
         to: client.email,
         subject: "Confirmed Order",
-        html: confirmationMail(totalAmount)
+        html: confirmationMail(cart, client)
       };
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
