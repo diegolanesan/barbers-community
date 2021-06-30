@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { signInClient } from "../../../redux/action/auth";
 import { useHistory, Link } from "react-router-dom";
 import GoogleLogin from 'react-google-login';
-import cutHair from "../../../resources/hero.jpg";
+import hero from "../../../resources/other-hero.jpg";
 import { signInBarberWithGoogle, signInClientWithGoogle } from "../../../redux/action/auth";
 
 function LoginClient() {
@@ -36,9 +36,9 @@ function LoginClient() {
 		
 	}
 	return (
-		<div class="flex flex-col md:flex-row h-screen items-center">
+		<div class="flex flex-col md:flex-row h-full items-center font-lato text-primary">
 			<div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-				<img src={cutHair} alt="" class="w-full h-full object-cover" />
+				<img src={hero} alt="" class="w-full h-full object-cover" />
 			</div>
 
 			<div
@@ -52,38 +52,38 @@ function LoginClient() {
 
 					<form class="mt-6" action="#" method="POST" onSubmit={handleSubmit}>
 						<div>
-							<label class="block text-gray-700">Email Address</label>
+							<label class="block">Email Address</label>
 							<input
 								type="email"
 								name="email"
 								onChange={handleChange}
 								placeholder="Enter Email Address"
-								class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+								class="w-full px-4 py-3 bg-gray-200 mt-2 border focus:border-secondary focus:bg-white focus:outline-none"
 							/>
 						</div>
 
 						<div class="mt-4">
-							<label class="block text-gray-700">Password</label>
+							<label class="block">Password</label>
 							<input
 								type="password"
 								name="password"
 								onChange={handleChange}
 								placeholder="Enter Password"
 								minlength="2"
-								class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+								class="w-full px-4 py-3 bg-gray-200 mt-2 border focus:border-secondary
                         focus:bg-white focus:outline-none"
 							/>
 						</div>
 
 						<div class="text-right mt-2">
-							<Link to="/" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">
+							<Link to="/" class="text-sm font-semibold text-gray-700 hover:text-secondary focus:text-secondary">
 								Forgot Password?
 							</Link>
 						</div>
 
 						<button
 							type="submit"
-							class="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
+							class="w-full block bg-secondary hover:bg-primary focus:bg-primary text-white font-semibold 
                       px-4 py-3 mt-6"
 						>
 							Log In
@@ -99,7 +99,8 @@ function LoginClient() {
 						render={renderProps => (
 							<button
 						type="button" onClick={renderProps.onClick} disabled={renderProps.disabled}
-						class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
+						class="w-full block bg-white hover:bg-primary hover:text-white focus:bg-primary 
+						focus:text-white text-primary font-semibold px-4 py-3 border border-primary"
 						>
 						<div class="flex items-center justify-center">
 							<span class="ml-4">Log in with Google</span>
@@ -114,7 +115,7 @@ function LoginClient() {
 
 					<p class="mt-8">
 						Need an account?{" "}
-						<Link to="/clients/register" class="text-blue-500 hover:text-blue-700 font-semibold">
+						<Link to="/clients/register" class="text-secondary hover:text-primary font-semibold">
 							Create an account
 						</Link>
 					</p>

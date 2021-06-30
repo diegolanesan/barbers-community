@@ -8,6 +8,7 @@ import { loadUser } from "../../../redux/action/auth";
 import axios from "axios";
 import About from "./components/About";
 import Services from "./components/Services";
+import Footer from './components/Footer'
 import heading from '../../../resources/heading-line.png'
 
 function Home() {
@@ -41,6 +42,7 @@ function Home() {
 
 			<About />
 			<Services />
+			<Footer />
 		</div>
 	);
 }

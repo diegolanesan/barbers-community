@@ -7,7 +7,7 @@ import barbershop from '../../../../resources/barbershop.png'
 
 function Services() {
     return (
-        <div class="bg-background my-8">
+        <div class="bg-background mt-8 mb-12">
             <div class="flex flex-col justify-center text-center">
                 <h2 class="font-prata text-4xl text-primary mt-16"> Our Services </h2>
                 <img class="w-36 mt-8 mb-4 mx-auto"src={heading} alt="line"></img>

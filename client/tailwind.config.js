@@ -18,7 +18,8 @@ module.exports = {
         brown: '#9e8a78',
         gray: '#7a7a7c',
         text: '#777',
-        background: '#fcf9f5'
+        background: '#fcf9f5',
+        otherGray: '#999'
       },
       fontFamily: {
         'prata': ['Prata', 'sans-serif'],
