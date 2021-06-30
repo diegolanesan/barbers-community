@@ -12,6 +12,12 @@ import adminsReducer from "./admins";
 import reducerCategory from "./categories";
 import reviewsReducer from "./reviews";
 import reducerWishList from "./wishlist";
+import reducerServiceCRUD from "./serviceCRUD";
+import reducerStyle from "./styles";
+
+export default combineReducer;
+
+
 
 function combineReducer(state = {}, action) {
 	return {
@@ -29,7 +35,10 @@ function combineReducer(state = {}, action) {
 		category: reducerCategory(state.category, action),
 		reviews: reviewsReducer(state.reviews, action),
 		wishlist: reducerWishList(state.wishlist, action),
-	};
-}
+      style: reducerStyle(state.style, action),
+      serviceCrud: reducerServiceCRUD(state.serviceCrud, action)
 
-export default combineReducer;
+    };
+  }
+  
+  export default combineReducer;  

@@ -10,6 +10,10 @@ export const GET_CARTS_BY_BARBER_ID = "GET_CARTS_BY_BARBER_ID"
 export const GET_CARTS_BY_USER = "GET_CARTS_BY_USER"
 export const GET_STATUS_APPOINTMENTS = "GET_STATUS_APPOINTMENTS"
 export const CHANGE_ORDER_STATUS = "CHANGE_ORDER_STATUS"
+export const GET_PAID_APPOINTMENTS = "GET_PAID_APPOINTMENTS"
+export const GET_ACTIVE_APPOINTMENTS = "GET_ACTIVE_APPOINTMENTS"
+export const GET_REJECTED_APPOINTMENTS = "GET_REJECTED_APPOINTMENTS"
+export const GET_APPOINTMENTS = "GET_APPOINTMENTS"
 
 
 // ACTIONS PARA CARRITO DE GUEST
@@ -39,6 +43,33 @@ export const addToGuestCart = (service) => {
     
     localStorage.setItem('cart', JSON.stringify(cart))
 }
+
+export const getPaidAppointments = () => (dispatch) => {
+        const status = "Paid"
+		return axios.get(HOST_BACK + "/cart/state/" + status).then((response) => {
+		console.log(response.data);
+            dispatch({ type: GET_PAID_APPOINTMENTS, payload: response.data });
+	});
+}
+export const getActiveAppointments = () => (dispatch) => {
+    const status = "Active"
+    return axios.get(HOST_BACK + "/cart/state/" + status).then((response) => {
+    console.log(response.data);
+        dispatch({ type: GET_ACTIVE_APPOINTMENTS, payload: response.data });
+});
+}
+export const getRejectedAppointments = () => (dispatch) => {
+    const status = "Rejected"
+    return axios.get(HOST_BACK + "/cart/state/" + status).then((response) => {
+    console.log(response.data);
+        dispatch({ type: GET_REJECTED_APPOINTMENTS, payload: response.data });
+});
+}
+
+export const getAppointments = () => (dispatch) =>
+	axios
+		.get(HOST_BACK + "/cart/")
+		.then((res) => dispatch({ type: GET_APPOINTMENTS, payload: res.data }));
 
 export const removeFromGuestCart = (service) => {
     let cart = getGuestCart();
@@ -145,7 +176,7 @@ export const changeOrderStatus = (cartId, body) => (dispatch) => {
     // console.log(body);
    
     return axios.put("http://localhost:3001/cart/status/" + cartId, body).then((response) => {
-         dispatch({ type: "CHANGE_ORDER_STATUS", payload: response.data });
+         dispatch({ type: CHANGE_ORDER_STATUS, payload: response.data });
          //removeFromGuestCart(body)
    });
 
