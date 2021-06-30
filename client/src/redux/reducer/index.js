@@ -10,25 +10,26 @@ import appointmentReduer from "./appointment";
 import reducerCart from "./cart";
 import adminsReducer from "./admins";
 import reducerCategory from "./categories";
-import reviewsReducer from "./reviews"
-
+import reviewsReducer from "./reviews";
+import reducerWishList from "./wishlist";
 
 function combineReducer(state = {}, action) {
-    return {
-      appointments: appointmentReduer(state.appointments, action),
-      auth: authReducer(state.auth, action),
-      barbers: barbersReducer(state.barbers, action),
-      admins: adminsReducer(state.admins, action),
-      publication: reducerPublication(state.publication,action),
-      barberDetail: reducerBarberDetail(state.barberDetail,action),
-      services: reducerServices(state.services, action),
-      types: reducerTypes(state.types, action),
-      clients: clientsReducer(state.clients, action),
-      recovery: reducerRecovery(state.recovery, action),
-      cart: reducerCart(state.cart, action),
-      category: reducerCategory(state.category, action),
-      reviews: reviewsReducer(state.reviews, action)
-    };
-  }
-  
-  export default combineReducer;
+	return {
+		appointments: appointmentReduer(state.appointments, action),
+		auth: authReducer(state.auth, action),
+		barbers: barbersReducer(state.barbers, action),
+		admins: adminsReducer(state.admins, action),
+		publication: reducerPublication(state.publication, action),
+		barberDetail: reducerBarberDetail(state.barberDetail, action),
+		services: reducerServices(state.services, action),
+		types: reducerTypes(state.types, action),
+		clients: clientsReducer(state.clients, action),
+		recovery: reducerRecovery(state.recovery, action),
+		cart: reducerCart(state.cart, action),
+		category: reducerCategory(state.category, action),
+		reviews: reviewsReducer(state.reviews, action),
+		wishlist: reducerWishList(state.wishlist, action),
+	};
+}
+
+export default combineReducer;
