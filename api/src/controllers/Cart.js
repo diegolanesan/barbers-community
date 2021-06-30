@@ -145,6 +145,12 @@ const getCartbyBarberId = async(req, res) => {
     res.send(cart)
 }
 
+const getSomeCarts = async(req, res) => {
+    const cart = await Cart.findAll({where: {state: ["Paid","Rejected","Pending"] }, include: {all: true, nested: true}})
+    //console.log(cart)
+    res.send(cart)
+}
+
 
 const removeProductFromCart = async(req, res) => {
     const  userId = req.params.id
@@ -211,5 +217,6 @@ module.exports = {
     getCartbyBarberId,
     resetUserCart,
     getStatusAppointments,
-    changeOrderStatus
+    changeOrderStatus,
+    getSomeCarts
 };

@@ -11,7 +11,8 @@ const { addItem,
     resetUserCart,
     getStatusAppointments,
     getCartsByUser,
-    changeOrderStatus} = require('../controllers/Cart');
+    changeOrderStatus,
+    getSomeCarts} = require('../controllers/Cart');
 
 server.post("/addItem/:id", addItem)
 
