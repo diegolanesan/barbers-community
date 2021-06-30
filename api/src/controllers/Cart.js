@@ -60,7 +60,8 @@ const getAllCarts = async(req, res) => {
 
 const getCartsById = async(req, res) => {
     const { cartId } = req.params.id
-    const cart = await Cart.findOne({ where: { id: id } })
+    const cart = await Cart.findOne({ where: { id: cartId } })
+    res.send(carts)
 }
 
 const getCartsByUser = async(req, res) => {
@@ -134,13 +135,20 @@ const getAppointments = async(req, res) => {
 const getStatusAppointments = async(req, res) => {
     const status = req.params.status
     const cart = await Cart.findAll({where: {state: status}, include: {all: true, nested: true}})
-    console.log(cart)
-    res.send(cart)
+    console.log(cart.length)
+    res.send(cart.length)
 } 
 
 const getCartbyBarberId = async(req, res) => {
     const barberId = req.params.id
     const cart = await Cart.findAll({where: {barberId: barberId}, include: {all: true, nested: true}})
+    //console.log(cart)
+    res.send(cart)
+}
+
+const getSomeCarts = async(req, res) => {
+    console.log("KENTAROOOOO")
+    const cart = await Cart.findAll({where: {state: ["Paid","Rejected","Pending"] }, include: {all: true, nested: true}})
     //console.log(cart)
     res.send(cart)
 }
@@ -209,7 +217,12 @@ module.exports = {
     changeCartState,
     changeCartStateMercadoPago,
     getCartbyBarberId,
+<<<<<<< Updated upstream
     resetUserCart,
     getStatusAppointments,
     changeOrderStatus
+=======
+    getStatusAppointments,
+    getSomeCarts
+>>>>>>> Stashed changes
 };
