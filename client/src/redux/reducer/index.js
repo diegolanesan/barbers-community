@@ -11,10 +11,9 @@ import reducerCart from "./cart";
 import adminsReducer from "./admins";
 import reducerCategory from "./categories";
 import reviewsReducer from "./reviews"
-import reducerStyle from "./styles";
 import reducerServiceCRUD from "./serviceCRUD";
 import reducerStyle from "./styles";
-import reducerServiceCRUD from "./serviceCRUD";
+
 
 
 
