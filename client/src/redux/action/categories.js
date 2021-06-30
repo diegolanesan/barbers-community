@@ -13,9 +13,9 @@ export const PUT_CATEGORY = "PUT_CATEGORY";
 export const PUT_CATEGORY_SUCCESS = "PUT_CATEGORY_SUCCESS";
 export const PUT_CATEGORY_FAIL = "PUT_CATEGORY_FAIL";
 
-export const GET_CATEGORY = "GET_CATEGORY";
-export const GET_CATEGORY_SUCCESS = "GET_CATEGORY_SUCCESS";
-export const GET_CATEGORY_FAIL = "GET_CATEGORY_FAIL";
+export const GET_ALL_CATEGORY = "GET_ALL_CATEGORY";
+export const GET_ALL_CATEGORY_SUCCESS = "GET_ALL_CATEGORY_SUCCESS";
+export const GET_ALL_CATEGORY_FAIL = "GET_ALL_CATEGORY_FAIL";
 
 export const postCategory = (category) => (dispatch) => {
     dispatch({type:POST_CATEGORY});
@@ -40,7 +40,6 @@ export const putCategory = (id, category) => (dispatch) =>{
         (err)=> dispatch({type: PUT_CATEGORY_FAIL, payload:err.message})
     )
 }
-<<<<<<< HEAD
 export const getAllCategory = ()=> (dispatch)=>{
     dispatch({type:GET_ALL_CATEGORY})
     axios.get(HOST_BACK + "/admin/categories/all").then(
@@ -53,13 +52,3 @@ export const getAllCategory = ()=> (dispatch)=>{
     ) 
 } 
 
-=======
-
-export const getCategory = () => (dispatch) =>{
-    dispatch({type:GET_CATEGORY});
-    axios.get(`${HOST_BACK}/admin/categories/all`).then(
-        (resp)=> dispatch({type:GET_CATEGORY_SUCCESS , payload:resp.data}),
-        (err)=> dispatch({type: GET_CATEGORY_FAIL, payload:err.message})
-    )
-}
->>>>>>> a4a3a75c04ebcbcf8e11c52742b9f9964eb0ba75

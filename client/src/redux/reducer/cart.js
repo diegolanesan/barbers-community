@@ -79,8 +79,6 @@ const reducerCart = (state=initialState, action)=>{
             ...state,
             appoinments: action.payload
         }
-        case CHANGE_ORDER_STATUS:
-            return state
         default:
             return state
     }

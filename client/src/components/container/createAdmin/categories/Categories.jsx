@@ -63,7 +63,6 @@ const Categories = ()=>{
            })
         }
        
-        console.log(form2)
     };
 
     const handleClickEdit = (id)=>{
