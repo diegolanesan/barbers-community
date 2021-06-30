@@ -176,7 +176,7 @@ export const changeOrderStatus = (cartId, body) => (dispatch) => {
     // console.log(body);
    
     return axios.put("http://localhost:3001/cart/status/" + cartId, body).then((response) => {
-         dispatch({ type: "CHANGE_ORDER_STATUS", payload: response.data });
+         dispatch({ type: CHANGE_ORDER_STATUS, payload: response.data });
          //removeFromGuestCart(body)
    });
 

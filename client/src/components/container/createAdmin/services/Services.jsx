@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Services.css";
 import { useDispatch, useSelector } from "react-redux";
-import { postCategory, deleteCategory, putCategory, getAllCategory} from "../../../../redux/action/categories";
+import { postCategory, deleteCategory, putCategory, getCategory} from "../../../../redux/action/categories";
 import axios from "axios";
 import { deleteServicesCRUD, postServicesCRUD, putServicesCRUD } from "../../../../redux/action/servicesCRUD";
 
@@ -14,7 +14,7 @@ const Services = ()=>{
 
     //--------USE EFFECT-----------
     React.useEffect(()=>{
-        dispatch(getAllCategory())
+        dispatch(getCategory())
     },[])
 
 
