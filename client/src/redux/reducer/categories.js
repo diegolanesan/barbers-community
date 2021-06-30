@@ -7,7 +7,10 @@ import {
     PUT_CATEGORY_FAIL,
     DELETE_CATEGORY,
     DELETE_CATEGORY_SUCCESS,
-    DELETE_CATEGORY_FAIL } from "../action/categories";
+    DELETE_CATEGORY_FAIL, 
+    GET_ALL_CATEGORY_FAIL,
+    GET_ALL_CATEGORY,
+    GET_ALL_CATEGORY_SUCCESS} from "../action/categories";
 
 const initialState = {
     loading: false,
@@ -51,6 +54,18 @@ const reducerCategory = (state=initialState, action)=>{
                 ...state, resp: action.payload , loading: false
             }
         case DELETE_CATEGORY_FAIL:
+            return {
+                ...state, err: action.payload , loading: false
+            }
+        case GET_ALL_CATEGORY:
+            return{
+                ...state, loading: true
+            }
+        case GET_ALL_CATEGORY_SUCCESS:
+            return {
+                ...state, resp: action.payload , loading: false
+            }
+        case GET_ALL_CATEGORY_FAIL:
             return {
                 ...state, err: action.payload , loading: false
             }
