@@ -1,284 +1,210 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import jwtDecode from 'jwt-decode'
+import { getClientById, putClient} from '../../../../redux/action/clients';
+import axios from "axios";
+import "./Config.css"
+const ClientConfig = () => {
+    const dispatch = useDispatch()
+    const adminSelected = useSelector(state => state.clients.clientDetail)
+    const token = jwtDecode(localStorage.getItem("clientToken"))
+    const id = token.id
+    console.log(token)
+    const newAdmin = {
+        name: "",
+        lastname: "",
+        email: "",
+        password: "",
+        confirmedPassword: "",
+        location: "",
+        mobile: "",
+        image: [""],
+    }
 
+    const [admin, setAdmin] = useState(newAdmin) 
+    const [loading, setLoading] = useState(true)
 
-const BarberEdit = () => {
+    function fetchData() {
+        dispatch(getClientById(id))
+    }
+      
+    useEffect(() => {
+        if(loading) {
+            fetchData()
+            adminSelected && setLoading(false)
+        } else {
+            setAdmin(adminSelected)
+        }
+    
+    }, [adminSelected])
+    const handleInputChange = (e) => {
+        setAdmin({
+          ...admin,
+          [e.target.name]: e.target.value,
+        });
+    };
+    
+    const handleSubmit = () => {
+      if(!admin.name || !admin.lastname ||
+          !admin.email || !admin.password || !admin.confirmedPassword 
+          || !admin.location || !admin.mobile) {
+            alert("Please complete all the camps")
+      } else if (admin.password !== admin.confirmedPassword) {
+            alert("password and confirm password must be the same")
+      } else {
+        const adminSend = {
+          clientModified: {
+              name: admin.name,
+              lastname: admin.lastname,
+              email: admin.email,
+              password: admin.confirmedPassword,
+              location: admin.location,
+              mobile: admin.mobile,
+          }
+      };
+      dispatch(putClient(id,adminSend))
+      alert("Updated Successfully")
+      }
+    };
+    console.log(admin, "aaaa")
 
+    //--------------CLOUDINARY------------
+    const [error, setError]= React.useState({
+      image: false
+  })
+
+    const handleChange = async (e) => {
+      const files = e.target.files;
+        const data = new FormData();
+        data.append("file", files[0]);
+        data.append("upload_preset", "Product");
+        setError({ ...error, image: true });
+        const res = await axios.post( "https://api.cloudinary.com/v1_1/dtqd9ehbe/image/upload", data);
+        const file = res.data;
+        const url = file.secure_url;
+        dispatch(putClient(id,{clientModified:{image:[url]}} ));
+        setAdmin({ ...admin, image: [url]});
+        setError({ ...error, image: false });
+    }
+    const handleCruz2 = ()=>{
+      setAdmin({ ...admin, image: [""]});
+  }
     return (
-        <body class="">
-            {/* <!-- Container --> */}
-            <div class="container mx-auto h-20">
-                <div class="flex justify-center py-10 px-6 ">
-                    {/* <!-- Row --> */}
-                    <div class="w-full justify-center xl:w-3/4 lg:w-11/12 flex">
-                        {/* <!-- Col --> */}
-                        {/* <div
-
-                            class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
-                            style={{ backgroundImage: "url('https://www.bu.edu/files/2019/04/resize-19-1292-BARBER2-076.jpg')" }}
-                        ></div> */}
-						{/* <!-- Col --> */}
-						<div class="w-full  lg:w-7/12 bg-white p-5 rounded-lg">
-							<h3 class="pt-4 text-2xl text-center">Edit your profile!</h3>
-							<form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
-								<div class="mb-4 md:flex md:justify-between">
-									<div class="mb-4 md:mr-2 md:mb-0">
-										<label
-											class="block mb-2 text-sm font-bold text-gray-700"
-											for="firstName"
-										>
-											First Name
-										</label>
-										<input
-											class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="firstName"
-											type="text"
-											placeholder="First Name"
-											name="name"
-											// value={barber.name}
-											// onChange={handleInputChange}
-										/>
-									</div>
-									<div class="md:ml-2">
-										<label
-											class="block mb-2 text-sm font-bold text-gray-700"
-											for="lastName"
-										>
-											Last Name
-										</label>
-										<input
-											class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="lastName"
-											type="text"
-											placeholder="Last Name"
-											name="lastname"
-											// value={barber.lastname}
-											// onChange={handleInputChange}
-										/>
-									</div>
-								</div>
-								<div class="mb-4 md:flex md:justify-between">
-									<div class="mb-4 md:mr-2 md:mb-0">
-										<label
-											class="block mb-2 text-sm font-bold text-gray-700"
-											for="firstName"
-										>
-											Username
-										</label>
-										<input
-											class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="userName"
-											type="text"
-											placeholder="Username"
-											name="alias"
-											// value={barber.alias}
-											// onChange={handleInputChange}
-										/>
-									</div>
-									<div class="md:ml-2">
-										<label
-											class="block mb-2 text-sm font-bold text-gray-700"
-											for="lastName"
-										>
-											Location
-										</label>
-										<input
-											class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="location"
-											type="text"
-											placeholder="location"
-											name="location"
-											// value={barber.location}
-											// onChange={handleInputChange}
-										/>
-									</div>
-								</div>
-								<div class="mb-4 md:flex md:justify-between">
-									<div class="mb-4 md:mr-2 md:mb-0">
-										<label
-											class="block mb-2 text-sm font-bold text-gray-700"
-											for="firstName"
-										>
-											Phone
-										</label>
-										<input
-											class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="phone"
-											type="number"
-											placeholder="phone"
-											name="mobile"
-											// value={barber.mobile}
-											// onChange={handleInputChange}
-										/>
-									</div>
-									<div class="md:ml-2">
-										<label
-											class="block mb-2 text-sm font-bold text-gray-700"
-											for="lastName"
-										>
-											Biography
-										</label>
-										<input
-											class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="biography"
-											type="text"
-											placeholder="Short Biography"
-											name="bio"
-											// value={barber.bio}
-											// onChange={handleInputChange}
-										/>
-									</div>
-								</div>
-								<div class="mb-4">
-									<label
-										class="block mb-2 text-sm font-bold text-gray-700"
-										for="email"
-									>
-										Resume
-									</label>
-									<textarea
-										class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-										id="resume"
-										type="text"
-										placeholder="About You"
-										name="resume"
-										// value={barber.resume}
-										// onChange={handleInputChange}
-									/>
-								</div>
-								<div class="mb-4 md:flex md:justify-between">
-									<div class="mb-4 md:mr-2 md:mb-0">
-										<label
-											class="block mb-2 text-sm font-bold text-gray-700"
-											for="firstName"
-										>
-											Type
-										</label>
-										<select
-											name="type"
-											// value={barber.type}
-											// onChange={handleInputChange}
-										>
-											<option value="Urban">Urban</option>
-											<option value="Academy">Academy</option>
-											<option value="Hair technician">Tecnico Capilar</option>
-											<option value="Seminary">Seminarios</option>
-										</select>
-										{/* <input
-                                            class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                            id="firstName"
-                                            type="text"
-                                            placeholder="First Name"
-                                            name="type"
-                                            value={barber.type}
-                                            onChange={handleInputChange}
-                                        /> */}
-									</div>
-									<div class="md:ml-2">
-										<label
-											class="block mb-2 text-sm font-bold text-gray-700"
-											for="email"
-										>
-											Profile Image
-										</label>
-										<input
-											class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="image"
-											type="file"
-											name="image"
-											// value={barber.img}
-											// onChange={handleInputChange}
-										/>
-									</div>
-								</div>
-								<div class="mb-4">
-									<label
-										class="block mb-2 text-sm font-bold text-gray-700"
-										for="email"
-									>
-										Email
-									</label>
-									<input
-										class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-										id="email"
-										type="email"
-										placeholder="Email"
-										name="email"
-										// value={barber.email}
-										// onChange={handleInputChange}
-									/>
-								</div>
-								<div class="mb-4 md:flex md:justify-between">
-									<div class="mb-4 md:mr-2 md:mb-0">
-										<label
-											class="block mb-2 text-sm font-bold text-gray-700"
-											for="password"
-										>
-											Password
-										</label>
-										<input
-											class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="password"
-											type="password"
-											placeholder="******************"
-											name="password"
-											// value={barber.password}
-											// onChange={handleInputChange}
-										/>
-										<p class="text-xs italic text-red-500">
-											Please choose a password.
-										</p>
-									</div>
-									<div class="md:ml-2">
-										<label
-											class="block mb-2 text-sm font-bold text-gray-700"
-											for="c_password"
-										>
-											Confirm Password
-										</label>
-										<input
-											class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="c_password"
-											type="password"
-											placeholder="******************"
-											name="confirmedPassword"
-											// value={barber.confirmedPassword}
-											// onChange={handleInputChange}
-										/>
-									</div>
-								</div>
-								<div class=" text-center">
-									<button
-										// onClick={() => handleSubmit()}
-										class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-										type="button"
-									>
-										Edit Barber
-									</button>
-								</div>
-								{/* <hr class="mb-6 border-t" /> */}
-								{/* <div class="text-center">
-                                    <a
-                                        class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                                        href="#"
-                                    >
-                                        Forgot Password?
-                                    </a>
-                                </div>
-                                <div class="text-center">
-                                    <a
-                                        class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                                        href="./index.html"
-                                    >
-                                        Already have an account? Login!
-                                    </a>
-                                </div> */}
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</body>
-	);
-};
-
-export default BarberEdit;
+        <div class="flex grid h-screen bg-gray-200 items-center justify-center ">
+          <div class="grid bg-white rounded-lg shadow-xl w-11/12  md:w-11/12 mx-12 mt-10">
+            <div class="flex justify-center">
+              <div class="flex">
+                <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Change your Info</h1>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mt-5 mx-7">
+              <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">First Name</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                        id="firstName"
+                        type="text"
+                        placeholder="First Name"
+                        name="name"
+                        value={admin.name}
+                        onChange={handleInputChange}
+                />
+              </div>
+              <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Last Name</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                        id="lastname"
+                        type="text"
+                        placeholder="Last Name"
+                        name="lastname"
+                        value={admin.lastname}
+                        onChange={handleInputChange} 
+                />
+              </div>
+                 <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Location</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        id="location"
+                        type="text"
+                        placeholder="location"
+                        name="location"
+                        value={admin.location}
+                        onChange={handleInputChange}
+                />
+            </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+              <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Phone</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                        id="phone"
+                        type="number"
+                        placeholder="phone"
+                        name="mobile"
+                        value={admin.mobile}
+                        onChange={handleInputChange}
+                />
+              </div> 
+            <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Email</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                        id="email"
+                        type="email"
+                        placeholder="example@mail.com"
+                        name="email"
+                        value={admin.email}
+                        onChange={handleInputChange}
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 mt-5 mx-7">
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Image</label>
+            <div className="p-2 border-r imagen">
+              {
+                error.image === false && admin.image[0] !== "" ? 
+                (<>
+                <div>
+                <img src={admin.image[0]} alt=""/>
+                <div className="cruz" onClick={()=>{handleCruz2()}}>X</div>
+                </div>
+                </>
+                ) :
+                error.image === true && admin.image[0] !== "" ?
+                (<div><p>LOADING...</p></div>) :
+                (<><p>UPLOAD IMAGE</p>
+                <input type="file" onChange={handleChange} className="border p-1"></input>
+                
+                </>)
+              }
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+            <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Password</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                        id="password"
+                        type="password"
+                        placeholder="******************"
+                        name="password"
+                        value={admin.password}
+                        onChange={handleInputChange}
+                />
+              </div> <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Confirm Password</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                        id="c_password"
+                        type="password"
+                        placeholder={`*********`}
+                        name="confirmedPassword"
+                        value={admin.confirmedPassword}
+                        onChange={handleInputChange}
+                />
+              </div>
+              </div>
+            <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
+              <button class='w-auto bg-blue-500 hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2' onClick={() => handleSubmit()}>Update</button>
+            </div>
+        
+          </div>
+        </div>
+  )}
+export default ClientConfig

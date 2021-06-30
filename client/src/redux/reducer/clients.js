@@ -1,8 +1,9 @@
-import {DELETE_CLIENT, GET_CLIENT, GET_APPOINTMENTS_BY_CLIENT_ID} from "../action/clients"
+import {DELETE_CLIENT, GET_CLIENT, GET_APPOINTMENTS_BY_CLIENT_ID, GET_CLIENT_BY_ID} from "../action/clients"
 
 const initialState = {
     appointments: [],
     clientsLoaded: [],
+    clientDetail: []
 }
 
 const clientsReducer = (state = initialState, action) => {
@@ -22,11 +23,16 @@ const clientsReducer = (state = initialState, action) => {
                 ...state,
                 clientsLoaded: state.clientsLoaded.filter((client) => client.id !== action.payload)
             }
-        case "GET_APPOINTMENTS_BY_CLIENT_ID":
+        case GET_APPOINTMENTS_BY_CLIENT_ID:
             return {
                 ...state,
                 appointments: action.payload
             }
+        case GET_CLIENT_BY_ID:
+        return {
+            ...state,
+            clientDetail: action.payload
+        }
         default:
             return state
     }
