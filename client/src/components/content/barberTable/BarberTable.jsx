@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { deleteBarber, getBarbers, putBarber } from '../../../redux/action/barbers';
+import { deleteBarber, getBarbers, putBarber, getBarbersByName } from '../../../redux/action/barbers';
 
 const BarberTable = () => {
-
+    const [input, setinput] = useState("");
     const dispatch = useDispatch()
+    const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
     useEffect(() => {
         dispatch(getBarbers())
     }, [])
@@ -14,21 +15,32 @@ const BarberTable = () => {
         window.location.reload()
     }
 
+    
+	function onChange(e) {
+		setinput(e.target.value);
+	}
+    
+    function onSubmit(e) {
+        e.preventDefault();
+		dispatch(getBarbersByName(input));
+		setinput("");
+	}
+    
     const changeStatus = (barber) => {
         console.log(barber.id, barber.status)
         const barberModified = {
-			barberModify: {
-				status: !barber.status,
+            barberModify: {
+                status: !barber.status,
 			},
 		};
         dispatch(putBarber(barber.id, barberModified))
         window.location.reload()
     }
-
-    const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
-
+    
+    
     console.log(barbersLoaded)
-
+    console.log(input)
+    
     return (
         <div className="tracking-wide font-bold bg-gray-200">
             <div className=" mb-4  flex justify-center">
@@ -38,15 +50,15 @@ const BarberTable = () => {
                         Create category
                     </a>
                 </button> */}
-                <div className="relative mr-6 my-4 mb-1">
-                    <input type="search" className="bg-purple-white w-26 shadow rounded border-0 p-3" placeholder="Search by name...   " />
-                    <button className="bg-gray" title="Buscar Categoria">🔍</button>
+                <form className="relative mr-6 my-4 mb-1" onSubmit={onSubmit} >
+                    <input type="search" value={input} onChange={onChange} className="bg-purple-white w-26 shadow rounded border-0 p-3" placeholder="Search by name...   " />
+                    <button className="bg-gray" type="submit"  title="Buscar Categoria">🔍</button>
                     <div className="absolute pin-r pin-t mt-3 mr-4 text-purple-lighter">
                         <svg version="1.1" class="h-4 text-dark" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 52.966 52.966" style={{ enableBackground: "new 0 0 52.966 52.966" }} xmlSpace="preserve">
                         </svg>
                     </div>
-                </div>
+                </form>
             </div >
 
             <table className="border-collapse w-full">

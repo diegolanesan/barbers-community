@@ -1,14 +1,18 @@
 import {
     ADD_TO_CART, REMOVE_FROM_CART, GET_ACTIVE_CART_FROM_USER_ID,
     RESET_USER_CART, CHANGE_CART_STATE, CHANGE_CART_STATE_MERCADO_PAGO,
-    GET_CARTS_BY_BARBER_ID, GET_CARTS_BY_USER, GET_STATUS_APPOINTMENTS, CHANGE_ORDER_STATUS
+    GET_CARTS_BY_BARBER_ID, GET_CARTS_BY_USER, GET_PAID_APPOINTMENTS,
+    GET_ACTIVE_APPOINTMENTS, GET_REJECTED_APPOINTMENTS, GET_APPOINTMENTS
 } from "../action/cart";
 
 const initialState = {
     cart: [],
     gessCart: [],
     activeCart: {},
-    statusAppoinments: [],
+    appoinments: [],
+    paidAppoinments: [],
+    activeAppoinments: [],
+    rejectedAppoinments: [],
     barberAppointments: [],
     clientsAppointments: []
 }
@@ -55,10 +59,29 @@ const reducerCart = (state=initialState, action)=>{
             ...state,
             clientsAppointments: action.payload
         }
-        case GET_STATUS_APPOINTMENTS: 
+        case GET_PAID_APPOINTMENTS: 
+        console.log("kentaro")
         return {
             ...state,
-            statusAppoinments: action.payload
+            paidAppoinments: action.payload
+        }
+        case GET_ACTIVE_APPOINTMENTS: 
+        console.log("kentaro")
+        return {
+            ...state,
+            activeAppoinments: action.payload
+        }
+        case GET_REJECTED_APPOINTMENTS: 
+        console.log("kentaro")
+        return {
+            ...state,
+            rejectedAppoinments: action.payload
+        }
+        case GET_APPOINTMENTS: 
+        console.log("kentaro")
+        return {
+            ...state,
+            appoinments: action.payload
         }
         case CHANGE_ORDER_STATUS:
             return state
