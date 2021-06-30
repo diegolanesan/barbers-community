@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
 	sequelize.define(
 		"barber",
 		{
-		name: {
+			name: {
 				type: DataTypes.STRING,
 				allowNull: false,
 			},
@@ -55,16 +55,12 @@ module.exports = (sequelize) => {
 			allowNull: false,
 			defaultValue: "Urban"
 		},
-		slots: {
+		slots:{
 			type: DataTypes.ARRAY(STRING),
+			allowNull: false,
 			defaultValue: ["09:00", "10:00", "11:00", "12:00"]
-		},
-		hairType: {
-			type: DataTypes.STRING
-		},
-		faceType: {
-			type: DataTypes.STRING
 		}
 
 	},{ timestamps: false })
 };
+
