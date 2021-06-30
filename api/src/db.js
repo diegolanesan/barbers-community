@@ -116,6 +116,7 @@ Client.belongsTo(FaceType);
 HairType.hasMany(Client);
 Client.belongsTo(HairType);
 
+//modificación para mergeo
 // Relaciones de carrito de compras
 Client.hasMany(Cart)
 Cart.belongsTo(Client)
