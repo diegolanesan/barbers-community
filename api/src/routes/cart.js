@@ -10,7 +10,8 @@ const { addItem,
     getAppointments,
     resetUserCart,
     getStatusAppointments,
-    getCartsByUser} = require('../controllers/Cart');
+    getCartsByUser,
+    changeOrderStatus} = require('../controllers/Cart');
 
 server.post("/addItem/:id", addItem)
 
@@ -21,6 +22,8 @@ server.delete("/:id", removeProductFromCart)
 server.get("/active/:id", getActiveCartFromUser)
 
 server.put("/state/:id", changeCartState)
+
+server.put("/status/:id", changeOrderStatus)
 
 server.put("/state/payment/:id", changeCartStateMercadoPago)
 

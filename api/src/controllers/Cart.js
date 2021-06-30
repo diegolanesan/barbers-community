@@ -164,13 +164,24 @@ const removeProductFromCart = async(req, res) => {
     })
 }
 
-const incrementServiceUnit = async(req, res) => {
-    
+const changeOrderStatus = async(req, res) => {
+    const cartId = req.params.id
+    const { status } = req.body
+    // console.log(status)
+    const cart = await Cart.findOne({ where: { id: cartId } })
+    // console.log(cart)
+    cart.orderStatus = status
+    cart.save()
+    res.send(cart)
 }
 
-const decrementServiceUnit = async(req, res) => {
+// const incrementServiceUnit = async(req, res) => {
     
-}
+// }
+
+// const decrementServiceUnit = async(req, res) => {
+    
+// }
 
 const resetUserCart = async (req, res) => {
     const userId = req.params.id
@@ -199,5 +210,6 @@ module.exports = {
     changeCartStateMercadoPago,
     getCartbyBarberId,
     resetUserCart,
-    getStatusAppointments
+    getStatusAppointments,
+    changeOrderStatus
 };

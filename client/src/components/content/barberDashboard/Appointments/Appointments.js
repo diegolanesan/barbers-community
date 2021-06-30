@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // import { getAppointmentByBarber } from '../../../../redux/action/appointment'
-import { getCartsByBarberId } from '../../../../redux/action/cart'
-import { Link } from 'react-router-dom'
+import { changeOrderStatus, getCartsByBarberId } from '../../../../redux/action/cart'
+// import { Link } from 'react-router-dom'
 // import DetailsAppointment from './DetailsAppointment.js'
 import jwtDecode from 'jwt-decode'
 
@@ -10,19 +10,25 @@ const AppointmentsDash = () => {
     const dispatch = useDispatch()
     const token = jwtDecode(localStorage.getItem("barberToken"))
     // const idBarber = useState(1)
+    const appointments = useSelector(state => state.cart.barberAppointments)
+    
     useEffect(() => {
         dispatch(getCartsByBarberId(token.id))
       // eslint-disable-next-line
     }, [])
 
-    const appointments = useSelector(state => state.cart.barberAppointments)
-
-    console.log(appointments)
+    // console.log(appointments)
 
     const [filtered, setFiltered] = useState([])
 
     const handleFilter = (e) => {
         setFiltered(appointments.filter(n => n.status === e.target.value))
+    }
+
+    const handleClick = async(e) =>  {
+        e.preventDefault()
+        await dispatch(changeOrderStatus(e.target.name, {status: e.target.title}))
+        dispatch(getCartsByBarberId(token.id))
     }
 
     return (
@@ -69,15 +75,15 @@ const AppointmentsDash = () => {
                                 {c.state}
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                <div className="flex gap-5 justify-center" >
-                                    <button title="Pending" className="flex text-white bg-red-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-red-700 rounded">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z" /></svg>
+                                <div onClick={handleClick} className="flex gap-5 justify-center" >
+                                    <button title="Pending" name={c.id} className={c.orderStatus === "Pending" ? "flex text-white bg-red-700 border-0  mt-2 mb-2 py-2 px-6 focus:outline-none rounded" : "flex text-white bg-red-400 border-0  mt-2 mb-2 py-2 px-6 focus:outline-none hover:bg-red-500 rounded"}>
+                                        Pending
                                     </button>
-                                    <button title="In progress" className="flex text-white bg-yellow-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-red-700 rounded">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z" /></svg>
+                                    <button title="In progress" name={c.id} className={c.orderStatus === "In progress" ? "flex text-white bg-yellow-700 border-0  mt-2 mb-2 py-2 px-6 focus:outline-none rounded" : "flex text-white bg-yellow-400 border-0  mt-2 mb-2 py-2 px-6 focus:outline-none hover:bg-yellow-500 rounded"}>
+                                        In progress
                                     </button>
-                                    <button title="Complete" className="flex text-white bg-green-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-red-700 rounded">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z" /></svg>
+                                    <button  title="Completed" name={c.id} className={c.orderStatus === "Completed" ? "flex text-white bg-green-700 border-0  mt-2 mb-2 py-2 px-6 focus:outline-none rounded" : "flex text-white bg-green-400 border-0  mt-2 mb-2 py-2 px-6 focus:outline-none hover:bg-green-500 rounded"}>
+                                        Completed
                                     </button>
                                 </div>
                             </td>

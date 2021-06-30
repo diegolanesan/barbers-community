@@ -1,7 +1,7 @@
 import {
     ADD_TO_CART, REMOVE_FROM_CART, GET_ACTIVE_CART_FROM_USER_ID,
     RESET_USER_CART, CHANGE_CART_STATE, CHANGE_CART_STATE_MERCADO_PAGO,
-    GET_CARTS_BY_BARBER_ID, GET_CARTS_BY_USER, GET_STATUS_APPOINTMENTS
+    GET_CARTS_BY_BARBER_ID, GET_CARTS_BY_USER, GET_STATUS_APPOINTMENTS, CHANGE_ORDER_STATUS
 } from "../action/cart";
 
 const initialState = {
@@ -60,6 +60,8 @@ const reducerCart = (state=initialState, action)=>{
             ...state,
             statusAppoinments: action.payload
         }
+        case CHANGE_ORDER_STATUS:
+            return state
         default:
             return state
     }
