@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Categories.css";
 import { useDispatch, useSelector } from "react-redux";
-import { postCategory, deleteCategory, putCategory} from "../../../../redux/action/categories";
+import { postCategory, deleteCategory, putCategory, getCategory} from "../../../../redux/action/categories";
 import axios from "axios";
 
 const Categories = ()=>{
@@ -12,7 +12,7 @@ const Categories = ()=>{
 
     //--------USE EFFECT-----------
     React.useEffect(()=>{
-        
+        dispatch(getCategory())
     },[])
 
 
