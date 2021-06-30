@@ -10,7 +10,7 @@ const getAllBarbers = async(req, res)=>{
     const barber = await Barber.findAll({
 		include:[ {all: true, nested: true} ] 
 	});
-	console.log(barber)
+	//console.log(barber)
     if(barber){
 		let aux = barber
 		for (let i = 0; i < aux.length; i++) {

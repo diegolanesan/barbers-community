@@ -19,7 +19,7 @@ const BarberDetailServices = ({ filters }) => {
     const { id } = useParams()
     useEffect(() => {
         dispatch(getBarberServices(id))
-        if(token !== null) {
+        if (token !== null) {
             dispatch(getActiveCartFromUserId(token.id))
         }
     }, []);

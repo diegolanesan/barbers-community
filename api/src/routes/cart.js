@@ -8,6 +8,7 @@ const { addItem,
     changeCartStateMercadoPago,
     getCartbyBarberId,
     getAppointments,
+    resetUserCart,
     getStatusAppointments,
     getCartsByUser} = require('../controllers/Cart');
 
@@ -28,6 +29,8 @@ server.get("/barber/:id", getAppointments)
 server.get("/barber/all/:id", getCartbyBarberId)
 
 server.get("/client/all/:id", getCartsByUser)
+
+server.delete("/reset/:id", resetUserCart)
 
 server.get("/state/:status", getStatusAppointments)
 

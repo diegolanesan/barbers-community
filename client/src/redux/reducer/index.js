@@ -10,6 +10,7 @@ import appointmentReduer from "./appointment";
 import reducerCart from "./cart";
 import adminsReducer from "./admins";
 import reducerCategory from "./categories";
+import reviewsReducer from "./reviews"
 
 
 function combineReducer(state = {}, action) {
@@ -25,7 +26,8 @@ function combineReducer(state = {}, action) {
       clients: clientsReducer(state.clients, action),
       recovery: reducerRecovery(state.recovery, action),
       cart: reducerCart(state.cart, action),
-      category: reducerCategory(state.category, action)
+      category: reducerCategory(state.category, action),
+      reviews: reviewsReducer(state.reviews, action)
     };
   }
   

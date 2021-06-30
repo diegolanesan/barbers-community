@@ -49,7 +49,7 @@ INSERT INTO "styles" (id, description) VALUES (8, 'Regular');
 
 -- select * from styles;​
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Jorge' ,
         'Murillo', 
@@ -63,10 +63,11 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.8, 
-        'Academy');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Pablo' ,
         'Lescano', 
@@ -75,14 +76,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Buenos Aires, Argentina',
         'demo123', 
-        'true',
+        't',
         'Argentino Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Academy');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Ricardo' ,
         'Morales', 
@@ -91,14 +93,14 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Buenos aires, Argentina',
         'clave123', 
-        'true',
+        't',
         'Panama Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
         'Seminary');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Lorenzo' ,
         'Rivas', 
@@ -107,14 +109,14 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
         'Urban');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Mike' ,
         'Ebanos', 
@@ -123,14 +125,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'Brazil Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Academy');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Freddy' ,
         'Perez', 
@@ -139,14 +142,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Gerardo' ,
         'Alzate', 
@@ -155,14 +159,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Milena' ,
         'Salamanca', 
@@ -171,14 +176,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Colorado, USA',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Maria Camila' ,
         'Kuba', 
@@ -187,14 +193,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cordoba, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Zarco' ,
         'Solarte', 
@@ -203,14 +210,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cordoba, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Jose Miguel' ,
         'Buenaora', 
@@ -219,14 +227,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Cordoba, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Delia' ,
         'Tellez', 
@@ -235,15 +244,16 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Barranquilla, Colombia',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Lorenzo' ,
         'Figueroa', 
@@ -252,14 +262,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Nicolas' ,
         'Mora', 
@@ -268,14 +279,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Arturo' ,
         'Arrechea', 
@@ -284,14 +296,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Tirso' ,
         'Lopez', 
@@ -300,14 +313,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Samuel' ,
         'Benavidez', 
@@ -316,14 +330,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Marcos' ,
         'Hernandez', 
@@ -332,14 +347,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Danilo' ,
         'Correa', 
@@ -348,14 +364,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Nariño' ,
         'Santofimio', 
@@ -364,14 +381,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Carlos' ,
         'Gonzalez', 
@@ -380,14 +398,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Camilo' ,
         'Debia', 
@@ -396,14 +415,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Joseph' ,
         'Keiroz', 
@@ -412,14 +432,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Huberto' ,
         'Escobar', 
@@ -428,14 +449,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Marino' ,
         'Marin', 
@@ -444,14 +466,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Nicolas' ,
         'Santa', 
@@ -460,14 +483,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Alberto' ,
         'Bolaños', 
@@ -476,14 +500,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Pedro' ,
         'Orozco', 
@@ -492,14 +517,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'mauricio' ,
         'torrente', 
@@ -508,14 +534,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Pedro' ,
         'Dimaria', 
@@ -524,14 +551,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Luis' ,
         'Armani', 
@@ -540,14 +568,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Ernesto' ,
         'Mejia', 
@@ -556,14 +585,15 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Teofilo' ,
         'Usurriaga', 
@@ -572,12 +602,13 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         '02645410738', 
         'Mar de plata, Argentina',
         'clave123', 
-        'true',
+        't',
         'American Barber', 
         'Especialista en servicios de barberia', 
         'Educador y profesional', 
         4.5, 
-        'Hair technician');
+        'Academy',
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
 
 -- select * from barbers;
 
