@@ -65,8 +65,14 @@ router.use("/email", email);
 router.use("/types", typesHFS);
 router.use("/cart", cart);
 router.use("/checkout", mercadoPago);
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 router.use("/reviews", reviews);
 router.use("/wishlist", wishlist);
 
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
 module.exports = router;
