@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 import Home from './components/container/Home/Home';
 import './App.css';
-import NavBar from './components/content/navBar/NavBar';
+// import NavBar from './components/content/navBar/NavBar';
 import showBarberDetail from './components/content/barberDetail/BarberDetail';
 import Catalog from './components/content/catalog/catalog';
 import BarberTable from './components/content/barberTable/BarberTable';
@@ -32,6 +32,7 @@ import AddReview from "./components/content/reviews/AddReviews";
 import Places from "./components/container/autocomplete/autocomplete";
 import Style from "./components/container/createAdmin/HFStypes/Style";
 import Services from "./components/container/createAdmin/services/Services";
+import NavBar from "./components/content/navBarSeba/NavBar"
 
 function App() {
 	const location = useLocation();
@@ -71,7 +72,7 @@ function App() {
 			<Route exact path="/reviews/:id" component={Reviews} />
 			<Route exact path="/reviews/new/:id" component={AddReview} />
 			<Route exact path="/places" component={	Places} />
-			<Route exact path="/pruebaSeba" component={Services} />
+			{/* <Route exact path="/pruebaSeba" component={NavBar} /> */}
 			<ToastContainer />
 		</div>
 	);
