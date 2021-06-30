@@ -74,6 +74,23 @@ Style.belongsToMany(Barber, { through: "styleBarber" });
 Style.hasMany(Client);
 Client.belongsTo(Style);
 
+
+HairType.hasMany(Client);
+Client.belongsTo(HairType);
+
+FaceType.hasMany(Client);
+Client.belongsTo(FaceType);
+
+Style.hasMany(Client);
+Client.belongsTo(Style);
+
+FaceType.hasMany(Client);
+Client.belongsTo(FaceType);
+
+HairType.hasMany(Client);
+Client.belongsTo(HairType);
+
+//modificación para mergeo
 // Relaciones de carrito de compras
 Client.hasMany(Cart)
 Cart.belongsTo(Client)
