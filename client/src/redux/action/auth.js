@@ -106,9 +106,7 @@ export const signInClient = (creds, history) => (dispatch) => {
             })
         }  
         dispatch({type: SIGN_IN_CLIENT, token: token.data.token})
-        let user = await jwtDecode(token.data.token)
-        if(user.rol === "client") history.push("/clients/dashboard")
-        else history.push("/admin/dashboard")
+        history.push("/clients/dashboard")
     })
     .catch( error => {
         console.log(error.response)

@@ -1,12 +1,91 @@
 import React, { useState, useEffect } from 'react'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { putBarber } from '../../../redux/action/barbers';
+import { getBarberById } from '../../../redux/action/barbers';
 
 const BarberEdit = () => {
+    const dispatch = useDispatch()
+    const barberSelected = useSelector(state => state.barbers.barberDetail)
+
+    const newBarber = {
+        name: "",
+        lastname: "",
+        bio: "",
+        resume: "",
+        email: "",
+        password: "",
+        confirmedPassword: "",
+        alias: "",
+        location: "",
+        mobile: "",
+        img: "",
+        type: "",
+    }
+	
+    const [barber, setBarber] = useState(newBarber) 
+    const [loading, setLoading] = useState(true)
+    var { id } = useParams()
+
+    function fetchData() {
+        dispatch(getBarberById(id))
+    }
+
+    useEffect(() => {
+        if(loading) {
+            fetchData()
+            barberSelected && setLoading(false)
+        } else {
+            setBarber(barberSelected)
+        }
+    
+    }, [barberSelected])
+
+	const handleInputChange = (e) => {
+		setBarber({
+			...barber,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+
+
+    const handleSubmit = () => {
+        const barberSend = {
+            // name: barber.name,
+            // lastname: barber.lastname,
+            // bio: barber.bio,
+            // resume: barber.resume,
+            // email: barber.email,
+            // password: barber.confirmedPassword,
+            // alias: barber.alias,
+            // location: barber.location,
+            // mobile: barber.mobile,
+            // //img: "aaaa",
+            // type: barber.type,
+            barberModify: {
+                status: true,
+                rating: 0,
+                name: barber.name,
+                lastname: barber.lastname,
+                bio: barber.bio,
+                resume: barber.resume,
+                email: barber.email,
+                password: barber.confirmedPassword,
+                alias: barber.alias,
+                location: barber.location,
+                mobile: barber.mobile,
+                //img: "",
+                type: barber.type,
+            }
+        };
+        dispatch(putBarber(id, barberSend))
+    };
 
     return (
-        <body class="">
+        <body class=" bg-gray-200">
             {/* <!-- Container --> */}
-            <div class="container mx-auto h-20">
+            <div class="container mx-auto">
                 <div class="flex justify-center py-10 px-6 ">
                     {/* <!-- Row --> */}
                     <div class="w-full justify-center xl:w-3/4 lg:w-11/12 flex">
@@ -18,7 +97,7 @@ const BarberEdit = () => {
                         ></div> */}
 						{/* <!-- Col --> */}
 						<div class="w-full  lg:w-7/12 bg-white p-5 rounded-lg">
-							<h3 class="pt-4 text-2xl text-center">Edit your profile!</h3>
+							<h3 class="pt-4 text-2xl text-center">Edit Barber</h3>
 							<form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
 								<div class="mb-4 md:flex md:justify-between">
 									<div class="mb-4 md:mr-2 md:mb-0">
@@ -34,8 +113,8 @@ const BarberEdit = () => {
 											type="text"
 											placeholder="First Name"
 											name="name"
-											// value={barber.name}
-											// onChange={handleInputChange}
+											value={barber.name}
+											onChange={handleInputChange}
 										/>
 									</div>
 									<div class="md:ml-2">
@@ -51,8 +130,8 @@ const BarberEdit = () => {
 											type="text"
 											placeholder="Last Name"
 											name="lastname"
-											// value={barber.lastname}
-											// onChange={handleInputChange}
+											value={barber.lastname}
+											onChange={handleInputChange}
 										/>
 									</div>
 								</div>
@@ -70,8 +149,8 @@ const BarberEdit = () => {
 											type="text"
 											placeholder="Username"
 											name="alias"
-											// value={barber.alias}
-											// onChange={handleInputChange}
+											value={barber.alias}
+											onChange={handleInputChange}
 										/>
 									</div>
 									<div class="md:ml-2">
@@ -87,8 +166,8 @@ const BarberEdit = () => {
 											type="text"
 											placeholder="location"
 											name="location"
-											// value={barber.location}
-											// onChange={handleInputChange}
+											value={barber.location}
+											onChange={handleInputChange}
 										/>
 									</div>
 								</div>
@@ -106,8 +185,8 @@ const BarberEdit = () => {
 											type="number"
 											placeholder="phone"
 											name="mobile"
-											// value={barber.mobile}
-											// onChange={handleInputChange}
+											value={barber.mobile}
+											onChange={handleInputChange}
 										/>
 									</div>
 									<div class="md:ml-2">
@@ -123,8 +202,8 @@ const BarberEdit = () => {
 											type="text"
 											placeholder="Short Biography"
 											name="bio"
-											// value={barber.bio}
-											// onChange={handleInputChange}
+											value={barber.bio}
+											onChange={handleInputChange}
 										/>
 									</div>
 								</div>
@@ -141,8 +220,8 @@ const BarberEdit = () => {
 										type="text"
 										placeholder="About You"
 										name="resume"
-										// value={barber.resume}
-										// onChange={handleInputChange}
+										value={barber.resume}
+										onChange={handleInputChange}
 									/>
 								</div>
 								<div class="mb-4 md:flex md:justify-between">
@@ -155,8 +234,8 @@ const BarberEdit = () => {
 										</label>
 										<select
 											name="type"
-											// value={barber.type}
-											// onChange={handleInputChange}
+											value={barber.type}
+											onChange={handleInputChange}
 										>
 											<option value="Urban">Urban</option>
 											<option value="Academy">Academy</option>
@@ -185,8 +264,8 @@ const BarberEdit = () => {
 											id="image"
 											type="file"
 											name="image"
-											// value={barber.img}
-											// onChange={handleInputChange}
+											value={barber.img}
+											onChange={handleInputChange}
 										/>
 									</div>
 								</div>
@@ -203,8 +282,8 @@ const BarberEdit = () => {
 										type="email"
 										placeholder="Email"
 										name="email"
-										// value={barber.email}
-										// onChange={handleInputChange}
+										value={barber.email}
+										onChange={handleInputChange}
 									/>
 								</div>
 								<div class="mb-4 md:flex md:justify-between">
@@ -221,8 +300,8 @@ const BarberEdit = () => {
 											type="password"
 											placeholder="******************"
 											name="password"
-											// value={barber.password}
-											// onChange={handleInputChange}
+											value={barber.password}
+											onChange={handleInputChange}
 										/>
 										<p class="text-xs italic text-red-500">
 											Please choose a password.
@@ -241,14 +320,14 @@ const BarberEdit = () => {
 											type="password"
 											placeholder="******************"
 											name="confirmedPassword"
-											// value={barber.confirmedPassword}
-											// onChange={handleInputChange}
+											value={barber.confirmedPassword}
+											onChange={handleInputChange}
 										/>
 									</div>
 								</div>
 								<div class=" text-center">
 									<button
-										// onClick={() => handleSubmit()}
+										onClick={() => handleSubmit()}
 										class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
 										type="button"
 									>
