@@ -1,33 +1,23 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAdmin, getAdmin, putAdmin } from '../../../redux/action/admin';
+import { Link } from 'react-router-dom';
+import { deleteBarber, getBarbers } from '../../../redux/action/barbers';
 
 const BarberTable = () => {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getAdmin())
+        dispatch(getBarbers())
     }, [])
 
     const deleteC = (id) => {
-        dispatch(deleteAdmin(id))
+        dispatch(deleteBarber(id))
         window.location.reload()
     }
 
-    /* const changeStatus = (admin) => {
-        console.log(admin.id, admin.status)
-        const barberModified = {
-			barberModify: {
-				status: !admin.status,
-			},
-		};
-        dispatch(putAdmin(barber.id, barberModified))
-        window.location.reload()
-    } */
+    const barbersLoaded = useSelector(state => state.barbers.barbersLoaded)
 
-    const AdminsLoaded = useSelector(state => state.admins.adminsLoaded)
-
-    console.log(AdminsLoaded, "aaaa")
+    console.log(barbersLoaded)
 
     return (
         <div className="tracking-wide font-bold bg-gray-200">
@@ -52,27 +42,33 @@ const BarberTable = () => {
             <table className="border-collapse w-full">
                 <thead>
                     <tr>
-                        <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Admin</th>
+                        <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Barber</th>
                         <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Location</th>
-                        <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Mail</th>
+                        <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
                         <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {AdminsLoaded && AdminsLoaded.length > 0 ? AdminsLoaded.map((c, id) => {
+                    {barbersLoaded && barbersLoaded.length > 0 ? barbersLoaded.map((c, id) => {
                         return <tr key={id} className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                                {c.name} {c.lastname}
+                                {c.name} {c.lastName} ({c.alias})
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                 {c.location}
                             </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                {c.email}
-                            </td>
+                            {c.status === true ?
+                                <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                    Active
+                                </td> : <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                    Suspended
+                                </td>
+                            }
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+
                                 <div className="flex gap-5 justify-center" >
-                                    <button onClick={() => deleteC(c.id)} title="Delete Admin" className="flex text-white bg-red-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-red-700 rounded">
+                                    <button type="submit" title="Edit Category" className="flex text-white bg-indigo-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" type="submit"><Link to={'barbers/edit/' + c.id}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z" /></svg></Link></button>
+                                    <button onClick={() => deleteC(c.id)} title="Delete Category" className="flex text-white bg-red-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-red-700 rounded">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z" /></svg>
                                     </button>
                                 </div>

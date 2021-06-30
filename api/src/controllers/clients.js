@@ -10,7 +10,7 @@ const getClients = (req, res, next) => {
     if(!req.query.name){
         try {
             Client.findAll({
-                where: {rol:"client"},include: [ { model: FaceType }, {model: HairType}, { model: Style } ]  // REVISAR SINTAXIS
+                include: [ { model: FaceType }, {model: HairType}, { model: Style } ]  // REVISAR SINTAXIS
             })
             .then((result) => {
                 res.status(200).send(result);
@@ -143,7 +143,7 @@ const loginClient = async (req, res) => {
 
         if (!password) return res.status(400).json({ message: { message: 'Invalid Password', style: "red" } });
 
-        const token = jwt.sign({ email: oldUser.email, id: oldUser.id, name: oldUser.name, rol: oldUser.rol }, secret, { expiresIn: '1hr' });
+        const token = jwt.sign({ email: oldUser.email, id: oldUser.id, name: oldUser.name }, secret, { expiresIn: '1hr' });
         res.status(201).json({ result: oldUser, token, message: { message: "Log in Successful", style: "green" } });
     } catch (error) {
         res.status(500).json({ message: { message: 'Something went wrong', style: "red" } });

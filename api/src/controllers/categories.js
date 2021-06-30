@@ -3,7 +3,7 @@ const { Op } = require('sequelize');
 const { Category, Service, categoryService } = require('../db');
 
 const getAllCategory = async (req, res) =>{
-    const category = await Category.findAll();
+    const category = await Category.findAll({include:{model:Service}});
     if(category){
         res.send(category)
     }else{

@@ -52,7 +52,6 @@ export const filterBarbers = (filters) => (dispatch) =>
 	dispatch({ type: FILTER_BARBERS, payload: filters });
 
 export const getBarbersByName = (name) => (dispath) => {
-	console.log("searchingggg")
 	axios
 		.get(HOST_BACK + "/barbers/name/" + name)
 		.then((res) => dispath({ type: GET_BARBERS_BY_NAME, payload: res.data }));

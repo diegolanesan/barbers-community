@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import jwtDecode from 'jwt-decode'
-import { getClientById, putClient} from '../../../redux/action/clients';
-import axios from "axios";
-import "./AdminConfig.css";
+/* import jwtDecode from 'jwt-decode' */
+import { getAdminById, putAdmin} from '../../../redux/action/admin';
+
 const AdminConfig = () => {
     const dispatch = useDispatch()
-    const adminSelected = useSelector(state => state.clients.clientDetail)
-    const token = jwtDecode(localStorage.getItem("clientToken"))
-    const id = token.id
-    console.log(token)
+    const adminSelected = useSelector(state => state.admins.adminDetail)
+    /* const token = jwtDecode(localStorage.getItem("barberToken"))
+    const id = token.id */
+    /* console.log(token) */
     const newAdmin = {
         name: "",
         lastname: "",
@@ -18,14 +17,14 @@ const AdminConfig = () => {
         confirmedPassword: "",
         location: "",
         mobile: "",
-        image: [""],
+        img: "",
     }
 
     const [admin, setAdmin] = useState(newAdmin) 
     const [loading, setLoading] = useState(true)
 
     function fetchData() {
-        dispatch(getClientById(id))
+        dispatch(getAdminById(1))
     }
       
     useEffect(() => {
@@ -46,14 +45,15 @@ const AdminConfig = () => {
     
     const handleSubmit = () => {
       if(!admin.name || !admin.lastname ||
-          !admin.email || !admin.password || !admin.confirmedPassword 
-          || !admin.location || !admin.mobile) {
+         !admin.bio || !admin.resume ||
+          !admin.email || !admin.password || !admin.confirmedPassword ||
+           !admin.alias || !admin.location || !admin.mobile) {
             alert("Please complete all the camps")
       } else if (admin.password !== admin.confirmedPassword) {
             alert("password and confirm password must be the same")
       } else {
         const adminSend = {
-          clientModified: {
+            adminModify: {
               name: admin.name,
               lastname: admin.lastname,
               email: admin.email,
@@ -62,33 +62,11 @@ const AdminConfig = () => {
               mobile: admin.mobile,
           }
       };
-      dispatch(putClient(id,adminSend))
+      dispatch(putAdmin(1,adminSend))
       alert("Updated Successfully")
       }
     };
     console.log(admin, "aaaa")
-
-    //--------------CLOUDINARY------------
-    const [error, setError]= React.useState({
-      image: false
-  })
-
-    const handleChange = async (e) => {
-      const files = e.target.files;
-        const data = new FormData();
-        data.append("file", files[0]);
-        data.append("upload_preset", "Product");
-        setError({ ...error, image: true });
-        const res = await axios.post( "https://api.cloudinary.com/v1_1/dtqd9ehbe/image/upload", data);
-        const file = res.data;
-        const url = file.secure_url;
-        dispatch(putClient(id,{clientModified:{image:[url]}} ));
-        setAdmin({ ...admin, image: [url]});
-        setError({ ...error, image: false });
-    }
-    const handleCruz2 = ()=>{
-      setAdmin({ ...admin, image: [""]});
-  }
     return (
         <div class="flex grid h-screen bg-gray-200 items-center justify-center ">
           <div class="grid bg-white rounded-lg shadow-xl w-11/12  md:w-11/12 mx-12 mt-10">
@@ -130,10 +108,7 @@ const AdminConfig = () => {
                         value={admin.location}
                         onChange={handleInputChange}
                 />
-            </div>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
-              <div class="grid grid-cols-1">
+              </div> <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Phone</label>
                 <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
                         id="phone"
@@ -144,6 +119,8 @@ const AdminConfig = () => {
                         onChange={handleInputChange}
                 />
               </div> 
+            </div>
+            <div class="grid grid-cols-1 mt-5 mx-7">
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Email</label>
                 <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
@@ -156,26 +133,23 @@ const AdminConfig = () => {
                 />
               </div>
             </div>
-            <div className="grid grid-cols-1 mt-5 mx-7">
-            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Image</label>
-            <div className="p-2 border-r imagen">
-              {
-                error.image === false && admin.image[0] !== "" ? 
-                (<>
-                <div>
-                <img src={admin.image[0]} alt=""/>
-                <div className="cruz" onClick={()=>{handleCruz2()}}>X</div>
+            <div class="grid grid-cols-1 mt-5 mx-7">
+              <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold mb-1">Upload Photo</label>
+                <div class='flex items-center justify-center w-full'>
+                    <label class='flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-blue-300 group'>
+                        <div class='flex flex-col items-center justify-center pt-7'>
+                          <svg class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                          <p class='lowercase text-sm text-gray-400 group-hover:text-blue-600 pt-1 tracking-wider'>Select a photo</p>
+                        </div>
+                      <input  
+                        id="img"
+                        type="file"
+                        name="img"
+                        value={admin.img}
+                        onChange={handleInputChange} 
+                        class="hidden" />
+                    </label>
                 </div>
-                </>
-                ) :
-                error.image === true && admin.image[0] !== "" ?
-                (<div><p>LOADING...</p></div>) :
-                (<><p>UPLOAD IMAGE</p>
-                <input type="file" onChange={handleChange} className="border p-1"></input>
-                
-                </>)
-              }
-              </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">

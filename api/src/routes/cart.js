@@ -11,11 +11,7 @@ const { addItem,
     resetUserCart,
     getStatusAppointments,
     getCartsByUser,
-<<<<<<< Updated upstream
     changeOrderStatus} = require('../controllers/Cart');
-=======
-    getSomeCarts} = require('../controllers/Cart');
->>>>>>> Stashed changes
 
 server.post("/addItem/:id", addItem)
 
@@ -34,8 +30,6 @@ server.put("/state/payment/:id", changeCartStateMercadoPago)
 server.get("/barber/:id", getAppointments)
 
 server.get("/barber/all/:id", getCartbyBarberId)
-
-server.get("/", getSomeCarts)
 
 server.get("/client/all/:id", getCartsByUser)
 
