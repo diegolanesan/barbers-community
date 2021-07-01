@@ -1,4 +1,4 @@
-const { Cart, ServiceBarber, Item, Client } = require("../db");
+const { Cart, Barber, ServiceBarber, Item, Client } = require("../db");
 const { Op } = require("sequelize");
 require('dotenv').config();
 const nodemailer = require('nodemailer');
@@ -66,7 +66,9 @@ const getCartsById = async(req, res) => {
 
 const getCartsByUser = async(req, res) => {
     const userId = req.params.id;
-    const cart = await Cart.findAll({ where: { clientId: userId }, include: {all: true } });
+    const cart = await Cart.findAll({ where: { clientId: userId, state: "Paid" }, include: {all: true } });
+    const barber = await Barber.findByPk(cart[0].barberId)
+    cart[0].dataValues.barberName = barber.name + " " + barber.lastname
     res.send(cart);
 }
 
