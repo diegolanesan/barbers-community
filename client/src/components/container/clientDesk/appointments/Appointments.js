@@ -16,9 +16,10 @@ const AppointmentsDashClient = () => {
     // const clientAppointments = allAppointments.filter(app => app.clientId === user.id )
     const [filtered, setFiltered] = useState([])
 
+    // console.log(filtered)
     
     const handleFilter = (e) => {
-        setFiltered(clientsAppointments.filter(n => n.status === e.target.value))
+        setFiltered(clientsAppointments.filter(n => n.orderStatus === e.target.value))
     }
 
     return (
@@ -67,7 +68,7 @@ const AppointmentsDashClient = () => {
                                 {c.id}
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                {c.date.slice(0, 15)} ({c.time})
+                                {c.date && c.date.slice(0, 15)} ({c.time})
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                 {c.state}
