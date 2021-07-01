@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postCategory, deleteCategory, putCategory} from "../../../../redux/action/categories";
 import axios from "axios";
 import { deleteStyle, postStyle, putStyle } from "../../../../redux/action/style";
+import { getAllStyles } from "../../../../redux/action/types";
 
 
 const Style = ()=>{
@@ -13,10 +14,10 @@ const Style = ()=>{
 
     //--------USE EFFECT-----------
     React.useEffect(()=>{
-        
+        dispatch(getAllStyles())
     },[])
 
-
+ 
 
     // --------------POST---------------
     const [form, setForm] = React.useState({
