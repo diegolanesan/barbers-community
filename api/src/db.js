@@ -100,11 +100,11 @@ Cart.belongsTo(Client)
 Cart.belongsToMany(ServiceBarber, {through: "item"})
 ServiceBarber.belongsToMany(Cart, { through: "item" })
 
-// Client.hasOne(Wishlist)
-// Wishlist.belongsTo(Client)
+Client.hasMany(Wishlist)
+Wishlist.belongsTo(Client)
 
-// Wishlist.belongsToMany(ServiceBarber, {through: "favorite"})
-// ServiceBarber.belongsToMany(Wishlist, { through: "favorite" })
+Wishlist.belongsToMany(ServiceBarber, {through: "favorite"})
+ServiceBarber.belongsToMany(Wishlist, { through: "favorite" })
 
 Client.hasMany(Review)
 Review.belongsTo(Client)

@@ -14,7 +14,7 @@ export const GET_PAID_APPOINTMENTS = "GET_PAID_APPOINTMENTS"
 export const GET_ACTIVE_APPOINTMENTS = "GET_ACTIVE_APPOINTMENTS"
 export const GET_REJECTED_APPOINTMENTS = "GET_REJECTED_APPOINTMENTS"
 export const GET_APPOINTMENTS = "GET_APPOINTMENTS"
-
+export const GET_LAST_FIVE_CARTS_BY_CLIENT_ID = "GET_LAST_FIVE_CARTS_BY_CLIENT_ID"
 
 // ACTIONS PARA CARRITO DE GUEST
 export const getGuestCart = () => {
@@ -179,5 +179,14 @@ export const changeOrderStatus = (cartId, body) => (dispatch) => {
          dispatch({ type: CHANGE_ORDER_STATUS, payload: response.data });
          //removeFromGuestCart(body)
    });
+
+}
+
+export const getLastFiveByClientId = (id) => (dispatch) => {
+	
+	return axios.get(HOST_BACK + "/cart/five/" + id)
+	.then((response) => {
+	dispatch({ type: GET_LAST_FIVE_CARTS_BY_CLIENT_ID, payload: response.data });
+	});
 
 }

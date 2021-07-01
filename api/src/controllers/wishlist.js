@@ -12,7 +12,7 @@ const getWishlistByUser = async(req, res) => {
 
 const addFavorite = async (req, res) => {
     const userId = req.params.id
-    const { serviceBarberId, name, price } = req.body
+    const { serviceBarberId, name, price, image } = req.body
     let wishlist = await Wishlist.findOne({ where: { clientId: userId, state: "Active" } })
     if (!wishlist) {
         wishlist = await Wishlist.create({ clientId: userId, state: "Active" })
@@ -23,6 +23,7 @@ const addFavorite = async (req, res) => {
         serviceBarberId,
         serviceName: name,
         servicePrice: price,
+        serviceImage: image
     })
     // const items = await Item.findAll({where: {cartId: cart.id}})
     // let total = 0

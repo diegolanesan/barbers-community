@@ -16,6 +16,10 @@ module.exports = (sequelize) => {
         servicePrice: {
             type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        serviceImage: {
+            type: DataTypes.TEXT,
+            allowNull: false,
         }
        
 	},{ timestamps: false })
