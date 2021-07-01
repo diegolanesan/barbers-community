@@ -68,7 +68,39 @@ const passwordRecoveryBarber = async (req, res)=>{
         }
       });
     }else{
-      res.status(404).send("Email Barber not found")
+        const client = await Client.findAll({
+          where: {
+              email: to
+            }});
+            if(client.length !== 0){
+              const token = jwt.sign({check: true}, 'lalolanda', {
+                expiresIn: 120
+               });
+              
+              const transporter = nodemailer.createTransport({
+                service:'gmail', // En este caso la enviamos por gmail
+                auth: {
+                    user: USER_EMAIL,
+                    pass: PASSWORD_EMAIL
+                }
+              });
+              
+              const mailOptions = {
+                from:`Community Barber's <${USER_EMAIL}>`,
+                to,
+                subject: "RECOVERY PASSWORD: ",
+                html:template(token)
+              };
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  res.json({token, client});
+                }
+              });
+            }else{
+              res.status(404).send({error:"no se encontro mail"})
+            }
     }    
 };
 

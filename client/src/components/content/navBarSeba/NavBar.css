@@ -14,9 +14,18 @@
     left: 0;
     width: 100vw;
 }
+.navBarContainer i
+{
+    display: none;
+}
 .logoNav
 {
-    margin-left: 10%;
+  font-size: 20px;
+  margin-left: 5px;
+}
+img
+{
+    object-fit: cover;
 }
 
 
@@ -29,6 +38,7 @@
     padding: 0;
     align-items: center;
     margin-right: 20px;
+    transition: 0.5s;
 }
 .ulNav li 
 {
@@ -63,4 +73,42 @@
 button 
 {
     transition: 0.5s;
+}
+.ulActive
+{   
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    top: 10%;
+    background-color: rgba(0, 0, 0, 0.589);
+    width: 100%;
+    height: 100vh;
+}
+/* .ulActive li, .ulActive button
+{
+    margin-top: 40px;
+} */
+
+@media (min-width: 0px) and (max-width: 900px) {
+    /* Solo se aplicarán entre los tamaños indicados */
+    .ulNav
+    {
+        display: none;
+    }
+    .logoNav
+    {
+        margin-left: 5px;
+    }
+    .navBarContainer i
+    {
+        display: flex;
+        position: absolute;
+        right: 40px;
+        font-size: 30px;
+        z-index: 3;
+        transition: 0.5s;
+    }
 }
