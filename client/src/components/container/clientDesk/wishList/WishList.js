@@ -18,6 +18,8 @@ const WishList = ({ wlApp }) => {
 							height="200px"
 						/>
 						<h4 className="font-bold">{service.favorite.serviceName}</h4>
+						<h4 className="font-bold">$ {service.favorite.servicePrice}</h4>
+						<button className="bg-yellow-700 bg-opacity-40 w-full py-2 px-2 rounded mt-2">Add To Cart</button>
 					</div>
 				))}
 		</div>

@@ -160,9 +160,10 @@ function BarberDetail(props) {
 													: <h1>No Reviews</h1>}
 												{/* {appointment.date && appointment.date.includes("Mon") ?
 													time[0].Mon.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""} */}
-												{reviews && reviews.length > 0 && cart && token ?
-													cart.map(e => e.state === "Paid" && e.clientId === token.id ?
-														<Link to={"/reviews/new/" + id}><button className="w-28 text-md font-semibold  bg-blue-400">Add Review</button></Link> : "")
+												{reviews && cart && token ?
+													cart.filter(e => e.state === "Paid" && e.clientId === token.id ).length > 0 ?
+													// cart.filter(e => e.state === "Paid" && e.clientId === token.id ?
+													<Link to={"/reviews/new/" + id}><button className="w-28 text-md font-semibold  bg-blue-400">Add Review</button></Link> : ""
 													: ""}
 												</div>
 										</h1>

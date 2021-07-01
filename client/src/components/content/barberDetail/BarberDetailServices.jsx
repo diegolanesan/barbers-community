@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToAppointment, getBarberServices, removeFromAppointment } from '../../../redux/action/services';
 import { addToCart, removeFromCart, getGuestCart, addToGuestCart, removeFromGuestCart, getActiveCartFromUserId, resetUserCart } from '../../../redux/action/cart';
+import { addToWishlist, getClientWishList, removeFromWishlist } from "../../../redux/action/wishlist"
 import jwtDecode from 'jwt-decode';
 
 
@@ -14,23 +15,34 @@ const BarberDetailServices = ({ filters }) => {
     const token = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : null;
     const cart = useSelector(state => state.cart.activeCart)
     const barberDetail = useSelector(state => state.barberDetail.resp)
+    const wishlist = useSelector(state => state.wishlist.wishlist[0])
+    const [cambio, setCambio] = useState(false)
 
-    console.log(cart)
+    console.log(wishlist)
 
     const { id } = useParams()
     useEffect(() => {
         dispatch(getBarberServices(id))
         if (token !== null) {
             dispatch(getActiveCartFromUserId(token.id))
+            dispatch(getClientWishList(token.id))
+            setCambio(false)
         }
-    }, []);
+    }, [cambio]);
 
+    // const [wish, setWish] = useState(false)
+
+    // useEffect(() => {
+    //     if (token !== null) {
+    //         dispatch(getClientWishList(token.id))
+    //     }
+    // }, [wish])
     const filtered = services?.services?.filter(n => n.categories.length && n.categories[0].name === filters)
 
 
     const [appointment, setAppointment] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
     const [kids, setKids] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
-    console.log(filters, "aaa")
+    console.log(filtered, "aaa")
 
 
     const handleAdd = (e) => {
@@ -82,37 +94,96 @@ const BarberDetailServices = ({ filters }) => {
 
     }
 
+    const addWishlist = (e) => {
+        const service = {
+            serviceBarberId: e.serviceBarber.id,
+            price: e.serviceBarber.price,
+            name: e.name
+        }
+        dispatch(addToWishlist(token.id, service))
+        setCambio(true)
+    }
+
+    const removeWishlist = (e) => {
+        const service = {
+            serviceBarberId: e.serviceBarber.id,
+            price: e.serviceBarber.price,
+            name: e.name
+        }
+        dispatch(removeFromWishlist(token.id, service.serviceBarberId))
+        setCambio(true)
+    }
+    console.log(wishlist)
+
+
+
+    let favorites = []
+    let favoritesCopy = []
+    let favoritesDos = []
+
+    if (wishlist && wishlist?.serviceBarbers?.length > 0) {
+        wishlist?.serviceBarbers?.map(e => favorites.push(e))
+        wishlist?.serviceBarbers?.map(e => favoritesCopy.push(e))
+        console.log(favoritesCopy)
+    }
+
+
+
     return (
         <div>
             <div>
                 {filtered && filtered.length > 0 ?
-                    <div className="grid overflow-auto h-96 sm:grid-cols-1 sm:grid-cols-6">
+                    <div className="grid overflow-auto h-96 sm:grid-cols-1 sm:grid-cols-4">
                         {filtered.map((n) => (
                             <div
                                 key={n.id}
                                 className="text-center m-8 border rounded-xl pb-1 w-4/5 shadow-md"
                             >
-                                <img
-                                    className="rounded-lg h-30 w-full"
-                                    src={n.image[0]}
-                                    alt=""
-                                    width="200px"
-                                    height="200px"
-                                />
+                                <div class="relative">
+                                    <div>
+                                        <img
+                                            className="rounded-lg h-30 w-full"
+                                            src={n.image[0]}
+                                            alt=""
+                                            width="200px"
+                                            height="200px"
+                                        />
+                                    </div>
+                                    <div>
+                                        {
+                                            favorites && !favorites.length ? <button onClick={() => addWishlist(n)} style={{ top: "5px", right: "-26px" }} className="text-xl cursor-pointer absolute bg-gray-100 px-1 py-1 opacity-80 hover:bg-gray-300 rounded mr-8">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M6.28 3c3.236.001 4.973 3.491 5.72 5.031.75-1.547 2.469-5.021 5.726-5.021 2.058 0 4.274 1.309 4.274 4.182 0 3.442-4.744 7.851-10 13-5.258-5.151-10-9.559-10-13 0-2.676 1.965-4.193 4.28-4.192zm.001-2c-3.183 0-6.281 2.187-6.281 6.192 0 4.661 5.57 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-4.011-3.097-6.182-6.274-6.182-2.204 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248z" /></svg>
+                                            </button> : favorites.map(e => {
+                                                if (Number(e.favorite.serviceBarberId) === Number(n.serviceBarber.id)) {
+                                                    console.log("Entra ", e.favorite.serviceBarberId, n.serviceBarber.id)
+                                                    return (
+                                                        <button onClick={() => removeWishlist(n)} style={{ top: "3px", right: "-28px" }} className="text-xl cursor-pointer absolute bg-gray-100 z-50 px-1 py-1 hover:bg-gray-300 rounded mr-8">
+                                                            ❤️ </button>
+                                                    )
+                                                } else if (Number(e.favorite.serviceBarberId) !== Number(n.serviceBarber.id)) {
+                                                    console.log("Entra Al Segundo", e.favorite.serviceBarberId, n.serviceBarber.id)
+
+                                                    return (
+                                                        <button onClick={() => addWishlist(n)} style={{ top: "5px", right: "-26px" }} className="text-xl cursor-pointer absolute bg-gray-100 px-1 py-1 opacity-80 hover:bg-gray-300 rounded mr-8">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M6.28 3c3.236.001 4.973 3.491 5.72 5.031.75-1.547 2.469-5.021 5.726-5.021 2.058 0 4.274 1.309 4.274 4.182 0 3.442-4.744 7.851-10 13-5.258-5.151-10-9.559-10-13 0-2.676 1.965-4.193 4.28-4.192zm.001-2c-3.183 0-6.281 2.187-6.281 6.192 0 4.661 5.57 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-4.011-3.097-6.182-6.274-6.182-2.204 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248z" /></svg>
+                                                        </button>
+                                                    )
+                                                }
+                                            })
+                                        }
+
+                                    </div>
+
+                                </div>
+                                {/* ServiceBarbers [] boton vacio (funciona)
+                                ServiceBarbers [...] filtrado: encuentra y renderiza ❤️
+                                no encuentra y renderiza vacio */}
                                 <h4 className="font-bold">{`${n.name}`}</h4>
-                                {/* <h4 className="font-bold">{`${n.description}`}</h4> */}
                                 <div className="flex justify-center pt-1 pb-2">
-                                    {/* <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-5 w-5 m-0 text-yellow-400"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg> */}
                                     <h6 className="">${n.serviceBarber.price}</h6>
                                 </div>
-                                <button className="bg-blue-400 px-2 rounded" onClick={() => handleAdd(n)}>Add to Cart</button>
+
+                                <button className=" text-xl bg-green-600 px-2 rounded" onClick={() => handleAdd(n)}>🛒</button>
                             </div>
                         ))} </div> : <div className="flex my-20 justify-center">Ooops... Looks like there's no services here</div>}
 
