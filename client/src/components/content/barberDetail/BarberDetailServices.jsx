@@ -99,9 +99,13 @@ const BarberDetailServices = ({ filters }) => {
         const service = {
             serviceBarberId: e.serviceBarber.id,
             price: e.serviceBarber.price,
-            name: e.name
+            name: e.name,
+            image: e.image[0]
+
         }
         dispatch(addToWishlist(token.id, service))
+        dispatch(getClientWishList(token.id))
+
         Swal.fire(
             'Wishlist',
             'Added to Wishlist',
@@ -155,7 +159,7 @@ const BarberDetailServices = ({ filters }) => {
         })
         setCambio(true)
     }
-    console.log(wishlist)
+    console.log(filtered)
 
 
 

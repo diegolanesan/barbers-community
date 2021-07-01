@@ -126,11 +126,6 @@ const getLastFiveCartsByUser = async (req, res) => {
         limit: 5
         , include: { all: true }
     });
-    const barber = await Barber.findByPk(cart[0].barberId)
-    cart[0].dataValues.barberName = barber.name + " " + barber.lastname
-
-    
-
     res.send(cart);
 }
 

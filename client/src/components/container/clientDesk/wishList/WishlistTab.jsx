@@ -131,7 +131,7 @@ const WishlistTab = () => {
                         className="text-center m-8 border rounded-xl pb-1 shadow-md">
                         <img
                             className="rounded-lg h-48 w-full"
-                            src={n.image}
+                            src={n.favorite.serviceImage}
                             alt=""
                             width="200px"
                             height="200px"
