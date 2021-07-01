@@ -57,7 +57,7 @@ const AppointmentsDashClient = () => {
                         <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Details</th>
                         <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">$</th>
                         <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
-                        <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Client</th>
+                        <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Barber</th>
                         <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Service</th>
                     </tr>
                 </thead>
@@ -88,7 +88,7 @@ const AppointmentsDashClient = () => {
                                 </div> */}
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                {c.client.name + " " + c.client.lastname}
+                                {c.barberName}
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                 {c.serviceBarbers.map(n => "| " + n.item.serviceName + " |")}
@@ -120,7 +120,7 @@ const AppointmentsDashClient = () => {
                                 </div> */}
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                {c.client.name + " " + c.client.lastname}
+                                {c.barberName}
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                 {c.serviceBarbers.map(n => "| " + n.item.serviceName + " |")}
