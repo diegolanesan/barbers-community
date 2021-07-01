@@ -65,21 +65,20 @@ function App() {
 			<Route exact path="/reviews/:id" component={admin.rol === "client" ? Reviews : Error} />
 			<Route exact path="/reviews/new/:id" component={admin.rol === "client" ? AddReview : Error} />
 					
-			<Route exact path="/admin/barbers" component={BarberTable} />
-			<Route exact path="/BarberConfig/:id" component={BarberConfig} />
-			<Route exact path="/barbers/dashboard" component={BarberDashboard} />
-			<Route exact path="/barbers/dashboard/:id" component={DetailsAppointment} />
-			<Route exact path="/barbers/recovery/:token" component={Recovery} />
+			<Route exact path="/admin/barbers" component={barberToken ? BarberTable : Error} />
+			<Route exact path="/BarberConfig/:id" component={barberToken ? BarberConfig : Error} />
+			<Route exact path="/barbers/dashboard" component={barberToken ? BarberDashboard : Error} />
+			<Route exact path="/barbers/dashboard/:id" component={barberToken ? DetailsAppointment : Error} />
+			<Route exact path="/barbers/recovery/:token" component={barberToken ? Recovery : Error} />
 					
-			<Route exact path="/admin/dashboard" component={AdminDesk} />
-			<Route exact path="/admin/barbers/edit/:id" component={BarberEdit} />
-			<Route exact path="/pruebaSeba" component={Style} />
-			<Route exact path="/pruebaServicios" component={Services} />
+			<Route exact path="/admin/dashboard" component={admin.rol === "admin" ? AdminDesk : Error} />
+			<Route exact path="/admin/barbers/edit/:id" component={admin.rol === "admin" ? BarberEdit : Error} />
+			<Route exact path="/pruebaSeba" component={admin.rol === "admin" ? Style : Error} />
+			<Route exact path="/pruebaServicios" component={admin.rol === "admin" ? Services : Error} />
 				
-			<Route exact path="/admin/dashboard" component={Error} />
 			<Route exact path="/404" component={Error} />
 				
-			<Route exact path="/places" component={	Places} />
+			<Route exact path="/places" component={Places} />
 			<ToastContainer />
 		</div>
 	);
