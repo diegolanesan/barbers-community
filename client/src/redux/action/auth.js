@@ -94,13 +94,13 @@ export const signUpClient = (clientUser) => async (dispatch) => {
 export const signInClient = (creds, history) => (dispatch) => {
     axios.post(HOST_BACK + "/clients/login", creds)
     .then(async token => {
-        console.log(token.data.token)
+        
         localStorage.setItem('clientToken', JSON.stringify(token.data.token))
         let localStorageCart = JSON.parse(localStorage.getItem('cart'))
-        console.log(localStorageCart, "aAAAAAAAAAA")
+        
         if (localStorageCart) {
             let user = await jwtDecode(token.data.token)
-            console.log(user.id)
+            
             localStorageCart.items?.map((i) => {
                 return dispatch(addToCart(user.id, i))
             })
@@ -108,7 +108,7 @@ export const signInClient = (creds, history) => (dispatch) => {
         dispatch({type: SIGN_IN_CLIENT, token: token.data.token})
         let user = await jwtDecode(token.data.token)
         if(user.rol === "client") history.push("/clients/dashboard")
-        else history.push("/admin/dashboard")
+        else history.push("/validation")
     })
     .catch( error => {
         console.log(error.response)

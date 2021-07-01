@@ -28,9 +28,9 @@ const BarberDashboard = () => {
     return (
         <div className="flex h-full" >
             <div className={`w-1/6 bg-gray-200`} onClick={handleClick} >
-                <div>  
+                {/* <div>  
                     <input type='button' value='Dashboard' name='menu' className={buttonState.menu === 'Dashboard' ? buttonSelected : buttonStyle} />
-                </div>
+                </div> */}
                 <div>  
                     <input type='button' value='Appointments' name='menu' className={buttonState.menu === 'Appointments' ? buttonSelected : buttonStyle} />
                 </div>

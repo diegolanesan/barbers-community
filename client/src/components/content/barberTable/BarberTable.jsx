@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBarber, getBarbers, putBarber, getBarbersByName } from '../../../redux/action/barbers';
+import Swal from 'sweetalert2'
 
 const BarberTable = () => {
     const [input, setinput] = useState("");
@@ -11,8 +12,25 @@ const BarberTable = () => {
     }, [])
 
     const deleteC = (id) => {
-        dispatch(deleteBarber(id))
-        window.location.reload()
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(deleteBarber(id))
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                window.location.reload()
+            }
+        })
     }
 
     
@@ -34,6 +52,13 @@ const BarberTable = () => {
 			},
 		};
         dispatch(putBarber(barber.id, barberModified))
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: (barber.status ?'Banned!!!': 'Renovated!!!'),
+            showConfirmButton: false,
+            timer: 1500
+        })
         window.location.reload()
     }
     

@@ -22,6 +22,7 @@ import ClientDesk from './components/container/clientDesk/ClientDesk';
 import CartLogged from './components/container/cart/CartLogged';
 import Cart from './components/container/cart/Cart';
 import AdminDesk from './components/content/admin/AdminDesk';
+import Validation from './components/content/admin/Validation';
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -33,46 +34,53 @@ import Places from "./components/container/autocomplete/autocomplete";
 import Style from "./components/container/createAdmin/HFStypes/Style";
 import Services from "./components/container/createAdmin/services/Services";
 import NavBar from "./components/content/navBarSeba/NavBar"
+import newCatalog from "./components/content/catalog/newCatalog"
+import Error from "./components/content/error/Error"
+import jwtDecode from "jwt-decode";
+import NavBarClient from "./components/content/navBarSeba/NavBarClient";
+import NavBarAdmin from "./components/content/navBarSeba/NavBarAdmin";
+import NavBarBarber from "./components/content/navBarSeba/NavBarBarber";
+
 
 function App() {
-	const location = useLocation();
+	const clientToken = localStorage.getItem("clientToken") || false
+	const barberToken = localStorage.getItem("barberToken") || false
+	const admin = clientToken ? jwtDecode(clientToken) : false
+    //admin.role === 'admin' ? 
 	return (
 		<div className="App">
-			{/* {location.pathname === "/" ||
-				location.pathname === "/catalog" ||
-				location.pathname === "/dashboard" ||
-				location.pathname === "//admin/dashboard" ||
-				location.pathname === "/loginBarbers" ||
-				location.pathname === "/loginClients" ||
-				location.pathname === "/barbers/dashboard" && (
-				<Route path="/" component={NavBar} />
-			)} */}
+
 			<Route path="/" component={NavBar}/>
 			<Route path="/Detail/:id" component={showBarberDetail} />
 			<Route exact path="/" component={Home} />
-			<Route path="/catalog" component={Catalog} /> {/*hecho para pruebas*/}
-			<Route exact path="/admin/barbers" component={BarberTable} />
-			<Route exact path="/register" component={Register} />
-			<Route exact path="/clients/register" component={RegisterClient} />
-			<Route exact path="/BarberConfig/:id" component={BarberConfig} />
+			<Route path="/catalog" component={Catalog} /> 
 			<Route exact path="/loginBarbers" component={LoginBarbers} />
 			<Route exact path="/loginClients" component={LoginClient} />
+			<Route exact path="/register" component={Register} />
+			<Route exact path="/clients/register" component={RegisterClient} />
+			<Route exact path="/newCatalog" component={newCatalog} />
+			<Route exact path="/guest/cart" component={Cart} />
+			<Route exact path="/clients/dashboard" component={admin.rol === "client" || admin.rol !== "admin" && admin ? ClientDesk : Error} />
+			<Route exact path="/cart" component={admin.rol === "client" ? CartLogged : Error} />
+			<Route exact path="/reviews/:id" component={admin.rol === "client" ? Reviews : Error} />
+			<Route exact path="/reviews/new/:id" component={admin.rol === "client" ? AddReview : Error} />
+			<Route exact path="/admin/barbers" component={BarberTable} />
+			<Route exact path="/BarberConfig/:id" component={BarberConfig} />
 			<Route exact path="/admin/barbers/edit/:id" component={BarberEdit} />
 			<Route exact path="/academic" component={Academic} />
 			<Route exact path="/urban" component={Urban} />
 			<Route exact path="/hair-technician" component={HairTechnician} />
 			<Route exact path="/recovery/:token" component={Recovery} />
+			<Route exact path="/validation" component={Validation} />
 			<Route exact path="/appointment/date" component={AppointmentDate} />
 			<Route exact path="/barbers/dashboard" component={BarberDashboard} />
 			<Route exact path="/barbers/dashboard/:id" component={DetailsAppointment} />
-			<Route exact path="/clients/dashboard" component={ClientDesk} />
-			<Route exact path="/cart" component={CartLogged} />
-			<Route exact path="/guest/cart" component={Cart} />
 			<Route exact path="/admin/dashboard" component={AdminDesk} />
-			<Route exact path="/reviews/:id" component={Reviews} />
-			<Route exact path="/reviews/new/:id" component={AddReview} />
+			<Route exact path="/pruebaSeba" component={Style} />
+			<Route exact path="/pruebaServicios" component={Services} />
+			<Route exact path="/admin/dashboard" component={Error} />
+			<Route exact path="/404" component={Error} />
 			<Route exact path="/places" component={	Places} />
-			{/* <Route exact path="/pruebaSeba" component={NavBar} /> */}
 			<ToastContainer />
 		</div>
 	);

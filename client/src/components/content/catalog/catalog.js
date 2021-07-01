@@ -6,7 +6,7 @@ import Barber from "../barber/barber.js";
 
 export default function Catalog() {
     
-  // Refactorear y llevar los estilos a otro archivo 
+   
     const buttonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-1 px-2 mx-2 mb-3 rounded-lg"
     const buttonSelected = "bg-blue-800 text-white py-1 px-2 mx-2 mb-3 rounded-lg"
     const dispatch = useDispatch()

@@ -1,8 +1,9 @@
-import {GET_ADMINS} from "../action/admin"
+import {GET_ADMINS, VALIDATION} from "../action/admin"
 
 const initialState = {
     adminsStorage: [],
     adminsLoaded: [],
+    validationCode: false
 }
 
 const adminsReducer = (state = initialState, action) => {
@@ -12,6 +13,11 @@ const adminsReducer = (state = initialState, action) => {
                 ...state,
                 adminsStorage: action.payload,
                 adminsLoaded: action.payload
+            }
+        case VALIDATION:
+            return {
+                ...state,
+                validationCode: action.payload,
             }
         default:
             return state
