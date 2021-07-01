@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import aboutLogo from '../../../../resources/about-logo.png'
 import about from '../../../../resources/about.jpg'
 
@@ -11,7 +12,7 @@ function About() {
                 <img src={aboutLogo} class="my-8" alt="About Logo"/>
                 <p class="font-lato text-text text-center"> Barbers Community is a social platform that allows barbers to connect with their clients. Our clients, can reserve and pay for any type of barber service.</p>
                 <button class="mt-8 mb-4 p-4 bg-brown text-white text-sm font-medium hover:bg-primary"> 
-                FIND YOUR NEXT BARBER 
+                    <Link to="/catalog"> FIND YOUR NEXT BARBER </Link>
                 </button>
             </div>
             <div class="ml-16 mb-20">
