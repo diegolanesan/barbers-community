@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postCategory, deleteCategory, putCategory, getCategory} from "../../../../redux/action/categories";
 import axios from "axios";
 import { deleteServicesCRUD, postServicesCRUD, putServicesCRUD } from "../../../../redux/action/servicesCRUD";
+import { getServices } from "../../../../redux/action/services";
 
 const Services = ()=>{
     // Me traigo todas las categorias de el estado global
@@ -14,7 +15,9 @@ const Services = ()=>{
 
     //--------USE EFFECT-----------
     React.useEffect(()=>{
+        dispatch(getServices())
         dispatch(getCategory())
+      
     },[])
 
 
@@ -203,30 +206,30 @@ const Services = ()=>{
                                     return(
                              <>
                             <tr className="bg-gray-50 text-center" onFocus={()=>{handleFocus(c)}} onChange={(v)=>{handleChangeEdit(v,c)}}>
-                                <td className="p-2 border-r">
-                                    <input type="number" className="border p-1 w-20" value={c.id}/>
+                                <td className="p-1 border-r">
+                                    <input type="number" className="border p-1  w-20" value={c.id}/>
                                  </td>
-                                <td className="p-2 border-r">
-                                    <input type="text" className="border p-1" placeholder={c.name}  value={(form2.ID == c.id && form2.name) ||""} name="name"/>
+                                <td className="p-1 border-r">
+                                    <input type="text" className="border p-1  w-20" placeholder={c.name}  value={(form2.ID == c.id && form2.name) ||""} name="name"/>
                                  </td>
-                                 <td className="p-2 border-r">
-                                    <input type="number" className="border p-1" placeholder={c.price}  value={(form2.ID == c.id && form2.price) ||""} name="price"/>
+                                 <td className="p-1 border-r">
+                                    <input type="number" className="border p-1  w-20" placeholder={c.price}  value={(form2.ID == c.id && form2.price) ||""} name="price"/>
                                  </td>
-                                <td className="p-2 border-r">
-                                    <input type="text" className="border p-1" placeholder={c.description}  value={(form2.ID == c.id && form2.description) ||""} name="description"/>
+                                <td className="p-1 border-r">
+                                    <input type="text" className="border p-1  w-20" placeholder={c.description}  value={(form2.ID == c.id && form2.description) ||""} name="description"/>
                                  </td>
-                                 <td className="p-2 border-r image">
+                                 <td className="p-1 border-r image">
                                  {
                                          !error2.image && c.image[0] === ""? (
                                              <>
                                              <p>UPLOAD IMAGE</p>
-                                             <input type="file" className="border p-1" name="image" onChange={handleImage2}/>
+                                             <input type="file" className="border p-1  w-20" name="image" onChange={handleImage2}/>
                                              </>
                                          ):
                                          error2.image && form2.ID == c.id ? (
                                              <>
                                              <p>LOADING...</p>
-                                             <input type="file" className="border p-1" name="image"/>
+                                             <input type="file" className="border p-1  w-20" name="image"/>
                                              </>
                                          ):(
                                              <>
@@ -237,8 +240,8 @@ const Services = ()=>{
                                      }
                                  </td>
                                  <td>
-                                       <a href="#" className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin " onClick={()=> handleClickEdit(c.id)}>Edit</a>
-                                        <a href="#" className="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin ml-1" onClick={()=>{handleDeleteCategory(c.id)}}>Remove</a>
+                                       <a href="#" className="bg-blue-500 p-1 text-white hover:shadow-lg text-xs font-thin " onClick={()=> handleClickEdit(c.id)}>Edit</a>
+                                        <a href="#" className="bg-red-500 p-1 text-white hover:shadow-lg text-xs font-thin ml-1" onClick={()=>{handleDeleteCategory(c.id)}}>Remove</a>
                                  </td>
                            </tr>
                            </>
@@ -253,35 +256,35 @@ const Services = ()=>{
 
         <div className="createCategories">
         <div className="containerTable">
-                <div className="table w-full p-2">
+                <div className="table w-full p-1">
                 <table className="w-full border">
                     <thead>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
                             <div class="flex items-center justify-center">
                                 NAME
                              </div>
                         </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
                             <div class="flex items-center justify-center">
                                 PRICE
                              </div>
                         </th>
-                         <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                         <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
                             <div class="flex items-center justify-center">
                                  DESCRIPTION
                             </div>
                          </th>
-                         <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                         <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
                             <div class="flex items-center justify-center">
                                 CATEGORY
                             </div>
                          </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
                             <div class="flex items-center justify-center">
                                  IMAGE
                             </div>
                         </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
                             <div className="flex items-center justify-center">
                                  ACTION
                             </div>
@@ -289,16 +292,16 @@ const Services = ()=>{
                     </thead>
                     <tbody   onChange={handleChange}>
                          <tr className="bg-gray-50 text-center">
-                            <td className="p-2 border-r">
-                                <input type="text" className="border p-1" name="name" value={form.name}/>
+                            <td className="p-1 border-r">
+                                <input type="text" className="border p-1 w-20" name="name" value={form.name}/>
                              </td>
-                             <td className="p-2 border-r">
-                                <input type="number" className="border p-1" name="price" value={form.price}/>
+                             <td className="p-1 border-r">
+                                <input type="number" className="border p-1  w-20" name="price" value={form.price}/>
                              </td>
-                            <td className="p-2 border-r">
-                                <input type="text" className="border p-1" name="description" value={form.description}/>
+                            <td className="p-1 border-r">
+                                <input type="text" className="border p-1  w-20" name="description" value={form.description}/>
                             </td>
-                            <td className="p-2 border-r">
+                            <td className="p-1 border-r">
                                 <select name="categories" id="categories" >
                                 <option value="select" >select</option>
                                     {
@@ -311,18 +314,18 @@ const Services = ()=>{
                                 </select>
                             </td>
                             
-                            <td className="p-2 border-r image">
+                            <td className="p-1 border-r image">
                                      {
                                          !error.image && form.image[0] === "" ? (
                                              <>
                                              <p>UPLOAD IMAGE</p>
-                                             <input type="file" className="border p-1" name="image" onChange={handleImage}/>
+                                             <input type="file" className="border p-1  w-20" name="image" onChange={handleImage}/>
                                              </>
                                          ):
                                          error.image  ? (
                                              <>
                                              <p>LOADING...</p>
-                                             <input type="file" className="border p-1" name="image"/>
+                                             <input type="file" className="border p-1  w-20" name="image"/>
                                              </>
                                          ):(
                                              <>
@@ -334,7 +337,7 @@ const Services = ()=>{
                                      
                                  </td>
                              <td>
-                               <a href="#" className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin " onClick={handleSendPost}>Create</a>
+                               <a href="#" className="bg-blue-500 p-1 text-white hover:shadow-lg text-xs font-thin " onClick={handleSendPost}>Create</a>
                              </td>
                          </tr>
                         

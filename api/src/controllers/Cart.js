@@ -64,11 +64,68 @@ const getCartsById = async(req, res) => {
     res.send(carts)
 }
 
-const getCartsByUser = async(req, res) => {
+const getCartsByUser = async (req, res) => {
     const userId = req.params.id;
-    const cart = await Cart.findAll({ where: { clientId: userId, state: "Paid" }, include: {all: true } });
-    const barber = await Barber.findByPk(cart[0].barberId)
-    cart[0].dataValues.barberName = barber.name + " " + barber.lastname
+    const cart = await Cart.findAll({
+        where: {
+            clientId: userId, [Op.or]: [
+                {
+                    state: "Paid"
+                },
+                {
+                    state: "Rejected"
+                }
+            ]
+        },
+        order: [
+            ['id', 'DESC']
+            // ["date", 'DESC']
+            // ['time', 'DESC']
+        ]
+        , include: { all: true }
+    });
+
+    // cart.map(async e => {
+    //     e.dataValues.barberName = barber.name + " " + barber.lastname
+    //     e.save()
+    //     console.log(e.dataValues.barberName)
+    // })
+    for (let i = 0; i < cart.length; i++) {
+        let barber = await Barber.findByPk(cart[i].barberId)
+        if (barber && barber.id === cart[i].barberId) {
+            cart[i].dataValues.barberName = barber.name + " " + barber.lastname
+        }
+        // barber.map(e => {
+        //     cart[i].dataValues.barberName = e.name + " " + e.lastname;
+        //     cart.save()
+        // })
+        
+    }
+    // cart[0].dataValues.barberName = barber.name + " " + barber.lastname
+    res.send(cart);
+}
+
+const getLastFiveCartsByUser = async (req, res) => {
+    const userId = req.params.id;
+    const cart = await Cart.findAll({
+        where: {
+            clientId: userId, [Op.or]: [
+                {
+                    state: "Paid"
+                },
+                {
+                    state: "Rejected"
+                }
+            ]
+        },
+        order: [
+            ['id', 'DESC']
+            // ["date", 'DESC']
+            // ['time', 'DESC']
+        ],
+        limit: 5
+        , include: { all: true }
+    });
     res.send(cart);
 }
 
@@ -122,14 +179,14 @@ const changeCartStateMercadoPago = async(req, res) => {
 
 const getActiveCartFromUser = async(req, res) => {
     const userId = req.params.id
-    const cart = await Cart.findOne({where: {clientId: userId, state: "Active"}, include: {all: true, nested: true}})
+    const cart = await Cart.findOne({where: {clientId: userId, state: "Active"}, include: {all: true, required: false}})
     //console.log(cart)
     res.send(cart)
 }
 
 const getAppointments = async(req, res) => {
     const barberId = req.params.id
-    const cart = await Cart.findAll({where: {barberId: barberId, state: "Paid"}, include: {all: true, nested: true}})
+    const cart = await Cart.findAll({where: {barberId: barberId, state: "Paid"}, include: {all: true, required: false}})
     //console.log(cart)
     res.send(cart)
 } 
@@ -143,7 +200,7 @@ const getStatusAppointments = async(req, res) => {
 
 const getCartbyBarberId = async(req, res) => {
     const barberId = req.params.id
-    const cart = await Cart.findAll({where: {barberId: barberId}, include: {all: true, nested: true}})
+    const cart = await Cart.findAll({where: {barberId: barberId}, include: {all: true, nested: true, required: false}})
     //console.log(cart)
     res.send(cart)
 }
@@ -169,7 +226,7 @@ const removeProductFromCart = async(req, res) => {
         }
     })
     .then(() => {
-        res.sendStatus(200);
+        res.send("OK");
     })
 }
 
@@ -221,5 +278,6 @@ module.exports = {
     resetUserCart,
     getStatusAppointments,
     changeOrderStatus,
-    getSomeCarts
+    getSomeCarts,
+    getLastFiveCartsByUser,
 };

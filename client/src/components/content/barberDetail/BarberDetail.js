@@ -104,8 +104,8 @@ function BarberDetail(props) {
 	})
 	console.log(average)
 	let address = ""
-	if (resp && resp.location) {
-		address = resp.location
+	if (resp && resp.city) {
+		address = resp.address + " " + resp.number + " "  + resp.city + " "  + resp.state + " " + resp.country  
 		address = encodeURIComponent(address.trim())
 		console.log(address)
 	}
@@ -160,9 +160,10 @@ function BarberDetail(props) {
 													: <h1>No Reviews</h1>}
 												{/* {appointment.date && appointment.date.includes("Mon") ?
 													time[0].Mon.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""} */}
-												{reviews && reviews.length > 0 && cart && token ?
-													cart.map(e => e.state === "Paid" && e.clientId === token.id ?
-														<Link to={"/reviews/new/" + id}><button className="w-28 text-md font-semibold  bg-blue-400">Add Review</button></Link> : "")
+												{reviews && cart && token ?
+													cart.filter(e => e.state === "Paid" && e.clientId === token.id ).length > 0 ?
+													// cart.filter(e => e.state === "Paid" && e.clientId === token.id ?
+													<Link to={"/reviews/new/" + id}><button className="w-28 text-md font-semibold  bg-blue-400">Add Review</button></Link> : ""
 													: ""}
 												</div>
 										</h1>
@@ -450,19 +451,24 @@ function BarberDetail(props) {
 							{/* <!-- Right Side --> */}
 							
 							</div>
-							<div class="mapouter">
-								<div class="gmap_canvas">
-									<iframe width="600" height="500" id="gmap_canvas" src={`https://maps.google.com/maps?q=${address}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-											frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-									</iframe>
-								</div>
-							</div>
+							
 						</div>
 						
 				)}
 			</div>
-			
-		</div>
+			{ resp && resp.city ?
+				<div className="grid grid-cols-1 w-4/5 sm:mt-2 mt-48">
+					<div class="mapouter ">
+						<div class="gmap_canvas">
+							<iframe className="w-full h-96" id="gmap_canvas" src={`https://maps.google.com/maps?q=${address}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+								frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+							</iframe>
+						</div>
+					</div>
+				</div>
+				: ""
+			}
+			</div>
 	);
 }
 

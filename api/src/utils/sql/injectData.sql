@@ -49,14 +49,18 @@ INSERT INTO "styles" (id, description) VALUES (8, 'Regular');
 
 -- select * from styles;​
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile,  address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Jorge' ,
         'Murillo', 
         'alo@leano.at', 
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562796/Barbers/jorge_o3tsir.jpg}', 
         '02645410738', 
-        'Cali, Colombia',
+        'Las Jarillas',
+        '1795',
+        'Alta Gracia',
+        'Cordoba',
+        'Argentina',
         'clave123', 
         'true',
         'Colombian Barber', 
@@ -64,10 +68,10 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.8, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Pablo' ,
         'Lescano', 
@@ -82,9 +86,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Ricardo' ,
         'Morales', 
@@ -100,7 +104,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         4.5, 
         'Seminary');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Lorenzo' ,
         'Rivas', 
@@ -116,7 +120,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         4.5, 
         'Urban');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Mike' ,
         'Ebanos', 
@@ -131,9 +135,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Freddy' ,
         'Perez', 
@@ -148,9 +152,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Gerardo' ,
         'Alzate', 
@@ -165,9 +169,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Milena' ,
         'Salamanca', 
@@ -182,9 +186,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Maria Camila' ,
         'Kuba', 
@@ -199,9 +203,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Zarco' ,
         'Solarte', 
@@ -216,9 +220,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Jose Miguel' ,
         'Buenaora', 
@@ -233,16 +237,19 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Delia' ,
         'Tellez', 
         'sandra@tellez.com',         
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Barbers/22_hevpdb.jpg}', 
-        '02645410738', 
-        'Barranquilla, Colombia',
+        '02645410738Las Jarillas',
+        '1795',
+        'Alta Gracia',
+        'Cordoba',
+        'Argentina',
         'clave123', 
         't',
         'American Barber', 
@@ -250,10 +257,10 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Lorenzo' ,
         'Figueroa', 
@@ -268,9 +275,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Nicolas' ,
         'Mora', 
@@ -285,9 +292,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Arturo' ,
         'Arrechea', 
@@ -302,9 +309,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Tirso' ,
         'Lopez', 
@@ -319,9 +326,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Samuel' ,
         'Benavidez', 
@@ -336,9 +343,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Marcos' ,
         'Hernandez', 
@@ -353,9 +360,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Danilo' ,
         'Correa', 
@@ -370,9 +377,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Nariño' ,
         'Santofimio', 
@@ -387,9 +394,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Carlos' ,
         'Gonzalez', 
@@ -404,9 +411,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Camilo' ,
         'Debia', 
@@ -421,9 +428,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Joseph' ,
         'Keiroz', 
@@ -438,9 +445,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Huberto' ,
         'Escobar', 
@@ -455,9 +462,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Marino' ,
         'Marin', 
@@ -472,9 +479,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Nicolas' ,
         'Santa', 
@@ -489,9 +496,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Alberto' ,
         'Bolaños', 
@@ -506,9 +513,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Pedro' ,
         'Orozco', 
@@ -523,9 +530,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'mauricio' ,
         'torrente', 
@@ -540,9 +547,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Pedro' ,
         'Dimaria', 
@@ -557,9 +564,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Luis' ,
         'Armani', 
@@ -574,9 +581,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Ernesto' ,
         'Mejia', 
@@ -591,9 +598,9 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
-INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, password , status ,  alias  , resume , bio ,rating, type, slots)
+INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, address, number, city, state, country, password , status ,  alias  , resume , bio ,rating, type, slots)
         VALUES ( 
         'Teofilo' ,
         'Usurriaga', 
@@ -608,7 +615,7 @@ INSERT INTO "barbers" ( name, lastname ,  email, image, mobile, location, passwo
         'Educador y profesional', 
         4.5, 
         'Academy',
-        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00"}');
+        '{"09:00", "10:00", "11:00", "12:00","13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}');
 
 -- select * from barbers;
 
@@ -1025,8 +1032,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         'Sciutto', 
         'alo@leano.at', 
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562796/Clients/jorge_o3tsir.jpg}', 
-        '64541075', 
-        'Cali, Colombia',
+        '64541075Las Jarillas',
+        '1795',
+        'Alta Gracia',
+        'Cordoba',
+        'Argentina',
         'clave123',
         'active',
         'admin'
@@ -1169,8 +1179,11 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
         'Tricolti', 
         'sandra@tellez.com',         
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562801/Clients/22_hevpdb.jpg}', 
-        '64541075', 
-        'Barranquilla, Colombia',
+        '64541075Las Jarillas',
+        '1795',
+        'Alta Gracia',
+        'Cordoba',
+        'Argentina',
         'clave123',
         'active',
         'client'
@@ -1180,9 +1193,9 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
-        'Rodrigo' ,
+        'seba' ,
         'Bueno', 
-        'lorenzo@figueroa.com',         
+        'eduardociare871@gmail.com',         
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562796/Clients/21_fraryq.jpg}', 
         '64541075', 
         'Mar de plata, Argentina',

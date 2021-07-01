@@ -1,5 +1,5 @@
 import { DELETE_SERVICES_CRUD, DELETE_SERVICES_CRUD_FAIL, DELETE_SERVICES_CRUD_SUCCESS, POST_SERVICES_CRUD, POST_SERVICES_CRUD_FAIL, POST_SERVICES_CRUD_SUCCESS, PUT_SERVICES_CRUD, PUT_SERVICES_CRUD_FAIL, PUT_SERVICES_CRUD_SUCCESS } from "../action/servicesCRUD"
-
+import { GET_SERVICES } from "../action/services"
 const initialState = {
     loading: false,
     resp: [],
@@ -44,6 +44,10 @@ const reducerServiceCRUD= (state=initialState, action)=>{
             return {
                 ...state, err: action.payload , loading: false
             }
+        case GET_SERVICES: 
+           return {
+             ...state, resp: action.payload , loading: false
+           }
         default:
             return state
     }

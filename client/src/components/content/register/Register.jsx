@@ -99,7 +99,7 @@ const Register = () => {
 			})
 			.catch((err) => console.log(err));
 	};
-	
+
 
 	const dispatch = useDispatch();
 	const handleSubmit = (e) => {
@@ -114,7 +114,11 @@ const Register = () => {
 				email: barber.email,
 				password: barber.confirmedPassword,
 				alias: barber.alias,
-				location: barber.location,
+				address: barber.address,
+				number: barber.number,
+				city: barber.city,
+				state: barber.state,
+				country: barber.country,
 				mobile: barber.mobile,
 				image: barberImg,
 				type: barber.type,
@@ -134,36 +138,9 @@ const Register = () => {
             timer: 1500
           })
 		window.location.href = "http://localhost:3000/loginBarbers";
-		//window.location.replace("/catalog");
 	};
-	// const handleSelect = () => {
-	//     let select = document.getElementById("");
-
-	//     if (select) {
-	//         let selectValue = select.options[select.selectedIndex].value;
-	//         let selectedCategoryNames = select.options[select.selectedIndex].innerText;
-
-
-		dispatch(signUpBarber(barberSend)); 
-		history.push('clients/dashboard')
-
-	};
-	
-
-	const [address, setAddress] = useState('')
-
-	console.log(address)
-	const handleChange = (address) => {
-		setAddress(address);
 	};
 
-	const handleSelect = (address) => {
-		geocodeByAddress(address)
-			.then(results => setBarber({ ...barber, location: results[0].formatted_address }))
-			.then(latLng => console.log('Success', latLng))
-			.catch(error => console.error('Error', error));
-	};
-	console.log(barber)
 	return (
 		<body className="bg-background font-lato text-primary">
 			{/* <!-- Container --> */}
@@ -171,7 +148,7 @@ const Register = () => {
 				<div className="flex justify-center py-10 px-6 ">
 					{/* <!-- Row --> */}
 					<div className="w-full justify-center xl:w-3/4 lg:w-11/12 flex">
-					
+
 						<div className="w-full  lg:w-7/12 bg-white p-5">
 							<h3 className="py-4 text-3xl font-prata font-bold text-center">Create an Account</h3>
 							<form className="px-8 pt-6 pb-8 mb-4 bg-white">
@@ -179,14 +156,13 @@ const Register = () => {
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold"
-											// for="firstName"
+										// for="firstName"
 										>
 											First Name
 										</label>
 										<input
-											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${
-												errors.name && "border-red-500"
-											} shadow appearance-none focus:outline-none focus:shadow-outline`}
+											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${errors.name && "border-red-500"
+												} shadow appearance-none focus:outline-none focus:shadow-outline`}
 											// id="firstName"
 											type="text"
 											placeholder="First Name"
@@ -203,14 +179,13 @@ const Register = () => {
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold"
-											// for="lastName"
+										// for="lastName"
 										>
 											Last Name
 										</label>
 										<input
-											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${
-												errors.lastname && "border-red-500"
-											} shadow appearance-none focus:outline-none focus:shadow-outline`}
+											className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${errors.lastname && "border-red-500"
+												} shadow appearance-none focus:outline-none focus:shadow-outline`}
 											id="lastName"
 											type="text"
 											placeholder="Last Name"
@@ -229,7 +204,7 @@ const Register = () => {
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold"
-											// for="firstName"
+										// for="firstName"
 										>
 											Username
 										</label>
@@ -247,18 +222,95 @@ const Register = () => {
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold"
-											// for="lastName"
+										// for="lastName"
 										>
-											Location
+											Address
 										</label>
 										<input
 											className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border
 											 shadow appearance-none focus:outline-none focus:shadow-outline"
-											id="location"
+											id="address"
 											type="text"
-											placeholder="location"
-											name="location"
-											value={barber.location}
+											placeholder="Address"
+											name="address"
+											value={barber.address}
+											onChange={handleInputChange}
+										/>
+									</div>
+								</div>
+								<div className="mb-4 md:flex md:justify-between">
+									<div className="mb-4 md:mr-2 md:mb-0">
+										<label
+											className="block mb-2 text-sm font-bold"
+										// for="firstName"
+										>
+											Number
+										</label>
+										<input
+											className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border
+											 shadow appearance-none focus:outline-none focus:shadow-outline"
+											id="number"
+											type="number"
+											min="0"
+											placeholder="Number"
+											name="number"
+											value={barber.number}
+											onChange={handleInputChange}
+										/>
+									</div>
+									<div className="md:ml-2">
+										<label
+											className="block mb-2 text-sm font-bold"
+										// for="lastName"
+										>
+											City
+										</label>
+										<input
+											className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border
+											 shadow appearance-none focus:outline-none focus:shadow-outline"
+											id="city"
+											type="text"
+											placeholder="City"
+											name="city"
+											value={barber.city}
+											onChange={handleInputChange}
+										/>
+									</div>
+								</div>
+								<div className="mb-4 md:flex md:justify-between">
+									<div className="mb-4 md:mr-2 md:mb-0">
+										<label
+											className="block mb-2 text-sm font-bold"
+										// for="firstName"
+										>
+											State
+										</label>
+										<input
+											className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border
+											 shadow appearance-none focus:outline-none focus:shadow-outline"
+											id="state"
+											type="text"
+											placeholder="State"
+											name="state"
+											value={barber.state}
+											onChange={handleInputChange}
+										/>
+									</div>
+									<div className="md:ml-2">
+										<label
+											className="block mb-2 text-sm font-bold"
+										// for="lastName"
+										>
+											Country
+										</label>
+										<input
+											className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border
+											 shadow appearance-none focus:outline-none focus:shadow-outline"
+											id="country"
+											type="text"
+											placeholder="Country"
+											name="country"
+											value={barber.country}
 											onChange={handleInputChange}
 										/>
 									</div>
@@ -285,7 +337,7 @@ const Register = () => {
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold"
-											// for="lastName"
+										// for="lastName"
 										>
 											Biography
 										</label>
@@ -304,7 +356,7 @@ const Register = () => {
 								<div className="mb-4">
 									<label
 										className="block mb-2 text-sm font-bold"
-										// for="email"
+									// for="email"
 									>
 										Resume
 									</label>
@@ -323,7 +375,7 @@ const Register = () => {
 									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold"
-											// for="firstName"
+										// for="firstName"
 										>
 											Type
 										</label>
@@ -370,9 +422,8 @@ const Register = () => {
 										Email
 									</label>
 									<input
-										className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${
-											errors.email && "border-red-500"
-										} shadow appearance-none focus:outline-none focus:shadow-outline`}
+										className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${errors.email && "border-red-500"
+											} shadow appearance-none focus:outline-none focus:shadow-outline`}
 										id="email"
 										type="email"
 										placeholder="Email"
@@ -395,9 +446,8 @@ const Register = () => {
 											Password
 										</label>
 										<input
-											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${
-												errors.password && "border-red-500"
-											} shadow appearance-none focus:outline-none focus:shadow-outline`}
+											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${errors.password && "border-red-500"
+												} shadow appearance-none focus:outline-none focus:shadow-outline`}
 											id="password"
 											type="password"
 											placeholder="*********"
@@ -417,14 +467,13 @@ const Register = () => {
 									<div className="md:ml-2">
 										<label
 											className="block mb-2 text-sm font-bold"
-											// for="c_password"
+										// for="c_password"
 										>
 											Confirm Password
 										</label>
 										<input
-											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${
-												errors.confirmedPassword && "border-red-500"
-											} shadow appearance-none focus:outline-none focus:shadow-outline`}
+											className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${errors.confirmedPassword && "border-red-500"
+												} shadow appearance-none focus:outline-none focus:shadow-outline`}
 											id="c_password"
 											type="password"
 											placeholder="*********"
@@ -449,7 +498,7 @@ const Register = () => {
 										REGISTER ACCOUNT
 									</button>
 								</div>
-								
+
 							</form>
 						</div>
 					</div>

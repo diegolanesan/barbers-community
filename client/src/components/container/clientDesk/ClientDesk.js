@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import BarberServicesDashboard from "./clientDashboardServices/ClientServicesDashboard";
 import { getAllAppointments } from "../../../redux/action/clients";
 import { getCartsByUser } from "../../../redux/action/cart";
 import AppointmentsDash from "./appointments/Appointments.js";
 import ClientData from "./ClientData";
 import ClientConfig from "./config/Config.js";
+import WishlistTab from "./wishList/WishlistTab";
 import jwtDecode from "jwt-decode";
+import { signOut } from "../../../redux/action/auth";
 // import style from './barberDashboard.module.css'
 const ClientDesk = () => {
+
+	const history = useHistory()
 	const dispatch = useDispatch();
 	const idUser = jwtDecode(localStorage.getItem("clientToken"));
 	useEffect(() => {
@@ -40,11 +44,6 @@ const ClientDesk = () => {
 		<div className="flex h-full ">
 			<div className={`w-1/6 bg-gray-200`} onClick={handleClick}>
 				<div>
-					<button class="w-5/6 center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-						<Link to="/catalog">Schedule an appointment</Link>
-					</button>
-				</div>
-				<div>
 					<input
 						type="button"
 						value="Dashboard"
@@ -67,32 +66,25 @@ const ClientDesk = () => {
 				<div>
 					<input
 						type="button"
-						value="Invoices"
+						value="Wishlist"
 						name="menu"
 						className={
-							buttonState.menu === "Invoices" ? buttonSelected : buttonStyle
+							buttonState.menu === "Wishlist" ? buttonSelected : buttonStyle
 						}
 					/>
 				</div>
-				<div>
+				<div className="w-1/6 absolute bottom-14">
 					<input
 						type="button"
-						value="Whislist"
+						value="Account"
 						name="menu"
 						className={
-							buttonState.menu === "Whislist" ? buttonSelected : buttonStyle
+							buttonState.menu === "Account" ? buttonSelected : buttonStyle
 						}
 					/>
 				</div>
 				<div className="w-1/6 absolute bottom-2">
-					<input
-						type="button"
-						value="Config"
-						name="menu"
-						className={
-							buttonState.menu === "Config" ? buttonSelected : buttonStyle
-						}
-					/>
+					<button onClick={() => dispatch(signOut(history))} className="bg-red-400 py-1 w-full">Logout</button>
 				</div>
 			</div>
 			<div className="w-5/6">
@@ -104,7 +96,13 @@ const ClientDesk = () => {
 						<AppointmentsDash allAppointments={allAppointments} />
 					</div>
 				)}
-				{buttonState.menu === "Config" && (
+				{buttonState.menu === "Wishlist" && (
+					<div>
+						<WishlistTab />
+					</div>
+				)}
+
+				{buttonState.menu === "Account" && (
 					<div>
 						<ClientConfig />
 					</div>
