@@ -15,6 +15,7 @@ const BarberDetailServices = ({ filters }) => {
     const cart = useSelector(state => state.cart.activeCart)
     const barberDetail = useSelector(state => state.barberDetail.resp)
 
+    console.log(cart)
 
     const { id } = useParams()
     useEffect(() => {

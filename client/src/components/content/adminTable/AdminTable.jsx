@@ -1,29 +1,39 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAdmin, getAdmin, putAdmin } from '../../../redux/action/admin';
+import {getAdmin} from '../../../redux/action/admin';
+import {deleteClient, putClient, getClients} from '../../../redux/action/clients';
 
 const BarberTable = () => {
-
+    const [input, setinput] = useState("");
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getAdmin())
     }, [])
 
     const deleteC = (id) => {
-        dispatch(deleteAdmin(id))
+        dispatch(deleteClient(id))
         window.location.reload()
     }
 
-    /* const changeStatus = (admin) => {
-        console.log(admin.id, admin.status)
-        const barberModified = {
-			barberModify: {
-				status: !admin.status,
-			},
-		};
-        dispatch(putAdmin(barber.id, barberModified))
+    function onChange(e) {
+		setinput(e.target.value);
+	}
+    
+    function onSubmit(e) {
+        e.preventDefault();
+		dispatch(getClients(input));
+		setinput("");
+	} 
+
+    const changeStatus = (admin) => {
+        const clientSend = {
+            clientModified: {
+                rol: "client",
+            },
+        };
+        dispatch(putClient(admin.id, clientSend))
         window.location.reload()
-    } */
+    }
 
     const AdminsLoaded = useSelector(state => state.admins.adminsLoaded)
 
@@ -38,15 +48,15 @@ const BarberTable = () => {
                         Create category
                     </a>
                 </button> */}
-                <div className="relative mr-6 my-4 mb-1">
-                    <input type="search" className="bg-purple-white w-26 shadow rounded border-0 p-3" placeholder="Search by name...   " />
+                <form className="relative mr-6 my-4 mb-1" onSubmit={onSubmit}>
+                    <input type="search" value={input} onChange={onChange} className="bg-purple-white w-26 shadow rounded border-0 p-3" placeholder="Search by name...   " />
                     <button className="bg-gray" title="Buscar Categoria">🔍</button>
                     <div className="absolute pin-r pin-t mt-3 mr-4 text-purple-lighter">
                         <svg version="1.1" class="h-4 text-dark" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 52.966 52.966" style={{ enableBackground: "new 0 0 52.966 52.966" }} xmlSpace="preserve">
                         </svg>
                     </div>
-                </div>
+                </form>
             </div >
 
             <table className="border-collapse w-full">
@@ -72,6 +82,9 @@ const BarberTable = () => {
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                 <div className="flex gap-5 justify-center" >
+                                    <button onClick={() => changeStatus(c)} title="Delete Admin rights" className="flex text-white bg-purple-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-purple-700 rounded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z" /></svg>
+                                    </button>
                                     <button onClick={() => deleteC(c.id)} title="Delete Admin" className="flex text-white bg-red-500 border-0  mt-4 py-2 px-6 focus:outline-none hover:bg-red-700 rounded">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z" /></svg>
                                     </button>
