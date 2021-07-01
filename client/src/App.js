@@ -36,6 +36,9 @@ import NavBar from "./components/content/navBarSeba/NavBar"
 import newCatalog from "./components/content/catalog/newCatalog"
 import Error from "./components/content/error/Error"
 import jwtDecode from "jwt-decode";
+import NavBarClient from "./components/content/navBarSeba/NavBarClient";
+import NavBarAdmin from "./components/content/navBarSeba/NavBarAdmin";
+import NavBarBarber from "./components/content/navBarSeba/NavBarBarber";
 
 
 function App() {
@@ -57,7 +60,7 @@ function App() {
 			<Route exact path="/newCatalog" component={newCatalog} />
 			<Route exact path="/guest/cart" component={Cart} />
 			
-			<Route exact path="/clients/dashboard" component={admin.rol === "client" ? ClientDesk : Error} />
+			<Route exact path="/clients/dashboard" component={admin.rol === "client" || admin.rol !== "admin" && admin ? ClientDesk : Error} />
 			<Route exact path="/cart" component={admin.rol === "client" ? CartLogged : Error} />
 			<Route exact path="/reviews/:id" component={admin.rol === "client" ? Reviews : Error} />
 			<Route exact path="/reviews/new/:id" component={admin.rol === "client" ? AddReview : Error} />

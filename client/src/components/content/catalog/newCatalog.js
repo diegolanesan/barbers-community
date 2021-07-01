@@ -40,7 +40,7 @@ export default function Catalog() {
                return barber.categoryBarber.includes(e.target.value)
             })
         dispatch(setFilters(result))
-        } 
+        }
     }
 
     function handleLevel(e) {
