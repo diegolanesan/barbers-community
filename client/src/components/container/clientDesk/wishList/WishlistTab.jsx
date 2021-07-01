@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getClientWishList, removeFromWishlist } from '../../../../redux/action/wishlist'
 import { Link } from 'react-router-dom'
 import { addToCart, getActiveCartFromUserId, resetUserCart } from '../../../../redux/action/cart'
-
+import Swal from 'sweetalert2'
 const WishlistTab = () => {
 
     const dispatch = useDispatch()
@@ -36,27 +36,84 @@ const WishlistTab = () => {
             price: e.favorite.servicePrice
         }
 
+        function removeItemNoSwal(serviceBarberId) {
+            dispatch(removeFromWishlist(user.id, serviceBarberId))
+            setRemove(true)
+        }
+
         if (cart && cart.serviceBarbers.length > 0 && cart.serviceBarbers[0].barberId === e.barberId) {
-            dispatch(addToCart(user.id, service)).then(() =>
-                removeItem(e.favorite.serviceBarberId))
+            dispatch(addToCart(user.id, service))
+
+            Swal.fire(
+                'Wishlist',
+                'Added to Wishlist',
+                'success'
+
+            ).then(() => removeItemNoSwal(e.favorite.serviceBarberId))
+
             //dispatch(addToAppointment(e))
             localStorage.setItem("barberId", e.barberId)
         } else if (cart && cart.serviceBarbers.length > 0 && cart.serviceBarbers[0].barberId !== e.barberId) {
             dispatch(resetUserCart(user.id)).then(() =>
-                dispatch(addToCart(user.id, service))).then(() =>
-                    removeItem(e.favorite.serviceBarberId))
+                dispatch(addToCart(user.id, service)))
+            Swal.fire(
+                'Wishlist',
+                'Added to Wishlist',
+                'success'
+
+            ).then(() => removeItemNoSwal(e.favorite.serviceBarberId))
             // dispatch(addToAppointment(e))
             localStorage.setItem("barberId", e.barberId)
         } else {
-            dispatch(addToCart(user.id, service)).then(() =>
-                removeItem(e.favorite.serviceBarberId))
+            dispatch(addToCart(user.id, service))
+            Swal.fire(
+                'Wishlist',
+                'Added to Wishlist',
+                'success'
+
+            ).then(() => removeItemNoSwal(e.favorite.serviceBarberId))
             // dispatch(addToAppointment(e))
             localStorage.setItem("barberId", e.barberId)
         }
     }
     function removeItem(serviceBarberId) {
-        dispatch(removeFromWishlist(user.id, serviceBarberId))
-        setRemove(true)
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'success',
+                cancelButton: 'danger'
+            },
+            buttonsStyling: true
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            // text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(removeFromWishlist(user.id, serviceBarberId))
+                swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your favorite has been removed.',
+                    'success'
+                ).then(() => dispatch(getClientWishList(user.id)))
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your favorite is safe :)',
+                    'error'
+                )
+            }
+        })
+        // setRemove(true)
     }
 
     return (

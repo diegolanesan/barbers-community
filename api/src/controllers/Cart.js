@@ -76,11 +76,61 @@ const getCartsByUser = async (req, res) => {
                     state: "Rejected"
                 }
             ]
+        },
+        order: [
+            ['id', 'DESC']
+            // ["date", 'DESC']
+            // ['time', 'DESC']
+        ]
+        , include: { all: true }
+    });
+
+    // cart.map(async e => {
+    //     e.dataValues.barberName = barber.name + " " + barber.lastname
+    //     e.save()
+    //     console.log(e.dataValues.barberName)
+    // })
+    for (let i = 0; i < cart.length; i++) {
+        let barber = await Barber.findByPk(cart[i].barberId)
+        if (barber && barber.id === cart[i].barberId) {
+            cart[i].dataValues.barberName = barber.name + " " + barber.lastname
         }
+        // barber.map(e => {
+        //     cart[i].dataValues.barberName = e.name + " " + e.lastname;
+        //     cart.save()
+        // })
+        
+    }
+    // cart[0].dataValues.barberName = barber.name + " " + barber.lastname
+    res.send(cart);
+}
+
+const getLastFiveCartsByUser = async (req, res) => {
+    const userId = req.params.id;
+    const cart = await Cart.findAll({
+        where: {
+            clientId: userId, [Op.or]: [
+                {
+                    state: "Paid"
+                },
+                {
+                    state: "Rejected"
+                }
+            ]
+        },
+        order: [
+            ['id', 'DESC']
+            // ["date", 'DESC']
+            // ['time', 'DESC']
+        ],
+        limit: 5
         , include: { all: true }
     });
     const barber = await Barber.findByPk(cart[0].barberId)
     cart[0].dataValues.barberName = barber.name + " " + barber.lastname
+
+    
+
     res.send(cart);
 }
 
@@ -234,5 +284,6 @@ module.exports = {
     resetUserCart,
     getStatusAppointments,
     changeOrderStatus,
-    getSomeCarts
+    getSomeCarts,
+    getLastFiveCartsByUser,
 };

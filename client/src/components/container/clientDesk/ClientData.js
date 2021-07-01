@@ -8,6 +8,7 @@ import {
 	changeCartStateMercadoPago,
 	getCartsByUser,
 	addToCart,
+	getLastFiveByClientId,
 } from "../../../redux/action/cart";
 import { getClientWishList } from "../../../redux/action/wishlist";
 
@@ -16,14 +17,15 @@ function ClientData({ allAppointments }) {
 	const clientAppointments = allAppointments.filter(
 		(app) => app.clientId === user.id
 	);
-	const appointments = useSelector((state) => state.cart.clientsAppointments);
+	const appointments = useSelector((state) => state.cart.appoinments);
 	const wishlist = useSelector((state) => state.wishlist.wishlist);
 
 	const dispatch = useDispatch();
 	const search = useLocation().search;
 	const state = new URLSearchParams(search).get("collection_status");
 	useEffect(() => {
-		dispatch(getCartsByUser(user.id));
+		// dispatch(getCartsByUser(user.id));
+		dispatch(getLastFiveByClientId(user.id))
 		dispatch(getClientWishList(user.id));
 		if (state && state === "approved") {
 			dispatch(changeCartStateMercadoPago(user.id, { state: "Paid" })).then(
@@ -193,7 +195,7 @@ var nextDate = orderedDates.filter(function(date) {
                     </tr>
                 </thead>
                 <tbody>
-                    {lastFive && lastFive.length > 0 ? lastFive.map((c, id) => {
+                    {appointments && appointments.length > 0 ? appointments.map((c, id) => {
                         return <tr key={id} className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                             <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                 {c.id}

@@ -5,6 +5,7 @@ import { addToAppointment, getBarberServices, removeFromAppointment } from '../.
 import { addToCart, removeFromCart, getGuestCart, addToGuestCart, removeFromGuestCart, getActiveCartFromUserId, resetUserCart } from '../../../redux/action/cart';
 import { addToWishlist, getClientWishList, removeFromWishlist } from "../../../redux/action/wishlist"
 import jwtDecode from 'jwt-decode';
+import Swal from 'sweetalert2'
 
 
 const BarberDetailServices = ({ filters }) => {
@@ -101,6 +102,13 @@ const BarberDetailServices = ({ filters }) => {
             name: e.name
         }
         dispatch(addToWishlist(token.id, service))
+        Swal.fire(
+            'Wishlist',
+            'Added to Wishlist',
+            'success'
+
+        ).then(() => getClientWishList(token.id))
+
         setCambio(true)
     }
 
@@ -110,7 +118,41 @@ const BarberDetailServices = ({ filters }) => {
             price: e.serviceBarber.price,
             name: e.name
         }
-        dispatch(removeFromWishlist(token.id, service.serviceBarberId))
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'success',
+                cancelButton: 'danger'
+            },
+            buttonsStyling: true
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            // text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(removeFromWishlist(token.id, service.serviceBarberId))
+                swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your favorite has been removed.',
+                    'success'
+                ).then(() => dispatch(getClientWishList(token.id)))
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your favorite is safe :)',
+                    'error'
+                )
+            }
+        })
         setCambio(true)
     }
     console.log(wishlist)
@@ -133,7 +175,7 @@ const BarberDetailServices = ({ filters }) => {
         <div>
             <div>
                 {filtered && filtered.length > 0 ?
-                    <div className="grid overflow-auto h-96 sm:grid-cols-1 sm:grid-cols-4">
+                    <div className="grid overflow-auto sm:w-auto w-56 h-96 sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         {filtered.map((n) => (
                             <div
                                 key={n.id}
@@ -151,20 +193,20 @@ const BarberDetailServices = ({ filters }) => {
                                     </div>
                                     <div>
                                         {
-                                            favorites && !favorites.length ? <button onClick={() => addWishlist(n)} style={{ top: "5px", right: "-26px" }} className="text-xl cursor-pointer absolute bg-gray-100 px-1 py-1 opacity-80 hover:bg-gray-300 rounded mr-8">
+                                            favorites && !favorites.length ? <button onClick={() => addWishlist(n)} style={{ top: "5px", right: "-26px" }} class="text-xl cursor-pointer absolute bg-gray px-1 py-1 opacity-80 hover:bg-gray-300 rounded mr-8">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M6.28 3c3.236.001 4.973 3.491 5.72 5.031.75-1.547 2.469-5.021 5.726-5.021 2.058 0 4.274 1.309 4.274 4.182 0 3.442-4.744 7.851-10 13-5.258-5.151-10-9.559-10-13 0-2.676 1.965-4.193 4.28-4.192zm.001-2c-3.183 0-6.281 2.187-6.281 6.192 0 4.661 5.57 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-4.011-3.097-6.182-6.274-6.182-2.204 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248z" /></svg>
                                             </button> : favorites.map(e => {
                                                 if (Number(e.favorite.serviceBarberId) === Number(n.serviceBarber.id)) {
                                                     console.log("Entra ", e.favorite.serviceBarberId, n.serviceBarber.id)
                                                     return (
-                                                        <button onClick={() => removeWishlist(n)} style={{ top: "3px", right: "-28px" }} className="text-xl cursor-pointer absolute bg-gray-100 z-50 px-1 py-1 hover:bg-gray-300 rounded mr-8">
+                                                        <button onClick={() => removeWishlist(n)} style={{ top: "3px", right: "-28px" }} className="text-xl cursor-pointer absolute bg-gray z-50 px-1 py-1 hover:bg-gray-300 rounded mr-8">
                                                             ❤️ </button>
                                                     )
                                                 } else if (Number(e.favorite.serviceBarberId) !== Number(n.serviceBarber.id)) {
                                                     console.log("Entra Al Segundo", e.favorite.serviceBarberId, n.serviceBarber.id)
 
                                                     return (
-                                                        <button onClick={() => addWishlist(n)} style={{ top: "5px", right: "-26px" }} className="text-xl cursor-pointer absolute bg-gray-100 px-1 py-1 opacity-80 hover:bg-gray-300 rounded mr-8">
+                                                        <button onClick={() => addWishlist(n)} style={{ top: "5px", right: "-26px" }} className="text-xl cursor-pointer absolute bg-gray px-1 py-1 opacity-80 hover:bg-gray-300 rounded mr-8">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M6.28 3c3.236.001 4.973 3.491 5.72 5.031.75-1.547 2.469-5.021 5.726-5.021 2.058 0 4.274 1.309 4.274 4.182 0 3.442-4.744 7.851-10 13-5.258-5.151-10-9.559-10-13 0-2.676 1.965-4.193 4.28-4.192zm.001-2c-3.183 0-6.281 2.187-6.281 6.192 0 4.661 5.57 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-4.011-3.097-6.182-6.274-6.182-2.204 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248z" /></svg>
                                                         </button>
                                                     )

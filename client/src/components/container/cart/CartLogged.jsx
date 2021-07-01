@@ -9,7 +9,6 @@ import appointmentReducer from '../../../redux/reducer/appointment'
 import { postAppointment } from '../../../redux/action/appointment'
 import { getBarberById } from '../../../redux/action/barbers'
 
-
 export const CartLogged = () => {
   const dispatch = useDispatch()
   const token = jwtDecode(localStorage.getItem("clientToken"))

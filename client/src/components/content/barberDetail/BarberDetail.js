@@ -451,19 +451,21 @@ function BarberDetail(props) {
 							{/* <!-- Right Side --> */}
 							
 							</div>
-							<div class="mapouter">
-								<div class="gmap_canvas">
-									<iframe width="600" height="500" id="gmap_canvas" src={`https://maps.google.com/maps?q=${address}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-											frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-									</iframe>
-								</div>
-							</div>
+							
 						</div>
 						
 				)}
 			</div>
-			
+			<div className="grid grid-cols-1 w-4/5 sm:mt-2 mt-48">
+			<div class="mapouter ">
+								<div class="gmap_canvas">
+									<iframe className="w-full h-96" id="gmap_canvas" src={`https://maps.google.com/maps?q=${address}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+											frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+									</iframe>
+								</div>
+							</div>
 		</div>
+			</div>
 	);
 }
 
