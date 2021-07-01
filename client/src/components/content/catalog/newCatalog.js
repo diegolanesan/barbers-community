@@ -36,10 +36,8 @@ export default function Catalog() {
             dispatch(getBarbers())   
            }
         if(filters && filters.length !== 0) {
-
             const result = filters.filter(barber => {
-                const resul = barber.services.filter(service => service.categories.name === e.target.value)
-                console.log(resul)
+               return barber.categoryBarber.includes(e.target.value)
             })
         dispatch(setFilters(result))
         } 
@@ -61,6 +59,15 @@ export default function Catalog() {
 
     function handleStyle(e) {
         setStyle(e.target.value)
+        if(e.target.value === 'all') {
+            dispatch(getBarbers())   
+           }
+        if(filters && filters.length !== 0) {
+            const result = filters.filter(barber => {
+               return barber.styleBarber.includes(e.target.value)
+            })
+        dispatch(setFilters(result))
+        } 
     }
     
 
@@ -72,14 +79,14 @@ export default function Catalog() {
 
     // Update
     useEffect(() => {
-      if (barbersLoaded.slice(0, barbersToShow) !== barbersPerPage) setBarbersPerPage(barbersLoaded.slice(0, barbersToShow));
+      if (filters.slice(0, barbersToShow) !== barbersPerPage) setBarbersPerPage(filters.slice(0, barbersToShow));
       // eslint-disable-next-line
-    }, [barbersLoaded, filters]);
+    }, [filters, filters]);
 
     // Handler
     const handlePaginate = (e) => {
         let selectedPage = e.selected + 1
-        setBarbersPerPage(barbersLoaded.slice(((selectedPage - 1) * barbersToShow), (selectedPage * barbersToShow)))
+        setBarbersPerPage(filters.slice(((selectedPage - 1) * barbersToShow), (selectedPage * barbersToShow)))
     }
     // ---------------------------------------------- End of Paginate -----------------------------------------------
     
@@ -90,6 +97,7 @@ export default function Catalog() {
                     
                     <label className="px-4 font-bold">Order by</label>
                         <select onChange={(e) => handleCategory(e)} className="px-2 mr-8 rounded" name='order'>
+                            <option value="all"> All </option>
                             {categories && categories.map(category => {
                                 return <option key={category.id} value={category.name}> {category.name} </option>
                             })}
@@ -105,6 +113,7 @@ export default function Catalog() {
 
                     <label className="px-4 font-bold">Order by</label>
                         <select onChange={(e) => handleStyle(e)} className="px-2 mr-8 rounded" name='order'>
+                            <option value="all"> All </option>
                             {styles && styles.map(style => {
                                 return <option key={style.id} value={style.description}> {style.description} </option>
                             })}
@@ -122,14 +131,14 @@ export default function Catalog() {
                     </div>
                     <div className='pagination'>
                         {
-                            barbersLoaded && <ReactPaginate
+                            filters && <ReactPaginate
                                 previousLabel={'← Previous'}
                                 previousClassName={"px-4 font-bold"}
                                 nextLabel={'Next →'}
                                 nextClassName={"px-4 font-bold"}
                                 breakLabel={'...'}
                                 breakClassName={'break-me'}
-                                pageCount={barbersLoaded.length / barbersToShow}
+                                pageCount={filters.length / barbersToShow}
                                 marginPagesDisplayed={1}
                                 pageRangeDisplayed={2}
                                 onPageChange={handlePaginate}
