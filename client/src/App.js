@@ -72,7 +72,7 @@ function App() {
 			<Route exact path="/barbers/dashboard/:id" component={barberToken ? DetailsAppointment : Error} />
 			<Route exact path="/barbers/recovery/:token" component={barberToken ? Recovery : Error} />
 					
-			<Route exact path="/admin/dashboard" component={admin.rol === "admin" ? AdminDesk : Error} />
+			<Route exact path="/admin/dashboard" component={admin.rol === "admin" ? ContainerCRUD : Error} />
 			<Route exact path="/admin/barbers/edit/:id" component={admin.rol === "admin" ? BarberEdit : Error} />
 			<Route exact path="/pruebaSeba" component={admin.rol === "admin" ? Style : Error} />
 			<Route exact path="/pruebaServicios" component={admin.rol === "admin" ? Services : Error} />

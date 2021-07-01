@@ -170,7 +170,7 @@ const removeProductFromCart = async(req, res) => {
         }
     })
     .then(() => {
-        res.sendStatus(200);
+        res.send("OK");
     })
 }
 

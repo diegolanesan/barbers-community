@@ -1,4 +1,5 @@
 import { POST_STYLE, POST_STYLE_SUCCESS, POST_STYLE_FAIL, PUT_STYLE, PUT_STYLE_SUCCESS, PUT_STYLE_FAIL, DELETE_STYLE, DELETE_STYLE_SUCCESS, DELETE_STYLE_FAIL } from "../action/style";
+import { GET_STYLES } from "../action/types";
 
 const initialState = {
     loading: false,
@@ -43,6 +44,10 @@ const reducerStyle= (state=initialState, action)=>{
         case  DELETE_STYLE_FAIL :
             return {
                 ...state, err: action.payload , loading: false
+            }
+        case GET_STYLES:
+            return{
+                ...state, resp: action.payload , loading: false
             }
         default:
             return state
