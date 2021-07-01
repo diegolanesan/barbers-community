@@ -1180,9 +1180,9 @@ INSERT INTO "clients" (name, lastname, email, image, mobile, location, password,
 
 INSERT INTO "clients" (name, lastname, email, image, mobile, location, password, status, rol)
         VALUES ( 
-        'Rodrigo' ,
+        'seba' ,
         'Bueno', 
-        'lorenzo@figueroa.com',         
+        'eduardociare871@gmail.com',         
         '{https://res.cloudinary.com/doovf5g5c/image/upload/v1623562796/Clients/21_fraryq.jpg}', 
         '64541075', 
         'Mar de plata, Argentina',
