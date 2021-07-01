@@ -54,12 +54,12 @@ function App() {
 			<Route path="/" component={NavBar}/>
 			<Route path="/Detail/:id" component={showBarberDetail} />
 			<Route exact path="/" component={Home} />
-			<Route path="/catalog" component={Catalog} /> 
+			<Route path="/catalog" component={newCatalog} /> 
 			<Route exact path="/loginBarbers" component={LoginBarbers} />
 			<Route exact path="/loginClients" component={LoginClient} />
 			<Route exact path="/register" component={Register} />
 			<Route exact path="/clients/register" component={RegisterClient} />
-			<Route exact path="/newCatalog" component={newCatalog} />
+			{/* <Route exact path="/newCatalog" component={newCatalog} /> */}
 			<Route exact path="/guest/cart" component={Cart} />
 			<Route exact path="/barbers/recovery/:token" component={Recovery} />
 			<Route exact path="/clients/recovery/:token" component={RecoveryClient} />
