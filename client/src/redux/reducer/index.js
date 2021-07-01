@@ -13,6 +13,7 @@ import reducerCategory from "./categories";
 import reviewsReducer from "./reviews"
 import reducerServiceCRUD from "./serviceCRUD";
 import reducerStyle from "./styles";
+import filtersReducer from "./filters";
 
 
 
@@ -35,7 +36,8 @@ function combineReducer(state = {}, action) {
       style: reducerStyle(state.style, action),
       serviceCrud: reducerServiceCRUD(state.serviceCrud, action),
       style: reducerStyle(state.style, action),
-      serviceCrud: reducerServiceCRUD(state.serviceCrud, action)
+      serviceCrud: reducerServiceCRUD(state.serviceCrud, action),
+      filters: filtersReducer(state.filters, action)
 
     };
   }

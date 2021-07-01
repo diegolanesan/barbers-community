@@ -58,19 +58,15 @@ const barbersReducer = (state = initialState, action) => {
         case FILTER_BARBERS:
             let aux = state.barbersStorage
             console.log(state.barbersStorage)
-            if (action.payload.Proficiency) {
-                aux = state.barbersStorage.filter(n => n.type === action.payload.Proficiency)
+            if (action.payload.type) {
+                aux = state.barbersStorage.filter(n => n.type === action.payload.type)
             }
             else aux = state.barbersStorage
-            if (action.payload.Hair) {
-                aux = aux.filter(m => m.hairs.includes(action.payload.Hair))
+            if (action.payload.category) {
+                aux = aux.filter(m => m.categoryBarber.includes(action.payload.category))
             }
-            if (action.payload.Face) {
-                aux = aux.filter(m => m.faces.includes(action.payload.Face))
-                
-            }
-            if (action.payload.Style) {
-                aux = aux.filter(m => m.barberStyles.includes(action.payload.Style))
+            if (action.payload.sytle) {
+                aux = aux.filter(m => m.styleBarber.includes(action.payload.style))  
             }
             switch (action.payload.order) {
                 case "A-Z": aux = aux.sort(function (a, b) {
