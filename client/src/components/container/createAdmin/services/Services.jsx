@@ -204,7 +204,7 @@ const Services = ()=>{
                              <>
                             <tr className="bg-gray-50 text-center" onFocus={()=>{handleFocus(c)}} onChange={(v)=>{handleChangeEdit(v,c)}}>
                                 <td className="p-2 border-r">
-                                    <input type="number" className="border p-1 w-20" value={c.id}/>
+                                    <input type="number" className="border p-1 " value={c.id}/>
                                  </td>
                                 <td className="p-2 border-r">
                                     <input type="text" className="border p-1" placeholder={c.name}  value={(form2.ID == c.id && form2.name) ||""} name="name"/>

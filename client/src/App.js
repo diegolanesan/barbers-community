@@ -39,6 +39,7 @@ import jwtDecode from "jwt-decode";
 import NavBarClient from "./components/content/navBarSeba/NavBarClient";
 import NavBarAdmin from "./components/content/navBarSeba/NavBarAdmin";
 import NavBarBarber from "./components/content/navBarSeba/NavBarBarber";
+import ContainerCRUD from "./components/container/createAdmin/container/ContainerCRUD";
 
 
 function App() {
@@ -75,6 +76,9 @@ function App() {
 			<Route exact path="/admin/barbers/edit/:id" component={admin.rol === "admin" ? BarberEdit : Error} />
 			<Route exact path="/pruebaSeba" component={admin.rol === "admin" ? Style : Error} />
 			<Route exact path="/pruebaServicios" component={admin.rol === "admin" ? Services : Error} />
+		
+			<Route exact path="/pruebaCOntainer" component={ContainerCRUD} />
+			
 				
 			<Route exact path="/404" component={Error} />
 				
