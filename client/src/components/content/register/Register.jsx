@@ -136,9 +136,9 @@ const Register = () => {
             title: 'Register Sucessfull',
             showConfirmButton: false,
             timer: 1500
-          })
+        
+		})
 		window.location.href = "http://localhost:3000/loginBarbers";
-	};
 	};
 
 	return (
