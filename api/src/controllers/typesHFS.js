@@ -31,6 +31,7 @@ const getAllStyles = async (req, res)=>{
 // ruta para crear estilos 
 const  postStyle = async (req, res) => {
     const {style} = req.body;
+    
     const resul = await Style.findOrCreate({
         where: style
     });

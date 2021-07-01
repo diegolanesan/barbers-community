@@ -33,6 +33,8 @@ import Places from "./components/container/autocomplete/autocomplete";
 import Style from "./components/container/createAdmin/HFStypes/Style";
 import Services from "./components/container/createAdmin/services/Services";
 import NavBar from "./components/content/navBarSeba/NavBar"
+import newCatalog from "./components/content/catalog/newCatalog"
+
 
 function App() {
 	const location = useLocation();
@@ -72,6 +74,9 @@ function App() {
 			<Route exact path="/reviews/:id" component={Reviews} />
 			<Route exact path="/reviews/new/:id" component={AddReview} />
 			<Route exact path="/places" component={	Places} />
+			<Route exact path="/newCatalog" component={newCatalog} />
+			<Route exact path="/pruebaSeba" component={Style} />
+			<Route exact path="/pruebaServicios" component={Services} />
 			{/* <Route exact path="/pruebaSeba" component={NavBar} /> */}
 			<ToastContainer />
 		</div>
