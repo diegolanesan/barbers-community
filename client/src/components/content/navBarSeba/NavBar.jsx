@@ -1,22 +1,78 @@
 import React from "react";
 import "./NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { signOut } from "../../../redux/action/auth";
+import { useDispatch } from "react-redux"
+import jwtDecode from "jwt-decode";
 const NavBar = ()=>{
-    return (
+    const clientToken = localStorage.getItem("clientToken") || false
+	const barberToken = localStorage.getItem("barberToken") || false
+	const admin = clientToken ? jwtDecode(clientToken) : false
+    const dispatch = useDispatch();
+    const history = useHistory(); 
+    const handleClick = ()=>{
+        dispatch(signOut(history))
+     }
+    if(admin.rol === "admin"){
+        return(
         <nav className="navBarContainer">
             <div className="logoNav">
-                <img src="https://html.dynamiclayers.xyz/dl/barbershop/img/logo.png" alt="" />
+                <Link to="/"><img src="https://html.dynamiclayers.xyz/dl/barbershop/img/logo.png" alt="" /></Link>
             </div>
             <ul className="ulNav">
-                <li><Link to="/">HOME</Link></li>
                 <li><Link>ABOUT</Link></li>
-                <li><Link to="/catalog">SERVICE</Link></li>
-                <li><Link>LOG IN /</Link> <Link>REGISTER</Link></li>
-                <li><Link>CONTACT</Link></li>
+                <li onClick={handleClick} style={{cursor:"pointer"}}>LOG OUT</li>
+                <li><Link to="/admin/dashboard">DASHBOARD</Link></li>
                 <button>MAKE APPOINMENT</button>
             </ul>
         </nav>
-    )
+        )
+    }else if (admin.rol === "client" || admin.rol !== "admin" && admin){
+        return (
+         <nav className="navBarContainer">
+            <div className="logoNav">
+                <Link to="/"><img src="https://html.dynamiclayers.xyz/dl/barbershop/img/logo.png" alt="" /></Link>
+            </div>
+            <ul className="ulNav">
+                <li><Link>ABOUT</Link></li>
+                <li><Link to="/catalog">SERVICE</Link></li>
+                <li onClick={handleClick} style={{cursor:"pointer"}}>LOG OUT</li>
+                <li><Link to="/clients/dashboard">DASHBOARD</Link></li>
+                <button>MAKE APPOINMENT</button>
+            </ul>
+        </nav>
+        )
+    }else if (barberToken){
+        return (
+      <nav className="navBarContainer">
+            <div className="logoNav">
+                <Link to="/"><img src="https://html.dynamiclayers.xyz/dl/barbershop/img/logo.png" alt="" /></Link>
+            </div>
+            <ul className="ulNav">
+                <li><Link>ABOUT</Link></li>
+                <li onClick={handleClick} style={{cursor:"pointer"}}>LOG OUT</li>
+                <li><Link to="/barbers/dashboard">DASHBOARD</Link></li>
+                <button>MAKE APPOINMENT</button>
+            </ul>
+        </nav>
+        )
+    }else{
+        return (
+         <nav className="navBarContainer">
+         <div className="logoNav">
+             <Link to="/"><img src="https://html.dynamiclayers.xyz/dl/barbershop/img/logo.png" alt="" /></Link>
+         </div>
+         <ul className="ulNav">
+             <li><Link>ABOUT</Link></li>
+             <li><Link to="/catalog">SERVICE</Link></li>
+             <li><Link to="/loginBarbers">LOG IN BARBER</Link></li>
+             <li><Link  to="/loginClients">LOG IN CLIENT</Link></li>
+             <li><Link>CONTACT</Link></li>
+             <button>MAKE APPOINMENT</button>
+         </ul>
+     </nav>
+        )
+    }
 }
 
 export default NavBar;

@@ -8,28 +8,32 @@ const jwt = require('jsonwebtoken');
 
 const getAllBarbers = async(req, res)=>{
     const barber = await Barber.findAll({
-		include:[ {all: true, nested: true} ] 
-	});
-	//console.log(barber)
+        include:[ {all: true, nested: true} ] 
+    });
+    //console.log(barber)
     if(barber){
-		let aux = barber
-		for (let i = 0; i < aux.length; i++) {
-			faces = []
-			hairs = []
-			barberStyles = []
-			if(aux[i].dataValues.faceTypes) {
-				aux[i].dataValues.faceTypes.map(b => faces.push(b.dataValues.description))
-			}
-			if(aux[i].dataValues.hairTypes) {
-				aux[i].dataValues.hairTypes.map(b => hairs.push(b.dataValues.description))
-			}
-			if(aux[i].dataValues.styles) {
-				aux[i].dataValues.styles.map(b => barberStyles.push(b.dataValues.description))
-			}
-			aux[i].dataValues.faces = faces
-			aux[i].dataValues.hairs = hairs
-			aux[i].dataValues.barberStyles = barberStyles
-		}
+        let aux = barber
+        for (let i = 0; i < aux.length; i++) {
+            category = []
+            style = []
+            type = []
+            if(aux[i].dataValues.styles) {
+                aux[i].dataValues.styles.map(b => style.push(b.dataValues.description))
+            }
+            if(aux[i].dataValues.services) {
+                aux[i].dataValues.services.map(b => category.push(
+                    b.dataValues.categories.map(c => c.name)
+                ))
+            }
+            // if(aux[i].dataValues.styles) {
+            //  aux[i].dataValues.styles.map(b => barberStyles.push(b.dataValues.description))
+            // }
+            aux[i].dataValues.categoryBarber = category.flat()
+            aux[i].dataValues.styleBarber = style
+            
+        }
+        console.log(aux)
+        
         res.send(aux)
     }else{
         res.status(400).send("No hay barberos en la base de datos")
