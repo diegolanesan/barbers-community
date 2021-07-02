@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from 'react-router-dom'
 import { signUpBarber } from "../../../redux/action/auth";
+import Swal from 'sweetalert2'
 import PlacesAutocomplete, {
 	geocodeByAddress,
 	getLatLng,
@@ -44,7 +44,6 @@ const validate = (input) => {
 };
 
 const Register = () => {
-	const history = useHistory()
 	const [barberImg, setBarberImg] = useState([]);
 
 	const newBarber = {
@@ -123,12 +122,26 @@ const Register = () => {
 				type: barber.type,
 			},
 		};
+		
+		dispatch(signUpBarber(barberSend)); 
+		Swal.fire({
+            title: 'Register Sucessfull',
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "http://localhost:3000/loginBarbers";
+            }
+          })
+	};
+	
 
+	const [address, setAddress] = useState('')
 
-
-		dispatch(signUpBarber(barberSend));
-		history.push('clients/dashboard')
-
+	console.log(address)
+	const handleChange = (address) => {
+		setAddress(address);
 	};
 
 	return (

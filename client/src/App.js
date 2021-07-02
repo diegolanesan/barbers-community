@@ -22,6 +22,7 @@ import ClientDesk from './components/container/clientDesk/ClientDesk';
 import CartLogged from './components/container/cart/CartLogged';
 import Cart from './components/container/cart/Cart';
 import AdminDesk from './components/content/admin/AdminDesk';
+import Validation from './components/content/admin/Validation';
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -63,30 +64,25 @@ function App() {
 			<Route exact path="/guest/cart" component={Cart} />
 			<Route exact path="/barbers/recovery/:token" component={Recovery} />
 			<Route exact path="/clients/recovery/:token" component={RecoveryClient} />
-			
-			
 			<Route exact path="/clients/dashboard" component={admin.rol === "client" || admin.rol !== "admin" && admin ? ClientDesk : Error} />
 			<Route exact path="/cart" component={admin.rol === "client" ? CartLogged : Error} />
 			<Route exact path="/reviews/:id" component={admin.rol === "client" ? Reviews : Error} />
 			<Route exact path="/reviews/new/:id" component={admin.rol === "client" ? AddReview : Error} />
-					
+			<Route exact path="/academic" component={Academic} />
+			<Route exact path="/urban" component={Urban} />
+			<Route exact path="/hair-technician" component={HairTechnician} />
+			<Route exact path="/recovery/:token" component={Recovery} />
+			<Route exact path="/validation" component={Validation} />
+			<Route exact path="/appointment/date" component={AppointmentDate} />
+			<Route exact path="/admin/dashboard" component={AdminDesk} />
+			<Route exact path="/places" component={	Places} />
 			<Route exact path="/admin/barbers" component={barberToken ? BarberTable : Error} />
 			<Route exact path="/BarberConfig/:id" component={barberToken ? BarberConfig : Error} />
 			<Route exact path="/barbers/dashboard" component={barberToken ? BarberDashboard : Error} />
 			<Route exact path="/barbers/dashboard/:id" component={barberToken ? DetailsAppointment : Error} />
-
-					
 			<Route exact path="/admin/dashboard" component={admin.rol === "admin" ? ContainerCRUD : Error} />
 			<Route exact path="/admin/barbers/edit/:id" component={admin.rol === "admin" ? BarberEdit : Error} />
-			<Route exact path="/pruebaSeba" component={admin.rol === "admin" ? Style : Error} />
-			<Route exact path="/pruebaServicios" component={admin.rol === "admin" ? Services : Error} />
-		
-			<Route exact path="/pruebaCOntainer" component={ContainerCRUD} />
-			
-				
 			<Route exact path="/404" component={Error} />
-				
-			<Route exact path="/places" component={Places} />
 			<ToastContainer />
 		</div>
 	);

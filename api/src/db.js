@@ -66,15 +66,10 @@ FaceType.belongsToMany(Barber, { through: "faceTypeBarber" });
 // Se va a crear una tabla intermedia con los id de las tablas
 Barber.belongsToMany(HairType, { through: "hairTypeBarber" });
 HairType.belongsToMany(Barber, { through: "hairTypeBarber" });
-// Se va a crear una tabla intermedia con los id de las tablas
+
 Barber.belongsToMany(Style, { through: "styleBarber" });
 Style.belongsToMany(Barber, { through: "styleBarber" });
-// Barber.belongsToMany(Style, { through: "styleBarber" });
-// Style.belongsToMany(Barber, { through: "styleBarber" });
-// ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
 
-// Style.hasMany(Client);
-// Client.belongsTo(Style);
 
 // ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
 // Style.hasMany(Client);

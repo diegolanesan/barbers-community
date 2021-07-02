@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import {getAdmin} from '../../../redux/action/admin';
+import Swal from 'sweetalert2'
 import {deleteClient, putClient, getClients} from '../../../redux/action/clients';
 
 const BarberTable = () => {
@@ -11,8 +12,25 @@ const BarberTable = () => {
     }, [])
 
     const deleteC = (id) => {
-        dispatch(deleteClient(id))
-        window.location.reload()
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(deleteClient(id))
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                window.location.reload()
+            }
+        })
     }
 
     function onChange(e) {
@@ -32,7 +50,16 @@ const BarberTable = () => {
             },
         };
         dispatch(putClient(admin.id, clientSend))
-        window.location.reload()
+        Swal.fire({
+            title: `${admin.name} is no more an admin`,
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.reload()
+            }
+          })
     }
 
     const AdminsLoaded = useSelector(state => state.admins.adminsLoaded)

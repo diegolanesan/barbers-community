@@ -1,8 +1,8 @@
 import React, { useState, useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom'
 //import { postBarber } from "../../../redux/action/barbers";
 import { signUpClient } from "../../../redux/action/auth";
+import Swal from 'sweetalert2'
 import { getAllHairTypes, getAllFaceTypes, getAllStyles } from "../../../redux/action/types";
 
 const validate = (input) => {
@@ -32,7 +32,6 @@ const validate = (input) => {
 }
 
 const RegisterClient = () => {
-	const history = useHistory()
     const dispatch = useDispatch();
 	const [barberImg, setBarberImg] = useState([]);
 
@@ -92,7 +91,7 @@ const RegisterClient = () => {
 	
 	const handleSubmit = (e) => {
 		const clientSend = {
-        name: client.name,
+        		name: client.name,
 				lastname: client.lastname,
 				email: client.email,
 				image: barberImg,
@@ -101,13 +100,22 @@ const RegisterClient = () => {
 				password: client.confirmedPassword,
 				status: "active",
 				styleId: client.styleId, 
-        faceTypeId: client.faceTypeId, 
-        hairTypeId: client.hairTypeId
-
+				faceTypeId: client.faceTypeId, 
+				hairTypeId: client.hairTypeId,
+				rol: "client",
 		};
 		
-		dispatch(signUpClient(clientSend)); 
-		history.push("/")
+		dispatch(signUpClient(clientSend));
+		Swal.fire({
+            title: 'Register Sucessfull',
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "http://localhost:3000/loginClients";
+            }
+          }) 
 	};
 	
     

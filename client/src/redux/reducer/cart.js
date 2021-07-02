@@ -62,25 +62,21 @@ const reducerCart = (state=initialState, action)=>{
             clientsAppointments: action.payload
         }
         case GET_PAID_APPOINTMENTS: 
-        console.log("kentaro")
         return {
             ...state,
             paidAppoinments: action.payload
         }
         case GET_ACTIVE_APPOINTMENTS: 
-        console.log("kentaro")
         return {
             ...state,
             activeAppoinments: action.payload
         }
         case GET_REJECTED_APPOINTMENTS: 
-        console.log("kentaro")
         return {
             ...state,
             rejectedAppoinments: action.payload
         }
         case GET_APPOINTMENTS: 
-        console.log("kentaro")
         return {
             ...state,
             appoinments: action.payload
@@ -90,8 +86,6 @@ const reducerCart = (state=initialState, action)=>{
             ...state,
             appoinments: action.payload
         }
-        case CHANGE_ORDER_STATUS:
-            return state
         default:
             return state
     }

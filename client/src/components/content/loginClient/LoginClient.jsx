@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { signInClient } from "../../../redux/action/auth";
+import { getClientBanned } from "../../../redux/action/clients";
 import { useHistory, Link } from "react-router-dom";
 import GoogleLogin from 'react-google-login';
 import hero from "../../../resources/other-hero.jpg";
+import Swal from 'sweetalert2'
 import { signInBarberWithGoogle, signInClientWithGoogle } from "../../../redux/action/auth";
 
 function LoginClient() {
@@ -13,17 +15,40 @@ function LoginClient() {
 		email: "",
 		password: "",
 	});
-
+	useEffect(() => {
+		dispatch(getClientBanned())
+	}, [])
+	const clientsBanned = useSelector(state => state.clients.bannedClient)
+	let emailsBanned = []
+	for(let i = 0; i < clientsBanned.length; i++) {
+		emailsBanned.push(clientsBanned[i].email)
+	}
 	function handleChange(e) {
 		setCreds({
 			...creds,
 			[e.target.name]: e.target.value,
 		});
+		console.log(creds.email, emailsBanned)
 	}
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		dispatch(signInClient(creds, history));
+		if(creds.email === "" || creds.password === "") {
+			Swal.fire({
+			  icon: 'error',
+			  title: 'Oops...',
+			  text: 'Empty camps, please complete them',
+			  })
+		  }
+		if(emailsBanned.includes(creds.email.toString())) {
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'This account is suspended',
+			  })
+		} else {
+			dispatch(signInClient(creds, history))
+		}
 	}
 
 	function responseGoogle(res) {
@@ -115,7 +140,7 @@ function LoginClient() {
 
 					<p class="mt-8">
 						Need an account?{" "}
-						<Link to="/clients/register" class="text-secondary hover:text-primary font-semibold">
+						<Link to="/clients/register" class="text-blue-500 hover:text-blue-700 font-semibold">
 							Create an account
 						</Link>
 					</p>

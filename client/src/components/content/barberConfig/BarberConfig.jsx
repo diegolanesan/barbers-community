@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode'
 import axios from "axios";
+import Swal from 'sweetalert2'
 import { putBarber } from '../../../redux/action/barbers';
 import { getBarberById, relationFaiceType, relationHairType, relationStyle } from '../../../redux/action/barbers';
 import { getAllHairTypes, getAllFaceTypes, getAllStyles } from '../../../redux/action/types';
@@ -12,7 +13,6 @@ const BarberConfig = () => {
     const {hair, face, style} = useSelector(state => state.types)
     const token = jwtDecode(localStorage.getItem("barberToken"))
     const id = token.id
-    console.log(token)
     const newBarber = {
         name: "",
         lastname: "",
@@ -29,9 +29,11 @@ const BarberConfig = () => {
         faces: [],
         hairs: [],
         barberStyles: [],
+        slots: []
     }
 
     const [barber, setBarber] = useState(newBarber) 
+    const [slots, setSlots] = useState(["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"]) 
     const [loading, setLoading] = useState(true)
 
     function fetchData() {
@@ -51,13 +53,15 @@ const BarberConfig = () => {
     
     }, [barberSelected])
     const handleInputChange = (e) => {
-      if(e.target.name === "faces" || e.target.name === "hairs" || e.target.name === "barberStyles"){
+      if(e.target.name === "faces" || e.target.name === "hairs" || e.target.name === "barberStyles" || e.target.name === "slots"){
         for(let i = 0; i< barber[e.target.name].length; i++) {
           if(e.target.value === barber[e.target.name][i].toString()) { 
-            return barber[e.target.name].splice(i , 1);
+            console.log(e.target.name, e.target.value )
+            return barber[e.target.name].splice(i , 1)
           }
         }
         setBarber({...barber, [e.target.name] : barber[e.target.name].concat(e.target.value)});
+        console.log(e.target.name, e.target.value )
       } else {
         setBarber({
           ...barber,
@@ -65,15 +69,41 @@ const BarberConfig = () => {
         });
       }
     };
+
+    const handleISlotsChange = (e) => {
+        for(let i = 0; i< barber[e.target.name].length; i++) {
+          if(e.target.value === barber[e.target.name][i]) { 
+            console.log(barber.slots)
+            return barber[e.target.name].splice(i , 1)
+          }}
+        setBarber({...barber, [e.target.name] : barber[e.target.name].concat(e.target.value)});
+        console.log(barber.slots)
+    };
     
     const handleSubmit = () => {
       if(!barber.name || !barber.lastname ||
          !barber.bio || !barber.resume ||
           !barber.email || !barber.password || !barber.confirmedPassword ||
            !barber.alias || !barber.location || !barber.mobile) {
-            alert("Please complete all the camps")
+            Swal.fire({
+              title: 'Please complete all the camps',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
       } else if (barber.password !== barber.confirmedPassword) {
-            alert("password and confirm password must be the same")
+            Swal.fire({
+              title: 'password and confirm password must be the same',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
       } else {
         const barberSend = {
           barberModify: {
@@ -90,13 +120,23 @@ const BarberConfig = () => {
               mobile: barber.mobile,
               //img: "",
               type: barber.type,
+              slots: barber.slots
           }
       };
       dispatch(putBarber(id, barberSend))
       dispatch(relationHairType({hairTypeId :barber.hairs, barberId : id}))
       dispatch(relationFaiceType({faceTypeId :barber.faces, barberId : id}))
       dispatch(relationStyle({styleId :barber.barberStyles, barberId : id}))
-      alert("Updated Successfully")
+
+      Swal.fire({
+        title: 'Updated Successfully',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
       }
     };
      //--------------CLOUDINARY------------
@@ -120,7 +160,6 @@ const BarberConfig = () => {
     const handleCruz2 = ()=>{
       setBarber({ ...barber, image: [""]});
   }
-    console.log(barber)
     return (
         <div class="flex grid h-screen bg-gray-200 items-center justify-center ">
           <div class="grid bg-white rounded-lg shadow-xl w-11/12  md:w-11/12 mx-12 mt-10">
@@ -225,7 +264,34 @@ const BarberConfig = () => {
               </select>
             </div>
             </div>
-
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-5 md:gap-8 mt-5 mx-7">
+            <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Availability</label>
+                <div class="block pt-3 pb-2 space-x-4">
+                  {slots.map(b => {
+                    return <label>
+                      {barber.slots.includes(b) ? 
+                      <input
+                      type="checkbox"
+                      name="slots"
+                      defaultChecked
+                      value={`${b}`}
+                      onClick={handleISlotsChange}
+                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+                      /> :
+                      <input
+                      type="checkbox"
+                      name="slots"
+                      value={`${b}`}
+                      onClick={handleISlotsChange}
+                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+                      />}
+                      {b}
+                    </label>
+                  })}
+                </div>
+              </div>
+              </div>
             <div class="flex justify-center">
               <div class="flex">
                 <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Change your Info</h1>

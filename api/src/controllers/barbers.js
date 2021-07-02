@@ -40,6 +40,17 @@ const getAllBarbers = async(req, res)=>{
     }
 };
 
+const getBannedBarbers = (req, res, next) => {
+    try {
+        Barber.findAll({ where: {status: false }})
+        .then((result) => {
+            res.status(200).send(result);
+        })
+    } catch {
+        console.log("Barber not found!");
+    }
+}
+
 // filtra a los barberos por faceType hairType Style
 const getHFStypes = async (req, res)=>{
 	const {id, type} = req.query;
@@ -296,5 +307,6 @@ module.exports = {
 	relationStyle,
 	getHFStypes,
 	loginBarbers,
-	googleLoginBarbers
+	googleLoginBarbers,
+	getBannedBarbers
 };

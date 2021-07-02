@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode'
 import { getClientById, putClient} from '../../../../redux/action/clients';
 import axios from "axios";
+import Swal from 'sweetalert2'
 import "./Config.css"
 const ClientConfig = () => {
     const dispatch = useDispatch()
@@ -48,9 +49,25 @@ const ClientConfig = () => {
       if(!admin.name || !admin.lastname ||
           !admin.email || !admin.password || !admin.confirmedPassword 
           || !admin.location || !admin.mobile) {
-            alert("Please complete all the camps")
+            Swal.fire({
+              title: 'Please complete all the camps',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
       } else if (admin.password !== admin.confirmedPassword) {
-            alert("password and confirm password must be the same")
+            Swal.fire({
+              title: 'Password and confirm password must be the same',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
       } else {
         const adminSend = {
           clientModified: {
@@ -63,7 +80,15 @@ const ClientConfig = () => {
           }
       };
       dispatch(putClient(id,adminSend))
-      alert("Updated Successfully")
+      Swal.fire({
+        title: 'Updated Successfully',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
       }
     };
     console.log(admin, "aaaa")

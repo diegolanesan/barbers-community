@@ -206,7 +206,6 @@ const getCartbyBarberId = async(req, res) => {
 }
 
 const getSomeCarts = async(req, res) => {
-    console.log("KENTAROOOOO")
     const cart = await Cart.findAll({where: {state: ["Paid","Rejected","Pending"] }, include: {all: true, nested: true}})
     //console.log(cart)
     res.send(cart)
