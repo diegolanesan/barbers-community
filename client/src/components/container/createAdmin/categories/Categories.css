@@ -67,11 +67,11 @@
     font-weight: 900;
     top: 3px;
     right: 29px;
-    color: rgb(255, 254, 254);
+    color: rgb(247, 241, 241);
     cursor: pointer;
     transition: 0.5s;
 }
 .cruz:hover
 {
-    box-shadow: 1px 1px 1px 1px black;
+    box-shadow: 1px 1px 1px 1px rgb(10, 10, 10);
 }

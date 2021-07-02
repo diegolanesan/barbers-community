@@ -40,9 +40,6 @@ export default function AdminDesk() {
                     <input type='button' value='Params' name='menu' className={buttonState.menu === 'Params' ? buttonSelected : buttonStyle} />
                 </div>
                 <div>  
-                    <input type='button' value='Rates' name='menu' className={buttonState.menu === 'Rates' ? buttonSelected : buttonStyle} />
-                </div>
-                <div>  
                     <input type='button' value='Barbers' name='menu' className={buttonState.menu === 'Barbers' ? buttonSelected : buttonStyle} />
                 </div>
                 <div>  
@@ -61,9 +58,6 @@ export default function AdminDesk() {
                 )}
                 {buttonState.menu === 'Params' && (
                     <Categories/>
-                )}
-                {buttonState.menu === 'Rates' && (
-                    <div>Rates</div>
                 )}
                 {buttonState.menu === 'Barbers' && (
                     <AdminBarbers/>

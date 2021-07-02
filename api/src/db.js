@@ -66,15 +66,10 @@ FaceType.belongsToMany(Barber, { through: "faceTypeBarber" });
 // Se va a crear una tabla intermedia con los id de las tablas
 Barber.belongsToMany(HairType, { through: "hairTypeBarber" });
 HairType.belongsToMany(Barber, { through: "hairTypeBarber" });
-// Se va a crear una tabla intermedia con los id de las tablas
+
 Barber.belongsToMany(Style, { through: "styleBarber" });
 Style.belongsToMany(Barber, { through: "styleBarber" });
-// Barber.belongsToMany(Style, { through: "styleBarber" });
-// Style.belongsToMany(Barber, { through: "styleBarber" });
-// ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
 
-// Style.hasMany(Client);
-// Client.belongsTo(Style);
 
 // ¿Cómo establezco las relaciones entre el cliente y los styles/hairTypes/faceTypes?}
 // Style.hasMany(Client);
@@ -100,11 +95,11 @@ Cart.belongsTo(Client)
 Cart.belongsToMany(ServiceBarber, {through: "item"})
 ServiceBarber.belongsToMany(Cart, { through: "item" })
 
-// Client.hasOne(Wishlist)
-// Wishlist.belongsTo(Client)
+Client.hasMany(Wishlist)
+Wishlist.belongsTo(Client)
 
-// Wishlist.belongsToMany(ServiceBarber, {through: "favorite"})
-// ServiceBarber.belongsToMany(Wishlist, { through: "favorite" })
+Wishlist.belongsToMany(ServiceBarber, {through: "favorite"})
+ServiceBarber.belongsToMany(Wishlist, { through: "favorite" })
 
 Client.hasMany(Review)
 Review.belongsTo(Client)

@@ -13,6 +13,7 @@ export const RELATION_HAIR_TYPE = "RELATION_HAIR_TYPE";
 export const RELATION_STYLE = "RELATION_STYLE";
 export const ADD_SERVICE_BARBER = "ADD_SERVICE_BARBER";
 export const REMOVE_SERVICE_BARBER = "REMOVE_SERVICE_BARBER";
+export const GET_BARBERS_BANNED = "GET_BARBERS_BANNED";
 
 
 export const postBarber = (body) => (dispatch) => {
@@ -47,6 +48,11 @@ export const getBarbers = () => (dispatch) =>
 	axios
 		.get(HOST_BACK + "/barbers/all")
 		.then((res) => dispatch({ type: GET_BARBERS, payload: res.data }));
+
+export const getBarbersBanned = () => (dispatch) =>
+	axios
+		.get(HOST_BACK + "/barbers/all/1")
+		.then((res) => dispatch({ type: GET_BARBERS_BANNED, payload: res.data }));
 
 export const filterBarbers = (filters) => (dispatch) =>
 	dispatch({ type: FILTER_BARBERS, payload: filters });

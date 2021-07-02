@@ -147,22 +147,15 @@ const BarberServicesData = ({ filters }) => {
                     </div> */}
                     <div>
                         <label className="font-semibold text-gray-900 leading-8 mr-2">Price:</label>
-                        <input type="number" onChange={(e) => setData({...data, price: e.target.value }) } className="border-2 border-gray-700 rounded"></input>
+                        <input type="number" min="0" onChange={(e) => setData({...data, price: e.target.value }) } className="border-2 border-gray-700 rounded"></input>
                     </div>
-                    <input
-                        className="w-full px-1 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                        id="image"
-                        type="file"
-                        name="image"
-                        onChange={(e) => setImage(e.target.files[0])}
-                    /><button onClick={(e) => uploadImage(e)}>Upload</button>
 
 
                 </div>
             </div>
 
             <div className="flex justify-center mt-10">
-                <button onClick={() => postService()} className="bg-blue-400 px-8 py-2 rounded">Post</button>
+                <button onClick={() => postService()} className="bg-blue-400 px-8 py-2 rounded">Add</button>
             </div>
         </div>
     )

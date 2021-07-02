@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Services.css";
 import { useDispatch, useSelector } from "react-redux";
-import { postCategory, deleteCategory, putCategory, getCategory} from "../../../../redux/action/categories";
+import { postCategory, deleteCategory, putCategory, getAllCategory} from "../../../../redux/action/categories";
 import axios from "axios";
+import Swal from 'sweetalert2'
 import { deleteServicesCRUD, postServicesCRUD, putServicesCRUD } from "../../../../redux/action/servicesCRUD";
 import { getServices } from "../../../../redux/action/services";
 
@@ -16,8 +17,7 @@ const Services = ()=>{
     //--------USE EFFECT-----------
     React.useEffect(()=>{
         dispatch(getServices())
-        dispatch(getCategory())
-      
+        dispatch(getAllCategory())
     },[])
 
 
@@ -56,8 +56,15 @@ const Services = ()=>{
                 }))
             
        }else{
-           alert("complete todos los campos.")
-           
+           Swal.fire({
+            title: 'All camps must be completed',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
        }
         setForm({
             name:"",
@@ -114,7 +121,25 @@ const Services = ()=>{
 
     // --------------DELETE---------------
     const handleDeleteCategory = (id)=>{
-        dispatch(deleteServicesCRUD(id))
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(deleteServicesCRUD(id))
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                window.location.reload()
+            }
+        })
     };
 
     //--------------CLOUDINARY------------

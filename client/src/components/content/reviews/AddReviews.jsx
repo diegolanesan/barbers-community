@@ -1,6 +1,7 @@
 import jwtDecode from "jwt-decode";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import Swal from 'sweetalert2'
 import { useParams, useHistory } from 'react-router-dom';
 import StarRatingComponent from 'react-star-rating-component';
 import { postReview } from "../../../redux/action/reviews";
@@ -50,16 +51,32 @@ const AddReview = () => {
 
         };
         if (review.review === "" && typeof review.rating === "number") {
-            alert("Review Field Cannot Be Empty")
-            window.location.reload()
+            Swal.fire({
+                title: 'Review Field Cannot Be Empty',
+                icon: 'warning',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload()
+                }
+              })
         }
         if (typeof review.rating === "number" && review.review !== "") {
             dispatch(postReview(token.id, reviewSend));
             setReview(newReview)
-
-            alert("Review Posted")
-            window.location.replace("http://localhost:3000/detail/" + review.barberId)
-            console.log(reviewSend)
+            Swal.fire({
+                title: 'Review Posted',
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace("http://localhost:3000/detail/" + review.barberId)
+                    console.log(reviewSend)
+                }
+              })
+            
         }
     };
     return (

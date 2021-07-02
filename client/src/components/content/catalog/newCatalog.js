@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 import { filterBarbers, getBarbers } from "../../../redux/action/barbers.js";
 import Barber from "../barber/barber.js";
-import { getCategory } from "../../../redux/action/categories.js";
+import { getAllCategory } from "../../../redux/action/categories.js";
 import { getAllStyles } from "../../../redux/action/types.js";
 import SearchBar from "../searchBar/SearchBar.js";
 import { setFilters } from "../../../redux/action/filters.js";
@@ -16,7 +16,7 @@ export default function Catalog() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getBarbers())
-        dispatch(getCategory())
+        dispatch(getAllCategory())
         dispatch(getAllStyles())
       // eslint-disable-next-line
     }, [])
