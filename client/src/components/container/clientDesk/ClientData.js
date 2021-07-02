@@ -18,10 +18,12 @@ function ClientData({ allAppointments }) {
 	console.log(user)
 	const clientAppointments = allAppointments && allAppointments?.filter(
 		(app) => app.clientId === user.id
-	);
-	const appointments = useSelector((state) => state.cart.appoinments);
-	const wishlist = useSelector((state) => state.wishlist.wishlist);
-
+		);
+		const appointments = useSelector((state) => state.cart.appoinments);
+		const allAppoints = useSelector((state) => state.cart.clientsAppointments);
+		const wishlist = useSelector((state) => state.wishlist.wishlist);
+		
+		console.log(allAppoints,user)
 	const dispatch = useDispatch();
 	const search = useLocation().search;
 	const state = new URLSearchParams(search).get("collection_status");
@@ -126,7 +128,7 @@ var nextDate = orderedDates.filter(function(date) {
 				<div class="rounded-full h-36 w-36 flex flex-col items-center justify-center text-center bg-secondary">
 					<p class="text-white font-bold text-5xl">
 						{" "}
-						{clientAppointments && clientAppointments.length}{" "}
+						{allAppoints.length}{" "}
 						</p>
 						
 					</div>

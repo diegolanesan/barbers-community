@@ -152,7 +152,7 @@ const BarberServicesData = ({ filters }) => {
                 </div>
             </div>
 
-            <div className="border-t-4 border-blue-400 mt-10"></div>
+            <div className="border-t-4 border-secondary mt-10"></div>
 
             <div className="flex justify-center text-2xl font-semibold text-gray-900 leading-8 mt-4 ">
                 <span className="tracking-wide"> Your New Service </span>

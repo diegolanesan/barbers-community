@@ -171,10 +171,10 @@ const BarberConfig = () => {
   }
     return (
         <div class="flex grid h-screen bg-gray-200 items-center justify-center ">
-          <div class="grid bg-white rounded-lg shadow-xl w-11/12  md:w-11/12 mx-12 mt-10">
+          <div class="grid bg-white  shadow-xl w-11/12  md:w-11/12 mx-12 mt-10">
             <div class="flex justify-center">
               <div class="flex">
-                <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Choose your Specialities</h1>
+                <h1 class="text-secondary font-bold md:text-2xl text-xl">Choose your Specialities</h1>
               </div>
             </div>
         
@@ -244,7 +244,7 @@ const BarberConfig = () => {
                       defaultChecked
                       value={`${b.id}`}
                       onChange={handleInputChange}
-                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+                      class="mr-2 text-black  border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
                       /> :
                       <input
                       type="checkbox"
@@ -261,7 +261,7 @@ const BarberConfig = () => {
               </div>
             <div class="grid grid-cols-1">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Professional level</label>
-              <select class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+              <select class="py-2 px-3 border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                           name="type"
                           value={barber.type}
                           onChange={handleInputChange}
@@ -286,7 +286,7 @@ const BarberConfig = () => {
                       defaultChecked
                       value={`${b}`}
                       onClick={handleISlotsChange}
-                      class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
+                      class="mr-2 text-black  border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
                       /> :
                       <input
                       type="checkbox"
@@ -303,13 +303,13 @@ const BarberConfig = () => {
               </div>
             <div class="flex justify-center">
               <div class="flex">
-                <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Change your Info</h1>
+                <h1 class="text-secondary font-bold md:text-2xl text-xl">Change your Info</h1>
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mt-5 mx-7">
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">First Name</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                         id="firstName"
                         type="text"
                         placeholder="First Name"
@@ -320,7 +320,7 @@ const BarberConfig = () => {
               </div>
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Last Name</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                         id="lastname"
                         type="text"
                         placeholder="Last Name"
@@ -331,7 +331,7 @@ const BarberConfig = () => {
               </div>
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Username</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                         id="userName"
                         type="text"
                         placeholder="Username"
@@ -342,7 +342,7 @@ const BarberConfig = () => {
               </div> 
                 <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Address</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         id="Address"
                         type="text"
                         placeholder="Address"
@@ -353,7 +353,7 @@ const BarberConfig = () => {
               </div> 
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Number</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         id="Number"
                         type="text"
                         placeholder="Number"
@@ -364,7 +364,7 @@ const BarberConfig = () => {
               </div> 
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">City</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         id="City"
                         type="text"
                         placeholder="City"
@@ -375,7 +375,7 @@ const BarberConfig = () => {
               </div> 
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">State</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         id="State"
                         type="text"
                         placeholder="State"
@@ -386,7 +386,7 @@ const BarberConfig = () => {
               </div> 
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Country</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         id="Country"
                         type="text"
                         placeholder="Country"
@@ -397,7 +397,7 @@ const BarberConfig = () => {
               </div> 
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Phone</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                         id="phone"
                         type="number"
                         placeholder="phone"
@@ -410,7 +410,7 @@ const BarberConfig = () => {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Biography</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                         id="biography"
                         type="text"
                         placeholder="Short Biography"
@@ -421,7 +421,7 @@ const BarberConfig = () => {
               </div> 
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Email</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                         id="email"
                         type="email"
                         placeholder="example@mail.com"
@@ -434,7 +434,7 @@ const BarberConfig = () => {
             <div class="grid grid-cols-1 mt-5 mx-7">
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Resume</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                         id="resume"
                         type="text"
                         placeholder="example@mail.com"
@@ -468,7 +468,7 @@ const BarberConfig = () => {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Password</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                         id="password"
                         type="password"
                         placeholder="******************"
@@ -478,7 +478,7 @@ const BarberConfig = () => {
                 />
               </div> <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Confirm Password</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3  border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
                         id="c_password"
                         type="password"
                         placeholder={`*********`}
@@ -489,7 +489,7 @@ const BarberConfig = () => {
               </div>
               </div>
             <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-              <button class='w-auto bg-blue-500 hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2' onClick={() => handleSubmit()}>Update</button>
+              <button class='w-auto bg-secondary hover:bg-primary  shadow-xl font-medium text-white px-4 py-2' onClick={() => handleSubmit()}>Update</button>
             </div>
         
           </div>

@@ -5,6 +5,7 @@ import { addToCart, changeCartState, getActiveCartFromUserId, getCartsByBarberId
 import axios from 'axios'
 import Datetime from "react-datetime";
 import moment from "moment";
+import Swal from 'sweetalert2'
 import appointmentReducer from '../../../redux/reducer/appointment'
 import { postAppointment } from '../../../redux/action/appointment'
 import { getBarberById } from '../../../redux/action/barbers'
@@ -36,8 +37,13 @@ export const CartLogged = () => {
 
   const barberApp = useSelector(state => state.cart.barberAppointments)
 
+  const filterButtonStyle ="mr-4 bg-secondary hover:bg-primary text-white mb-4 px-2";
+	const filterSelected = "mr-4 bg-primary hover:bg-primary text-white mb-4 px-2";
+  
   let [fecha, setFecha] = useState({ fecha: "" })
-
+  const [boton, setBoton] = useState({
+		filters: "",
+	});
   function onchange(args) {
     setAppointment({ ...appointment, date: `${args._d}` })
   }
@@ -78,6 +84,7 @@ export const CartLogged = () => {
       ...appointment,
       time: e.target.value
     })
+    setBoton({ filters: e.target.value });
   }
 
   const paymentGenerator = (user, products) => {
@@ -92,8 +99,24 @@ export const CartLogged = () => {
   };
 
   function removeItem(id) {
-    dispatch(removeFromCart(token.id, id)).then(() =>
-      dispatch(getActiveCartFromUserId(token.id)))
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+      if (result.isConfirmed) {
+          dispatch(removeFromCart(token.id, id)).then(() =>
+          dispatch(getActiveCartFromUserId(token.id)))
+          Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+          )
+      }
+  })
   }
 
   return (
@@ -132,7 +155,7 @@ export const CartLogged = () => {
 
             <div class="flex justify-center items-center text-center">
               <div class="text-xl font-semibold">
-                <Datetime className="border-4 border-blue-400" onChange={onchange} isValidDate={valid} input={false} timeConstraints={{ hours: { min: 9, max: 22, step: 1 } }} timeFormat={false} />
+                <Datetime className="border-4 border-secondary" onChange={onchange} isValidDate={valid} input={false} timeConstraints={{ hours: { min: 9, max: 22, step: 1 } }} timeFormat={false} />
               </div>
             </div>
           </div>
@@ -144,8 +167,12 @@ export const CartLogged = () => {
                 <div>
 
                   {slotsCopy && slotsCopy.length > 0 ?
-                    slotsCopy.map(e => <button value={e} onClick={(event) => onChange(event)} className="mr-4 bg-blue-300 mb-4 px-2">{e}</button>) : "Looks like this day is unavailable!"}
-
+                    slotsCopy.map(e => <button value={e} onClick={(event) => onChange(event)} 
+                    className={
+                      boton.filters === e
+                        ? filterSelected
+                        : filterButtonStyle
+                    }>{e}</button>) : "Looks like this day is unavailable!"}
                 </div>
               </div>
             </div>
@@ -169,7 +196,7 @@ export const CartLogged = () => {
                   paymentGenerator({ name: token.name, email: token.email }, services.serviceBarbers)
                 }
                 }
-                  className="bg-green-400 px-4 rounded py-2">
+                  className="bg-green-400 hover:bg-green-700 px-4 rounded py-2">
                   Checkout
                 </button>
                 {/* paymentGenerator({firstName:"seba",lastName:"ciare", email: "s@gmail.com"}, [{name: "mohicano", id: 2, quantity: 2, price: 100 }]) */}

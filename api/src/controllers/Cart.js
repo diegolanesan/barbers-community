@@ -193,9 +193,9 @@ const getAppointments = async(req, res) => {
 
 const getStatusAppointments = async(req, res) => {
     const status = req.params.status
-    const cart = await Cart.findAll({where: {state: status}, include: {all: true, nested: true}})
+    const cart = await Cart.findAll({where: {state: status}, include: {all: true}})
     console.log(cart.length)
-    res.send(cart.length)
+    res.json(cart.length)
 } 
 
 const getCartbyBarberId = async(req, res) => {
@@ -206,7 +206,8 @@ const getCartbyBarberId = async(req, res) => {
 }
 
 const getSomeCarts = async(req, res) => {
-    const cart = await Cart.findAll({where: {state: ["Paid","Rejected","Pending"] }, include: {all: true, nested: true}})
+    
+    const cart = await Cart.findAll({where: {state: ["Paid","Rejected","Pending"] }, include: {all: true}})
     //console.log(cart)
     res.send(cart)
 }

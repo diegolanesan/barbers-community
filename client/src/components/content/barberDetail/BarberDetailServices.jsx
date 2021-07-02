@@ -43,7 +43,7 @@ const BarberDetailServices = ({ filters }) => {
 
     const [appointment, setAppointment] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
     const [kids, setKids] = useState({ service: "", extraOne: "", extraTwo: "", extraThree: "", seleccion: false })
-    console.log(filtered, "aaa")
+    console.log(token, "aaa")
 
 
     const handleAdd = (e) => {
@@ -54,21 +54,54 @@ const BarberDetailServices = ({ filters }) => {
         }
 
         if (token === null) {
-            addToGuestCart(service)
-            dispatch(addToAppointment(e))
+            Swal.fire({
+                title: "Added to your cart, please log in to buy this product",
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+              }).then(() => {
+                addToGuestCart(service)
+                dispatch(addToAppointment(e))
+              })
+                
+
+            
         } else if (cart && cart.serviceBarbers.length > 0 && cart.serviceBarbers[0].barberId === barberDetail.id) {
-            dispatch(addToCart(token.id, service))
-            dispatch(addToAppointment(e))
-            localStorage.setItem("barberId", id)
+            Swal.fire({
+                title: "Added to your cart!!!",
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+              }).then(() => {
+                dispatch(addToCart(token.id, service))
+                dispatch(addToAppointment(e))
+                localStorage.setItem("barberId", id)
+              })
         } else if (cart && cart.serviceBarbers.length > 0 && cart.serviceBarbers[0].barberId !== barberDetail.id) {
-            dispatch(resetUserCart(token.id)).then(() =>
+            Swal.fire({
+                title: "Added to your cart!!!",
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+              }).then(() => {
+                dispatch(resetUserCart(token.id)).then(() =>
                 dispatch(addToCart(token.id, service)))
-            dispatch(addToAppointment(e))
-            localStorage.setItem("barberId", id)
+                dispatch(addToAppointment(e))
+                localStorage.setItem("barberId", id)
+              })
+           
         } else {
-            dispatch(addToCart(token.id, service))
-            dispatch(addToAppointment(e))
-            localStorage.setItem("barberId", id)
+            Swal.fire({
+                title: "Added to your cart!!!",
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+              }).then(() => {
+                dispatch(addToCart(token.id, service))
+                dispatch(addToAppointment(e))
+                localStorage.setItem("barberId", id)
+              })
+           
         }
     }
 
@@ -195,7 +228,8 @@ const BarberDetailServices = ({ filters }) => {
                                             height="200px"
                                         />
                                     </div>
-                                    <div>
+                                    {token ? (
+                                        <div>
                                         {
                                             favorites && !favorites.length ? <button onClick={() => addWishlist(n)} style={{ top: "5px", right: "-26px" }} class="text-xl cursor-pointer absolute bg-gray px-1 py-1 opacity-80 hover:bg-gray-300 rounded mr-8">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M6.28 3c3.236.001 4.973 3.491 5.72 5.031.75-1.547 2.469-5.021 5.726-5.021 2.058 0 4.274 1.309 4.274 4.182 0 3.442-4.744 7.851-10 13-5.258-5.151-10-9.559-10-13 0-2.676 1.965-4.193 4.28-4.192zm.001-2c-3.183 0-6.281 2.187-6.281 6.192 0 4.661 5.57 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-4.011-3.097-6.182-6.274-6.182-2.204 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248z" /></svg>
@@ -219,7 +253,7 @@ const BarberDetailServices = ({ filters }) => {
                                         }
 
                                     </div>
-
+                                    ) : ""}
                                 </div>
                                 {/* ServiceBarbers [] boton vacio (funciona)
                                 ServiceBarbers [...] filtrado: encuentra y renderiza ❤️

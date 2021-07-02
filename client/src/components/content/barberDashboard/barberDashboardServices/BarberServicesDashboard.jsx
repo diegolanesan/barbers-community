@@ -43,7 +43,7 @@ const BarberServicesDashboard = ({ filters }) => {
 
     return (
         <div class="container mx-auto my-0 p-5">
-            <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
+            <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-secondary">
                 <div class="grid">
                     <div>
                         <div class="flex justify-center text-2xl font-semibold text-gray-900 leading-8 mb-3">
@@ -69,7 +69,7 @@ const BarberServicesDashboard = ({ filters }) => {
 }
 <div className="flex justify-center">
     <Link to="/appointment/date">
-        <button className="px-20 py-2 -mt-3 mb-7 bg-blue-500 fotn-bold rounded">Next Step</button>
+        <button className="px-20 py-2 -mt-3 mb-7 bg-secondary fotn-bold rounded">Next Step</button>
     </Link>
 </div>
 
