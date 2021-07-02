@@ -11,6 +11,7 @@ import WishlistTab from "./wishList/WishlistTab";
 import jwtDecode from "jwt-decode";
 import { signOut } from "../../../redux/action/auth";
 // import style from './barberDashboard.module.css'
+
 const ClientDesk = () => {
 
 	const history = useHistory()
@@ -22,11 +23,11 @@ const ClientDesk = () => {
 	const allAppointments = useSelector((state) => state.clients.appointments);
 
 	const buttonStyle =
-		"bg-blue-400 hover:bg-blue-600 text-white py-1 px-0 mx-0 mb-0 w-full";
-	const buttonSelected = "bg-blue-800 text-white py-1 px-0 mx-0 mb-0 w-full";
+		"bg-secondary hover:bg-primary text-white py-1 px-0 mx-0 mb-0 w-full uppercase font-bold py-3";
+	const buttonSelected = "bg-primary text-white py-1 px-0 mx-0 mb-0 w-full uppercase font-bold py-3";
 	const filterButtonStyle =
-		"bg-blue-400 hover:bg-blue-600 text-white py-2 px-5 mx-2 mt-3 mb-3";
-	const filterSelected = "bg-blue-800 text-white py-2 px-5 mx-2 mt-3 mb-3";
+		"bg-secondary hover:bg-primary text-white py-2 px-5 mx-2 mt-3 mb-3";
+	const filterSelected = "bg-primary text-white py-2 px-5 mx-2 mt-3 mb-3";
 	const auth = useSelector((state) => state.auth);
 	const [buttonState, setButtonState] = useState({
 		menu: "Dashboard",
@@ -41,9 +42,13 @@ const ClientDesk = () => {
 		}
 	};
 	return (
-		<div className="flex h-full ">
-			<div className={`w-1/6 bg-gray-200`} onClick={handleClick}>
-				<div>
+		<div className="flex h-full flex-column font-lato">
+			<div className={`w-1/6 bg-primary`} onClick={handleClick}>
+				<button class="bg-secondary text-white text-base m-4 p-3 px-3 font-bold">
+					<Link to="/catalog">MAKE APPOINTMENT </Link>
+				</button>
+				
+				<div class="mt-4">
 					<input
 						type="button"
 						value="Dashboard"
@@ -85,6 +90,15 @@ const ClientDesk = () => {
 				</div>
 				<div className="w-1/6 absolute bottom-2">
 					<button onClick={() => dispatch(signOut(history))} className="bg-red-400 py-1 w-full">Logout</button>
+				<div className="">
+					<input
+						type="button"
+						value="Config"
+						name="menu"
+						className={
+							buttonState.menu === "Config" ? buttonSelected : buttonStyle
+						}
+					/>
 				</div>
 			</div>
 			<div className="w-5/6">
@@ -108,6 +122,7 @@ const ClientDesk = () => {
 					</div>
 				)}
 			</div>
+		</div>
 		</div>
 	);
 };

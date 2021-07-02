@@ -19,16 +19,24 @@ const ContainerCRUD = ()=>{
     };
     return(
         <div className="cntContainer">
-            <ul className="listOptions" onClick={handleChange}>
-                <li className={option.DASHBOARD ? "active": "" }>DASHBOARD</li>
-                <li className={option.CATEGORY ? "active": ""}>CATEGORY</li>
-                <li className={option.STYLE ? "active": ""}>STYLE</li>
-                <li className={option.SERVICE ? "active": ""}>SERVICE</li>
-                <li className={option.BARBERS ? "active": ""}>BARBERS</li>
-                <li className={option.CLIENTS ? "active": ""}>CLIENTS</li>
-                <li className={option.ADMIN ? "active": ""}>ADMIN</li>
-                <li className={option.CONFIG ? "active": ""} className="cntConfig" id="CONFIG"><h1>CONFIG</h1></li>
-            </ul>
+            <input type="checkbox" id="check" className="checkbox"/>
+            <label className="menu" for="check"></label>
+            <div className="left-panel">
+                <ul className="listOptions" onClick={handleChange}>
+
+                    <li className={option.DASHBOARD ? "active": "" }>DASHBOARD</li>
+                    <li className={option.CATEGORY ? "active": ""}>CATEGORY</li>
+                    <li className={option.STYLE ? "active": ""}>STYLE</li>
+                    <li className={option.SERVICE ? "active": ""}>SERVICE</li>
+                    <li className={option.BARBERS ? "active": ""}>BARBERS</li>
+                    <li className={option.CLIENTS ? "active": ""}>CLIENTS</li>
+                    <li className={option.ADMIN ? "active": ""}>ADMIN</li>
+                    <li className={option.CONFIG ? "active": ""} className="cntConfig" id="CONFIG"><h1>CONFIG</h1></li>
+
+                </ul>
+            </div> 
+            
+
             <div className="contentList">
             { option.DASHBOARD && (
                     <AdminDashboard/>

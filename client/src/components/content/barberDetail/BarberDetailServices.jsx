@@ -176,14 +176,14 @@ const BarberDetailServices = ({ filters }) => {
 
 
     return (
-        <div>
+        <div class="text-primary">
             <div>
                 {filtered && filtered.length > 0 ?
                     <div className="grid overflow-auto sm:w-auto w-56 h-96 sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         {filtered.map((n) => (
                             <div
                                 key={n.id}
-                                className="text-center m-8 border rounded-xl pb-1 w-4/5 shadow-md"
+                                className="flex flex-col items-center text-center mt-8 w-48 shadow-md px-4"
                             >
                                 <div class="relative">
                                     <div>
@@ -230,7 +230,22 @@ const BarberDetailServices = ({ filters }) => {
                                 </div>
 
                                 <button className=" text-xl bg-green-600 px-2 rounded" onClick={() => handleAdd(n)}>🛒</button>
+                                <img
+                                    className="rounded-lg w-4/5"
+                                    src={n.image[0]}
+                                    alt=""
+                                />
+                                <h4 class="font-bold text-lg uppercase m-1">{`${n.name}`}</h4>
+                                {/* <h4 className="font-bold">{`${n.description}`}</h4> */}
+                                <div className="flex justify-center pt-1 pb-2">
+                                    <h6 class="font-bold text-xl mb-1">${n.serviceBarber.price}</h6>
+                                </div>
+                                <button className="bg-secondary text-white font-bold p-1 hover:bg-primary" 
+                                onClick={() => handleAdd(n)}>
+                                    ADD TO CART
+                                </button>
                             </div>
+
                         ))} </div> : <div className="flex my-20 justify-center">Ooops... Looks like there's no services here</div>}
 
             </div>

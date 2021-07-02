@@ -5,7 +5,7 @@ const {getAllService, postService, getBarbersService, createRelationService,  pu
 // ruta para buscar todos los servicios
 server.get("/", getAllService);
 
-server.get("/all", getAllServiceBarber);
+//server.get("/all", getAllServiceBarber);
 
 
 // ruta que devuelve los servicios según el barbero 
