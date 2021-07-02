@@ -140,7 +140,7 @@ function LoginClient() {
 
 					<p class="mt-8">
 						Need an account?{" "}
-						<Link to="/clients/register" class="text-blue-500 hover:text-blue-700 font-semibold">
+						<Link to="/clients/register" class="text-secondary hover:text-primary font-semibold">
 							Create an account
 						</Link>
 					</p>

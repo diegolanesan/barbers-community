@@ -22,7 +22,11 @@ const BarberConfig = () => {
         password: "",
         confirmedPassword: "",
         alias: "",
-        location: "",
+        address: "",
+        number: "",
+        city: "",
+        state: "",
+        country: "",
         mobile: "",
         image: [""],
         type: "",
@@ -84,7 +88,8 @@ const BarberConfig = () => {
       if(!barber.name || !barber.lastname ||
          !barber.bio || !barber.resume ||
           !barber.email || !barber.password || !barber.confirmedPassword ||
-           !barber.alias || !barber.location || !barber.mobile) {
+           !barber.alias || !barber.address || !barber.mobile || !barber.number
+           || !barber.city || !barber.state || !barber.country) {
             Swal.fire({
               title: 'Please complete all the camps',
               showClass: {
@@ -116,7 +121,11 @@ const BarberConfig = () => {
               email: barber.email,
               password: barber.confirmedPassword,
               alias: barber.alias,
-              location: barber.location,
+              address: barber.address,
+              number: barber.number,
+              city: barber.city,
+              state: barber.state,
+              country: barber.country,
               mobile: barber.mobile,
               //img: "",
               type: barber.type,
@@ -330,17 +339,63 @@ const BarberConfig = () => {
                         value={barber.alias}
                         onChange={handleInputChange}
                 />
-              </div> <div class="grid grid-cols-1">
-                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Location</label>
+              </div> 
+                <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Address</label>
                 <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                        id="location"
+                        id="Address"
                         type="text"
-                        placeholder="location"
-                        name="location"
-                        value={barber.location}
+                        placeholder="Address"
+                        name="address"
+                        value={barber.address}
                         onChange={handleInputChange}
                 />
-              </div> <div class="grid grid-cols-1">
+              </div> 
+              <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Number</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        id="Number"
+                        type="text"
+                        placeholder="Number"
+                        name="number"
+                        value={barber.number}
+                        onChange={handleInputChange}
+                />
+              </div> 
+              <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">City</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        id="City"
+                        type="text"
+                        placeholder="City"
+                        name="city"
+                        value={barber.city}
+                        onChange={handleInputChange}
+                />
+              </div> 
+              <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">State</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        id="State"
+                        type="text"
+                        placeholder="State"
+                        name="state"
+                        value={barber.state}
+                        onChange={handleInputChange}
+                />
+              </div> 
+              <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Country</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        id="Country"
+                        type="text"
+                        placeholder="Country"
+                        name="country"
+                        value={barber.country}
+                        onChange={handleInputChange}
+                />
+              </div> 
+              <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Phone</label>
                 <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
                         id="phone"
@@ -350,7 +405,10 @@ const BarberConfig = () => {
                         value={barber.mobile}
                         onChange={handleInputChange}
                 />
-              </div> <div class="grid grid-cols-1">
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+            <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Biography</label>
                 <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
                         id="biography"
@@ -361,9 +419,7 @@ const BarberConfig = () => {
                         onChange={handleInputChange}
                 />
               </div> 
-            </div>
-            <div class="grid grid-cols-1 mt-5 mx-7">
-            <div class="grid grid-cols-1">
+              <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Email</label>
                 <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
                         id="email"
@@ -374,6 +430,8 @@ const BarberConfig = () => {
                         onChange={handleInputChange}
                 />
               </div>
+              </div>
+            <div class="grid grid-cols-1 mt-5 mx-7">
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Resume</label>
                 <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
