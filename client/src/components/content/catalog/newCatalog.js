@@ -21,7 +21,7 @@ export default function Catalog() {
       // eslint-disable-next-line
     }, [])
     
-    const barberLevel = ['Urban', 'Academy', 'Hair Technician', 'Seminary']
+    const barberLevel = ['Urban', 'Academy', 'Hair technician', 'Seminary']
     const categories = useSelector(state => state.category.resp)
     const styles = useSelector(state => state.types.style)
     // const filters = useSelector(state => state.filters.filters)

@@ -87,6 +87,26 @@ export const CartLogged = () => {
     setBoton({ filters: e.target.value });
   }
 
+  function checkOut() {
+    if(appointment.date === "" || appointment.time === "") {
+      Swal.fire({
+        title: "Please choose a date and an hour to confirm your appointment",
+        icon: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Ok'
+      })
+    } else {
+      dispatch(changeCartState(token.id, { state: "Pending", date: appointment.date, time: appointment.time, barberId: appointment.barberId }))
+      paymentGenerator({ name: token.name, email: token.email }, services.serviceBarbers)
+      Swal.fire({
+        title: "You are being redirected",
+        icon: 'success',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Ok'
+      })
+    }
+  }
+
   const paymentGenerator = (user, products) => {
     axios
       .post("http://localhost:3001/checkout/create_preference", {
@@ -191,11 +211,7 @@ export const CartLogged = () => {
           <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
             <div class="flex justify-center items-center text-center">
               <div class="text-xl font-semibold">
-                <button onClick={() => {
-                  dispatch(changeCartState(token.id, { state: "Pending", date: appointment.date, time: appointment.time, barberId: appointment.barberId }))
-                  paymentGenerator({ name: token.name, email: token.email }, services.serviceBarbers)
-                }
-                }
+                <button onClick={(event) => checkOut(event)}
                   className="bg-green-400 hover:bg-green-700 px-4 rounded py-2">
                   Checkout
                 </button>

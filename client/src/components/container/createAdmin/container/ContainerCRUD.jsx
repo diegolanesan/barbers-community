@@ -12,7 +12,9 @@ import Error from "../../../content/error/Error";
 import jwtDecode from "jwt-decode";
 
 const ContainerCRUD = () => {
-    const [option, setOption] = React.useState({})
+    const [option, setOption] = React.useState({
+        DASHBOARD: true
+    })
     const idUser = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : false;
     const handleChange = (v) => {
         const value = v.target.innerText;

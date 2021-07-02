@@ -101,6 +101,31 @@ const Register = () => {
 
 	const dispatch = useDispatch();
 	const handleSubmit = (e) => {
+		if(!barber.name || !barber.lastname ||
+			!barber.bio || !barber.resume ||
+			 !barber.email || !barber.password || !barber.confirmedPassword ||
+			  !barber.alias || !barber.address || !barber.mobile || !barber.number
+			  || !barber.city || !barber.state || !barber.country) {
+			   Swal.fire({
+				 title: 'Please complete all the camps',
+				 showClass: {
+				   popup: 'animate__animated animate__fadeInDown'
+				 },
+				 hideClass: {
+				   popup: 'animate__animated animate__fadeOutUp'
+				 }
+			   })
+		 } else if (barber.password !== barber.confirmedPassword) {
+			   Swal.fire({
+				 title: 'password and confirm password must be the same',
+				 showClass: {
+				   popup: 'animate__animated animate__fadeInDown'
+				 },
+				 hideClass: {
+				   popup: 'animate__animated animate__fadeOutUp'
+				 }
+			   })
+		 } else {
 		const barberSend = {
 			barber: {
 				status: true,
@@ -133,7 +158,7 @@ const Register = () => {
 			if (result.isConfirmed) {
 				window.location.href = "http://localhost:3000/loginBarbers";
 			}
-		})
+		})}
 	};
 
 

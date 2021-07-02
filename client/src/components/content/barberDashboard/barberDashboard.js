@@ -27,7 +27,9 @@ const BarberDashboard = () => {
         menu: 'Appointments',
         filters: 'HAIRCUT',
     })
-    const [option, setOption] = useState({})
+    const [option, setOption] = useState({
+        APPOINTMENTS: true
+    })
     const handleChange = (v) => {
         const value = v.target.innerText;
         setOption({

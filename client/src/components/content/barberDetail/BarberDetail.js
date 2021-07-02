@@ -136,7 +136,7 @@ function BarberDetail(props) {
 										</h1>
 										<h1 class="text-gray-900 font-semibold text-lg leading-8">
 											
-											<div className="grid grid-cols-2 gap-4 -ml-10">
+											<div >
 												{reviews && reviews.length > 0 ?
 													<StarRatingComponent
 														name="rate2"
@@ -151,7 +151,7 @@ function BarberDetail(props) {
 											<div>
 													{reviews && reviews.length > 0 ?
 													<Link to={"/reviews/" + id} >
-														<button className="w-20 mr-4 font-semibold bg-blue-400">
+														<button className="w-20 mr-4 font-semibold bg-secondary">
 															Reviews
 														</button>
 													</Link>
@@ -162,7 +162,7 @@ function BarberDetail(props) {
 												{reviews && cart && token ?
 													cart.filter(e => e.state === "Paid" && e.clientId === token.id ).length > 0 ?
 													// cart.filter(e => e.state === "Paid" && e.clientId === token.id ?
-													<Link to={"/reviews/new/" + id}><button className="w-28 text-md font-semibold  bg-blue-400">Add Review</button></Link> : ""
+													<Link to={"/reviews/new/" + id}><button className="w-28 text-md font-semibold text-white  bg-primary">Add Review</button></Link> : ""
 													: ""}
 												</div>
 										</h1>
@@ -266,7 +266,7 @@ function BarberDetail(props) {
 					<BarberDetailServices filters={boton.filters} />
 					</div>
 						<div className="flex justify-center">
-							<Link to="/cart">
+							<Link to={token? "/cart" : "/guest/cart"}>
 							<button className="bg-secondary text-white py-2 px-10 hover:bg-primary font-semibold">
 								NEXT STEP
 							</button>
