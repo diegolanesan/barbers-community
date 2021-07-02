@@ -125,7 +125,7 @@ const WishlistTab = () => {
             </div>
             <hr class="my-4 w-full"></hr>
             <div className="grid sm:grid-cols-1 sm:grid-cols-4">
-                {wishlist[0].serviceBarbers && wishlist[0].serviceBarbers.map((n) => (
+                {wishlist && wishlist[0].serviceBarbers && wishlist[0].serviceBarbers.map((n) => (
                     <div
                         key={n.id}
                         className="text-center m-8 border rounded-xl pb-1 shadow-md">

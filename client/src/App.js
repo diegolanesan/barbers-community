@@ -46,38 +46,35 @@ function App() {
 	console.log(admin)
 	return (
 		<div className="App">
-
-			<Route path="/" component={NavBar}/>
-			<Route exact path="/" component={Home} />
-			<Route path="/catalog" component={newCatalog} /> 
-			<Route exact path="/loginBarbers" component={LoginBarbers} />
-			<Route exact path="/loginClients" component={LoginClient} />
-			<Route exact path="/register" component={Register} />
-			<Route exact path="/clients/register" component={RegisterClient} />
-			{/* <Route exact path="/newCatalog" component={newCatalog} /> */}
-			<Route exact path="/guest/cart" component={Cart} />
-			<Route exact path="/barbers/recovery/:token" component={Recovery} />
-			<Route exact path="/clients/recovery/:token" component={RecoveryClient} />
-			
-			<Route path="/Detail/:id" component={showBarberDetail} />
-
-			<Route exact path="/clients/dashboard" component={admin.rol === "client" || admin.rol !== "admin" && admin ? ClientDesk : Error} />
-			<Route exact path="/cart" component={clientToken ? CartLogged : Error} />
-			<Route exact path="/reviews/:id" component={admin.rol === "client" ? Reviews : Error} />
-			<Route exact path="/reviews/new/:id" component={admin.rol === "client" ? AddReview : Error} />
-			<Route exact path="/recovery/:token" component={Recovery} />
-			<Route exact path="/validation" component={Validation} />
-			{/* <Route exact path="/admin/dashboard" component={AdminDesk} /> */}
-			<Route exact path="/places" component={	Places} />
-			<Route exact path="/admin/barbers" component={barberToken ? BarberTable : Error} />
-			<Route exact path="/BarberConfig/:id" component={barberToken ? BarberConfig : Error} />
-			<Route exact path="/barbers/dashboard" component={barberToken ? BarberDashboard : Error} />
-			<Route exact path="/barbers/dashboard/:id" component={barberToken ? DetailsAppointment : Error} />
-			<Route exact path="/admin/dashboard" component={admin.rol === "admin" ? ContainerCRUD : Error} />
-			<Route exact path="/admin/barbers/edit/:id" component={admin.rol === "admin" ? BarberEdit : Error} />
-			<Route exact path="/404" component={Error} />
-			<ToastContainer />
-		</div>
+            <Route path="/" component={NavBar}/>
+            <Route exact path="/" component={Home} />
+            <Route path="/catalog" component={newCatalog} /> 
+            <Route exact path="/loginBarbers" component={LoginBarbers} />
+            <Route exact path="/loginClients" component={LoginClient} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/clients/register" component={RegisterClient} />
+            {/* <Route exact path="/newCatalog" component={newCatalog} /> */}
+            <Route exact path="/guest/cart" component={Cart} />
+            <Route exact path="/barbers/recovery/:token" component={Recovery} />
+            <Route exact path="/clients/recovery/:token" component={RecoveryClient} />
+            <Route path="/Detail/:id" component={showBarberDetail} />
+            <Route exact path="/clients/dashboard" component={ClientDesk} />
+            <Route exact path="/cart" component={CartLogged} />
+            <Route exact path="/reviews/:id" component={Reviews} />
+            <Route exact path="/reviews/new/:id" component={AddReview} />
+            <Route exact path="/recovery/:token" component={Recovery} />
+            <Route exact path="/validation" component={Validation} />
+            {/* <Route exact path="/admin/dashboard" component={AdminDesk} /> */}
+            <Route exact path="/places" component={ Places} />
+            <Route exact path="/admin/barbers" component={BarberTable} />
+            <Route exact path="/BarberConfig/:id" component={BarberConfig} />
+            <Route exact path="/barbers/dashboard" component={BarberDashboard} />
+            <Route exact path="/barbers/dashboard/:id" component={DetailsAppointment} />
+            <Route exact path="/admin/dashboard" component={ContainerCRUD} />
+            <Route exact path="/admin/barbers/edit/:id" component={BarberEdit} />
+            <Route exact path="/404" component={Error} />
+            <ToastContainer />
+        </div>
 	);
 }
 

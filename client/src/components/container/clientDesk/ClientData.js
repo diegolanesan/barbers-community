@@ -113,7 +113,7 @@ var nextDate = orderedDates.filter(function(date) {
 	}
 
 	return (
-		<div class="ml-12 text-primary bg-background font-lato">
+		<div class="ml-12 text-primary h-full bg-background font-lato">
 			<h2 class="text-3xl font-bold mt-6">Welcome, {user.name}! </h2>
 			<hr class="my-4 w-5/6 text-secondary"></hr>
 			<h3 class="text-xl font-bold mt-6"> APPOINTMENT HISTORY </h3>
@@ -128,7 +128,7 @@ var nextDate = orderedDates.filter(function(date) {
 
 				</div>
 
-				{/* SERVICIO DESTACADO */}
+				{/* SERVICIO DESTACADO
 				<div>
 					<div class="max-w-sm rounded overflow-hidden shadow-lg">
 						<img
@@ -181,10 +181,10 @@ var nextDate = orderedDates.filter(function(date) {
 						</div>
 					</div>
 			
-			</div>
+			</div> */}
 
 			{/* LAST SERVICES TABLE */}
-			<div class="flex flex-col items-center mt-20">
+			<div class="flex flex-col items-center h-full mt-20">
 				<h3 class="text-xl font-bold mt-4 text-white p-2 bg-secondary"> YOUR LAST APPOINTMENTS </h3>
 				<table class="table-fixed mt-8 w-4/5">
 					<thead>
@@ -229,58 +229,7 @@ var nextDate = orderedDates.filter(function(date) {
 									</tbody>
 								);
 						})
-						: ""}
-				</table>
-			</div>
-			
-			
-			{/* WISH LIST */}
-			<div class="flex flex-col items-center mt-20" >
-				<h3 class="text-xl font-bold mt-4 text-white p-2 bg-secondary"> WISH LIST </h3>
-				<table class="table-fixed mt-8 w-4/5">
-					<thead>
-						<tr>
-							<th class="w-12 p-4"> # </th>
-							<th class="w-1/2">Date</th>
-							<th class="w-1/2">Services</th>
-							<th class="w-1/4">Status</th>
-							<th class="w-1/4"> Total price </th>
-						</tr>
-					</thead>
-					{appointments && appointments.length > 0
-						? appointments.map((app) => {
-								return (
-									<tbody class="text-center">
-										<tr>
-											<td> {app.id} </td>
-											<td> {app.date && app.date.slice(0, 10)} </td>
-											{/* c.serviceBarbers.map(n => "| " + n.item.serviceName + " |") */}
-											<td>
-												{" "}
-												{app.serviceBarbers &&
-													app.serviceBarbers.map((x) => {
-														if (app.serviceBarbers.length > 1) {
-															return "| " + x.item.serviceName + " |";
-														} else {
-															return x.item.serviceName + " ";
-														}
-													})}{" "}
-											</td>
-											<td> {app && app.state} </td>
-											<td> $ {app.totalAmount && app.totalAmount} </td>
-											<td>
-												<button
-													onClick={() => onClick(app.state, app)}
-													class="h-8 px-4 text-sm text-white transition-colors bg-blue-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-blue-600"
-												>
-													Clone
-												</button>
-											</td>
-										</tr>
-									</tbody>
-								);
-						})
-						: ""}
+						: "No Appointments Made"}
 				</table>
 			</div>
 		</div>

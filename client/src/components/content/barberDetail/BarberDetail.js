@@ -135,7 +135,7 @@ function BarberDetail(props) {
 										{resp.name} {resp.lastname}
 										</h1>
 										<h1 class="text-gray-900 font-semibold text-lg leading-8">
-											{resp.location}
+											
 											<div className="grid grid-cols-2 gap-4 -ml-10">
 												{reviews && reviews.length > 0 ?
 													<StarRatingComponent
@@ -167,9 +167,9 @@ function BarberDetail(props) {
 												</div>
 										</h1>
 										
-										<h1 class="text-gray-900 font-semibold text-md leading-8">
+										{/* <h1 class="text-gray-900 font-semibold text-md leading-8">
 											{ "Level: " + resp.type }
-										</h1>
+										</h1> */}
 										
 									<p class="text-sm text-gray-700 font-semibold hover:text-gray-600 leading-6">
 										{resp.resume}
@@ -180,7 +180,7 @@ function BarberDetail(props) {
 									<div class="flex flex-row items-center my-3"> 
 									
 										<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-										
+										{resp.city}, {resp.state}
 										<h3 class="font-semibold text-base ml-2">
 												{resp.location}
 									</h3>
@@ -205,33 +205,8 @@ function BarberDetail(props) {
 									</ul>
 									
 									{/* REVIEWS */}
-									<div className="grid grid-cols-2 gap-4 mt-4">
-										{reviews && reviews.length > 0 ?
-											<StarRatingComponent
-												name="rate2"
-												editing={false}
-												renderStarIcon={() => <span className=" text-xl">★</span>}
-												starCount={5}
-												value={average}
-											/>
-										: ""}
-												
-									</div>
-									<div>
-										{reviews && reviews.length > 0 ?
-											<Link to={"/reviews/" + id} >
-											<button className="w-20 mr-4 font-semibold bg-blue-400">
-												Reviews
-											</button>
-											</Link>
-												 
-										: <h1>No Reviews</h1>}
-												
-											{reviews && reviews.length > 0 && cart && token ?
-												cart.map(e => e.state === "Paid" && e.clientId === token.id ?
-													<Link to={"/reviews/new/" + id}><button className="w-28 text-md font-semibold  bg-blue-400">Add Review</button></Link> : "")
-											: ""}
-									</div>
+									
+									
 							
 								</div>
 
@@ -293,21 +268,13 @@ function BarberDetail(props) {
 				</div>
 				{/* END OF AVAILABILITY */}				
 								
-			</div>
-			<div class="w-full md:w-9/12 mx-2 h-64">
-								
-							{/* <!-- Left Side --> */}
-							
-							{/* <!-- Right Side --> */}
-							
-							</div>
-							
+			</div>			
 						</div>
 						
 				)}
-			</div>
-			{ resp && resp.city ?
-				<div className="grid grid-cols-1 w-4/5 sm:mt-2 mt-48">
+				{resp && resp.city ?
+				<div className="grid grid-cols-1">
+					<h2 className="font-bold text-2xl mb-4">Location</h2>
 					<div class="mapouter ">
 						<div class="gmap_canvas">
 							<iframe className="w-full h-96" id="gmap_canvas" src={`https://maps.google.com/maps?q=${address}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
@@ -318,6 +285,8 @@ function BarberDetail(props) {
 				</div>
 				: ""
 			}
+			</div>
+			
 			</div>
 	);
 }

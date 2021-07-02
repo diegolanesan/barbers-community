@@ -8,63 +8,71 @@ import AdminConfig from "../../../content/admin/AdminConfig";
 import AdminBarbers from "../../../content/admin/Users/Barbers";
 import AdminClients from "../../../content/admin/Users/Clients";
 import AdminAdmins from "../../../content/admin/Users/Admins";
+import Error from "../../../content/error/Error";
 
-const ContainerCRUD = ()=>{
+const ContainerCRUD = () => {
     const [option, setOption] = React.useState({})
-    const handleChange = (v)=>{
-        const value =  v.target.innerText;
+    const idUser = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : false;
+    const handleChange = (v) => {
+        const value = v.target.innerText;
         setOption({
-            [value]: true 
+            [value]: true
         })
     };
-    return(
-        <div className="cntContainer">
-            <input type="checkbox" id="check" className="checkbox"/>
-            <label className="menu" for="check"></label>
-            <div className="left-panel">
-                <ul className="listOptions" onClick={handleChange}>
+    if (idUser && idUser.rol === "admin") {
+        return (
+            <div className="cntContainer">
+                <input type="checkbox" id="check" className="checkbox" />
+                <label className="menu" for="check"></label>
+                <div className="left-panel">
+                    <ul className="listOptions" onClick={handleChange}>
 
-                    <li className={option.DASHBOARD ? "active": "" }>DASHBOARD</li>
-                    <li className={option.CATEGORY ? "active": ""}>CATEGORY</li>
-                    <li className={option.STYLE ? "active": ""}>STYLE</li>
-                    <li className={option.SERVICE ? "active": ""}>SERVICE</li>
-                    <li className={option.BARBERS ? "active": ""}>BARBERS</li>
-                    <li className={option.CLIENTS ? "active": ""}>CLIENTS</li>
-                    <li className={option.ADMIN ? "active": ""}>ADMIN</li>
-                    <li className={option.CONFIG ? "active": ""} className="cntConfig" id="ACCOUNT"><h1>ACCOUNT</h1></li>
+                        <li className={option.DASHBOARD ? "active" : ""}>DASHBOARD</li>
+                        <li className={option.CATEGORY ? "active" : ""}>CATEGORY</li>
+                        <li className={option.STYLE ? "active" : ""}>STYLE</li>
+                        <li className={option.SERVICE ? "active" : ""}>SERVICE</li>
+                        <li className={option.BARBERS ? "active" : ""}>BARBERS</li>
+                        <li className={option.CLIENTS ? "active" : ""}>CLIENTS</li>
+                        <li className={option.ADMIN ? "active" : ""}>ADMIN</li>
+                        <li className={option.CONFIG ? "active" : ""} className="cntConfig" id="ACCOUNT"><h1>ACCOUNT</h1></li>
 
-                </ul>
-            </div> 
-            
+                    </ul>
+                </div>
 
-            <div className="contentList">
-            { option.DASHBOARD && (
-                    <AdminDashboard/>
-                )}
-                {option.CATEGORY && (
-                    <Categories/>
-                )}
-                {option.STYLE&& (
-                    <Style/>
-                )}
-                {option.SERVICE&& (
-                    <Service/>
-                )}
-                {option.BARBERS && (
-                    <AdminBarbers/>
-                )}
-                {option.CLIENTS && (
-                    <AdminClients/>
-                )}
-                {option.ADMIN && (
-                    <AdminAdmins/>
-                )}
-                {option.ACCOUNT && (
-                    <AdminConfig/>
-                )}
+
+                <div className="contentList">
+                    {option.DASHBOARD && (
+                        <AdminDashboard />
+                    )}
+                    {option.CATEGORY && (
+                        <Categories />
+                    )}
+                    {option.STYLE && (
+                        <Style />
+                    )}
+                    {option.SERVICE && (
+                        <Service />
+                    )}
+                    {option.BARBERS && (
+                        <AdminBarbers />
+                    )}
+                    {option.CLIENTS && (
+                        <AdminClients />
+                    )}
+                    {option.ADMIN && (
+                        <AdminAdmins />
+                    )}
+                    {option.ACCOUNT && (
+                        <AdminConfig />
+                    )}
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <Error />
+        )
+    }
 }
 
 export default ContainerCRUD;
