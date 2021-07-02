@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode'
 import { getClientById, putClient} from '../../../../redux/action/clients';
 import axios from "axios";
+import Swal from 'sweetalert2'
 import "./Config.css"
 const ClientConfig = () => {
     const dispatch = useDispatch()
@@ -48,9 +49,25 @@ const ClientConfig = () => {
       if(!admin.name || !admin.lastname ||
           !admin.email || !admin.password || !admin.confirmedPassword 
           || !admin.location || !admin.mobile) {
-            alert("Please complete all the camps")
+            Swal.fire({
+              title: 'Please complete all the camps',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
       } else if (admin.password !== admin.confirmedPassword) {
-            alert("password and confirm password must be the same")
+            Swal.fire({
+              title: 'Password and confirm password must be the same',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
       } else {
         const adminSend = {
           clientModified: {
@@ -63,7 +80,15 @@ const ClientConfig = () => {
           }
       };
       dispatch(putClient(id,adminSend))
-      alert("Updated Successfully")
+      Swal.fire({
+        title: 'Updated Successfully',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
       }
     };
     console.log(admin, "aaaa")
@@ -90,17 +115,17 @@ const ClientConfig = () => {
       setAdmin({ ...admin, image: [""]});
   }
     return (
-        <div class="flex grid h-screen bg-gray-200 items-center justify-center ">
-          <div class="grid bg-white rounded-lg shadow-xl w-11/12  md:w-11/12 mx-12 mt-10">
+        <div class="flex grid h-screen items-center justify-center bg-background font-lato">
+          <div class="grid shadow-xl w-11/12  md:w-11/12 mx-12 mt-10">
             <div class="flex justify-center">
               <div class="flex">
-                <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Change your Info</h1>
+                <h1 class="text-gray-600 font-bold md:text-2xl text-2xl uppercase mb-8">Change your Info</h1>
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mt-5 mx-7">
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">First Name</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3 border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
                         id="firstName"
                         type="text"
                         placeholder="First Name"
@@ -111,7 +136,7 @@ const ClientConfig = () => {
               </div>
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Last Name</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3 border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
                         id="lastname"
                         type="text"
                         placeholder="Last Name"
@@ -122,7 +147,7 @@ const ClientConfig = () => {
               </div>
                  <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Location</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                <input class="py-2 px-3 border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
                         id="location"
                         type="text"
                         placeholder="location"
@@ -135,7 +160,7 @@ const ClientConfig = () => {
               <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
               <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Phone</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3 border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
                         id="phone"
                         type="number"
                         placeholder="phone"
@@ -146,7 +171,7 @@ const ClientConfig = () => {
               </div> 
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Email</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3 border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
                         id="email"
                         type="email"
                         placeholder="example@mail.com"
@@ -180,7 +205,7 @@ const ClientConfig = () => {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Password</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3 border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
                         id="password"
                         type="password"
                         placeholder="******************"
@@ -190,7 +215,7 @@ const ClientConfig = () => {
                 />
               </div> <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Confirm Password</label>
-                <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+                <input class="py-2 px-3 border-2 border-secondary mt-1 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" 
                         id="c_password"
                         type="password"
                         placeholder={`*********`}
@@ -201,7 +226,8 @@ const ClientConfig = () => {
               </div>
               </div>
             <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-              <button class='w-auto bg-blue-500 hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2' onClick={() => handleSubmit()}>Update</button>
+              <button class='w-auto bg-secondary hover:bg-primary shadow-xl font-medium text-white px-4 py-2 font-bold text-lg mt-8' 
+              onClick={() => handleSubmit()}>UPDATE</button>
             </div>
         
           </div>

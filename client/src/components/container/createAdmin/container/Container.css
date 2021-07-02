@@ -8,7 +8,7 @@
 }
 .listOptions
 {
-    width: 300px;
+    
     height: 90vh;
     display: flex;
     align-items: center;
@@ -53,3 +53,50 @@
     width: 70%;
     overflow-y: scroll;
 }
+
+.menu {
+    width: 2.2rem;
+    height: 2.7rem;
+    background-color: #232227;
+    border-radius: 0.5rem;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    transition: left 0.7s;
+
+}
+
+.checkbox:checked ~ .menu {
+    border-radius: 0 0.5rem 0.5rem 0;
+    left: 25%;
+}
+
+.left-panel {
+    width: 25%;
+    height: 100%;
+    background: -webkit-linear-gradient(#232227, #232227, #232227);
+    background: -o-linear-gradient(#232227,#232227,#232227);
+    background: linear-gradient(#232227,#232227,#232227);
+    position: absolute;
+    top: 0;
+    left: -40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.4s;
+}
+
+.checkbox:checked  ~ .left-panel {
+    left: 0;
+} 
+
+.checkbox {
+    display: none;
+}
+
+
+

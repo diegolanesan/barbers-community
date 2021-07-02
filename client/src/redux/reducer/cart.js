@@ -3,7 +3,8 @@ import {
     RESET_USER_CART, CHANGE_CART_STATE, CHANGE_CART_STATE_MERCADO_PAGO,
     GET_CARTS_BY_BARBER_ID, GET_CARTS_BY_USER, GET_PAID_APPOINTMENTS,
     GET_ACTIVE_APPOINTMENTS, GET_REJECTED_APPOINTMENTS, GET_APPOINTMENTS,
-    CHANGE_ORDER_STATUS
+    CHANGE_ORDER_STATUS,
+    GET_LAST_FIVE_CARTS_BY_CLIENT_ID
 } from "../action/cart";
 
 const initialState = {
@@ -61,31 +62,30 @@ const reducerCart = (state=initialState, action)=>{
             clientsAppointments: action.payload
         }
         case GET_PAID_APPOINTMENTS: 
-        console.log("kentaro")
         return {
             ...state,
             paidAppoinments: action.payload
         }
         case GET_ACTIVE_APPOINTMENTS: 
-        console.log("kentaro")
         return {
             ...state,
             activeAppoinments: action.payload
         }
         case GET_REJECTED_APPOINTMENTS: 
-        console.log("kentaro")
         return {
             ...state,
             rejectedAppoinments: action.payload
         }
         case GET_APPOINTMENTS: 
-        console.log("kentaro")
+        return {
+            ...state,
+            appoinments: action.payload
+            }
+        case GET_LAST_FIVE_CARTS_BY_CLIENT_ID: 
         return {
             ...state,
             appoinments: action.payload
         }
-        case CHANGE_ORDER_STATUS:
-            return state
         default:
             return state
     }

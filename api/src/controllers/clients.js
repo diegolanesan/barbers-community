@@ -36,6 +36,16 @@ const getClients = (req, res, next) => {
     }
 }
 
+const getBannedClients = (req, res, next) => {
+    try {
+        Client.findAll({ where: {status: "banned" }})
+        .then((result) => {
+            res.status(200).send(result);
+        })
+    } catch {
+        console.log("Client not found!");
+    }
+}
 
 const getClientById = (req, res, next) => {
     try {
@@ -191,5 +201,6 @@ module.exports = {
     deleteClient,
     updateClient,
     loginClient,
-    googleLoginClients
+    googleLoginClients,
+    getBannedClients
 }

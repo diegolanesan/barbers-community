@@ -3,6 +3,7 @@ import axios from "axios"
 import {toast} from 'react-toastify'
 import { addToCart } from "./cart"
 import jwtDecode from "jwt-decode"
+import Swal from 'sweetalert2'
 export const SIGN_UP_BARBER = "SIGN_UP_BARBER"
 export const SIGN_IN_BARBER = "SIGN_IN_BARBER"
 export const SIGN_IN_BARBER_GOOGLE = "SIGN_IN_BARBER_GOOGLE"
@@ -44,6 +45,11 @@ export const signInBarber = (history, creds)=> (dispatch) => {
         history.push("/barbers/dashboard")
     })
     .catch( error => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Email or Password are wrong, please change them',
+            })
         console.log(error.response)
         toast.error(error.response?.data, {
             position: toast.POSITION.BOTTOM_RIGHT
@@ -60,6 +66,11 @@ export const signInBarberWithGoogle = (history, userData)=> (dispatch) => {
         history.push("/barbers/dashboard")
     })
     .catch( error => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Email or Password are wrong, please change them',
+            })
         console.log(error.response)
         toast.error(error.response?.data, {
             position: toast.POSITION.BOTTOM_RIGHT
@@ -108,9 +119,14 @@ export const signInClient = (creds, history) => (dispatch) => {
         dispatch({type: SIGN_IN_CLIENT, token: token.data.token})
         let user = await jwtDecode(token.data.token)
         if(user.rol === "client") history.push("/clients/dashboard")
-        else history.push("/admin/dashboard")
+        else history.push("/validation")
     })
     .catch( error => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Email or Password are wrong, please change them',
+            })
         console.log(error.response)
         toast.error(error.response?.data, {
             position: toast.POSITION.BOTTOM_RIGHT

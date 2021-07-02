@@ -1,9 +1,12 @@
 const express = require('express');
 const server = express();
-const {getAllService, postService, getBarbersService, createRelationService,  putService,deleteService, deleteRelationService}  = require('../controllers/service');
+const {getAllService, postService, getBarbersService, createRelationService,  putService,deleteService, deleteRelationService, getAllServiceBarber}  = require('../controllers/service');
 
 // ruta para buscar todos los servicios
 server.get("/", getAllService);
+
+//server.get("/all", getAllServiceBarber);
+
 
 // ruta que devuelve los servicios según el barbero 
 server.get("/barbers/:id", getBarbersService);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode'
 import { getClientById, putClient} from '../../../redux/action/clients';
+import Swal from 'sweetalert2'
 import axios from "axios";
 import "./AdminConfig.css";
 const AdminConfig = () => {
@@ -48,9 +49,25 @@ const AdminConfig = () => {
       if(!admin.name || !admin.lastname ||
           !admin.email || !admin.password || !admin.confirmedPassword 
           || !admin.location || !admin.mobile) {
-            alert("Please complete all the camps")
+            Swal.fire({
+              title: 'Please complete all the camps',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
       } else if (admin.password !== admin.confirmedPassword) {
-            alert("password and confirm password must be the same")
+            Swal.fire({
+              title: 'password and confirm password must be the same',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
       } else {
         const adminSend = {
           clientModified: {
@@ -63,7 +80,13 @@ const AdminConfig = () => {
           }
       };
       dispatch(putClient(id,adminSend))
-      alert("Updated Successfully")
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Updated Successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
       }
     };
     console.log(admin, "aaaa")
