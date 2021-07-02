@@ -43,8 +43,8 @@ function BarberDetail(props) {
 		"bg-secondary hover:bg-primary text-white py-1 px-0 mx-0 mb-0 w-full";
 	const buttonSelected = "bg-primary text-white py-1 px-0 mx-0 mb-0 w-full";
 	const filterButtonStyle =
-		"bg-secondary hover:bg-primary text-white py-2 px-5 mx-2 mt-3 mb-3";
-	const filterSelected = "bg-primary text-white py-2 px-5 mx-2 mt-3 mb-3";
+		"bg-secondary hover:bg-primary text-white py-2 px-5 mx-2 w-full mt-3 mb-3";
+	const filterSelected = "bg-primary text-white py-2 px-5 mx-2 w-full mt-3 mb-3";
 
 	const [boton, setBoton] = useState({
 		menu: "Dashboard",
@@ -177,14 +177,7 @@ function BarberDetail(props) {
 									
 
 									{/* LOCATION */}
-									<div class="flex flex-row items-center my-3"> 
 									
-										<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-										{resp.city}, {resp.state}
-										<h3 class="font-semibold text-base ml-2">
-												{resp.location}
-									</h3>
-									</div>
 
 									{/* STATUS */}
 									<ul class="hover:shadow  divide-y shadow-sm">
@@ -202,8 +195,25 @@ function BarberDetail(props) {
 												</span>
 											</span>
 										</li>
-									</ul>
+										</ul>
+										<div class="flex flex-row items-center my-3"> 
 									
+										<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+										{resp.city}, {resp.state}
+									</div>
+									{resp && resp.city ?
+				<div className="grid grid-cols-1">
+					{/* <h2 className="font-bold text-2xl mb-4">Location</h2> */}
+					<div class="mapouter ">
+						<div class="gmap_canvas">
+							<iframe className="w-full h-96" id="gmap_canvas" src={`https://maps.google.com/maps?q=${address}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+								frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+							</iframe>
+						</div>
+					</div>
+				</div>
+				: ""
+			}
 									{/* REVIEWS */}
 									
 									
@@ -272,19 +282,7 @@ function BarberDetail(props) {
 						</div>
 						
 				)}
-				{resp && resp.city ?
-				<div className="grid grid-cols-1">
-					<h2 className="font-bold text-2xl mb-4">Location</h2>
-					<div class="mapouter ">
-						<div class="gmap_canvas">
-							<iframe className="w-full h-96" id="gmap_canvas" src={`https://maps.google.com/maps?q=${address}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-								frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-							</iframe>
-						</div>
-					</div>
-				</div>
-				: ""
-			}
+				
 			</div>
 			
 			</div>

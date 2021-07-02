@@ -116,12 +116,12 @@ export default function Catalog() {
     // ---------------------------------------------- End of Paginate -----------------------------------------------
     
     return (
-        <div className="flex justify-center containerCatalog">
+        <div className="flex justify-center font-lato containerCatalog">
              <SearchBar />
             <div className="w-4/5" >
 
-                <div onChange={handleChange} className="flex justify-end items-center w-full h-9 bg-gray-200" >
-                    
+                <div onChange={handleChange} className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 mb-14 justify-center w-full h-9 bg-gray-200" >
+                    <div>
                     <label className="px-4 font-bold">Category</label>
                         <select name="category" className="px-2 mr-8 rounded">
                             <option defaultChecked  > All </option>
@@ -129,7 +129,8 @@ export default function Catalog() {
                                 return <option key={category.id} value={category.name}> {category.name} </option>
                             })}
                         </select>
-
+                    </div>
+                    <div>
                     <label className="px-4 font-bold">Level</label>
                         <select name="level" className="px-2 mr-8 rounded">
                             <option defaultChecked  > All </option>
@@ -137,7 +138,8 @@ export default function Catalog() {
                                 return <option key={level} value={level}> {level} </option>
                             })}
                         </select>
-
+                    </div>
+                    <div>
                     <label className="px-4 font-bold">Style</label>
                         <select name="style" className="px-2 mr-8 rounded">
                             <option defaultChecked > All </option>
@@ -145,12 +147,14 @@ export default function Catalog() {
                                 return <option key={style.id} value={style.description}> {style.description} </option>
                             })}
                         </select>
-                    
+                    </div>
+                    <div>
                     <label className="px-4 font-bold">Order</label>
                     <select name="order" className="px-2 mr-8 rounded">
                         <option defaultChecked >A-Z</option>
                         <option>Z-A</option>
-                    </select>
+                        </select>
+                        </div>
                 </div>
                 <div className="flex flex-col justify-center" >
                     <div className="h-5/6" >
@@ -170,7 +174,7 @@ export default function Catalog() {
                                 pageRangeDisplayed={2}
                                 onPageChange={handlePaginate}
                                 containerClassName={"flex container mx-auto px-4 w-4/5 justify-evenly list-none cursor-pointer absolute top-100 "}
-                                activeClassName={'active'}
+                                activeClassName={'active px-4 rounded text-white font-semibold'}
                             />
                         }
                     </div>

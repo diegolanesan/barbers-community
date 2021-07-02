@@ -56,11 +56,11 @@ const AddReview = () => {
                 icon: 'warning',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok'
-              }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.reload()
                 }
-              })
+            })
         }
         if (typeof review.rating === "number" && review.review !== "") {
             dispatch(postReview(token.id, reviewSend));
@@ -70,13 +70,13 @@ const AddReview = () => {
                 icon: 'success',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok'
-              }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.replace("http://localhost:3000/detail/" + review.barberId)
                     console.log(reviewSend)
                 }
-              })
-            
+            })
+
         }
     };
     return (

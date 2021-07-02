@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 //import { postBarber } from "../../../redux/action/barbers";
 import { signUpClient } from "../../../redux/action/auth";
@@ -25,18 +25,18 @@ const validate = (input) => {
 	else if (input.password !== input.confirmedPassword) errors.confirmedPassword = "Passwords must match."
 	// type
 	if (!input.styleId) errors.styleId = "Should choose at least one."
-    if (!input.faceTypeId) errors.faceTypeId = "Should choose at least one."
-    if (!input.hairTypeId) errors.hairTypeId = "Should choose at least one."
+	if (!input.faceTypeId) errors.faceTypeId = "Should choose at least one."
+	if (!input.hairTypeId) errors.hairTypeId = "Should choose at least one."
 
 	return errors
 }
 
 const RegisterClient = () => {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const [barberImg, setBarberImg] = useState([]);
 
 	const newClient = {
-        name: "",
+		name: "",
 		lastname: "",
 		email: "",
 		img: barberImg,
@@ -45,18 +45,18 @@ const RegisterClient = () => {
 		password: "",
 		confirmedPassword: "",
 		status: "",
-        styleId: "", 
-        faceTypeId: "", 
-        hairTypeId: ""
+		styleId: "",
+		faceTypeId: "",
+		hairTypeId: ""
 	};
-    const {hair, face, style} = useSelector(state => state.types)
+	const { hair, face, style } = useSelector(state => state.types)
 	const [client, setClient] = useState(newClient);
 	const [errors, setErrors] = useState({})
-    useEffect(() => {
-            dispatch(getAllHairTypes())
-            dispatch(getAllFaceTypes())
-            dispatch(getAllStyles())
-    }, [dispatch])
+	useEffect(() => {
+		dispatch(getAllHairTypes())
+		dispatch(getAllFaceTypes())
+		dispatch(getAllStyles())
+	}, [dispatch])
 	const handleInputChange = (e) => {
 		setClient({
 			...client,
@@ -88,37 +88,37 @@ const RegisterClient = () => {
 			})
 			.catch((err) => console.log(err));
 	};
-	
+
 	const handleSubmit = (e) => {
 		const clientSend = {
-        		name: client.name,
-				lastname: client.lastname,
-				email: client.email,
-				image: barberImg,
-				mobile: client.mobile,
-				location: client.location,
-				password: client.confirmedPassword,
-				status: "active",
-				styleId: client.styleId, 
-				faceTypeId: client.faceTypeId, 
-				hairTypeId: client.hairTypeId,
-				rol: "client",
+			name: client.name,
+			lastname: client.lastname,
+			email: client.email,
+			image: barberImg,
+			mobile: client.mobile,
+			location: client.location,
+			password: client.confirmedPassword,
+			status: "active",
+			styleId: client.styleId,
+			faceTypeId: client.faceTypeId,
+			hairTypeId: client.hairTypeId,
+			rol: "client",
 		};
-		
+
 		dispatch(signUpClient(clientSend));
 		Swal.fire({
-            title: 'Register Sucessfull',
-            icon: 'success',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Ok'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "http://localhost:3000/loginClients";
-            }
-          }) 
+			title: 'Register Sucessfull',
+			icon: 'success',
+			confirmButtonColor: '#3085d6',
+			confirmButtonText: 'Ok'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = "http://localhost:3000/loginClients";
+			}
+		})
 	};
-	
-    
+
+
 	return (
 		<body className="bg-background font-lato text-primary">
 			{/* <!-- Container --> */}
@@ -126,7 +126,7 @@ const RegisterClient = () => {
 				<div className="flex justify-center py-10 px-6 ">
 					{/* <!-- Row --> */}
 					<div className="w-full justify-center xl:w-3/4 lg:w-11/12 flex">
-						
+
 						<div className="w-full lg:w-7/12 bg-white p-5">
 							<h3 className="py-4 text-3xl font-prata font-bold text-center">Create an Account</h3>
 							<form className="px-8 pt-6 pb-8 mb-4 bg-white">
@@ -169,7 +169,7 @@ const RegisterClient = () => {
 									</div>
 								</div>
 								<div className="mb-4 md:flex md:justify-between">
-                                <div className="mb-4 md:mr-2 md:mb-0">
+									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
 										// for="firstName"
@@ -206,23 +206,23 @@ const RegisterClient = () => {
 										/>
 									</div>
 								</div>
-                                <div className="mb-4 md:flex md:justify-between">
-                                <div className="mb-4 md:mr-2 md:mb-0">
+								<div className="mb-4 md:flex md:justify-between">
+									<div className="mb-4 md:mr-2 md:mb-0">
 										<label
 											className="block mb-2 text-sm font-bold text-gray-700"
 										// for="firstName"
 										>
 											Type of Face
 										</label>
-                                        <select
+										<select
 											name="faceTypeId"
 											value={client.faceTypeId}
 											onChange={handleInputChange}
 										>
 											<option value="" defaultChecked >Choose one...</option>
-											{face? face.map(b => {
-                                                return <option value={b.id}>{b.description}</option>
-                                            }): ""}
+											{face ? face.map(b => {
+												return <option value={b.id}>{b.description}</option>
+											}) : ""}
 										</select>
 									</div>
 									<div className="md:ml-2">
@@ -238,9 +238,9 @@ const RegisterClient = () => {
 											onChange={handleInputChange}
 										>
 											<option value="" defaultChecked >Choose one...</option>
-											{hair? hair.map(b => {
-                                                return <option value={b.id}>{b.description}</option>
-                                            }): ""}
+											{hair ? hair.map(b => {
+												return <option value={b.id}>{b.description}</option>
+											}) : ""}
 										</select>
 									</div>
 								</div>
@@ -260,9 +260,9 @@ const RegisterClient = () => {
 											onChange={handleInputChange}
 										>
 											<option value="" defaultChecked >Choose one...</option>
-											{style? style.map(b => {
-                                                return <option value={b.id}>{b.description}</option>
-                                            }): ""}
+											{style ? style.map(b => {
+												return <option value={b.id}>{b.description}</option>
+											}) : ""}
 										</select>
 										{errors.type && (<p className="text-xs italic text-red-500" >{errors.type}</p>)}
 									</div>
@@ -320,7 +320,7 @@ const RegisterClient = () => {
 											onChange={handleInputChange}
 										/>
 										{errors.password && (<p className="text-xs italic text-red-500" >{errors.password}</p>)}
-										
+
 									</div>
 									<div className="md:ml-2">
 										<label

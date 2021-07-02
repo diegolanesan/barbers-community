@@ -99,7 +99,7 @@ const BarberServicesData = ({ filters }) => {
     return (
         <div>
             <div>
-                <div className="grid overflow-auto h-96 sm:grid-cols-1 sm:grid-cols-6">
+                <div className="grid overflow-auto h-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
                     {filtered &&
                         filtered.map((n) => (
                             <div key={n.id} className="text-center m-8 border rounded-xl pb-1 w-4/5 shadow-md">

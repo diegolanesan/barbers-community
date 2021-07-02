@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getBarbersByName } from "../../../redux/action/barbers";
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+// import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 function SearchBar() {
 	const [input, setinput] = useState("");
@@ -38,7 +38,7 @@ function SearchBar() {
 
 	
 	return (
-		<form onSubmit={onSubmit} className="containerSearch">
+		<form onSubmit={onSubmit} className="containerSearch w-full">
 			<input
 				value={input}
 				type="text"

@@ -1,114 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Prata&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Prata&display=swap");
 
-.navBarContainer
-{
-    display:  flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgb(34, 34, 39);
-    height: 90px;
-    font-family: 'Lato', sans-serif;
-    color: white;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100vw;
+.navBarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(34, 34, 39);
+  height: 90px;
+  font-family: "Lato", sans-serif;
+  color: white;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
 }
-.navBarContainer i
-{
-    display: none;
+.navBarContainer i {
+  display: none;
 }
-.logoNav
-{
+.logoNav {
   font-size: 20px;
   margin-left: 5px;
 }
-img
-{
-    object-fit: cover;
+img {
+  object-fit: cover;
 }
 
-
-.ulNav
-{
-    display: flex;
-    justify-content: space-around;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 0;
-    align-items: center;
-    margin-right: 20px;
-    transition: 0.5s;
+.ulNav {
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0;
+  align-items: center;
+  margin-right: 20px;
+  transition: 0.5s;
 }
-.ulNav li 
-{
-    margin: 15px;
-    text-decoration: none;
-    background-image: linear-gradient(currentColor, currentColor);
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: 0% 2px;
-    transition: background-size .3s;
+.ulNav li {
+  margin: 15px;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 0.3s;
 }
-.ulNav li:hover, .ulNav li:focus 
-{
-    background-size: 100% 2px;
+.ulNav li:hover,
+.ulNav li:focus {
+  background-size: 100% 2px;
 }
 
-.navBarContainer button 
-{
-    background: rgb(158, 138, 120);
-    width: 140px;
-    font-size: 12px;
-    font-weight: 400;
-    padding: 10px;
-    transition: 0.5s;
+.navBarContainer button {
+  background: rgb(158, 138, 120);
+  width: 140px;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 10px;
+  transition: 0.5s;
+  z-index: 3;
 }
 
-.navBarContainer button:hover
-{
-    background-color:rgb(131, 114, 99);
+.navBarContainer button:hover {
+  background-color: rgb(131, 114, 99);
+  z-index: 3;
 }
 
-button 
-{
-    transition: 0.5s;
+button {
+  transition: 0.5s;
 }
-.ulActive
-{   
-    position: absolute;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    top: 10%;
-    background-color: rgba(0, 0, 0, 0.589);
-    width: 100%;
-    height: 100vh;
+.ulActive {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  top: 10%;
+  background-color: rgba(0, 0, 0, 0.733);
+  width: 100%;
+  height: 100vh;
+  z-index: 3;
 }
-/* .ulActive li, .ulActive button
-{
-    margin-top: 40px;
-} */
+
+.ulActive button {
+  z-index: 3;
+}
 
 @media (min-width: 0px) and (max-width: 900px) {
-    /* Solo se aplicarán entre los tamaños indicados */
-    .ulNav
-    {
-        display: none;
-    }
-    .logoNav
-    {
-        margin-left: 5px;
-    }
-    .navBarContainer i
-    {
-        display: flex;
-        position: absolute;
-        right: 40px;
-        font-size: 30px;
-        z-index: 3;
-        transition: 0.5s;
-    }
+  /* Solo se aplicarán entre los tamaños indicados */
+  .ulNav {
+    display: none;
+  }
+  .logoNav {
+    margin-left: 5px;
+  }
+  .navBarContainer i {
+    display: flex;
+    position: absolute;
+    right: 40px;
+    font-size: 30px;
+    z-index: 3;
+    transition: 0.5s;
+  }
 }

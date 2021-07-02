@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.a6fbf9af.chunk.css",
-    "main.js": "/static/js/main.00b2dd79.chunk.js",
-    "main.js.map": "/static/js/main.00b2dd79.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.4af655d0.js",
-    "runtime-main.js.map": "/static/js/runtime-main.4af655d0.js.map",
+    "main.css": "/static/css/main.ebe62173.chunk.css",
+    "main.js": "/static/js/main.3fba1565.chunk.js",
+    "main.js.map": "/static/js/main.3fba1565.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a2eb42ba.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a2eb42ba.js.map",
     "static/css/2.1035aa36.chunk.css": "/static/css/2.1035aa36.chunk.css",
-    "static/js/2.256d4a12.chunk.js": "/static/js/2.256d4a12.chunk.js",
-    "static/js/2.256d4a12.chunk.js.map": "/static/js/2.256d4a12.chunk.js.map",
-    "static/js/3.45df50a8.chunk.js": "/static/js/3.45df50a8.chunk.js",
-    "static/js/3.45df50a8.chunk.js.map": "/static/js/3.45df50a8.chunk.js.map",
+    "static/js/2.e26b0dae.chunk.js": "/static/js/2.e26b0dae.chunk.js",
+    "static/js/2.e26b0dae.chunk.js.map": "/static/js/2.e26b0dae.chunk.js.map",
+    "static/js/3.e298e667.chunk.js": "/static/js/3.e298e667.chunk.js",
+    "static/js/3.e298e667.chunk.js.map": "/static/js/3.e298e667.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.1035aa36.chunk.css.map": "/static/css/2.1035aa36.chunk.css.map",
-    "static/css/main.a6fbf9af.chunk.css.map": "/static/css/main.a6fbf9af.chunk.css.map",
-    "static/js/2.256d4a12.chunk.js.LICENSE.txt": "/static/js/2.256d4a12.chunk.js.LICENSE.txt",
+    "static/css/main.ebe62173.chunk.css.map": "/static/css/main.ebe62173.chunk.css.map",
+    "static/js/2.e26b0dae.chunk.js.LICENSE.txt": "/static/js/2.e26b0dae.chunk.js.LICENSE.txt",
     "static/media/about.5bd42283.jpg": "/static/media/about.5bd42283.jpg",
     "static/media/cut-hair.a6f7e1dd.jpg": "/static/media/cut-hair.a6f7e1dd.jpg",
     "static/media/not-found.cb2b9f22.png": "/static/media/not-found.cb2b9f22.png",
@@ -22,10 +22,10 @@
     "static/media/scissors.4bd1d84e.png": "/static/media/scissors.4bd1d84e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.4af655d0.js",
+    "static/js/runtime-main.a2eb42ba.js",
     "static/css/2.1035aa36.chunk.css",
-    "static/js/2.256d4a12.chunk.js",
-    "static/css/main.a6fbf9af.chunk.css",
-    "static/js/main.00b2dd79.chunk.js"
+    "static/js/2.e26b0dae.chunk.js",
+    "static/css/main.ebe62173.chunk.css",
+    "static/js/main.3fba1565.chunk.js"
   ]
 }

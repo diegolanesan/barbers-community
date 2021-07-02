@@ -13,7 +13,7 @@ function Services() {
                 <img class="w-36 mt-8 mb-4 mx-auto"src={heading} alt="line"></img>
             </div>
 
-            <div class="flex flex-row justify-center w-full text-center">
+            <div class="flex flex-col sm:flex-row  justify-center w-full text-center">
                 <div class="flex flex-col justify-center m-4 bg-white p-8">
                     <img class="object-contain h-16 mb-4" src={scissors} alt="service logo"></img>
                     <h3 class="font-prata text-primary text-xl"> Haircut Styles </h3>

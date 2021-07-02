@@ -6,8 +6,8 @@ import { sendEmailBarber } from "../../../../redux/action/recovery";
 import { putBarber } from "../../../../redux/action/barbers";
 import { Link } from "react-router-dom";
 
-const RecoveryClient = ()=>{
-    const { loading, resp, err } = useSelector((state) => state.recovery);
+const RecoveryClient = () => {
+	const { loading, resp, err } = useSelector((state) => state.recovery);
 	const tokenMail = useParams().token;
 	const token = JSON.parse(localStorage.getItem("tokenClientRecovery"));
 	const dispatch = useDispatch();
