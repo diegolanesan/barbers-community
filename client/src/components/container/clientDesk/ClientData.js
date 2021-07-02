@@ -15,6 +15,7 @@ import { getClientWishList } from "../../../redux/action/wishlist";
 
 function ClientData({ allAppointments }) {
 	const user = jwtDecode(localStorage.getItem("clientToken"));
+	console.log(user)
 	const clientAppointments = allAppointments.filter(
 		(app) => app.clientId === user.id
 	);
@@ -24,6 +25,7 @@ function ClientData({ allAppointments }) {
 	const dispatch = useDispatch();
 	const search = useLocation().search;
 	const state = new URLSearchParams(search).get("collection_status");
+
 	useEffect(() => {
 		// dispatch(getCartsByUser(user.id));
 		dispatch(getLastFiveByClientId(user.id))
@@ -111,15 +113,13 @@ var nextDate = orderedDates.filter(function(date) {
 	}
 
 	return (
-		<div>
-			<div className="grid sm:grid-cols-2 grid-cols-1">
-				<div>
-			<h2 class="text-3xl font-bold mt-12">Welcome, {user.name}! </h2>
-			</div>
-					<div>
-					<div class="max-w-sm rounded bg-yellow-400 mt-5 bg-opacity-40 overflow-hidden shadow-lg">
-					<p class="text-black text-lg"> Appointments </p>
-						<p class="text-black font-bold text-3xl">
+		<div class="ml-12 text-primary bg-background font-lato">
+			<h2 class="text-3xl font-bold mt-6">Welcome, {user.name}! </h2>
+			<hr class="my-4 w-5/6 text-secondary"></hr>
+			<h3 class="text-xl font-bold mt-6"> APPOINTMENT HISTORY </h3>
+			<div class="flex flex-row items-center justify-around">
+				<div class="rounded-full h-36 w-36 flex flex-col items-center justify-center text-center bg-secondary">
+					<p class="text-white font-bold text-5xl">
 						{" "}
 						{clientAppointments.length}{" "}
 						</p>
@@ -127,14 +127,9 @@ var nextDate = orderedDates.filter(function(date) {
 					</div>
 
 				</div>
-				</div>
-			<hr class="my-4 w-full"></hr>
 
-			<div class="grid sm:grid-cols-3 grid-cols-1 ">
-			{/* <h3 class="text-xl font-bold mt-4"> Appointment history </h3> */}
-					
-				{/* 📧  */}
-				
+				{/* SERVICIO DESTACADO */}
+				<div>
 					<div class="max-w-sm rounded overflow-hidden shadow-lg">
 						<img
 							class="w-full h-48"
@@ -150,7 +145,7 @@ var nextDate = orderedDates.filter(function(date) {
 						</div>
 						<div class="px-6 pt-4 pb-2">
 							<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-								Add to Card
+								Add to Cart
 							</span>
 							<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
 								Wish list
@@ -187,81 +182,107 @@ var nextDate = orderedDates.filter(function(date) {
 					</div>
 			
 			</div>
-			<h3 class="flex justify-center text-5xl font-bold mt-24 mb-8 "> {user.name}'s Last 5 Services </h3>
-			<hr class="mb-8 -mt-4 w-full"></hr>
 
-			<div className="tracking-wide font-bold bg-gray-200">
-            <table className="border-collapse w-full">
-                <thead>
-                    <tr>
-                        <th className="p-3 font-bold text-lg uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">#</th>
-                        <th className="p-3 font-bold text-lg uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Date</th>
-                        <th className="p-3 font-bold text-lg uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Services</th>
-						<th className="p-3 font-bold text-lg uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
-                        <th className="p-3 font-bold text-lg uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Total</th>
-                        <th className="p-3 font-bold text-lg uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Clone</th>
-							
-                    </tr>
-                </thead>
-                <tbody>
-                    {appointments && appointments.length > 0 ? appointments.map((c, id) => {
-                        return <tr key={id} className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                                {c.id}
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                {c.date && c.date.slice(0, 15)} @ {c.time}
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                {c.serviceBarbers &&
-												c.serviceBarbers.map((x) => {
-													if (c.serviceBarbers.length > 1) {
-														return "| " + x.item.serviceName + " |";
-													} else {
-														return x.item.serviceName + " ";
-													}
-												})}
-							</td>
-							<td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-								{c.state}
-							</td>
-							<td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-								${c.totalAmount}
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                                <button
-												onClick={() => onClick(app.state, app)}
-												class="h-8 px-4 text-sm text-white transition-colors bg-blue-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-blue-600"
-											>
-												Clone
-											</button>
-                            </td>
-                        </tr>
-					}) :<tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-							No Appointments Made
-								</td>
-							<td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-								
-							</td>
-							<td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                            </td>
-                        </tr>}
-                </tbody>
-            </table>
-        </div >
-			{/* <h3 class="text-xl font-bold mt-4"> Wish List </h3> */}
-			{/* {wishlist && wishlist.length > 0
-				? wishlist.map((app) => {
-						return <WishList wlApp={app} />;
-				  })
-				: ""} */}
+			{/* LAST SERVICES TABLE */}
+			<div class="flex flex-col items-center mt-20">
+				<h3 class="text-xl font-bold mt-4 text-white p-2 bg-secondary"> YOUR LAST APPOINTMENTS </h3>
+				<table class="table-fixed mt-8 w-4/5">
+					<thead>
+						<tr>
+							<th class="w-12 p-4"> # </th>
+							<th class="w-1/2">Date</th>
+							<th class="w-1/2">Services</th>
+							<th class="w-1/4">Status</th>
+							<th class="w-1/4"> Total price </th>
+						</tr>
+					</thead>
+					{appointments && appointments.length > 0
+						? appointments.map((app) => {
+								return (
+									<tbody class="text-center">
+										<tr>
+											<td> {app.id} </td>
+											<td> {app.date && app.date.slice(0, 10)} </td>
+											{/* c.serviceBarbers.map(n => "| " + n.item.serviceName + " |") */}
+											<td>
+												{" "}
+												{app.serviceBarbers &&
+													app.serviceBarbers.map((x) => {
+														if (app.serviceBarbers.length > 1) {
+															return "| " + x.item.serviceName + " |";
+														} else {
+															return x.item.serviceName + " ";
+														}
+													})}{" "}
+											</td>
+											<td> {app && app.state} </td>
+											<td> $ {app.totalAmount && app.totalAmount} </td>
+											<td>
+												<button
+													onClick={() => onClick(app.state, app)}
+													class="h-8 px-4 text-sm text-white transition-colors bg-blue-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-blue-600"
+												>
+													Clone
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								);
+						})
+						: ""}
+				</table>
+			</div>
+			
+			
+			{/* WISH LIST */}
+			<div class="flex flex-col items-center mt-20" >
+				<h3 class="text-xl font-bold mt-4 text-white p-2 bg-secondary"> WISH LIST </h3>
+				<table class="table-fixed mt-8 w-4/5">
+					<thead>
+						<tr>
+							<th class="w-12 p-4"> # </th>
+							<th class="w-1/2">Date</th>
+							<th class="w-1/2">Services</th>
+							<th class="w-1/4">Status</th>
+							<th class="w-1/4"> Total price </th>
+						</tr>
+					</thead>
+					{appointments && appointments.length > 0
+						? appointments.map((app) => {
+								return (
+									<tbody class="text-center">
+										<tr>
+											<td> {app.id} </td>
+											<td> {app.date && app.date.slice(0, 10)} </td>
+											{/* c.serviceBarbers.map(n => "| " + n.item.serviceName + " |") */}
+											<td>
+												{" "}
+												{app.serviceBarbers &&
+													app.serviceBarbers.map((x) => {
+														if (app.serviceBarbers.length > 1) {
+															return "| " + x.item.serviceName + " |";
+														} else {
+															return x.item.serviceName + " ";
+														}
+													})}{" "}
+											</td>
+											<td> {app && app.state} </td>
+											<td> $ {app.totalAmount && app.totalAmount} </td>
+											<td>
+												<button
+													onClick={() => onClick(app.state, app)}
+													class="h-8 px-4 text-sm text-white transition-colors bg-blue-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-blue-600"
+												>
+													Clone
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								);
+						})
+						: ""}
+				</table>
+			</div>
 		</div>
 	);
 }

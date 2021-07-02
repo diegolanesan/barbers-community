@@ -37,11 +37,11 @@ function BarberDetail(props) {
 	}, []);
 
 	const buttonStyle =
-		"bg-blue-400 hover:bg-blue-600 text-white py-1 px-0 mx-0 mb-0 w-full";
-	const buttonSelected = "bg-blue-800 text-white py-1 px-0 mx-0 mb-0 w-full";
+		"bg-secondary hover:bg-primary text-white py-1 px-0 mx-0 mb-0 w-full";
+	const buttonSelected = "bg-primary text-white py-1 px-0 mx-0 mb-0 w-full";
 	const filterButtonStyle =
-		"bg-blue-400 hover:bg-blue-600 text-white py-2 px-5 mx-2 mt-3 mb-3";
-	const filterSelected = "bg-blue-800 text-white py-2 px-5 mx-2 mt-3 mb-3";
+		"bg-secondary hover:bg-primary text-white py-2 px-5 mx-2 mt-3 mb-3";
+	const filterSelected = "bg-primary text-white py-2 px-5 mx-2 mt-3 mb-3";
 
 	const [boton, setBoton] = useState({
 		menu: "Dashboard",
@@ -74,13 +74,7 @@ function BarberDetail(props) {
 		serviceBarberId: []
 	})
 	
-	// let rating = 0
-	// const ratingBarber = () => {
-	// 	reviews.map(e => {
-	// 		e.rating += rating
-	// 		rating = rating / e.length + 1 
-	// 	})
-	// }
+	
 	const [average, setAverage] = useState(0)
 	const averageRating = () => {
     	let sum = 0;
@@ -110,29 +104,31 @@ function BarberDetail(props) {
 		console.log(address)
 	}
 	return (
-		<div>
-			<div class="bg-gray-100 max-w-6xl mx-auto my-20">
+		<div class="bg-background font-lato text-primary">
+			<div class="bg-gray-100 max-w-6xl mx-auto">
 				{!resp ? (
 					<div class="loader"></div>
 				) : (
-					<div class="container mx-auto my-5 p-5">
-						<a href="http://localhost:3000/catalog">
-							<button class="bg-blue-400 hover:bg-blue-600 border-b-2 text-white py-1 px-2 mx-10 mb-0 rounded-lg">
-								Go back to Barbers
+					<div class="container p-5">
+						<Link to="/catalog">
+							<button class="bg-secondary hover:bg-primary border-b-2 text-white py-1 
+							font-bold p-3 mt-6 ml-3">
+								TO CATALOG
 							</button>
-						</a>
-							<div class="md:flex no-wrap md:-mx-2 pt-8 pb-32 ">
+						</Link>
+							<div class="md:flex no-wrap md:-mx-2 pt-8 pb-32">
 								<div class="w-full md:w-3/12 md:mx-2">
 								{/* <!-- Profile Card --> */}
-								<div class="bg-white p-3 border-t-4 border-blue-400 ">
-									<div>
-										<img
-											class="h-auto w-full rounded mx-auto"
-											src={resp.image}
-											alt=""
-										/>
-										</div>
-									<h1 class="text-gray-900 font-bold text-xl leading-8 mt-1">
+								<div class="bg-white p-3">
+
+									{/* MAIN FIELDS  */}
+									<div class="">
+										<img class="object-contain" src={resp.image} alt="barber"/>
+										<p class="font-semibold text-white p-2 w-full text-center bg-secondary">
+											{ resp.type }
+									</p>
+									</div>
+									<h1 class="font-bold text-2xl mt-4">
 										{resp.name} {resp.lastname}
 										</h1>
 										<h1 class="text-gray-900 font-semibold text-lg leading-8">
@@ -175,7 +171,20 @@ function BarberDetail(props) {
 									<p class="text-sm text-gray-700 font-semibold hover:text-gray-600 leading-6">
 										{resp.resume}
 									</p>
-									<ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+									
+
+									{/* LOCATION */}
+									<div class="flex flex-row items-center my-3"> 
+									
+										<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+										
+										<h3 class="font-semibold text-base ml-2">
+												{resp.location}
+									</h3>
+									</div>
+
+									{/* STATUS */}
+									<ul class="hover:shadow  divide-y shadow-sm">
 										<li class="flex items-center py-3">
 											<span>Status</span>
 											<span class="ml-auto">
@@ -191,80 +200,61 @@ function BarberDetail(props) {
 											</span>
 										</li>
 									</ul>
-								</div>
-								{/* <!-- End of profile card --> */}
-								<div class="my-4"></div>
-							</div>
-								<div class="w-full md:w-9/12 mx-2 h-64">
-								{/* <!-- About Section --> */}
-								<div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
-									<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-										<span clas="text-green-500">
-											<svg
-												class="h-5"
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke="currentColor"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													stroke-width="2"
-													d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-												/>
-											</svg>
-										</span>
-										<span class="tracking-wide">Availability</span>
+									
+									{/* REVIEWS */}
+									<div className="grid grid-cols-2 gap-4 mt-4">
+										{reviews && reviews.length > 0 ?
+											<StarRatingComponent
+												name="rate2"
+												editing={false}
+												renderStarIcon={() => <span className=" text-xl">★</span>}
+												starCount={5}
+												value={average}
+											/>
+										: ""}
+												
 									</div>
-									<div class="text-gray-700">
-										{/* <div class="grid md:grid-cols-1 grid-cols-2 font-semibold text-md">
-											<div class="grid grid-cols-2">
-												<div class="px-4 py-2"> Name: {resp.name}</div>
-											</div>
-											<div class="grid grid-cols-2">
+									<div>
+										{reviews && reviews.length > 0 ?
+											<Link to={"/reviews/" + id} >
+											<button className="w-20 mr-4 font-semibold bg-blue-400">
+												Reviews
+											</button>
+											</Link>
+												 
+										: <h1>No Reviews</h1>}
+												
+											{reviews && reviews.length > 0 && cart && token ?
+												cart.map(e => e.state === "Paid" && e.clientId === token.id ?
+													<Link to={"/reviews/new/" + id}><button className="w-28 text-md font-semibold  bg-blue-400">Add Review</button></Link> : "")
+											: ""}
+									</div>
+							
+								</div>
 
-												<div class="px-4 py-2">Lastname: {resp.lastname}</div>
-											</div>
-											<div class="grid grid-cols-2">
-												
-												<div class="px-4 py-2">{resp.type}</div>
-											</div>
-											<div class="grid grid-cols-2">
-												
-												<div class="px-4 py-2">{resp.alias}</div>
-											</div>
-											<div class="grid grid-cols-2">
-												
-												<div class="px-4 py-2">{resp.location}</div>
-											</div>
-											<div class="grid grid-cols-2">
+								{/* MAP */}
+								
 
-												<div class="px-4 py-2">{resp.mobile}</div>
-											</div>
-											<div class="grid grid-cols-2">
-												
-												<div class="px-4 py-2">
-													<a
-														class="text-blue-800"
-														href="mailto:jane@example.com"
-													>
-														{resp.email}
-													</a>
-												</div>
-											</div>
-											<div class="grid grid-cols-2">
-												
-												<div class="px-4 py-2">{resp.rating}</div>
-											</div>
-										</div> */}
-											<div class="bg-gray-100 w-full  mx-auto">
-				<div>
-					<div>
-						<div
-							className={`w-full justify-center flex`}
-							onClick={handleClick}
-						>
+								</div>
+							
+						{/* AVAILABILITY */}
+						<div class="bg-white p-3 shadow-sm rounded-sm">
+							<div class="flex items-center space-x-2 font-semibold mt-3">
+								<span clas="text-green-500">
+									<svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+									stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+									</svg>
+								</span>
+								<span class="font-bold text-xl">Availability</span>
+							</div>
+							<div>
+										
+							<div class="w-full  mx-auto">
+							<div>
+							<div>
+							<div className={`w-full justify-center flex`} onClick={handleClick} >
 							<div>
 								<input
 									type="button"
@@ -359,92 +349,22 @@ function BarberDetail(props) {
 						</div>
 					</div>
 					<BarberDetailServices filters={boton.filters} />
+					</div>
+						<div className="flex justify-center">
+							<Link to="/cart">
+							<button className="bg-secondary text-white py-2 px-10 hover:bg-primary font-semibold">
+								NEXT STEP
+							</button>
+							</Link>
+						</div>
+					</div>
+											
 				</div>
-				<div className="flex justify-center">
-					<Link to="/cart">
-						<button className="px-20 py-2 -mt-3 mb-7 bg-blue-500 fotn-bold rounded">
-							Next Step
-						</button>
-					</Link>
 				</div>
+				{/* END OF AVAILABILITY */}				
+								
 			</div>
-											{/* <div>
-												{appointment.date && appointment.date.includes("Mon") ?
-													time[0].Mon.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
-												{appointment.date && appointment.date.includes("Tue") ?
-													time[1].Tue.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
-												{appointment.date && appointment.date.includes("Wed") ?
-													time[2].Wed.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
-												{appointment.date && appointment.date.includes("Thu") ?
-													time[3].Thu.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time}</button>) : ""}
-												{appointment.date && appointment.date.includes("Fri") ?
-													time[4].Fri.map(e => <button className="mr-4 bg-blue-300 mb-4 px-2">{e.time }</button>) : ""}
-											</div>
-                                <Datetime className="border-4 border-blue-400" input={false} isValidDate={valid} timeFormat={false} onChange={onchange} />
-											 */}
-									</div>
-								</div>
-								{/* <!-- End of about section --> */}
-								{/* <div class="my-4"></div>
-								{/* <!-- Types --> */}
-								{
-									// <div class="bg-white p-3 shadow-sm rounded-sm border-t-4 border-blue-400">
-									// 	<div class="grid grid-cols-3">
-									// 		<div>
-									// 			<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-									// 				<span class="tracking-wide">Face Types</span>
-									// 			</div>
-									// 			<ul class="list-inside space-y-2">
-									// 				{resp.faceTypes
-									// 					? resp.faceTypes.map((n) => (
-									// 							<li>
-									// 								<div class="bg-blue-500 py-1 px-3  mx-12 rounded text-white text-sm">
-									// 									{n.description}
-									// 								</div>
-									// 							</li>
-									// 					  ))
-									// 					: "waiting"}
-									// 			</ul>
-									// 		</div>
-											// <div>
-											// 	<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-											// 		<span class="tracking-wide">Styles</span>
-											// 	</div>
-											// 	<ul class="list-inside space-y-2">
-											// 		{resp.styles
-											// 			? resp.styles.map((n) => (
-											// 					<li>
-											// 						<div class="bg-blue-500 py-1 px-3 mx-12 rounded text-white text-sm">
-											// 							{n.description}
-											// 						</div>
-											// 					</li>
-											// 			  ))
-											// 			: "waiting"}
-											// 	</ul>
-											// </div>
-											// <div>
-											// 	<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-											// 		<span class="tracking-wide">Hair Types</span>
-											// 	</div>
-											// 	<ul class="list-inside space-y-2">
-											// 		{resp.hairTypes
-											// 			? resp.hairTypes.map((n) => (
-											// 					<li>
-											// 						<div class="bg-blue-500 py-1 px-3 mx-12 rounded text-white text-sm">
-											// 							{n.description}
-											// 						</div>
-											// 					</li>
-											// 			  ))
-											// 			: "waiting"}
-											// 	</ul>
-											// </div>
-										// </div>
-									// </div>
-								}
-								 {/* <!-- End of Types --> */}
-								 {/* <!-- End of profile tab --> */}
-								 {/* <div class="my-4"></div> */}
-								</div>
+			<div class="w-full md:w-9/12 mx-2 h-64">
 								
 							{/* <!-- Left Side --> */}
 							
