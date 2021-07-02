@@ -12,9 +12,9 @@ const initialState = {
     gessCart: [],
     activeCart: {},
     appoinments: [],
-    paidAppoinments: [],
-    activeAppoinments: [],
-    rejectedAppoinments: [],
+    paidAppoinments: false,
+    activeAppoinments: false,
+    rejectedAppoinments: false,
     barberAppointments: [],
     clientsAppointments: []
 }

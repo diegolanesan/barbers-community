@@ -16,8 +16,8 @@ const BarberDashboard = () => {
     const categories = useSelector(state => state.category.resp)
     const buttonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-1 px-0 mx-0 mb-0 w-full"
     const buttonSelected = "bg-blue-800 text-white py-1 px-0 mx-0 mb-0 w-full"
-    const filterButtonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-2 px-5 mx-2 mt-3 mb-3"
-    const filterSelected = "bg-blue-800 text-white py-2 px-5 mx-2 mt-3 mb-3"
+    const filterButtonStyle = "bg-secondary hover:bg-primary text-white py-2 px-5 mx-2 mt-3 mb-3"
+    const filterSelected = "bg-primary text-white py-2 px-5 mx-2 mt-3 mb-3"
     const barber = localStorage.getItem("barberToken") ? jwtDecode(localStorage.getItem("barberToken")) : false;
 
     useEffect(() => {

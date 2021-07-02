@@ -18,7 +18,7 @@ const AdminDashboard = () => {
     const barbersLoaded = useSelector((state) => state.barbers.barbersLoaded);
     const clientsLoaded = useSelector((state) => state.clients.clientsLoaded);
     const Appointments = useSelector((state) => state.cart.appoinments);
-    const {Paid, Active, Rejected} = useSelector((state) => state.cart);
+    const {paidAppoinments, activeAppoinments, rejectedAppoinments} = useSelector((state) => state.cart);
     const activeBarbers = () => {
         let count = 0
         for(let i = 0; i < barbersLoaded.length; i++) {
@@ -47,6 +47,7 @@ const AdminDashboard = () => {
         }
         return count
     }
+    console.log(paidAppoinments, activeAppoinments, rejectedAppoinments)
     return (
         <div>
 <div class="w-full max-w-md w-full mx-auto bg-white shadow-md rounded-md px-6 py-4 my-6">
@@ -77,15 +78,15 @@ const AdminDashboard = () => {
         <div class="flex justify-between items-center mt-4">
             <div>
                 <h4 class="text-gray-600 text-sm">Aproved Apoinments</h4>
-                <span class="mt-2 text-xl font-medium text-gray-800">{Paid? Paid: 0}</span>
+                <span class="mt-2 text-xl font-medium text-gray-800">{paidAppoinments? paidAppoinments: 0}</span>
             </div>
             <div>
                 <h4 class="text-gray-600 text-sm">Canceled Apoinments</h4>
-                <span class="mt-2 text-xl font-medium text-gray-800">{Rejected? Rejected: 0}</span>
+                <span class="mt-2 text-xl font-medium text-gray-800">{rejectedAppoinments? rejectedAppoinments: 0}</span>
             </div>
             <div>
                 <h4 class="text-gray-600 text-sm">Active Apoinments</h4>
-                <span class="mt-2 text-xl font-medium text-gray-800">{Active ? Active: 0}</span>
+                <span class="mt-2 text-xl font-medium text-gray-800">{activeAppoinments ? activeAppoinments: 0}</span>
             </div>
         </div>
         </div>

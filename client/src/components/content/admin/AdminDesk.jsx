@@ -6,8 +6,7 @@ import AdminBarbers from "./Users/Barbers"
 import AdminClients from './Users/Clients'
 import Categories from '../../container/createAdmin/categories/Categories'
 import Error from '../error/Error'
-import jwtDecode from 'jwt-decode'
-
+import jwtDecode from "jwt-decode";
 
 export default function AdminDesk() {
     /* const dispatch = useDispatch() */
