@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getBarbersByName } from "../../../redux/action/barbers";
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 function SearchBar() {
 	const [input, setinput] = useState("");
+	const [listen, setListen] = useState(false)
 	const dispatch = useDispatch();
 	const history = useHistory();
+	// const {transcript, resetTranscript} = useSpeechRecognition()
 
 	function onChange(e) {
 		setinput(e.target.value);
@@ -18,9 +21,24 @@ function SearchBar() {
 		history.push("/catalog");
 		setinput("");
 	}
+	// console.log(transcript)
+	// const handleListen  = ()=>{
+	// 	SpeechRecognition.startListening()
+	// 	setListen(true)
+	// 	setinput(transcript)
+	// }
+	
+	// const handleStopListen = ()=>{
+	// 	SpeechRecognition.stopListening()
+	// 	// dispatch(getBarbersByName(input));
+	// 	setinput("");
+	// 	resetTranscript()
+	// 	setListen(false)
+	// };
 
+	
 	return (
-		<form onSubmit={onSubmit} className="">
+		<form onSubmit={onSubmit} className="containerSearch">
 			<input
 				value={input}
 				type="text"
@@ -31,8 +49,9 @@ function SearchBar() {
 			<input
 				type="submit"
 				value="Search"
-				className="bg-blue-800 text-white py-1 px-3 rounded-3xl"
+				className="bg-secondary text-white py-1 px-3 rounded-3xl"
 			/>
+			{/* <i class={!listen ? ("far fa-microphone"):("far fa-hand-paper")} onChange={!listen ? (handleListen):(handleStopListen)}></i> */}
 		</form>
 	);
 }

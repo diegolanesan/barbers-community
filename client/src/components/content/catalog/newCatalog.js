@@ -6,7 +6,7 @@ import Barber from "../barber/barber.js";
 import { getAllCategory } from "../../../redux/action/categories.js";
 import { getAllStyles } from "../../../redux/action/types.js";
 import SearchBar from "../searchBar/SearchBar.js";
-import { setFilters } from "../../../redux/action/filters.js";
+import "./newCatalog.css"
 
 export default function Catalog() {
     
@@ -116,9 +116,10 @@ export default function Catalog() {
     // ---------------------------------------------- End of Paginate -----------------------------------------------
     
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center containerCatalog">
+             <SearchBar />
             <div className="w-4/5" >
-                <SearchBar />
+
                 <div onChange={handleChange} className="flex justify-end items-center w-full h-9 bg-gray-200" >
                     
                     <label className="px-4 font-bold">Category</label>
