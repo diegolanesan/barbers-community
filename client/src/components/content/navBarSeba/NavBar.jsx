@@ -34,9 +34,13 @@ const NavBar = ()=>{
             <div className="logoNav">
                 <Link to="/"><img src="https://html.dynamiclayers.xyz/dl/barbershop/img/logo.png" alt="" /></Link>
             </div>
-            <ul className={!menu.active ? ("ulNav"):("ulActive")}>
+
+            <ul className={!menu.active ? ("ulNav"):("ulActive")} >
+                
                 <li onClick={handleClick} style={{cursor:"pointer"}}>LOG OUT</li>
                 <li><Link to="/admin/dashboard">DASHBOARD</Link></li>
+                
+
             </ul>
             <i class={menu.active ?("fas fa-times"):("fas fa-bars")} onClick={handleClickOne}></i>
         </nav>
@@ -48,9 +52,13 @@ const NavBar = ()=>{
                 <Link to="/"><img src="https://html.dynamiclayers.xyz/dl/barbershop/img/logo.png" alt="" /></Link>
             </div>
             <ul className={!menu.active ? ("ulNav"):("ulActive")}>
+
+               
                 <li><Link to="/catalog">SERVICE</Link></li>
                 <li onClick={handleClick} style={{cursor:"pointer"}}>LOG OUT</li>
                 <li><Link to="/clients/dashboard">DASHBOARD</Link></li>
+                
+
             </ul>
             <i class={menu.active ?("fas fa-times"):("fas fa-bars")} onClick={handleClickOne}></i>
         </nav>
@@ -61,9 +69,13 @@ const NavBar = ()=>{
             <div className="logoNav">
                 <Link to="/"><img src="https://html.dynamiclayers.xyz/dl/barbershop/img/logo.png" alt="" /></Link>
             </div>
-            <ul className={!menu.active ? ("ulNav"):("ulActive")}>
+
+            <ul className={!menu.active ? ("ulNav"):("ulActive")} >
+                
                 <li onClick={handleClick} style={{cursor:"pointer"}}>LOG OUT</li>
                 <li><Link to="/barbers/dashboard">DASHBOARD</Link></li>
+               
+
             </ul>
             <i class={menu.active ?("fas fa-times"):("fas fa-bars")} onClick={handleClickOne}></i>
         </nav>
@@ -74,7 +86,9 @@ const NavBar = ()=>{
          <div className="logoNav">
              <Link to="/"><img src="https://html.dynamiclayers.xyz/dl/barbershop/img/logo.png" alt="" /></Link>
          </div>
-         <ul className={!menu.active ? ("ulNav"):("ulActive")}>
+
+         <ul className={!menu.active ? ("ulNav"):("ulActive")} >
+
              <li><Link to="/catalog">SERVICE</Link></li>
              <li><Link to="/loginBarbers">LOG IN BARBER</Link></li>
              <li><Link  to="/loginClients">LOG IN CLIENT</Link></li>

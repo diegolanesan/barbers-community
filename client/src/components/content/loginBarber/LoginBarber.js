@@ -92,7 +92,7 @@ function LoginBarbers() {
                 <div class="text-right mt-2">
                   <Link to="/barbers/recovery/false" class="text-sm font-semibold text-gray-700 hover:text-secondary focus:text-secondary">Forgot Password?</Link>
                 </div>
-        
+
                 <button
 							type="submit"
 							class="w-full block bg-secondary hover:bg-primary focus:bg-secondary text-white font-semibold 
@@ -100,6 +100,7 @@ function LoginBarbers() {
 						>
 							Log In
 						</button>
+
               </form>
         
               <hr class="my-6 border-gray-300 w-full"/>
@@ -113,7 +114,7 @@ function LoginBarbers() {
                 focus:text-white text-primary font-semibold px-4 py-3 border border-primary"
                 >
                 <div class="flex items-center justify-center">
-                  <span class="ml-4">Log in with Google</span>
+                  <span class="ml-4">Log in with Google</span><i className="fab fa-google ml-2 "></i>
                 </div>
               </button>
                 )}
