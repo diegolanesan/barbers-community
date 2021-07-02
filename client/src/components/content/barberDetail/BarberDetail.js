@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { barberDetail } from "../../../redux/action/barberDetail";
 import { getBarbers } from "../../../redux/action/barbers";
 import { addToAppointment } from "../../../redux/action/services";
+import { getAllCategory } from "../../../redux/action/categories";
 import "./BarberDetail.modules.css";
 import BarberDetailServices from "./BarberDetailServices.jsx";
 import "react-datetime/css/react-datetime.css";
@@ -22,6 +23,7 @@ function BarberDetail(props) {
 	const resp = useSelector((state) => state.barberDetail.resp);
 	const reviews = useSelector((state) => state.reviews.barberReviews)
 	const cart = useSelector((state) => state.cart.barberAppointments)
+	const categories = useSelector(state => state.category.resp)
     const token = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : null;
 	console.log(token)
 	const id = props.match.params.id;
@@ -31,6 +33,7 @@ function BarberDetail(props) {
 	useEffect(() => {
 		dispatch(barberDetail(id));
 		dispatch(getBarbers());
+		dispatch(getAllCategory());
 		dispatch(getAppointmentByBarber(id));
 		dispatch(getBarberReviews(id))
 		dispatch(getCartsByBarberId(id))
@@ -255,97 +258,24 @@ function BarberDetail(props) {
 							<div>
 							<div>
 							<div className={`w-full justify-center flex`} onClick={handleClick} >
-							<div>
+							{categories.map(c => {
+								return (
+									<div>
 								<input
 									type="button"
-									id="HAIRCUT"
-									value="Haircut"
+									id={c.name}
+									value={c.name}
 									name="filters"
 									className={
-										boton.filters === "HAIRCUT"
+										boton.filters === c.name
 											? filterSelected
 											: filterButtonStyle
 									}
 								/>
 							</div>
-							<div>
-								<input
-									type="button"
-									id="BEARDCUT"
-									value="Beard trim"
-									name="filters"
-									className={
-										boton.filters === "BEARDCUT"
-											? filterSelected
-											: filterButtonStyle
-									}
-								/>
-							</div>
-							<div>
-								<input
-									type="button"
-									id="KIDHAIRCUT"
-									value="Kids haircuts"
-									name="filters"
-									className={
-										boton.filters === "KIDHAIRCUT"
-											? filterSelected
-											: filterButtonStyle
-									}
-								/>
-							</div>
-							<div>
-								<input
-									type="button"
-									id="HAIRCOLOR"
-									value="Coloration"
-									name="filters"
-									className={
-										boton.filters === "HAIRCOLOR"
-											? filterSelected
-											: filterButtonStyle
-									}
-								/>
-							</div>
-							<div>
-								<input
-									type="button"
-									id="DESIGN"
-									value="Tribal trim"
-									name="filters"
-									className={
-										boton.filters === "DESIGN"
-											? filterSelected
-											: filterButtonStyle
-									}
-								/>
-							</div>
-							<div>
-								<input
-									type="button"
-									id="OZON"
-									value="Ozone"
-									name="filters"
-									className={
-										boton.filters === "OZON"
-											? filterSelected
-											: filterButtonStyle
-									}
-								/>
-							</div>
-							<div>
-								<input
-									type="button"
-									id="MASK"
-									value="Face mask"
-									name="filters"
-									className={
-										boton.filters === "MASK"
-											? filterSelected
-											: filterButtonStyle
-									}
-								/>
-							</div>
+							
+								)
+							})}
 						</div>
 					</div>
 					<BarberDetailServices filters={boton.filters} />
