@@ -1,19 +1,26 @@
-import React, { useState } from 'react'
+import { React, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import BarberServicesDashboard from './barberDashboardServices/BarberServicesDashboard.jsx'
 import AppointmentsDash from './Appointments/Appointments.js'
 import InvoicesDash from './Invoices/Invoices'
 import BarberConfig from '../barberConfig/BarberConfig.jsx'
 import Error from '../error/Error.js'
+import { getAllCategory } from "../../../redux/action/categories";
 
 // import style from './barberDashboard.module.css'
 
 const BarberDashboard = () => {
+    const dispatch = useDispatch();
+    const categories = useSelector(state => state.category.resp)
     const buttonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-1 px-0 mx-0 mb-0 w-full"
     const buttonSelected = "bg-blue-800 text-white py-1 px-0 mx-0 mb-0 w-full"
     const filterButtonStyle = "bg-blue-400 hover:bg-blue-600 text-white py-2 px-5 mx-2 mt-3 mb-3"
     const filterSelected = "bg-blue-800 text-white py-2 px-5 mx-2 mt-3 mb-3"
     const barber = localStorage.getItem("barberToken") ? jwtDecode(localStorage.getItem("barberToken")) : false;
 
+    useEffect(() => {
+		dispatch(getAllCategory());
+	}, []);
     const [buttonState, setButtonState] = useState({
         menu: 'Dashboard',
         filters: 'HAIRCUT',
@@ -64,27 +71,13 @@ const BarberDashboard = () => {
                         <div>
                             <div >
                                 <div className={`w-full mt-4 justify-center flex`} onClick={handleClick} >
-                                    <div>
-                                        <input type='button' id='HAIRCUT' value='Haircut' name='filters' className={buttonState.filters === 'HAIRCUT' ? filterSelected : filterButtonStyle} />
-                                    </div>
-                                    <div>
-                                        <input type='button' id='BEARDCUT' value='Beard trim' name='filters' className={buttonState.filters === 'BEARDCUT' ? filterSelected : filterButtonStyle} />
-                                    </div>
-                                    <div>
-                                        <input type='button' id='KIDHAIRCUT' value='Kids haircuts' name='filters' className={buttonState.filters === 'KIDHAIRCUT' ? filterSelected : filterButtonStyle} />
-                                    </div>
-                                    <div>
-                                        <input type='button' id='HAIRCOLOR' value='Coloration' name='filters' className={buttonState.filters === 'HAIRCOLOR' ? filterSelected : filterButtonStyle} />
-                                    </div>
-                                    <div>
-                                        <input type='button' id='DESIGN' value='Tribal trim' name='filters' className={buttonState.filters === 'DESIGN' ? filterSelected : filterButtonStyle} />
-                                    </div>
-                                    <div>
-                                        <input type='button' id='OZON' value='Ozone' name='filters' className={buttonState.filters === 'OZON' ? filterSelected : filterButtonStyle} />
-                                    </div>
-                                    <div>
-                                        <input type='button' id='MASK' value='Face mask' name='filters' className={buttonState.filters === 'MASK' ? filterSelected : filterButtonStyle} />
-                                    </div>
+                                {categories.map(c => {
+                                    return (
+                                        <div>  
+                                            <input type='button' id={c.name} value={c.name} name='filters' className={buttonState.filters === c.name ? filterSelected : filterButtonStyle} />
+                                        </div>
+                                    )
+                                })}
                                 </div>
                             </div>
                             <BarberServicesDashboard filters={buttonState.filters} />
