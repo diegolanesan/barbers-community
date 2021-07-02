@@ -82,7 +82,7 @@ export const CartLogged = () => {
 
   const paymentGenerator = (user, products) => {
     axios
-      .post("https://barbers-community.herokuapp.com/checkout/create_preference", {
+      .post("http://localhost:3001/checkout/create_preference", {
         user,
         products,
       })

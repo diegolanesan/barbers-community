@@ -72,7 +72,7 @@ const AddReview = () => {
                 confirmButtonText: 'Ok'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.replace("https://barberscommunity-g8.netlify.app/detail/" + review.barberId)
+                    window.location.replace("http://localhost:3000/detail/" + review.barberId)
                     console.log(reviewSend)
                 }
             })

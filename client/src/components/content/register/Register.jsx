@@ -131,7 +131,7 @@ const Register = () => {
 			confirmButtonText: 'Ok'
 		}).then((result) => {
 			if (result.isConfirmed) {
-				window.location.href = "https://barberscommunity-g8.netlify.app/loginBarbers";
+				window.location.href = "http://localhost:3000/loginBarbers";
 			}
 		})
 	};

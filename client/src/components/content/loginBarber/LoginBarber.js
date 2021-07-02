@@ -124,7 +124,7 @@ function LoginBarbers() {
                 cookiePolicy={'single_host_origin'}
 					    />
         
-              <p class="mt-8">Need an account? <a href="https://barberscommunity-g8.netlify.app/register" class="text-secondary hover:text-primary font-semibold">Create an
+              <p class="mt-8">Need an account? <a href="http://localhost:3000/register" class="text-secondary hover:text-primary font-semibold">Create an
                       account</a></p>
         
         

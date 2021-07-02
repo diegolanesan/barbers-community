@@ -32,17 +32,17 @@ function ClientData({ allAppointments }) {
 		dispatch(getClientWishList(user.id));
 		if (state && state === "approved") {
 			dispatch(changeCartStateMercadoPago(user.id, { state: "Paid" })).then(
-				() => window.location.replace("https://barberscommunity-g8.netlify.app/clients/dashboard")
+				() => window.location.replace("http://localhost:3000/clients/dashboard")
 			);
 		}
 		if (state && state === "rejected") {
 			dispatch(changeCartStateMercadoPago(user.id, { state: "Rejected" })).then(
-				() => window.location.replace("https://barberscommunity-g8.netlify.app/clients/dashboard")
+				() => window.location.replace("http://localhost:3000/clients/dashboard")
 			);
 		}
 		if (state && state === "pending") {
 			dispatch(changeCartStateMercadoPago(user.id, { state: "Pending" })).then(
-				() => window.location.replace("https://barberscommunity-g8.netlify.app/clients/dashboard")
+				() => window.location.replace("http://localhost:3000/clients/dashboard")
 			);
 		}
 	}, []);
@@ -67,9 +67,9 @@ function ClientData({ allAppointments }) {
 				 	 	'Good job!',
   						'You clicked the button!',
   						'success'
-					).then(() => window.location.replace("https://barberscommunity-g8.netlify.app/cart"))
-					//window.location.replace("https://barberscommunity-g8.netlify.app/cart");
-					// window.location.href = `https://barberscommunity-g8.netlify.app/cart`
+					).then(() => window.location.replace("http://localhost:3000/cart"))
+					//window.location.replace("http://localhost:3000/cart");
+					// window.location.href = `http://localhost:3000/cart`
 				});
 		} else {
 			Swal.fire({

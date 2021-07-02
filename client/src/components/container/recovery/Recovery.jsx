@@ -74,7 +74,7 @@ const Recovery = () => {
 		dispatch(putBarber(id, { barberModify: token.barber[0] }));
 		console.log(token.barber[0]);
 		localStorage.clear();
-		window.location.href = "https://barberscommunity-g8.netlify.app/";
+		window.location.href = "http://localhost:3000/";
 	};
 
 	return (
