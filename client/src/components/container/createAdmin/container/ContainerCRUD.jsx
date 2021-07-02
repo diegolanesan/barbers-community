@@ -31,7 +31,7 @@ const ContainerCRUD = ()=>{
                     <li className={option.BARBERS ? "active": ""}>BARBERS</li>
                     <li className={option.CLIENTS ? "active": ""}>CLIENTS</li>
                     <li className={option.ADMIN ? "active": ""}>ADMIN</li>
-                    <li className={option.CONFIG ? "active": ""} className="cntConfig" id="CONFIG"><h1>CONFIG</h1></li>
+                    <li className={option.CONFIG ? "active": ""} className="cntConfig" id="ACCOUNT"><h1>ACCOUNT</h1></li>
 
                 </ul>
             </div> 
@@ -59,7 +59,7 @@ const ContainerCRUD = ()=>{
                 {option.ADMIN && (
                     <AdminAdmins/>
                 )}
-                {option.CONFIG && (
+                {option.ACCOUNT && (
                     <AdminConfig/>
                 )}
             </div>

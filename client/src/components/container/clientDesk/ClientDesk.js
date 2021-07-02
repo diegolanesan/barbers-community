@@ -88,18 +88,6 @@ const ClientDesk = () => {
 						}
 					/>
 				</div>
-				<div className="w-1/6 absolute bottom-2">
-					<button onClick={() => dispatch(signOut(history))} className="bg-red-400 py-1 w-full">Logout</button>
-				<div className="">
-					<input
-						type="button"
-						value="Config"
-						name="menu"
-						className={
-							buttonState.menu === "Config" ? buttonSelected : buttonStyle
-						}
-					/>
-				</div>
 			</div>
 			<div className="w-5/6">
 				{buttonState.menu === "Dashboard" && (
@@ -122,7 +110,7 @@ const ClientDesk = () => {
 					</div>
 				)}
 			</div>
-		</div>
+		
 		</div>
 	);
 };

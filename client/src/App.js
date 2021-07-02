@@ -67,7 +67,7 @@ function App() {
 			<Route exact path="/reviews/new/:id" component={admin.rol === "client" ? AddReview : Error} />
 			<Route exact path="/recovery/:token" component={Recovery} />
 			<Route exact path="/validation" component={Validation} />
-			<Route exact path="/admin/dashboard" component={AdminDesk} />
+			{/* <Route exact path="/admin/dashboard" component={AdminDesk} /> */}
 			<Route exact path="/places" component={	Places} />
 			<Route exact path="/admin/barbers" component={barberToken ? BarberTable : Error} />
 			<Route exact path="/BarberConfig/:id" component={barberToken ? BarberConfig : Error} />

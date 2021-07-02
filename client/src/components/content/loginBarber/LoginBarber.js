@@ -95,7 +95,7 @@ function LoginBarbers() {
         
                 <button
 							type="submit"
-							class="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
+							class="w-full block bg-secondary hover:bg-primary focus:bg-secondary text-white font-semibold 
                       px-4 py-3 mt-6"
 						>
 							Log In
