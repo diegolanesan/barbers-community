@@ -83,10 +83,10 @@ function LoginClient() {
 
 						<button
 							type="submit"
-							class="w-full block bg-secondary hover:bg-primary focus:bg-primary text-white font-semibold 
-                      px-4 py-3 mt-6"
+							className="flex w-full block bg-secondary hover:bg-primary focus:bg-primary text-white font-semibold 
+                      px-4 py-3 mt-6 justify-center items-center"
 						>
-							Log In
+							Log In <i className="fas fa-sign-in-alt ml-2" style={{fontSize: "20px"}} ></i>
 						</button>
 					</form>
 
@@ -99,11 +99,11 @@ function LoginClient() {
 						render={renderProps => (
 							<button
 						type="button" onClick={renderProps.onClick} disabled={renderProps.disabled}
-						class="w-full block bg-white hover:bg-primary hover:text-white focus:bg-primary 
+						className="w-full block bg-white hover:bg-primary hover:text-white focus:bg-primary 
 						focus:text-white text-primary font-semibold px-4 py-3 border border-primary"
 						>
-						<div class="flex items-center justify-center">
-							<span class="ml-4">Log in with Google</span>
+						<div className="flex items-center justify-center">
+							<span className="ml-4">Log in with Google</span> <i className="fab fa-google ml-2 "></i>
 						</div>
 					</button>
 						)}

@@ -57,15 +57,15 @@ const barbersReducer = (state = initialState, action) => {
         
         case FILTER_BARBERS:
             let aux = state.barbersStorage
-            console.log(state.barbersStorage)
-            if (action.payload.type) {
-                aux = state.barbersStorage.filter(n => n.type === action.payload.type)
+            // console.log(aux)
+            if (action.payload.level && action.payload.level !== "All") {
+                aux = state.barbersStorage.filter(n => n.type === action.payload.level)
             }
-            else aux = state.barbersStorage
-            if (action.payload.category) {
+            if (action.payload.level === "All") aux = state.barbersStorage
+            if (action.payload.category && action.payload.category !== "All" ) {
                 aux = aux.filter(m => m.categoryBarber.includes(action.payload.category))
             }
-            if (action.payload.sytle) {
+            if (action.payload.style && action.payload.style !== "All" ) {
                 aux = aux.filter(m => m.styleBarber.includes(action.payload.style))  
             }
             switch (action.payload.order) {

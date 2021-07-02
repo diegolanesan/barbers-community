@@ -68,8 +68,8 @@ function LoginBarbers() {
                   <Link to="/barbers/recovery/false" class="text-sm font-semibold text-gray-700 hover:text-secondary focus:text-secondary">Forgot Password?</Link>
                 </div>
         
-                <button type="submit" class="w-full block bg-secondary hover:bg-primary focus:bg-blue-400 text-white font-semibold
-                      px-4 py-3 mt-6">Log In</button>
+                <button type="submit" class="flex justify-center items-center w-full block bg-secondary hover:bg-primary focus:bg-blue-400 text-white font-semibold
+                      px-4 py-3 mt-6">Log In <i className="fas fa-sign-in-alt ml-2" style={{fontSize: "20px"}} ></i> </button>
              
               </form>
         
@@ -84,7 +84,7 @@ function LoginBarbers() {
                 focus:text-white text-primary font-semibold px-4 py-3 border border-primary"
                 >
                 <div class="flex items-center justify-center">
-                  <span class="ml-4">Log in with Google</span>
+                  <span class="ml-4">Log in with Google</span><i className="fab fa-google ml-2 "></i>
                 </div>
               </button>
                 )}
