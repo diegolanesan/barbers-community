@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { getGuestCart, removeFromGuestCart } from '../../../redux/action/cart'
-
-
-
+import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 
 export const Cart = () => {
 
@@ -10,8 +9,24 @@ export const Cart = () => {
   const [cart, setCart] = useState(carrito)
 
   const deleteItem = (item) => {
-    removeFromGuestCart(item)
-    setCart(getGuestCart())
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+      if (result.isConfirmed) {
+        removeFromGuestCart(item)
+        setCart(getGuestCart())
+          Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+          )
+      }
+  })
   }
 
   return (
@@ -55,6 +70,18 @@ export const Cart = () => {
             </div>
             {/* <!-- End Total PRice --> */}
           </div>
+          <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
+          <div class="flex justify-center items-center text-center">
+              <div class="text-xl font-semibold">
+            <Link to="/loginClients">
+            <button 
+                  className="bg-green-400 hover:bg-green-700 px-4 rounded py-2">
+                  Log in
+                </button>
+                </Link>
+                </div>
+            </div>
+            </div>
         </div>
       </div>
     </div>

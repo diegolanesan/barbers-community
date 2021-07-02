@@ -21,7 +21,10 @@ const ClientDesk = () => {
     }, [dispatch]);
     const allAppointments = useSelector((state) => state.clients.appointments);
     console.log(idUser)
-    const [option, setOption] = React.useState({})
+    const [option, setOption] = React.useState({
+        DASHBOARD: true
+    })
+    console.log(option, "aaaaaaaaa")
     const handleChange = (v) => {
         const value = v.target.innerText;
         setOption({

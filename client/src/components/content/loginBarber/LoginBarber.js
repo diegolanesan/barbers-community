@@ -98,7 +98,7 @@ function LoginBarbers() {
 							class="w-full block bg-secondary hover:bg-primary focus:bg-secondary text-white font-semibold 
                       px-4 py-3 mt-6"
 						>
-							Log In
+							Log In  <i className="fas fa-sign-in-alt ml-2" style={{fontSize: "20px"}} ></i>
 						</button>
 
               </form>

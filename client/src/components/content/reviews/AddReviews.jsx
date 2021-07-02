@@ -129,7 +129,7 @@ const AddReview = () => {
 
                                     </div>
                                     <div className="mb-6">
-                                        <button type="submit" onClick={handleSubmit} className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">Add</button>
+                                        <button type="submit" onClick={handleSubmit} className="w-full px-3 py-4 text-white bg-secondary rounded-md focus:bg-primary focus:outline-none">Add</button>
                                     </div>
                                 </form>
                             </div>

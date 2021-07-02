@@ -90,6 +90,30 @@ const RegisterClient = () => {
 	};
 
 	const handleSubmit = (e) => {
+		if(!client.name || !client.lastname ||
+			 !client.email || !client.password || !client.confirmedPassword ||
+			  !client.location || !client.mobile || !client.styleId || !client.faceTypeId
+			  || !client.hairTypeId) {
+			   Swal.fire({
+				 title: 'Please complete all the camps',
+				 showClass: {
+				   popup: 'animate__animated animate__fadeInDown'
+				 },
+				 hideClass: {
+				   popup: 'animate__animated animate__fadeOutUp'
+				 }
+			   })
+		 } else if (client.password !== client.confirmedPassword) {
+			   Swal.fire({
+				 title: 'password and confirm password must be the same',
+				 showClass: {
+				   popup: 'animate__animated animate__fadeInDown'
+				 },
+				 hideClass: {
+				   popup: 'animate__animated animate__fadeOutUp'
+				 }
+			   })
+		 } else {
 		const clientSend = {
 			name: client.name,
 			lastname: client.lastname,
@@ -115,7 +139,7 @@ const RegisterClient = () => {
 			if (result.isConfirmed) {
 				window.location.href = "http://localhost:3000/loginClients";
 			}
-		})
+		})}
 	};
 
 
