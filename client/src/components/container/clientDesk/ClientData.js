@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import WishList from "./wishList/WishList";
 import jwtDecode from "jwt-decode";
+import Swal from 'sweetalert2'
 //import { HOST_BACK } from '../../../redux/back_constants'
 import {
 	changeCartStateMercadoPago,
@@ -64,7 +65,15 @@ function ClientData({ allAppointments }) {
 					// window.location.href = `http://localhost:3000/cart`
 				});
 		} else {
-			alert("You need to have your appointment approved to repeat it!");
+			Swal.fire({
+				title: 'You need to have your appointment approved to repeat it!',
+				showClass: {
+				  popup: 'animate__animated animate__fadeInDown'
+				},
+				hideClass: {
+				  popup: 'animate__animated animate__fadeOutUp'
+				}
+			  })
 		}
 	}
 

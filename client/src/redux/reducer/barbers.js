@@ -3,13 +3,14 @@ import {
     PUT_BARBER, GET_BARBERS_BY_NAME, GET_BARBERS_BY_TYPE,
     FILTER_BARBERS,
     GET_BARBER_BY_ID, REMOVE_SERVICE_BARBER,
-    ADD_SERVICE_BARBER
+    ADD_SERVICE_BARBER, GET_BARBERS_BANNED
 } from "../action/barbers"
 
 const initialState = {
     barbersStorage: [],
     barbersLoaded: [],
     barberDetail: {},
+    barbersBanned: [],
     services: {
         haircut: [],
         kids: [],
@@ -35,6 +36,11 @@ const barbersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 barbersLoaded: action.payload
+            };
+        case GET_BARBERS_BANNED:
+            return {
+                ...state,
+                barbersBanned: action.payload
             };
         case DELETE_BARBER:
             return {

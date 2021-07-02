@@ -51,13 +51,15 @@ const BarberTable = () => {
         };
         dispatch(putClient(admin.id, clientSend))
         Swal.fire({
-            position: 'top-end',
+            title: `${admin.name} is no more an admin`,
             icon: 'success',
-            title: 'Decended!!!',
-            showConfirmButton: false,
-            timer: 1500
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.reload()
+            }
           })
-        window.location.reload()
     }
 
     const AdminsLoaded = useSelector(state => state.admins.adminsLoaded)

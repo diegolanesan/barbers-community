@@ -3,6 +3,7 @@ import axios from "axios";
 export const PUT_CLIENT = "PUT_CLIENT";
 export const GET_CLIENT = "GET_CLIENT";
 export const GET_CLIENT_BY_ID = "GET_CLIENT_BY_ID";
+export const GET_CLIENT_BANNED = "GET_CLIENT_BANNED";
 export const DELETE_CLIENT = "DELETE_CLIENT";
 export const GET_APPOINTMENTS_BY_CLIENT_ID = "GET_APPOINTMENTS_BY_CLIENT_ID"
 
@@ -30,6 +31,15 @@ export const getClientById = (id) => (dispatch) =>
     axios
 		.get(HOST_BACK + "/clients/"+id)
 		.then((res) => dispatch({ type: GET_CLIENT_BY_ID, payload: res.data }));
+
+export const getClientBanned = () => (dispatch) =>
+	
+	axios
+		.get(HOST_BACK + "/clients/baned/1")
+		.then((res) => {
+			console.log("kentarooo")
+			dispatch({ type: GET_CLIENT_BANNED, payload: res.data })});
+
 
 export const getAllAppointments = () => (dispatch) => {
 	return axios.get(HOST_BACK + "/appointments")

@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import hero from "../../../resources/other-hero.jpg";
+import Swal from 'sweetalert2'
 import { signInBarber, signInBarberWithGoogle } from '../../../redux/action/auth'
+import { getBarbersBanned } from '../../../redux/action/barbers'
 import {Link} from "react-router-dom"
 import GoogleLogin from 'react-google-login';
 
@@ -11,6 +13,14 @@ function LoginBarbers() {
     const history = useHistory()
     const auth = useSelector(state => state.auth.barberUser)
 
+    useEffect(() => {
+      dispatch(getBarbersBanned())
+    }, [])
+    const barbersBanned = useSelector(state => state.barbers.barbersBanned)
+    let emailsBanned = []
+	for(let i = 0; i < barbersBanned.length; i++) {
+		emailsBanned.push(barbersBanned[i].email)
+	}
     const [creds, setCreds] = useState({
       email: "",
       password: "",
@@ -25,7 +35,22 @@ function LoginBarbers() {
 
     function onSubmit(e) {
       e.preventDefault()
-      dispatch(signInBarber(history, creds))
+      if(creds.email === "" || creds.password === "") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Empty camps, please complete them',
+          })
+      }
+      if(emailsBanned.includes(creds.email.toString())) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'This account is suspended',
+          })
+      } else {
+        dispatch(signInBarber(history, creds))
+      }
     }
 
     function responseGoogle(res) {

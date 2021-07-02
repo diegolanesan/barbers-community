@@ -52,13 +52,15 @@ const ClientTable = () => {
             };
             dispatch(putClient(client.id, clientSend))
             Swal.fire({
-                position: 'top-end',
-                icon: 'success',
                 title: 'Promoted!!!',
-                showConfirmButton: false,
-                timer: 1500
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload()
+                }
               })
-            window.location.reload()
         }
         else {
             Swal.fire({
@@ -82,13 +84,15 @@ const ClientTable = () => {
             };
             dispatch(putClient(client.id, clientSend))
             Swal.fire({
-                position: 'top-end',
-                icon: 'success',
                 title: 'Banned!!!',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            window.location.reload()
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload()
+                }
+              })
         } else {
             const clientSend = {
                 clientModified: {
@@ -97,13 +101,15 @@ const ClientTable = () => {
             };
             dispatch(putClient(client.id, clientSend))
             Swal.fire({
-                position: 'top-end',
-                icon: 'success',
                 title: 'Renovated!!!',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            window.location.reload()
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload()
+                }
+              })
         }
     }
 

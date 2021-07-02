@@ -1,9 +1,10 @@
-import {DELETE_CLIENT, GET_CLIENT, GET_APPOINTMENTS_BY_CLIENT_ID, GET_CLIENT_BY_ID} from "../action/clients"
+import {DELETE_CLIENT, GET_CLIENT, GET_APPOINTMENTS_BY_CLIENT_ID, GET_CLIENT_BY_ID, GET_CLIENT_BANNED} from "../action/clients"
 
 const initialState = {
     appointments: [],
     clientsLoaded: [],
-    clientDetail: []
+    clientDetail: [],
+    bannedClient: []
 }
 
 const clientsReducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const clientsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 clientsLoaded: action.payload
+            }
+        case GET_CLIENT_BANNED:
+            return {
+                ...state,
+                bannedClient: action.payload
             }
         case DELETE_CLIENT:
             return {

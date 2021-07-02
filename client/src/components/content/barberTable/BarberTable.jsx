@@ -53,13 +53,16 @@ const BarberTable = () => {
 		};
         dispatch(putBarber(barber.id, barberModified))
         Swal.fire({
-            position: 'top-end',
-            icon: 'success',
             title: (barber.status ?'Banned!!!': 'Renovated!!!'),
-            showConfirmButton: false,
-            timer: 1500
-        })
-        window.location.reload()
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.reload()
+            }
+          })
+        
     }
     
     

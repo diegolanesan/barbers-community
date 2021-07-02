@@ -35,7 +35,17 @@ const Validation = () => {
                 }
               })
         } else {
-            window.location.href = "http://localhost:3000/admin/dashboard";
+          Swal.fire({
+            title: 'Welcome!!!',
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Continue'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = "http://localhost:3000/admin/dashboard";
+            }
+          })
+            
         }
 	}
     

@@ -13,11 +13,15 @@ const { getAllBarbers,
         relationStyle,
         getHFStypes,
         loginBarbers,
-        googleLoginBarbers } = require('../controllers/barbers');      // GET Hair, Face & Styles
+        googleLoginBarbers,
+        getBannedBarbers } = require('../controllers/barbers');      // GET Hair, Face & Styles
 
 
 // Ruta que devuelve a todos los barberos   
 server.get('/all', getAllBarbers);
+
+// Ruta que devuelve a todos los barberos baneados 
+server.get('/all/:id', getBannedBarbers);
 
 // filtra a los barberos por faceType hairType Style
 server.get('/FHStype', getHFStypes)

@@ -105,15 +105,17 @@ const RegisterClient = () => {
 				rol: "client",
 		};
 		
-		dispatch(signUpClient(clientSend)); 
+		dispatch(signUpClient(clientSend));
 		Swal.fire({
-            position: 'top-end',
-            icon: 'success',
             title: 'Register Sucessfull',
-            showConfirmButton: false,
-            timer: 1500
-          })
-		window.location.href = "http://localhost:3000/loginClients";
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "http://localhost:3000/loginClients";
+            }
+          }) 
 	};
 	
     

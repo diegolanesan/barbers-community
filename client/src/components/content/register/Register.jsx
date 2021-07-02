@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from 'react-router-dom'
 import { signUpBarber } from "../../../redux/action/auth";
 import Swal from 'sweetalert2'
 import PlacesAutocomplete, {
@@ -45,7 +44,6 @@ const validate = (input) => {
 };
 
 const Register = () => {
-	const history = useHistory()
 	const [barberImg, setBarberImg] = useState([]);
 
 	const newBarber = {
@@ -124,21 +122,26 @@ const Register = () => {
 				type: barber.type,
 			},
 		};
-		// if (errors || !barberSend.barber.name) {
-		// 	e.preventDefault()
-		// 	return alert("There's some required fields empty, check please.")
-		// }
-		console.log(barberSend);
-		dispatch(signUpBarber(barberSend)); // Reemplazar por la nueva action que almacena el JWT
+		
+		dispatch(signUpBarber(barberSend)); 
 		Swal.fire({
-            position: 'top-end',
-            icon: 'success',
             title: 'Register Sucessfull',
-            showConfirmButton: false,
-            timer: 1500
-        
-		})
-		window.location.href = "http://localhost:3000/loginBarbers";
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "http://localhost:3000/loginBarbers";
+            }
+          })
+	};
+	
+
+	const [address, setAddress] = useState('')
+
+	console.log(address)
+	const handleChange = (address) => {
+		setAddress(address);
 	};
 
 	return (
