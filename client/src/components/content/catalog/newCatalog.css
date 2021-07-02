@@ -1,0 +1,41 @@
+.containerCatalog
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background-color: rgb(252, 249, 245);
+}
+
+
+ /* ESTILOS DEL SEARCH BAR CUIDADOO !! */
+
+ .containerSearch
+ {
+   
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .containerSearch i 
+ {
+     background-color:#bc8c4b;
+     padding: 5px;
+     font-size: 25px;
+     border-radius: 20px;
+     color: white;
+     margin: 10px;
+     cursor: pointer;
+ }
+.searchInput
+{
+    border-radius: 1px;
+    margin-right: 10px;
+    outline: none;
+    color: white;
+}
