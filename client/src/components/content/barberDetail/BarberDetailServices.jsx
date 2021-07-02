@@ -183,7 +183,7 @@ const BarberDetailServices = ({ filters }) => {
                         {filtered.map((n) => (
                             <div
                                 key={n.id}
-                                className="flex flex-col items-center text-center mt-8 w-48 shadow-md px-4"
+                                className="flex flex-col items-center text-center mt-8 w-48 h-64 shadow-md px-4"
                             >
                                 <div class="relative">
                                     <div>
@@ -224,24 +224,9 @@ const BarberDetailServices = ({ filters }) => {
                                 {/* ServiceBarbers [] boton vacio (funciona)
                                 ServiceBarbers [...] filtrado: encuentra y renderiza ❤️
                                 no encuentra y renderiza vacio */}
-                                <h4 className="font-bold">{`${n.name}`}</h4>
-                                <div className="flex justify-center pt-1 pb-2">
-                                    <h6 className="">${n.serviceBarber.price}</h6>
-                                </div>
-
-                                <button className=" text-xl bg-green-600 px-2 rounded" onClick={() => handleAdd(n)}>🛒</button>
-                                <img
-                                    className="rounded-lg w-4/5"
-                                    src={n.image[0]}
-                                    alt=""
-                                />
-                                <h4 class="font-bold text-lg uppercase m-1">{`${n.name}`}</h4>
-                                {/* <h4 className="font-bold">{`${n.description}`}</h4> */}
-                                <div className="flex justify-center pt-1 pb-2">
-                                    <h6 class="font-bold text-xl mb-1">${n.serviceBarber.price}</h6>
-                                </div>
-                                <button className="bg-secondary text-white font-bold p-1 hover:bg-primary" 
-                                onClick={() => handleAdd(n)}>
+                                {/*  */}
+                                <button className="bg-secondary text-white font-bold mt-3 p-1 hover:bg-primary"
+                                    onClick={() => handleAdd(n)}>
                                     ADD TO CART
                                 </button>
                             </div>

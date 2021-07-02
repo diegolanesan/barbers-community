@@ -10,18 +10,18 @@ import ClientConfig from "./config/Config.js";
 import WishlistTab from "./wishList/WishlistTab";
 import jwtDecode from "jwt-decode";
 import { signOut } from "../../../redux/action/auth";
+import Error from "../../content/error/Error";
 // import style from './barberDashboard.module.css'
 
 const ClientDesk = () => {
 
 	const history = useHistory()
 	const dispatch = useDispatch();
-	const idUser = jwtDecode(localStorage.getItem("clientToken"));
-	useEffect(() => {
+	const idUser = localStorage.getItem("clientToken") ? jwtDecode(localStorage.getItem("clientToken")) : false;	useEffect(() => {
 		dispatch(getCartsByUser(idUser.id));
 	}, [dispatch]);
 	const allAppointments = useSelector((state) => state.clients.appointments);
-
+	console.log(idUser)
 	const buttonStyle =
 		"bg-secondary hover:bg-primary text-white py-1 px-0 mx-0 mb-0 w-full uppercase font-bold py-3";
 	const buttonSelected = "bg-primary text-white py-1 px-0 mx-0 mb-0 w-full uppercase font-bold py-3";
@@ -41,8 +41,9 @@ const ClientDesk = () => {
 			else setButtonState({ ...buttonState, [e.target.name]: e.target.id });
 		}
 	};
-	return (
-		<div className="flex h-full flex-column font-lato">
+	if (idUser) {	
+		return (
+			<div className="flex h-full flex-column font-lato">
 			<div className={`w-1/6 bg-primary`} onClick={handleClick}>
 				<button class="bg-secondary text-white text-base m-4 p-3 px-3 font-bold">
 					<Link to="/catalog">MAKE APPOINTMENT </Link>
@@ -112,6 +113,11 @@ const ClientDesk = () => {
 			</div>
 		
 		</div>
-	);
+		);
+	} else {
+		return (
+			<Error />
+		)
+		}
 };
 export default ClientDesk;
