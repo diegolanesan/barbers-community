@@ -85,19 +85,19 @@ const Style = ()=>{
           <div className="styleContainer">
              <div className="containerTable">
                 <div className="table w-full p-2">
-                <table className="w-full border">
+                <table class="border-collapse w-full">
                     <thead>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                               ID
                             </div>
                         </th>
-                         <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                         <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                  DESCRIPTION
                             </div>
                          </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div className="flex items-center justify-center">
                                  ACTION
                             </div>
@@ -108,11 +108,11 @@ const Style = ()=>{
                                 style.map(c =>{
                                     return(
                              <>
-                            <tr className="bg-gray-50 text-center" onFocus={()=>{handleFocus(c)}} onChange={(v)=>{handleChangeEdit(v,c)}}>
-                                <td className="p-2 border-r">
+                            <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0" onFocus={()=>{handleFocus(c)}} onChange={(v)=>{handleChangeEdit(v,c)}}>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                     <input type="number" className="border p-1 w-20" value={c.id}/>
                                  </td>
-                                <td className="p-2 border-r">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                     <input type="text" className="border p-1" placeholder={c.description}  value={(form2.ID == c.id && form2.description) ||""} name="description"/>
                                  </td>
         
@@ -134,28 +134,28 @@ const Style = ()=>{
         <div className="styleContainer">
         <div className="containerTable">
                 <div className="table w-full p-2">
-                <table className="w-full border">
+                <table class="border-collapse w-full">
                     <thead>
                         
-                         <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                         <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                  DESCRIPTION
                             </div>
                          </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div className="flex items-center justify-center">
                                  ACTION
                             </div>
                         </th>
                     </thead>
                     <tbody   onChange={handleChange}>
-                         <tr className="bg-gray-50 text-center">
+                         <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                             
-                            <td className="p-2 border-r">
-                                <input type="text" className="border p-1" name="description" value={form.description}/>
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                <input type="text" placeholder="description" className="border p-1" name="description" value={form.description}/>
                             </td>
-                             <td>
-                               <a href="#" className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin " onClick={handleSendPost}>Create</a>
+                             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                               <a href="#" class="w-full lg:w-auto p-3 text-gray-800 text-center block lg:table-cell relative lg:static bg-secondary text-white" onClick={handleSendPost}>Create</a>
                              </td>
                          </tr>
                         

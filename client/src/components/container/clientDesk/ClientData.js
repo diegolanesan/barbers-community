@@ -192,26 +192,26 @@ var nextDate = orderedDates.filter(function(date) {
 
 			{/* LAST SERVICES TABLE */}
 			<div class="flex flex-col items-center h-full mt-20">
-				<h3 class="text-xl font-bold mt-4 text-white p-2 bg-secondary"> YOUR LAST APPOINTMENTS </h3>
-				<table class="table-fixed mt-8 w-4/5">
+				<h3 class="text-xl font-bold mt-4 text-white p-2 bg-secondary mb-8"> YOUR LAST APPOINTMENTS </h3>
+				<table class="border-collapse w-full">
 					<thead>
 						<tr>
-							<th class="w-12 p-4"> # </th>
-							<th class="w-1/2">Date</th>
-							<th class="w-1/2">Services</th>
-							<th class="w-1/4">Status</th>
-							<th class="w-1/4"> Total price </th>
+							<th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> # </th>
+							<th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Date</th>
+							<th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Services</th>
+							<th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
+							<th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Total price </th>
 						</tr>
 					</thead>
 					{appointments && appointments.length > 0
 						? appointments.map((app) => {
 								return (
 									<tbody class="text-center">
-										<tr>
-											<td> {app.id} </td>
-											<td> {app.date && app.date.slice(0, 10)} </td>
+										<tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"> {app.id} </td>
+											<td > {app.date && app.date.slice(0, 10)} </td>
 											{/* c.serviceBarbers.map(n => "| " + n.item.serviceName + " |") */}
-											<td>
+											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
 												{" "}
 												{app.serviceBarbers &&
 													app.serviceBarbers.map((x) => {
@@ -222,9 +222,9 @@ var nextDate = orderedDates.filter(function(date) {
 														}
 													})}{" "}
 											</td>
-											<td> {app && app.state} </td>
+											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static"> {app && app.state} </td>
 											<td> $ {app.totalAmount && app.totalAmount} </td>
-											<td>
+											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
 												<button
 													onClick={() => onClick(app.state, app)}
 													class="h-8 px-4 text-sm text-white transition-colors bg-blue-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-blue-600"

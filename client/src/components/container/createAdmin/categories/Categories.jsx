@@ -140,29 +140,29 @@ const Categories = ()=>{
         <div className="categoreiesContainer">
              <div className="containerTable">
                 <div className="table w-full p-2">
-                <table className="w-full border">
+                <table class="border-collapse w-full">
                     <thead>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                               ID
                             </div>
                         </th>
-                         <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                            <div class="flex items-center justify-center">
+                         <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                            
                                 NAME
-                             </div>
+                            
                         </th>
-                         <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                            <div class="flex items-center justify-center">
+                         <th  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                            
                                  DESCRIPTION
-                            </div>
+                            
                          </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                            <div class="flex items-center justify-center">
+                        <th  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                            
                                  IMAGE
-                            </div>
+                            
                         </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th  class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div className="flex items-center justify-center">
                                  ACTION
                             </div>
@@ -173,17 +173,17 @@ const Categories = ()=>{
                                 categories.map(c =>{
                                     return(
                              <>
-                            <tr className="bg-gray-50 text-center" onFocus={()=>{handleFocus(c)}} onChange={(v)=>{handleChangeEdit(v,c)}}>
-                                <td className="p-2 border-r">
+                            <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0" onFocus={()=>{handleFocus(c)}} onChange={(v)=>{handleChangeEdit(v,c)}}>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                     <input type="number" className="border p-1 w-20" value={c.id}/>
                                  </td>
-                                <td className="p-2 border-r">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                     <input type="text" className="border p-1" placeholder={c.name}  value={(form2.ID == c.id && form2.name) ||""} name="name"/>
                                  </td>
-                                <td className="p-2 border-r">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                     <input type="text" className="border p-1" placeholder={c.description}  value={(form2.ID == c.id && form2.description) ||""} name="description"/>
                                  </td>
-                                 <td className="p-2 border-r image">
+                                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                  {
                                          !error2.image && c.image[0] === ""? (
                                              <>
@@ -204,8 +204,8 @@ const Categories = ()=>{
                                          )  
                                      }
                                  </td>
-                                 <td>
-                                       <a href="#" className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin " onClick={()=> handleClickEdit(c.id)}>Edit</a>
+                                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                       <a href="#" className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin bg-secondary text-white" onClick={()=> handleClickEdit(c.id)}>Edit</a>
                                         <a href="#" className="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin ml-1" onClick={()=>{handleDeleteCategory(c.id)}}>Remove</a>
                                  </td>
                            </tr>
@@ -222,38 +222,30 @@ const Categories = ()=>{
         <div className="createCategories">
         <div className="containerTable">
                 <div className="table w-full p-2">
-                <table className="w-full border">
+                <table class="border-collapse w-full">
                     <thead>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                            <div class="flex items-center justify-center">
-                                NAME
-                             </div>
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                NAME  
                         </th>
-                         <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                            <div class="flex items-center justify-center">
+                         <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                                  DESCRIPTION
-                            </div>
                          </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                            <div class="flex items-center justify-center">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                                  IMAGE
-                            </div>
                         </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
-                            <div className="flex items-center justify-center">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                                  ACTION
-                            </div>
                         </th>
                     </thead>
                     <tbody   onChange={handleChange}>
-                         <tr className="bg-gray-50 text-center">
-                            <td className="p-2 border-r">
-                                <input type="text" className="border p-1" name="name" value={form.name}/>
+                         <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                <input type="text" placeholder="name" className="border p-1" name="name" value={form.name}/>
                              </td>
-                            <td className="p-2 border-r">
-                                <input type="text" className="border p-1" name="description" value={form.description}/>
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                <input type="text" placeholder="description" className="border p-1" name="description" value={form.description}/>
                             </td>
-                            <td className="p-2 border-r image">
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                      {
                                          !error.image && form.image[0] === "" ? (
                                              <>
@@ -275,8 +267,8 @@ const Categories = ()=>{
                                      }
                                      
                                  </td>
-                             <td>
-                               <a href="#" className="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin " onClick={handleSendPost}>Create</a>
+                             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                               <a href="#" class="w-full lg:w-auto p-3 text-gray-800 text-center block lg:table-cell relative lg:static bg-secondary text-white" onClick={handleSendPost}>Create</a>
                              </td>
                          </tr>
                         

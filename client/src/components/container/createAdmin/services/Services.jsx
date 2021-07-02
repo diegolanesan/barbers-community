@@ -192,34 +192,34 @@ const Services = ()=>{
         <div className="servicesContainer">
              <div className="containerTable">
                 <div className="table w-full p-2">
-                <table className="w-full border">
+                <table class="border-collapse w-full">
                     <thead>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                               ID
                             </div>
                         </th>
-                         <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                         <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                 NAME
                              </div>
                         </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                 PRICE
                              </div>
                         </th>
-                         <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                         <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                  DESCRIPTION
                             </div>
                          </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                  IMAGE
                             </div>
                         </th>
-                        <th className="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div className="flex items-center justify-center">
                                  ACTION
                             </div>
@@ -230,20 +230,20 @@ const Services = ()=>{
                                 services.map(c =>{
                                     return(
                              <>
-                            <tr className="bg-gray-50 text-center" onFocus={()=>{handleFocus(c)}} onChange={(v)=>{handleChangeEdit(v,c)}}>
-                                <td className="p-1 border-r">
+                            <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0" onFocus={()=>{handleFocus(c)}} onChange={(v)=>{handleChangeEdit(v,c)}}>
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                     <input type="number" className="border p-1  w-20" value={c.id}/>
                                  </td>
-                                <td className="p-1 border-r">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                     <input type="text" className="border p-1  w-20" placeholder={c.name}  value={(form2.ID == c.id && form2.name) ||""} name="name"/>
                                  </td>
-                                 <td className="p-1 border-r">
+                                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                     <input type="number" className="border p-1  w-20" placeholder={c.price}  value={(form2.ID == c.id && form2.price) ||""} name="price"/>
                                  </td>
-                                <td className="p-1 border-r">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                     <input type="text" className="border p-1  w-20" placeholder={c.description}  value={(form2.ID == c.id && form2.description) ||""} name="description"/>
                                  </td>
-                                 <td className="p-1 border-r image">
+                                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static h-24">
                                  {
                                          !error2.image && c.image[0] === ""? (
                                              <>
@@ -257,16 +257,16 @@ const Services = ()=>{
                                              <input type="file" className="border p-1  w-20" name="image"/>
                                              </>
                                          ):(
-                                             <>
-                                                <img src={c.image[0]} alt="" />
+                                             <div class="flex justify-center">
+                                                <img class="object-scale-down h-20" src={c.image[0]} alt="" />
                                                 <div className="cruz" onClick={()=>{handleCruz2(c.id)}}>X</div>
-                                             </>
+                                             </div>
                                          )  
                                      }
                                  </td>
-                                 <td>
-                                       <a href="#" className="bg-blue-500 p-1 text-white hover:shadow-lg text-xs font-thin " onClick={()=> handleClickEdit(c.id)}>Edit</a>
-                                        <a href="#" className="bg-red-500 p-1 text-white hover:shadow-lg text-xs font-thin ml-1" onClick={()=>{handleDeleteCategory(c.id)}}>Remove</a>
+                                 <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                       <a href="#" class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static bg-secondary text-white" onClick={()=> handleClickEdit(c.id)}>Edit</a>
+                                        <a href="#" class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static bg-red-500 text-white" onClick={()=>{handleDeleteCategory(c.id)}}>Remove</a>
                                  </td>
                            </tr>
                            </>
@@ -282,51 +282,51 @@ const Services = ()=>{
         <div className="createCategories">
         <div className="containerTable">
                 <div className="table w-full p-1">
-                <table className="w-full border">
+                <table class="border-collapse w-full">
                     <thead>
-                        <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                 NAME
                              </div>
                         </th>
-                        <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                 PRICE
                              </div>
                         </th>
-                         <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
+                         <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                  DESCRIPTION
                             </div>
                          </th>
-                         <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
+                         <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                 CATEGORY
                             </div>
                          </th>
-                        <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div class="flex items-center justify-center">
                                  IMAGE
                             </div>
                         </th>
-                        <th className="p-1 border-r cursor-pointer text-sm font-thin text-gray-500">
+                        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                             <div className="flex items-center justify-center">
                                  ACTION
                             </div>
                         </th>
                     </thead>
                     <tbody   onChange={handleChange}>
-                         <tr className="bg-gray-50 text-center">
-                            <td className="p-1 border-r">
-                                <input type="text" className="border p-1 w-20" name="name" value={form.name}/>
+                         <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                <input class="w-2/5" type="text" placeholder="name"className="border p-1 w-20" name="name" value={form.name}/>
                              </td>
-                             <td className="p-1 border-r">
-                                <input type="number" className="border p-1  w-20" name="price" value={form.price}/>
+                             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                <input class="w-2/5" type="number" placeholder="price" className="border p-1  w-20" name="price" value={form.price}/>
                              </td>
-                            <td className="p-1 border-r">
-                                <input type="text" className="border p-1  w-20" name="description" value={form.description}/>
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                <input class="w-2/5" type="text" placeholder="description" className="border p-1  w-20" name="description" value={form.description}/>
                             </td>
-                            <td className="p-1 border-r">
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                 <select name="categories" id="categories" >
                                 <option value="select" >select</option>
                                     {
@@ -339,18 +339,18 @@ const Services = ()=>{
                                 </select>
                             </td>
                             
-                            <td className="p-1 border-r image">
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                                      {
                                          !error.image && form.image[0] === "" ? (
                                              <>
                                              <p>UPLOAD IMAGE</p>
-                                             <input type="file" className="border p-1  w-20" name="image" onChange={handleImage}/>
+                                             <input type="file" className="border p-1 w-4/5" name="image" onChange={handleImage}/>
                                              </>
                                          ):
                                          error.image  ? (
                                              <>
                                              <p>LOADING...</p>
-                                             <input type="file" className="border p-1  w-20" name="image"/>
+                                             <input type="file" class="border p-1 w-4/5" name="image"/>
                                              </>
                                          ):(
                                              <>
@@ -361,8 +361,8 @@ const Services = ()=>{
                                      }
                                      
                                  </td>
-                             <td>
-                               <a href="#" className="bg-blue-500 p-1 text-white hover:shadow-lg text-xs font-thin " onClick={handleSendPost}>Create</a>
+                             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                               <a href="#" class="w-full lg:w-auto p-3 text-gray-800 text-center block lg:table-cell relative lg:static bg-secondary text-white" onClick={handleSendPost}>Create</a>
                              </td>
                          </tr>
                         
