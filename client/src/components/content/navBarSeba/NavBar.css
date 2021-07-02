@@ -9,7 +9,7 @@
     height: 90px;
     font-family: 'Lato', sans-serif;
     color: white;
-    position: sticky;
+    position: relative;
     top: 0;
     left: 0;
     width: 100vw;
