@@ -6,8 +6,8 @@ import { sendEmailBarber } from "../../../../redux/action/recovery";
 import { putBarber } from "../../../../redux/action/barbers";
 import { Link } from "react-router-dom";
 
-const RecoveryClient = ()=>{
-    const { loading, resp, err } = useSelector((state) => state.recovery);
+const RecoveryClient = () => {
+	const { loading, resp, err } = useSelector((state) => state.recovery);
 	const tokenMail = useParams().token;
 	const token = JSON.parse(localStorage.getItem("tokenClientRecovery"));
 	const dispatch = useDispatch();
@@ -75,7 +75,7 @@ const RecoveryClient = ()=>{
 		dispatch(putBarber(id, { barberModify: token.barber[0] }));
 		console.log(token.barber[0]);
 		localStorage.clear();
-		window.location.href = "http://localhost:3000/";
+		window.location.href = "https://barberscommunity-g8.netlify.app/";
 	};
 
 	return (

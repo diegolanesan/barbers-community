@@ -1,102 +1,119 @@
-.cntContainer
-{
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(252, 249, 245);
-    position: relative;
-   
+.cntContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(252, 249, 245);
+  position: relative;
+  z-index: 2;
 }
-.listOptions
-{
-    
-    height: 90vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #232227;
-    color: white;
-    position: absolute;
-   
+.listOptions {
+  height: 90vh;
+  display: flex;
+  width: 90%;
+  align-items: center;
+  flex-direction: column;
+  background-color: #232227;
+  color: white;
+  position: absolute;
+  z-index: 2;
 }
-.listOptions li 
-{
-    margin: 10px;
-    width: 100%;
-    height: 40px;
-    transition: 0.5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 900;
-    line-height: 20px;
+.listOptions li {
+  margin: 10px;
+  width: 100%;
+  height: 40px;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  line-height: 20px;
+  z-index: 2;
 }
-.listOptions li:hover 
-{
-    background-color: #bc8c4b;
+.listOptions li:hover {
+  background-color: #bc8c4b;
+  z-index: 2;
 }
-.active 
-{
-    background-color: #bc8c4b;
+.active {
+  background-color: #bc8c4b;
+  z-index: 2;
 }
-.cntConfig
-{
-    position: absolute;
-    bottom: 20px;
+.cntConfig {
+  position: absolute;
+  bottom: 20px;
 }
 
-.contentList
-{
-    position: absolute;
-    right: 2%;
-    top: 1%;
-    height: 90vh;
-    width: 70%;
-    overflow-y: scroll;
+.contentList {
+  position: absolute;
+  right: 2%;
+  top: 1%;
+  height: 90vh;
+  width: 70%;
+  overflow-y: scroll;
 }
 
 .menu {
-    width: 2.2rem;
-    height: 2.7rem;
-    background-color: #232227;
-    border-radius: 0.5rem;
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    font-family: 'Lato', sans-serif;
-    font-size: 2rem;
-    color: #fff;
-    text-align: center;
-    transition: left 0.7s;
-
+  width: 2.5rem;
+  height: 2.7rem;
+  background-color: #bc8c4b;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  font-family: "Lato", sans-serif;
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  transition: left 0.7s;
 }
 
 .checkbox:checked ~ .menu {
-    border-radius: 0 0.5rem 0.5rem 0;
-    left: 25%;
+  border-radius: 0 0.5rem 0.5rem 0;
+  left: 25%;
 }
 
 .left-panel {
-    width: 25%;
-    height: 100%;
-    background: -webkit-linear-gradient(#232227, #232227, #232227);
-    background: -o-linear-gradient(#232227,#232227,#232227);
-    background: linear-gradient(#232227,#232227,#232227);
-    position: absolute;
-    top: 0;
-    left: -40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: left 0.4s;
+  width: 25%;
+  height: 100%;
+  background: -webkit-linear-gradient(#232227, #232227, #232227);
+  background: -o-linear-gradient(#232227, #232227, #232227);
+  background: linear-gradient(#232227, #232227, #232227);
+  position: absolute;
+  top: 0;
+  left: -450%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.4s;
+  z-index: 2;
 }
 
-.checkbox:checked  ~ .left-panel {
-    left: 0;
-} 
+.checkbox:checked ~ .left-panel {
+  left: 0;
+}
 
 .checkbox {
-    display: none;
+  display: none;
 }
 
+@media (min-width: 0px) and (max-width: 400px) {
+  .left-panel {
+    width: 40%;
+  }
+  .checkbox:checked ~ .menu {
+    left: 40%;
+  }
+  .menu {
+    z-index: 3;
+  }
+}
 
-
+@media (min-width: 0px) and (max-width: 320px) {
+  .left-panel {
+    width: 43%;
+  }
+  .checkbox:checked ~ .menu {
+    left: 43%;
+  }
+  .menu {
+    z-index: 3;
+  }
+}

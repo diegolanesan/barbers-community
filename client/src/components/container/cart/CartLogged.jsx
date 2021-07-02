@@ -82,7 +82,7 @@ export const CartLogged = () => {
 
   const paymentGenerator = (user, products) => {
     axios
-      .post("http://localhost:3001/checkout/create_preference", {
+      .post("https://barbers-community.herokuapp.com/checkout/create_preference", {
         user,
         products,
       })
@@ -127,7 +127,7 @@ export const CartLogged = () => {
 
         </div>
         <div class="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-4 xxl:col-span-4">
-         
+
           <div class="bg-white py-4 px-4 shadow-xl rounded-lg my-4 mx-4">
 
             <div class="flex justify-center items-center text-center">

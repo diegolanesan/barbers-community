@@ -6,7 +6,7 @@ import about from '../../../../resources/about.jpg'
 function About() {
     return (
         <div class="flex flex-row w-screen justify-center items-center mt-16 mb-4">
-            <div class="flex flex-col items-center w-2/5">
+            <div class="flex flex-col text-center sm:text-center ml-8 sm:ml-0 items-center w-2/5">
                 <p class="font-prata text-xl text-primary mb-2"> Introducing </p>
                 <h2 class="font-prata text-4xl text-brown"> Barbers Community </h2>
                 <img src={aboutLogo} class="my-8" alt="About Logo"/>
@@ -16,7 +16,7 @@ function About() {
                 </button>
             </div>
             <div class="ml-16 mb-20">
-                <img class="object-contain h-80 rounded-xl" src={about} alt="About"/>
+                <img class="object-contain hidden sm:block h-80 rounded-xl" src={about} alt="About"/>
             </div>
 
         </div>

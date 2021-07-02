@@ -16,7 +16,7 @@ import { getClientWishList } from "../../../redux/action/wishlist";
 function ClientData({ allAppointments }) {
 	const user = jwtDecode(localStorage.getItem("clientToken"));
 	console.log(user)
-	const clientAppointments = allAppointments.filter(
+	const clientAppointments = allAppointments && allAppointments?.filter(
 		(app) => app.clientId === user.id
 	);
 	const appointments = useSelector((state) => state.cart.appoinments);
@@ -32,17 +32,17 @@ function ClientData({ allAppointments }) {
 		dispatch(getClientWishList(user.id));
 		if (state && state === "approved") {
 			dispatch(changeCartStateMercadoPago(user.id, { state: "Paid" })).then(
-				() => window.location.replace("http://localhost:3000/clients/dashboard")
+				() => window.location.replace("https://barberscommunity-g8.netlify.app/clients/dashboard")
 			);
 		}
 		if (state && state === "rejected") {
 			dispatch(changeCartStateMercadoPago(user.id, { state: "Rejected" })).then(
-				() => window.location.replace("http://localhost:3000/clients/dashboard")
+				() => window.location.replace("https://barberscommunity-g8.netlify.app/clients/dashboard")
 			);
 		}
 		if (state && state === "pending") {
 			dispatch(changeCartStateMercadoPago(user.id, { state: "Pending" })).then(
-				() => window.location.replace("http://localhost:3000/clients/dashboard")
+				() => window.location.replace("https://barberscommunity-g8.netlify.app/clients/dashboard")
 			);
 		}
 	}, []);
@@ -55,7 +55,7 @@ function ClientData({ allAppointments }) {
 				service?.serviceBarbers?.map(async (x) => {
 					let serviceToRepeat = {
 						serviceBarberId: x.id,
-						name: x.name,
+						name: x.item.serviceName,
 						price: x.price,
 					};
 					dispatchAdd(user.id, serviceToRepeat);
@@ -63,8 +63,13 @@ function ClientData({ allAppointments }) {
 						"barberId",
 						JSON.stringify(service.serviceBarbers[0].barberId)
 					);
-					window.location.replace("http://localhost:3000/cart");
-					// window.location.href = `http://localhost:3000/cart`
+					Swal.fire(
+				 	 	'Good job!',
+  						'You clicked the button!',
+  						'success'
+					).then(() => window.location.replace("https://barberscommunity-g8.netlify.app/cart"))
+					//window.location.replace("https://barberscommunity-g8.netlify.app/cart");
+					// window.location.href = `https://barberscommunity-g8.netlify.app/cart`
 				});
 		} else {
 			Swal.fire({
@@ -121,7 +126,7 @@ var nextDate = orderedDates.filter(function(date) {
 				<div class="rounded-full h-36 w-36 flex flex-col items-center justify-center text-center bg-secondary">
 					<p class="text-white font-bold text-5xl">
 						{" "}
-						{clientAppointments.length}{" "}
+						{clientAppointments && clientAppointments.length}{" "}
 						</p>
 						
 					</div>

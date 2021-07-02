@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 export default function Barber({ barbersPerPage }) {
 	return (
-		<div className="grid sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+		<div className="grid sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 font-lato lg:grid-cols-4">
 			{barbersPerPage &&
 				barbersPerPage.map((n) => (
 					<div
 						key={n.id}
-						className="text-center m-8 border rounded-xl pb-1 shadow-md"
+						className="text-center m-8 border-2 border-secondary rounded-xl pb-1 shadow-md"
 					>
 						<Link to={`Detail/${n.id}`}>
 							<img

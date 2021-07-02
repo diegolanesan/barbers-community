@@ -122,20 +122,20 @@ const Register = () => {
 				type: barber.type,
 			},
 		};
-		
-		dispatch(signUpBarber(barberSend)); 
+
+		dispatch(signUpBarber(barberSend));
 		Swal.fire({
-            title: 'Register Sucessfull',
-            icon: 'success',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Ok'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "http://localhost:3000/loginBarbers";
-            }
-          })
+			title: 'Register Sucessfull',
+			icon: 'success',
+			confirmButtonColor: '#3085d6',
+			confirmButtonText: 'Ok'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = "https://barberscommunity-g8.netlify.app/loginBarbers";
+			}
+		})
 	};
-	
+
 
 	const [address, setAddress] = useState('')
 

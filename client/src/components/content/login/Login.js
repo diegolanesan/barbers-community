@@ -7,7 +7,7 @@ function Login() {
         const [password, setPassword] = useState("");
         
         const login = () => {
-          axios.post("http://localhost:3001/barbers/login", {username: username, password: password}, {withCredentials: true})
+          axios.post("https://barbers-community.herokuapp.com/barbers/login", {username: username, password: password}, {withCredentials: true})
           .then((res) => console.log(res));
         };
     
