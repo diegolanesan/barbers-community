@@ -90,56 +90,57 @@ const RegisterClient = () => {
 	};
 
 	const handleSubmit = (e) => {
-		if(!client.name || !client.lastname ||
-			 !client.email || !client.password || !client.confirmedPassword ||
-			  !client.location || !client.mobile || !client.styleId || !client.faceTypeId
-			  || !client.hairTypeId) {
-			   Swal.fire({
-				 title: 'Please complete all the camps',
-				 showClass: {
-				   popup: 'animate__animated animate__fadeInDown'
-				 },
-				 hideClass: {
-				   popup: 'animate__animated animate__fadeOutUp'
-				 }
-			   })
-		 } else if (client.password !== client.confirmedPassword) {
-			   Swal.fire({
-				 title: 'password and confirm password must be the same',
-				 showClass: {
-				   popup: 'animate__animated animate__fadeInDown'
-				 },
-				 hideClass: {
-				   popup: 'animate__animated animate__fadeOutUp'
-				 }
-			   })
-		 } else {
-		const clientSend = {
-			name: client.name,
-			lastname: client.lastname,
-			email: client.email,
-			image: barberImg,
-			mobile: client.mobile,
-			location: client.location,
-			password: client.confirmedPassword,
-			status: "active",
-			styleId: client.styleId,
-			faceTypeId: client.faceTypeId,
-			hairTypeId: client.hairTypeId,
-			rol: "client",
-		};
+		if (!client.name || !client.lastname ||
+			!client.email || !client.password || !client.confirmedPassword ||
+			!client.location || !client.mobile || !client.styleId || !client.faceTypeId
+			|| !client.hairTypeId) {
+			Swal.fire({
+				title: 'Please complete all the fields',
+				showClass: {
+					popup: 'animate__animated animate__fadeInDown'
+				},
+				hideClass: {
+					popup: 'animate__animated animate__fadeOutUp'
+				}
+			})
+		} else if (client.password !== client.confirmedPassword) {
+			Swal.fire({
+				title: 'password and confirm password must be the same',
+				showClass: {
+					popup: 'animate__animated animate__fadeInDown'
+				},
+				hideClass: {
+					popup: 'animate__animated animate__fadeOutUp'
+				}
+			})
+		} else {
+			const clientSend = {
+				name: client.name,
+				lastname: client.lastname,
+				email: client.email,
+				image: barberImg,
+				mobile: client.mobile,
+				location: client.location,
+				password: client.confirmedPassword,
+				status: "active",
+				styleId: client.styleId,
+				faceTypeId: client.faceTypeId,
+				hairTypeId: client.hairTypeId,
+				rol: "client",
+			};
 
-		dispatch(signUpClient(clientSend));
-		Swal.fire({
-			title: 'Register Sucessfull',
-			icon: 'success',
-			confirmButtonColor: '#3085d6',
-			confirmButtonText: 'Ok'
-		}).then((result) => {
-			if (result.isConfirmed) {
-				window.location.href = "http://localhost:3000/loginClients";
-			}
-		})}
+			dispatch(signUpClient(clientSend));
+			Swal.fire({
+				title: 'Register Sucessfull',
+				icon: 'success',
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: 'Ok'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					window.location.href = "http://localhost:3000/loginClients";
+				}
+			})
+		}
 	};
 
 

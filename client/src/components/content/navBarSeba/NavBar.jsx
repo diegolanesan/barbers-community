@@ -57,6 +57,7 @@ const NavBar = () => {
                     <li><Link to="/catalog">SERVICE</Link></li>
                     <li onClick={handleClick} style={{ cursor: "pointer" }}>LOG OUT</li>
                     <li><Link to="/clients/dashboard">DASHBOARD</Link></li>
+                    <li><Link to="/cart">CART</Link></li>
 
 
                 </ul>
@@ -92,6 +93,8 @@ const NavBar = () => {
                     <li><Link to="/catalog">SERVICE</Link></li>
                     <li><Link to="/loginBarbers">LOG IN BARBER</Link></li>
                     <li><Link to="/loginClients">LOG IN CLIENT</Link></li>
+                    <li><Link to="/guest/cart">CART</Link></li>
+
                 </ul>
                 <i class={menu.active ? ("fas fa-times") : ("fas fa-bars")} onClick={handleClickOne}></i>
             </nav>

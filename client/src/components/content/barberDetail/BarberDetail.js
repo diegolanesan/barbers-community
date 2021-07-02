@@ -265,13 +265,6 @@ function BarberDetail(props) {
 					</div>
 					<BarberDetailServices filters={boton.filters} />
 					</div>
-						<div className="flex justify-center">
-							<Link to={token? "/cart" : "/guest/cart"}>
-							<button className="bg-secondary text-white py-2 px-10 hover:bg-primary font-semibold">
-								NEXT STEP
-							</button>
-							</Link>
-						</div>
 					</div>
 											
 				</div>

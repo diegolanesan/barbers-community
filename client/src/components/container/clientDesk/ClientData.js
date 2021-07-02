@@ -201,6 +201,8 @@ var nextDate = orderedDates.filter(function(date) {
 							<th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Services</th>
 							<th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
 							<th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Total price </th>
+							<th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"> Repeat </th>
+
 						</tr>
 					</thead>
 					{appointments && appointments.length > 0
@@ -208,10 +210,10 @@ var nextDate = orderedDates.filter(function(date) {
 								return (
 									<tbody class="text-center">
 										<tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"> {app.id} </td>
-											<td > {app.date && app.date.slice(0, 10)} </td>
+											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-gray-600 block lg:table-cell relative lg:static"> {app.id} </td>
+											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-gray-600 block lg:table-cell relative lg:static"> {app.date && app.date.slice(0, 10)} @ { app.time} </td>
 											{/* c.serviceBarbers.map(n => "| " + n.item.serviceName + " |") */}
-											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-gray-600 text-center block lg:table-cell relative lg:static">
 												{" "}
 												{app.serviceBarbers &&
 													app.serviceBarbers.map((x) => {
@@ -222,9 +224,9 @@ var nextDate = orderedDates.filter(function(date) {
 														}
 													})}{" "}
 											</td>
-											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static"> {app && app.state} </td>
-											<td> $ {app.totalAmount && app.totalAmount} </td>
-											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-gray-600 text-center block lg:table-cell relative lg:static"> {app && app.state} </td>
+											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-gray-600 block lg:table-cell relative lg:static"> $ {app.totalAmount && app.totalAmount} </td>
+											<td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-gray-600 text-center block lg:table-cell relative lg:static">
 												<button
 													onClick={() => onClick(app.state, app)}
 													class="h-8 px-4 text-sm text-white transition-colors bg-blue-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-blue-600"
