@@ -5,7 +5,7 @@
 
 ## Sobre el proyecto
 
-Aplicación desarrollada a lo largo de 4 semanas, como proyecto final del bootcamp de [Soy Henry](https://www.soyhenry.com/).
+Aplicación desarrollada a lo largo de 4 semanas, como proyecto final del bootcamp de [Soy Henry](https://www.soyhenry.com/). Pueden visualizar el proyecto en [barberscommunity](https://barberscommunity-g8.netlify.app/). 
 
 ## Barbers Community
 
