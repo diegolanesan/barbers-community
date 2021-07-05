@@ -9,7 +9,7 @@ Aplicación desarrollada a lo largo de 4 semanas, como proyecto final del bootca
 
 ## Barbers Community
 
-La barbería en Latinoamerica, constituye un oficio y una verdadera fuente de empleo para muchas comunidades vulnerables de nuestro región. Pero estos empleos muchas veces sufren de inestabilidad y poca previsibilidad para la economía de las familias que dependen de ellos. 
+La barbería en Latinoamerica, constituye un oficio y una fuente de empleo para muchas comunidades vulnerables de nuestro región. Pero estos muchas veces sufren de inestabilidad y poca previsibilidad, imposibilitando el desarrollo de las economías familiares que dependen de ellos. 
 
 Barbers Community, es una plataforma social que busca conectar barberos con potenciales clientes que deseen contratar sus servicios, y así potenciar su alcance y posibilidades de trabajo. A través de la aplicación, los clientes pueden seleccionar y pagar los servicios de su preferencia, así como reservar un día y horario con un determinado barbero.
 
